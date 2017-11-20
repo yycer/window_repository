@@ -17,5 +17,5 @@ print(isiterable((1, 2, 3)))        # True
 print(isiterable({'name': 'Gerg'})) # True
 print(isiterable({'name', 'age'}))  # True
 
-#if not isinstance(x, list) and isiterable(x):
+# if not isinstance(x, list) and isiterable(x):
 #    x = list(x)
