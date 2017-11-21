@@ -1,12 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Nov 21 14:14:25 2017
-
-@author: Administrator
-"""
-
-# -*- coding: utf-8 -*-
-"""
 Created on Tue Nov 21 11:08:10 2017
 
 @author: yyc
