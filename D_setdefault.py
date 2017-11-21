@@ -9,35 +9,35 @@ import json
 words = ['asan', 'qin', 'apple', 'query', 'quick']
 
 d = {}
-# traditional way
-#for word in words:
-#    letter = word[0]
-#    if not letter in d:
-#        d[letter] = [word]
-#    else:
-#        d[letter].append(word)
+#    traditional way
+#    for word in words:
+#        letter = word[0]
+#        if not letter in d:
+#            d[letter] = [word]
+#        else:
+#            d[letter].append(word)
 
-#print(json.dumps(d, indent = 4))
+#    print(json.dumps(d, indent = 4))
 
-# brief way
+#     brief way
 for word in words:
     letter = word[0]
     d.setdefault(letter, []).append(word)
     
 print(json.dumps(d, indent = 4))
 
-# output:
-#{
-#    "a": [
-#        "asan",
-#        "apple"
-#    ],
-#    "q": [
-#        "qin",
-#        "query",
-#        "quick"
-#    ]
-#}
-
-# dict.setdefault?
-# Docstring: D.setdefault(k[,d]) -> D.get(k,d), also set D[k]=d if k not in D
+#     output:
+#    {
+#        "a": [
+#            "asan",
+#            "apple"
+#        ],
+#        "q": [
+#            "qin",
+#            "query",
+#            "quick"
+#        ]
+#    }
+#    
+#     dict.setdefault?
+#     Docstring: D.setdefault(k[,d]) -> D.get(k,d), also set D[k]=d if k not in D
