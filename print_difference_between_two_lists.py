@@ -13,3 +13,10 @@ l2 = ['asan', 'shoushan', 'laowang']
 l12set = set(l1)
 l22set = set(l2)
 print(json.dumps(dict(enumerate(l12set ^ l22set)), indent = 4))
+
+#    output:
+#        {
+#            "0": "shoushan",
+#            "1": "qin",
+#            "2": "pangzi"
+#        }
