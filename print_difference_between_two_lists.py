@@ -10,14 +10,6 @@ import json
 l1 = ['asan', 'pangzi', 'qin', 'laowang']
 l2 = ['asan', 'shoushan', 'laowang']
 
-l1.extend(l2)
-print(json.dumps(dict(enumerate(set(l1))), indent = 4))
-
-#    output:
-#            {
-#                "0": "qin",
-#                "1": "asan",
-#                "2": "laowang",
-#                "3": "shoushan",
-#                "4": "pangzi"
-#            }
+l12set = set(l1)
+l22set = set(l2)
+print(json.dumps(dict(enumerate(l12set ^ l22set)), indent = 4))
