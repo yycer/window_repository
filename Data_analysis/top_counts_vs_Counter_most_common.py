@@ -48,9 +48,9 @@ def top_counts(sequence, n):
     return result
 
 # convenient way
-counts = Counter(time_zones)
-tz_count_pairs = [(count, tz) for tz, count in dict(counts.most_common(10)).items()]
-tz_count_pairs.sort()
+#counts = Counter(time_zones)
+#tz_count_pairs = [(count, tz) for tz, count in dict(counts.most_common(10)).items()]
+#tz_count_pairs.sort()
 
 
 def collection_Counter(sequence, n):
