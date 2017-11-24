@@ -53,4 +53,10 @@ tz_count_pairs = [(count, tz) for tz, count in dict(counts.most_common(10)).item
 tz_count_pairs.sort()
 
 
-print(tz_count_pairs == top_counts(time_zones, 10)) # True
+def collection_Counter(sequence, n):
+    counts = Counter(sequence)
+    tz_count_pairs = [(count, tz) for tz, count in dict(counts.most_common(10)).items()]
+    tz_count_pairs.sort()
+    return tz_count_pairs
+
+print(collection_Counter(time_zones, 10) == top_counts(time_zones, 10)) # True
