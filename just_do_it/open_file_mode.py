@@ -25,4 +25,4 @@ with open('try1201.txt', 'r+') as f:
     print(f.read())             # cus pursue for freedom.
 
 with open('try1201.txt', 'a+') as f:
-    f.write('addition')        # Spartacus pursue for freedom.addition
+    f.write('addition')         # Spartacus pursue for freedom.addition
