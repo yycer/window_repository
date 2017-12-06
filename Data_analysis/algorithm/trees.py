@@ -8,6 +8,12 @@ Created on Mon Dec  4 16:39:40 2017
 from math import log
 import operator
 import json
+import treePlotter
+
+try:
+    import cPickle as pickle
+except ImportError:
+    import pickle
 
 #tmp = [[1, 'no'], [1, 'no']]
 def calcShannonEnt(dataset):
@@ -137,7 +143,7 @@ def createTree(dataset, labels):
     return myTree
 
 myTree = createTree(dataset, labels)
-print(json.dumps(myTree, indent = 4))
+#print(json.dumps(myTree, indent = 4))
 #    {
 #        "not fish": {
 #            "0": "no",
@@ -152,9 +158,39 @@ print(json.dumps(myTree, indent = 4))
 
 
 
+def classify(inputTree, featLabels, testVec):
+    firstStr = list(inputTree.keys())[0]
+    secondDict = inputTree[firstStr]
+    featIndex = featLabels.index(firstStr) # 0 1
+    # secondDict.keys() --- [0, 1]
+    for key in secondDict.keys():
+        if testVec[featIndex] == key:
+            if type(secondDict[key]).__name__ == 'dict':
+                classLabel = classify(secondDict[key], featLabels, testVec)
+            else:
+                classLabel = secondDict[key]
+    return classLabel
+
+
+def storeTree(inputTree, filename):
+    fw = open(filename, 'wb')
+    pickle.dump(inputTree, fw)
+    fw.close()
+
+def grabTree(filename):
+    fr = open(filename, 'rb')
+    return pickle.load(fr)
 
 
 
+myDat, labels = createDataset()
+# {'no surfacing': {0: 'no', 1: {'flippers': {0: 'no', 1: 'yes'}}}}
+myTree = treePlotter.retrieveTree(0)
+#print(classify(myTree, labels, [1, 0]))
+
+
+storeTree(myTree, 'classifierStorage.txt')
+print(grabTree('classifierStorage.txt'))
 
 
 
