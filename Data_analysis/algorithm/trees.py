@@ -189,8 +189,9 @@ myTree = treePlotter.retrieveTree(0)
 #print(classify(myTree, labels, [1, 0]))
 
 
-storeTree(myTree, 'classifierStorage.txt')
-print(grabTree('classifierStorage.txt'))
+#storeTree(myTree, 'classifierStorage.txt')
+#print(grabTree('classifierStorage.txt'))
+
 
 
 
