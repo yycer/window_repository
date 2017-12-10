@@ -15,7 +15,7 @@ b = b.reshape((2, 2))
 
 normal_multiply = a * b
 print(normal_multiply)      # [[  0  20]
-#                              [ 60 120]]
+                            #  [ 60 120]]
 
 np_dot = np.dot(a, b)
 print(np_dot)               # [[ 40  70]
