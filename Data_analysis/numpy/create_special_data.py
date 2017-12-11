@@ -20,7 +20,7 @@ print(a)              # [[ 1  3]
                       #  [13 15]
                       #  [17 19]]
 
-# linspace = linear space
+# linspace = linear space 等差数列
 b = np.linspace(1, 10, 20)
 print(b)
 #[  1.           1.47368421   1.94736842   2.42105263   2.89473684
