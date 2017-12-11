@@ -13,6 +13,7 @@ Created on Tue Nov 21 16:22:55 2017
 #
 #    for i in all_data:
 #        i = i.strip()
+         # re.sub(pattern, replacement, string, ...)
 #        i = re.sub('[ ?!#]', '', i)
 #        i = i.title()
 #        result.append(i)
