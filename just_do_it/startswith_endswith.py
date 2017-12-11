@@ -6,6 +6,8 @@ Created on Mon Nov 27 14:43:45 2017
 """
 
 str = 'Spartacus pursue for freedom'
+print(len(str))                             # 28
+print(str.index('freedom'))                 # 21
 # S.startswith(prefix[, start[, end]]) -> bool
 print(str.startswith('Spartacus'))          # True
 print(str.startswith('Spartacus', 0))       # True
