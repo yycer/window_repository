@@ -25,10 +25,10 @@ e = random.choice(['asan', 'Gerg', 'pangzi'])  # pangzi
 # random.shuffle(x): shuffle list x in place, and return None.
 l1 = ['asan', 'Gerg', 'pangzi', 'Qin']
 random.shuffle(l1)
-#print(l1)                                       # ['Gerg', 'Qin', 'pangzi', 'asan']
+#print(l1)                                     # ['Gerg', 'Qin', 'pangzi', 'asan']
 
 l2 = list(range(10))
-f = random.sample(l2, 3)                         # [5, 8, 3]
+f = random.sample(l2, 3)                       # [5, 8, 3]
 
 import numpy as np
 
