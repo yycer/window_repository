@@ -7,14 +7,6 @@ Created on Sat Dec 16 10:11:56 2017
 
 sequence = [8, 1, 5, 9, 6, 18, 25, 13]
 
-def mergesort(seq):
-    if len(seq) <= 1:
-        return seq
-    mid = int(len(seq) / 2)
-    left = mergesort(seq[: mid])
-    right = mergesort(seq[mid: ])
-    return merge(left, right)
-
 def merge(left, right):
     result, i, j = [], 0, 0
     while i < len(left) and j < len(right):
@@ -28,6 +20,14 @@ def merge(left, right):
     result += right[j: ]
     return result
 
-print(mergesort(sequence))  # [1, 5, 6, 8, 9, 13, 18, 25]
-    
+
+def mergesort(seq):
+    if len(seq) <= 1:
+        return seq
+    mid = int(len(seq) / 2)
+    left = mergesort(seq[: mid])
+    right = mergesort(seq[mid: ])
+    return merge(left, right)
+
+print(mergesort(sequence)) # [1, 5, 6, 8, 9, 13, 18, 25]
     
