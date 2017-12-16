@@ -12,7 +12,7 @@ a = random.random()                            # 0.9789956203536088
 
 # random.uniform: get a random number in the range [a, b) or [a, b] depending on rounding.
 b = random.uniform(1, 5)                       # 1.5791685082002123
-
+print(b)
 # random.randint: return random integer in range [a, b].
 c = random.randint(10, 20)                     # 18
 
