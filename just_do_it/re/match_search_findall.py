@@ -31,6 +31,12 @@ print(match2.start())               # 0
 print(match2.end())                 # 9
 print(match2.span())                # (0, 9)
 
+pattern = re.compile(r'\d+')
+m2 = pattern.search('Hello world 123456')
+if m2:
+    print('matching string: {}'.format(m2.group()))     # matching string: 123456
+    print('position: {}'.format(m2.span()))             # position: (12, 18)
+
 
 # re.findall(pattern, string, flag = 0)
 # Return a list of all non-overlapping matches in a string.
