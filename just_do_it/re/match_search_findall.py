@@ -49,6 +49,6 @@ print(match3)                       # ['spartacus', 'spartacus']
 # containing the resulting substrings.
 pattern = re.compile(r'[\s\,\;]+')
 match4 = pattern.split('a;;;;b   c,,,,,   d  ; e')
-print(match4)       # ['a', 'b', 'c', 'd', 'e']
+print(match4)                       # ['a', 'b', 'c', 'd', 'e']
 
 
