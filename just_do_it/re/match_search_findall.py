@@ -43,3 +43,12 @@ if m2:
 match3 = re.findall('spartacus', c)
 print(match3)                       # ['spartacus', 'spartacus']
 
+
+# re.split(pattern, string, maxsplit = 0, flag = 0)
+# Split the source string by the occurrences of the pattern, returning a list
+# containing the resulting substrings.
+pattern = re.compile(r'[\s\,\;]+')
+match4 = pattern.split('a;;;;b   c,,,,,   d  ; e')
+print(match4)       # ['a', 'b', 'c', 'd', 'e']
+
+
