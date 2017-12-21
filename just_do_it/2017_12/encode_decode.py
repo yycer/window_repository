@@ -11,14 +11,12 @@ Created on Thu Dec 21 14:10:13 2017
 s1 = '晨'
 s2 = u'晨'
 
-print(type(s1))            # <class 'str'>
-print(type(s2))            # <class 'str'>
+print(type(s1))                        # <class 'str'>
+print(type(s2))                        # <class 'unicode'>
 
-print(s1.encode())         # b'\xe6\x99\xa8'
-print(s2.encode())         # b'\xe6\x99\xa8'
+print(u'晨'.encode('utf-8'))           # 晨
+print(type(u'晨'.encode('utf-8')))     # <type 'str'>
 
-print(type(s1.encode()))   # <class 'bytes'>
-print(type(s2.encode()))   # <class 'bytes'>
+print(s1.decode('utf-8'))              # 晨
+print(type(s1.decode('utf-8')))        # <type 'unicode'>
 
-b1 = b'\xe6\x99\xa8'
-print(b1.decode())         # 晨
