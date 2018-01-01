@@ -1,0 +1,19 @@
+1.分布式表示：全连接的形式，而非结果。
+2.perceptrons, back propagation, deep learning
+3.long short-term memory 长短期记忆
+4.机器学习的未达预期，核方法、图模型的异军突起，导致了第二次神经网路热潮的衰退。
+5.如果通过半监督学习，甚至无监督学习，充分利用大量未标记样本。
+6.mnist: Modified National Institute of Standards and Technology.
+7.与日俱增的模型规模：联结主义(connection)的主要间接之一，大量神经元一起工作会拥有巨大的力量。
+8.人工神经网络的规模受限于计算机内存、运行速度(CPU)、可用数据集。
+9.ILSVRC: ImageNet Large Scale Visual Recognition Competition
+10.强化学习(reinforcement learning)
+11.数据量 - 模型规模 - 精度、复杂度
+12.什么是应用数学？ - 纯数学和应用数学的区别？纯数学更多的是想要扩宽数学体系，追求一种自洽性和美感；应用数学则是通过数学解决实际的问题。
+"哪有什么应用数学，不过就是数学的应用罢了" - arnold
+×13.什么是信念度？ - 线索(玻尔兹曼机)
+14.basics: 线性代数、概率与信息论、数值计算、机器学习基础
+15.scalar(标量): 一个单独的数; vector(向量): 一列(纵列)数，通过次序中的索引来确定每个单独的数，第一个数为v1
+16.matrix(矩阵): 一个二维数组，其中的每个元素由两个索引确定; tensor(张量): 退化的矩阵
+17.np.mat(xxx): 将一个np.array转换成matrix
+18.np.mat & np.matrix 区别？
