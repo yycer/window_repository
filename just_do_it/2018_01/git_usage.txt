@@ -1,0 +1,21 @@
+1.如何知道远程主机名? git remote -v  --> origin
+2.如何查看本地所有分支? git branch
+3.git pull 用法? ---> git pull 远程主机名 远程分支名:本地分支名
+例: 当本地主分支master为最新状态时, 如何将本地其他分支(yyc, llg)也同步成最新状态? 
+    Resolve: git pull origin(远程主机名) master(主分支): yyc(分支)  --- (在本地主分支下执行)
+4.git fetch 作用? 取回远程主机版本库中的更新(commit); git fetch 远程主机名 远程分支名:本地分支名
+5.git merge 作用? git merge yyc(在master下), 保持主分支为最新状态。
+6.git push -u origin master: 参数u的作用? upstream: 是分支(本地)与分支(远程)之间的通道。
+7.git如何创建多个本地分支? git branch branch_name
+8.如何切换到指定本地分支? git checkout branch_name
+9.LF、CRLF是什么? LF: line feed(\n - linux); CRLF: carriage return line feed(\r - window)
+                 window中的换行符为CRLF; Linux与git中换行符为LF
+10.fatal: refusing to merge unrelated histories;
+   Resolve: git pull origin master --allow-unrelated-histories
+11.如何将本地yyc分支的代码上传到远程分支yyc: git push origin yyc
+注意两点: 1.远程yyc分支起初并不存在。
+         2.该命令在本地yyc分支执行。
+12.若从本地分支llg, 修改本地文件内容(test2.txt)后, git push origin master会发生什么?
+   Everything up-to-date
+13.当本地分支修改主分支master下文件的内容后, 可切换至主分支, git merge branch_name,
+   然后git push origin master保持远程主分支是最新的代码。
