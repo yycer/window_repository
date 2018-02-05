@@ -21,12 +21,14 @@ def not_empty(iter):
 
 
 # 查询同一用户购买的商品
-# with open("E:/my_project/毕设/数据/ratings_Books.csv") as f:
-#     content = f.readlines()
-#     for line in content:
-#         line = line.strip().split(",")
-#         if "APOZ15IEYQRRR" == line[0]:
-#             print(line)
+def querySameCustomer(ci, rad):
+    with open(rad) as f1:
+        content = f1.readlines()
+        for line in content:
+            line = line.strip().split(",")
+            if line[0] == ci:
+                print(line)
+
 
 
 # 查询同一商品购买的用户
@@ -40,11 +42,11 @@ def not_empty(iter):
 
 # 根据某一商品id，从数据集中读取相关数据，筛选出评分等级与时间戳变量并以tab键为分隔存入txt文件，文件名为商品id
 #product_id = "0000230022"
-#file = "../数据/ratings_Books.csv"
-def filterProductId(product_id, file):
+#rating_dataset = "../data/ratings_Books.csv"
+def filterProductId(product_id, rt):
     # 从数据集中获取与该product_id相关的所有数据，并存入l1_tmp(list)
     l1_tmp = []
-    with open(file) as f1:
+    with open(rt) as f1:
         content = f1.readlines()
         for line in content:
             line = line.strip().split(',')
@@ -86,14 +88,48 @@ def drawFigure1(file):
 # drawFigure1(file)
 
 
+# 根据customer_id查询customer_id.txt中的第一个字段的值
+# Question1: customer_id.txt 需要先生成再执行该函数
+def getProductListByCustomerId(ci):
+    file_name = ci + '.txt'
+    with open(file_name) as f1:
+        product_list = []
+        content = f1.readlines()
+        for element in content:
+            element = element.strip().split('\t')
+            product_list.append(element[0])
+    return product_list
+
+# product_list = ['0001048791','0000143561','0000037214','0000032060']
+
+
+
+# 根据product_id从Books.json数据集中筛选出相关数据
+def getRelatedDataByProductId(pi, red):
+    with open(red) as f1:
+        content = f1.readlines()
+        for element in content:
+            element = eval(element)
+            if element.get('asin') == pi:
+                return str(element)
+
+
+
+# 将指定customer所购买的product的相关数据从Books.json中分离出来，写入related_customer_id.txt中
+def getSmallRelatedDatasetByProductList(pl, ci, rad):
+    for product in pl:
+        file_name = 'related_' + ci + '.txt'
+        with open(file_name, 'a+') as f2:
+            if getRelatedDataByProductId(product, rad) != None:
+                f2.write(getRelatedDataByProductId(product, rad) + '\n')
+    return file_name
+
 
 
 # 输入customer_id，生成一个以customer_id.txt为文件名的文件，其中每行内容的字段为product_id,rating,timestamp以Tab分隔。
-#customer_id = 'A2IIIDRK3PRRZY'
-#file = "../数据/ratings_Books.csv"
-def filterCustomerId(customer_id, file):
+def filterCustomerId(customer_id, rad):
     l1_tmp = []
-    with open(file) as f1:
+    with open(rad) as f1:
         content = f1.readlines()
         for line in content:
             line = line.strip().split(',')
@@ -104,14 +140,15 @@ def filterCustomerId(customer_id, file):
     with open(file_name, 'w') as f2:
         for line in l1_tmp:
             f2.write(line[1] + '\t' + line[2] + '\t' + line[3] + '\n')
+    return file_name
 
-#filterCustomerId(customer_id, file)
+# filterCustomerId(customer_id, rating_dataset)
             
 
 
 # 根据商品id获取其等级评分，并将浮点数转换成strong[1]([4,5]),weak[0]([0,3])
 # product_id = '0553588958'
-customer_id_dataset = 'A2IIIDRK3PRRZY.txt'
+# customer_id_dataset = 'A2IIIDRK3PRRZY.txt'
 # pi = product id; cid = customer id dataset
 def getRatingByProductId(pi, cid):
     with open(cid) as f1:
@@ -131,11 +168,11 @@ def getRatingByProductId(pi, cid):
 
 
 # 根据productA，在related dataset中查询其related字段中是否含有productB，包含为1，否则为0
-related_dataset = 'deceptive_three_related.txt'
-# productA = '0000000116'
-# productB = '0553562738'
-def confirmProductAIsRealtedB(rd, pA, pB):
-    with open(rd) as f1:
+
+# productA = '0553562738'
+# productB = '0553588958'
+def confirmProductAIsRealtedB(red, pA, pB):
+    with open(red) as f1:
         content = f1.readlines()
         for line in content:
             line = eval(line)
@@ -144,8 +181,11 @@ def confirmProductAIsRealtedB(rd, pA, pB):
                     return 1
                 else:
                     return 0
+            else:
+                return 0
 
-# confirmProductAIsRealtedB(related_dataset, productA, productB)
+
+# print(confirmProductAIsRealtedB(related_dataset, productA, productB))
 
 
 
@@ -153,32 +193,43 @@ def confirmProductAIsRealtedB(rd, pA, pB):
 # 1.如果rating>3 -->strong[1]，否则weak[0]
 # 2.根据productA查询数据集的related，若相关，related字段为1，否则为0
 # 3.生成tidied_customer_id.txt文件，包含productA,ratingA,productB,ratingB,relation字段。
-# customer_id_dataset = 'A2IIIDRK3PRRZY.txt'
+# customer_id_dataset = 'A1TADCM7YWPQ8M.txt'
 # related_dataset = 'deceptive_three_related.txt'
-# cid=  customer id dataset; rd = related dataset, pll = product list length
-def tidyDataByCustomerId(cid, rd):
-    with open(cid) as f1:
-        content = f1.readlines()
-        product_list = []
-        for line in content:
-            line = line.strip().split('\t')
-            # 获取商品列表
-            product_list.append(line[0])
-
-        pll = len(product_list)
-        file_name = 'tidied_' + cid
-        with open(file_name, 'w+') as f2:
-            for productA in product_list[ : pll - 1]:
-                for productB in product_list[product_list.index(productA) + 1 : pll]:
-                    ratingA = str(getRatingByProductId(productA, cid))
-                    ratingB = str(getRatingByProductId(productB, cid))
-                    relation = str(confirmProductAIsRealtedB(rd, productA, productB))
-                    # print(productA, ratingA, productB, ratingB, relation)
-                    # 将5个字段数据写入txt文件，命名为tidied_customer_id.txt
-                    f2.write(productA + '\t' + ratingA + '\t' + productB + '\t' + ratingB + '\t' + relation + '\n')
+# cid=  customer id dataset; red = related dataset, pll = product list length
+# ci = customer id;
+def tidyDataByCustomerId(ci, rad, red):
+    cid = filterCustomerId(ci, rad)
+    product_list = getProductListByCustomerId(ci)
+    new_related_dataset = getSmallRelatedDatasetByProductList(product_list, ci, red)
+    pll = len(product_list)
+    file_name = 'tidied_' + cid
+    with open(file_name, 'w+') as f2:
+        for productA in product_list[ : pll - 1]:
+            for productB in product_list[product_list.index(productA) + 1 : pll]:
+                ratingA = str(getRatingByProductId(productA, cid))
+                ratingB = str(getRatingByProductId(productB, cid))
+                relation = str(confirmProductAIsRealtedB(new_related_dataset, productA, productB))
+                # print(productA, ratingA, productB, ratingB, relation)
+                # 将5个字段数据写入txt文件，命名为tidied_customer_id.txt
+                f2.write(productA + '\t' + ratingA + '\t' + productB + '\t' + ratingB + '\t' + relation + '\n')
 
 
-# tidyDataByCustomerId(customer_id_dataset, related_dataset)
+
+# 整个多个启动函数的参数，使其让一个主函数控制，也就是让相关函数写入主函数
+# filtered_customer_id_dataset_file_name = filterCustomerId(customer_id, rating_dataset)
+# product_list = getProductListByCustomerId(customer_id)
+# new_related_dataset = getSmallRelatedDatasetByProductList(product_list, customer_id, related_dataset)
+customer_id = 'A1340OFLZBW5NG'
+rating_dataset = "../data/ratings_Books.csv"
+related_dataset = '../data/Books.json'
+# querySameCustomer(customer_id, rating_dataset)
+tidyDataByCustomerId(customer_id, rating_dataset, related_dataset)
+
+# start = time.clock()
+# elapsed = time.clock() - start
+# print(elapsed)
+
+
 
 
 
