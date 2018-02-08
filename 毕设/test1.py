@@ -1,4 +1,5 @@
 # coding = utf8
+import os
 import re
 import time
 import numpy as np
@@ -190,6 +191,114 @@ def confirmProductAIsRealtedB(red, pA, pB):
 
 
 
+
+def evaluateCustomerModelByTidiedCustomerIdTxt(td):
+    model_list_base = ['000', '001', '010', '011', '100', '101', '110', '111']
+    model_list = [0] * 8
+    with open(td) as f1:
+        content = f1.readlines()
+        for element in content:
+            element = element.strip().split('\t')
+            model = element[1] + element[3] + element[4]
+            if model == model_list_base[0]:
+                model_list[0] += 1
+            elif model == model_list_base[1]:
+                model_list[1] += 1
+            elif model == model_list_base[2]:
+                model_list[2] += 1
+            elif model == model_list_base[3]:
+                model_list[3] += 1
+            elif model == model_list_base[4]:
+                model_list[4] += 1
+            elif model == model_list_base[5]:
+                model_list[5] += 1
+            elif model == model_list_base[6]:
+                model_list[6] += 1
+            else:
+                model_list[7] += 1
+
+    # 需要知道哪个模式数量最多，以及数量为多少
+    print("The max model is : {0}, The amount is {1}.".format('model' + str(model_list.index(max(model_list))), max(model_list)))
+
+# tidied_data = 'tidied_customer_id/tidied_A1ESQ3ZLSD5WJQ.txt'
+# evaluateCustomerModelByTidiedCustomerIdTxt(tidied_data)
+
+
+
+# 1.模拟一个列表包含三个子文件，分别计算这三个文件的模式，并以customer_id,model的格式输入result.txt文件
+# tidied_data_list = ['tidied_A1BM81XB4QHOA3.txt', 'tidied_A1CP960DFEHZ5H.txt', 'tidied_A1ESQ3ZLSD5WJQ.txt']
+
+def evaluateCustomerModelByTidiedCustomerIdList(tdl):
+    model_list_base = ['000', '001', '010', '011', '100', '101', '110', '111']
+    for td in tdl:
+        model_list = [0] * 8
+        with open('tidied_customer_id/' + td) as f1:
+            content = f1.readlines()
+            for element in content:
+                element = element.strip().split('\t')
+                model = element[1] + element[3] + element[4]
+                if model == model_list_base[0]:
+                    model_list[0] += 1
+                elif model == model_list_base[1]:
+                    model_list[1] += 1
+                elif model == model_list_base[2]:
+                    model_list[2] += 1
+                elif model == model_list_base[3]:
+                    model_list[3] += 1
+                elif model == model_list_base[4]:
+                    model_list[4] += 1
+                elif model == model_list_base[5]:
+                    model_list[5] += 1
+                elif model == model_list_base[6]:
+                    model_list[6] += 1
+                else:
+                    model_list[7] += 1
+        ci = re.split(r'[_.]', td)
+        with open('result.txt', 'a+') as f2:
+            f2.write(ci[1] + '\t' + 'model' + str(model_list.index(max(model_list))) + '\t' + str(max(model_list)) + '\n')
+    # # 需要知道哪个模式数量最多，以及数量为多少
+    # print("The max model is : {0}, The amount is {1}.".format())
+
+
+
+# 根据50个样本，分别统计各种模式的个数, rt: result.txt
+def evaluateModelAmount(rt):
+    model_list = ['model0', 'model1', 'model2', 'model3', 'model4', 'model5', 'model6', 'model7']
+    model0,model1,model2,model3,model4,model5,model6,model7 = 0,0,0,0,0,0,0,0
+    with open(rt) as f1:
+        content = f1.readlines()
+        for line in content:
+            line = line.strip().split('\t')
+            if line[1] == model_list[0]:
+                model0 += 1
+            elif line[1] == model_list[1]:
+                model1 += 1
+            elif line[1] == model_list[2]:
+                model2 += 1
+            elif line[1] == model_list[3]:
+                model3 += 1
+            elif line[1] == model_list[4]:
+                model4 += 1
+            elif line[1] == model_list[5]:
+                model5 +=1
+            elif line[1] == model_list[6]:
+                model6 += 1
+            else:
+                model7 += 1
+    print('model0: ' + str(model0) + '\n' + 'model1: ' + str(model1) + '\n' + 'model2: ' + str(model2) + '\n' + 'model3: ' + str(model3) + '\n'
+        + 'model4: ' + str(model4) + '\n' + 'model5: ' + str(model5) + '\n' + 'model6: ' + str(model6) + '\n' + 'model7: ' + str(model7) + '\n')
+
+evaluateModelAmount('result.txt')
+# model0: 48
+# model1: 0
+# model2: 10
+# model3: 0
+# model4: 11
+# model5: 0
+# model6: 131
+# model7: 0
+
+
 # 1.如果rating>3 -->strong[1]，否则weak[0]
 # 2.根据productA查询数据集的related，若相关，related字段为1，否则为0
 # 3.生成tidied_customer_id.txt文件，包含productA,ratingA,productB,ratingB,relation字段。
@@ -215,19 +324,59 @@ def tidyDataByCustomerId(ci, rad, red):
 
 
 
+# 为了方便获得多个customer_id的最终结果，创建一个customer_id_list，遍历这玩意即可
+def tidyDataByCustomerIdList(cil, rad, red):
+    for ci in cil:
+        cid = filterCustomerId(ci, rad)
+        product_list = getProductListByCustomerId(ci)
+        new_related_dataset = getSmallRelatedDatasetByProductList(product_list, ci, red)
+        pll = len(product_list)
+        file_name = 'tidied_' + cid
+        with open(file_name, 'w+') as f2:
+            for productA in product_list[ : pll - 1]:
+                for productB in product_list[product_list.index(productA) + 1 : pll]:
+                    ratingA = str(getRatingByProductId(productA, cid))
+                    ratingB = str(getRatingByProductId(productB, cid))
+                    relation = str(confirmProductAIsRealtedB(new_related_dataset, productA, productB))
+                    # print(productA, ratingA, productB, ratingB, relation)
+                    # 将5个字段数据写入txt文件，命名为tidied_customer_id.txt
+                    f2.write(productA + '\t' + ratingA + '\t' + productB + '\t' + ratingB + '\t' + relation + '\n')
+
+
+
+def getCustomerIdList():
+    customer_id_list = []
+    with open('rating_test.txt') as f1:
+        content = f1.readlines()
+        for line in content:
+            line = line.strip().split(',')
+            customer_id_list.append(line[0])
+    return customer_id_list
+
+
+
 # 整个多个启动函数的参数，使其让一个主函数控制，也就是让相关函数写入主函数
 # filtered_customer_id_dataset_file_name = filterCustomerId(customer_id, rating_dataset)
 # product_list = getProductListByCustomerId(customer_id)
 # new_related_dataset = getSmallRelatedDatasetByProductList(product_list, customer_id, related_dataset)
-customer_id = 'A1340OFLZBW5NG'
-rating_dataset = "../data/ratings_Books.csv"
-related_dataset = '../data/Books.json'
-# querySameCustomer(customer_id, rating_dataset)
-tidyDataByCustomerId(customer_id, rating_dataset, related_dataset)
 
 # start = time.clock()
 # elapsed = time.clock() - start
 # print(elapsed)
+
+customer_id = 'A2ZB1G1KUE6OS6'
+customer_id_list = getCustomerIdList()
+rating_dataset = "../data/ratings_Books.csv"
+related_dataset = '../data/Books.json'
+# querySameCustomer(customer_id, rating_dataset)
+# tidyDataByCustomerId(customer_id, rating_dataset, related_dataset)
+# tidyDataByCustomerIdList(customer_id_list, rating_dataset, related_dataset)
+
+
+
+tidied_data_list = os.listdir('tidied_customer_id')
+# evaluateCustomerModelByTidiedCustomerIdList(tidied_data_list)
+
 
 
 
