@@ -28,6 +28,7 @@ import re
 all_data = ['guang   zhou', ' shanghai', 'Bei#Jing', 'shenzhen!', '?Hongzhou ']
 
 def remove_punctuation(value):
+    # 可用\W
     return re.sub('[ !#?]', '', value)
                     
 clean_ops = [str.strip, remove_punctuation, str.title]
