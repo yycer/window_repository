@@ -14,6 +14,7 @@ a = np.arange(15).reshape((3,5))
 
 # np.split: split an array into multiple sub-arrays.
 # np.split(a, 3, axis = 0) == np.vsplit(a, 3)
+# 补充(2018_02_21)：axis = 0 --> down，也就是纵向分离
 print(np.split(a, 3, axis = 0))         # [array([[0, 1, 2, 3, 4]]), array([[5, 6, 7, 8, 9]]), array([[10, 11, 12, 13, 14]])]
 
 # np.split(a, 3, axis = 1) == np.hsplit(a, 3)
