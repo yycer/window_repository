@@ -26,7 +26,10 @@ print(np.argmax(a))     # 11
 #print(a_average)       # 7.5
 print(np.mean(a))       # 7.5
 # notice: weight
+# 补充(2018_02_22)
 print(np.average(a))    # 7.5
+data = np.arange(6).reshape((3, 2))
+print(np.average(data, axis = 1, weights = [1. / 4, 3. / 4]))       # [0.75 2.75 4.75]
 
 # 若总数为偶数，计算最中间两数的平均数
 print(np.median(a))     # 7.5
