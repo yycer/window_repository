@@ -33,7 +33,7 @@ f = random.sample(l2, 3)                       # [5, 8, 3]
 import numpy as np
 
 # np.random.rand(d0, d1, ..., dn)
-# create an arrat of the given shape and populate it with random samples from a 
+# create an array of the given shape and populate it with random samples from a
 # uniform distribution over [0, 1).
 print(np.random.rand(3, 2))
 #    [[ 0.19982462  0.53618899]
