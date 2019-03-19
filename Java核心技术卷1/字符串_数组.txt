@@ -1,0 +1,8 @@
+1. 什么时候使用StringBuilder构建字符串？
+答：需要用许多小段的字符串构建一个字符串。
+
+2. 简单方式打印数组中的所有值。
+答：Arrays.toString(arr);
+
+3. Idea中args如何传多个字符串？
+答：Edit Configurations - Program arguments - yyc    frankie(中间四个空格)
