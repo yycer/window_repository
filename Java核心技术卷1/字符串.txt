@@ -10,5 +10,8 @@ p1.setName(name1);
 Person p2 = new Person();
 p2.setName("yyc");
 
-boolean r1 = p1.getName() == p2.getName();		// false
-boolean r2 = p1.getName().equals(p2.getName()); // true
+// false
+boolean r1 = p1.getName() == p2.getName();
+
+// true
+boolean r2 = p1.getName().equals(p2.getName());
