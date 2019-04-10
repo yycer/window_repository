@@ -1,0 +1,8 @@
+
+INSERT INTO info(name, age) VALUES('yyc', 22); 
+
+UPDATE INfo SET NAME = 'asan' WHERE age = 22;
+
+DELETE FROM INfo WHERE age = 22;
+
+SELECT * FROM info;
