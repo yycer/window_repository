@@ -20,6 +20,19 @@ public interface UsersMapper {
     @Delete("delete from users_info where user_id = #{user_id}")
     void deleteOne(@Param("user_id") String userId);
 
+    @Update("update users_info set real_name = #{realName} where user_id = #{userId}")
+    void updateUsersInfo(String userId, String realName);
+
     @Select("select * from users_info")
     List<Users> findAll();
+
+//    @Results({
+//            @Result(property = "userId", column = "user_id"),
+//            @Result(property = "realName", column = "real_name")
+//    })
+//    @Select("select * from users_info where user_id = '${userId}'")
+//    List<Users> findOne(@Param("userId") String userId);
+
+    @Select("select * from users_info where user_id = #{userId}")
+    List<Users> findOne(String userId);
 }

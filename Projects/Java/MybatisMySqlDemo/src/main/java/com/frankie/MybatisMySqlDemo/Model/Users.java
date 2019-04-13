@@ -3,34 +3,15 @@ package com.frankie.MybatisMySqlDemo.Model;/*
  @date: 2019/4/10-20:50
 */
 
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class Users {
+
     private Integer age;
-
     private String realName;
-
     private String userId;
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public String getRealName() {
-        return realName;
-    }
-
-    public void setRealName(String realName) {
-        this.realName = realName;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
 }
