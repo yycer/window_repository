@@ -6,6 +6,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
@@ -37,6 +39,7 @@ public class MybatisMySqlDemoApplicationTests {
 
 	@Test
 	public void getOne(){
+
 		String userId = "a5a52375-8968-4959-afb5-520da433f366";
 		List<Users> users = usersMapper.findOne(userId);
 
