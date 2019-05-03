@@ -1,16 +1,20 @@
 package com.frankie.demo;
 
 import com.frankie.demo.classes.*;
+import com.sun.org.apache.bcel.internal.generic.ARRAYLENGTH;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.awt.font.NumericShaper;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.TypeVariable;
 import java.sql.Array;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -93,6 +97,46 @@ public class DemoApplicationTests {
         for (Object o: ints) str += o.toString();
 
         System.out.println(2);
+
+    }
+
+
+    @Test
+    public void erasedTypeTest()
+            throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        ArrayList<String> strList = new ArrayList<>();
+        ArrayList<Integer> intList = new ArrayList<>();
+
+        Class strClass = strList.getClass();
+        Class intClass = intList.getClass();
+
+        boolean result = (strClass == intClass);
+
+        HashMap<Integer, String> map = new HashMap<>();
+        Class mapClass = map.getClass();
+
+        String intStr = Arrays.toString(intClass.getTypeParameters());
+        String mapStr = Arrays.toString(mapClass.getTypeParameters());
+
+        ArrayList<Integer> integers = new ArrayList<>();
+        integers.add(10);
+
+        integers.getClass().getMethod("add", Object.class).invoke(integers, "frankie");
+
+    }
+
+    @Test
+    public void typeCheckTest(){
+        // 类型检查的目标： 引用
+        ArrayList<String> strList = new ArrayList();
+        ArrayList list = new ArrayList<String>();
+
+        strList.add("frankie");
+//        strList.add(false);
+
+
+        list.add("asan");
+        list.add(10);
 
     }
 }
