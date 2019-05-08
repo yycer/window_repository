@@ -1,5 +1,6 @@
 package com.frankie.demo;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.frankie.demo.validator.Name;
@@ -17,6 +18,9 @@ import java.util.List;
 @Getter
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class Product {
+
+    @JsonProperty(value = "isParentSku")
+    private boolean isParentSku;
 
     @NotBlank(message = "Please provide a name.")
     @Name
