@@ -1,6 +1,7 @@
 package com.frankie.demo;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
@@ -28,7 +29,8 @@ public class Order {
     @JsonIgnore
     private BigDecimal total;
 
-    @JsonSerialize(using = DatetimeSerializer.class)
+//    @JsonSerialize(using = DatetimeSerializer.class)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createdDate;
 
     @Override
