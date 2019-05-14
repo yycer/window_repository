@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 public class Order {
 
-    private String orderId;
-    private List<Product> product;
+    private String basketOrderId;
+    private List<Product> productInfo;
     private LocalDateTime createdDate;
 }
