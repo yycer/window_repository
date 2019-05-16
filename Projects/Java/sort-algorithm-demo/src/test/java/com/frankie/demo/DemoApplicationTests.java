@@ -5,10 +5,6 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.swing.event.MouseInputListener;
-import java.util.Arrays;
-import java.util.List;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DemoApplicationTests {
@@ -55,13 +51,34 @@ public class DemoApplicationTests {
 
         int[] ints = {8, 5, 7, 3, 9, 6};
         for (int i = 1; i < ints.length; i++){
-            for (int j = i - 1; j >= 0; j--){
-                if(ints[i] < ints[j]){
-                    int tmp = ints[j];
-                    ints[j] = ints[i];
-                    ints[i] = tmp;
-                }
+            int currentElement = ints[i];
+            int j = i - 1;
+            while(j >= 0 && currentElement < ints[j]){
+                ints[j + 1] = ints[j];
+                j--;
             }
+            ints[j + 1] = currentElement;
         }
     }
+
+    // 希尔排序的本质还是插入排序，只是多了递减增量。
+    @Test
+    public void shellSort(){
+        int[] ints = {8, 5, 7, 3, 9, 6};
+        int gap = ints.length / 2;
+        int i, j, insertedElement;
+        while(gap >= 1){
+            for (i = gap; i < ints.length; i++){
+                insertedElement = ints[i];
+                j = i - gap;
+                while(j >= 0 && insertedElement < ints[j]){
+                    ints[j + gap] = ints[j];
+                    j = j - gap;
+                }
+                ints[j + gap] = insertedElement;
+            }
+            gap = gap / 2;
+        }
+    }
+
 }
