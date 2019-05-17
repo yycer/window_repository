@@ -1,5 +1,6 @@
 package com.frankie.demo;
 
+import com.frankie.demo.module.Sort;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -8,6 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DemoApplicationTests {
+
 
     @Test
     public void selectionSmallestSort() {
@@ -27,7 +29,6 @@ public class DemoApplicationTests {
         }
     }
 
-
     @Test
     public void selectionLargestSort(){
 
@@ -42,6 +43,37 @@ public class DemoApplicationTests {
                 int tmp = ints[i];
                 ints[i] = ints[max];
                 ints[max] = tmp;
+            }
+        }
+    }
+
+    @Test
+    public void selectionSortSmallestUseModule(){
+
+        int[] ints = {8, 5, 7, 3, 9, 6};
+
+        for (int i = 0; i < ints.length; i++){
+            int min = i; // 预计最小值的索引
+            for (int j = i + 1; j < ints.length; j++){
+                if(ints[j] < ints[min]) min = j; // 实际最小值的索引
+            }
+            if(i != min){
+                Sort.exch(ints, i, min);
+            }
+        }
+    }
+
+    @Test
+    public void selectionLargestSortUseModule(){
+        int[] ints = {8, 5, 7, 3, 9, 6};
+
+        for (int i = 0; i < ints.length; i++){
+            int max = i;
+            for (int j = i + 1; j < ints.length; j++){
+                if(ints[j] > ints[max]) max = j;
+            }
+            if(i != max){
+                Sort.exch(ints, i, max);
             }
         }
     }
