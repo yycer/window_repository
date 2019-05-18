@@ -93,6 +93,18 @@ public class DemoApplicationTests {
         }
     }
 
+    // Insertion sort optimization by Algorithm 4.
+    @Test
+    public void insertSortTest(){
+        int[] ints = {8, 5, 7, 3, 9, 6};
+
+        for (int i = 1; i < ints.length; i++){
+            for (int j = i; j > 0 && Sort.less(ints[j], ints[j - 1]); j--){
+                Sort.exch(ints, j, j - 1);
+            }
+        }
+}
+
     // 希尔排序的本质还是插入排序，只是多了递减增量。
     @Test
     public void shellSort(){
