@@ -12,7 +12,11 @@ public class Sort {
         return x.compareTo(y) < 0;
     }
 
-    public static void exch(int[] a, int i, int j){
+    public static boolean larger(Comparable x, Comparable y){
+        return x.compareTo(y) > 0;
+    }
+
+    public static void swap(int[] a, int i, int j){
         int tmp = a[i];
         a[i] = a[j];
         a[j] = tmp;
