@@ -1,5 +1,6 @@
 package com.frankie.demo;
 
+import com.frankie.demo.module.MergeSortOptimization;
 import com.frankie.demo.module.Sort;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -176,6 +177,12 @@ public class DemoApplicationTests {
 
     // region Deliberate exercise.
 
+    @Test
+    public void test1(){
+        int[] a = {9, 3, 7, 5, 8};
+        MergeSortOptimization.mergeSort(a);
+
+    }
     // endregion
 
 }
