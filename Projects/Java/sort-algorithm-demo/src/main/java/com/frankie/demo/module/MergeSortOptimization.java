@@ -3,7 +3,7 @@ package com.frankie.demo.module;
 public class MergeSortOptimization {
 
     /**
-     * int[] a = {9, 3, 7, 5, 8};
+     * int[] a = {9, 5, 6, 3, 7};
      */
 
     public static void mergeSort(int[] a){
@@ -42,7 +42,7 @@ public class MergeSortOptimization {
             rightSortedArray[j - mid] = a[j];
 
         // Step2: 合并两个有序的数组
-        int i = 0, j = 0, k = i;
+        int i = 0, j = 0, k = l;
         while (i < leftSortedArray.length && j < rightSortedArray.length){
             if(Sort.less(leftSortedArray[i], rightSortedArray[j])) a[k++] = leftSortedArray[i++];
             else a[k++] = rightSortedArray[j++];

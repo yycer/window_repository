@@ -179,7 +179,7 @@ public class DemoApplicationTests {
 
     @Test
     public void test1(){
-        int[] a = {9, 3, 7, 5, 8};
+        int[] a = {9, 5, 6, 3, 7};
         MergeSortOptimization.mergeSort(a);
 
     }
