@@ -1,6 +1,6 @@
 package com.frankie.demo;
 
-import com.frankie.demo.module.MergeSortOptimization;
+import com.frankie.demo.module.MergeSort;
 import com.frankie.demo.module.Sort;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -179,8 +179,9 @@ public class DemoApplicationTests {
 
     @Test
     public void test1(){
-        int[] a = {9, 5, 6, 3, 7};
-        MergeSortOptimization.mergeSort(a);
+        int[] a = {9, 5, 6, 3, 7, 4};
+        MergeSort.doMergeSort(a);
+        System.out.println(2);
 
     }
     // endregion
