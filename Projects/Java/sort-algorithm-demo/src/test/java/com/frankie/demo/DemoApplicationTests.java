@@ -185,18 +185,7 @@ public class DemoApplicationTests {
 
     }
 
-    @Test
-    public void selectTest1(){
-        int[] a = {9, 5, 6, 3, 7};
 
-        for (int i = 0; i < a.length - 1; i++){
-            int min = i;
-            for (int j = i + 1; j < a.length; j++){
-                if(Sort.less(a[j], a[min])) min = j;
-            }
-            if(min != i) Sort.swap(a, i, min);
-        }
-    }
     // endregion
 
 }
