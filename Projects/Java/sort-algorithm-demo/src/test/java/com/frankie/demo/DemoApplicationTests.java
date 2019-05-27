@@ -1,6 +1,7 @@
 package com.frankie.demo;
 
 import com.frankie.demo.module.MergeSort;
+import com.frankie.demo.module.QuickSort;
 import com.frankie.demo.module.Sort;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -182,6 +183,14 @@ public class DemoApplicationTests {
         int[] a = {9, 5, 6, 3, 7, 4};
         MergeSort.doMergeSort(a);
         System.out.println(2);
+
+    }
+
+    @Test
+    public void quickSortTest(){
+        int[] a = {6, 3, 5, 2, 8, 1, 4};
+
+        QuickSort.quick3(a, 0, 6);
 
     }
 
