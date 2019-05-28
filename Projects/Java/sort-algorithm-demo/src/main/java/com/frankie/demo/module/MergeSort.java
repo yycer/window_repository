@@ -5,22 +5,22 @@ package com.frankie.demo.module;/*
 
 public class MergeSort {
 
-
     public static void doMergeSort(int[] a){
-        if(a.length < 1) return;
+        int length = a.length;
+        if(length < 1) return;
 
-        mergeSort(a, 0, a.length - 1);
+        mergeSort(a, 0, length - 1);
     }
 
-
     private static void mergeSort(int[] a, int l, int r) {
+
         if(l >= r) return;
+
         int mid = (l + r) / 2;
         mergeSort(a, l, mid);
         mergeSort(a, mid + 1, r);
         merge(a, l, mid + 1, r);
     }
-
 
     private static void merge(int[] a, int l, int mid, int r) {
         int[] leftArray = new int[mid - l];
@@ -30,13 +30,13 @@ public class MergeSort {
             leftArray[i - l] = a[i];
         }
 
-        for (int j = mid; j <= r; j++){
+        for (int j= mid; j <= r; j++){
             rightArray[j - mid] = a[j];
         }
 
         int i = 0, j = 0, k = l;
-        while(i < leftArray.length && j < rightArray.length){
-            if(Sort.less(leftArray[i], rightArray[j])) a[k++] = leftArray[i++];
+        while (i < leftArray.length && j < rightArray.length){
+            if (Sort.less(leftArray[i], rightArray[j])) a[k++] = leftArray[i++];
             else a[k++] = rightArray[j++];
         }
         while (i < leftArray.length) a[k++] = leftArray[i++];

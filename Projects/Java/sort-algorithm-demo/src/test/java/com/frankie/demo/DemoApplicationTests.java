@@ -176,6 +176,15 @@ public class DemoApplicationTests {
     }
 
 
+    @Test
+    public void test222(){
+
+        int[] a = {8, 5, 7, 3, 9, 6};
+        QuickSort.doQuickSort(a);
+
+        System.out.println(2);
+    }
+
     // region Deliberate exercise.
 
     @Test
