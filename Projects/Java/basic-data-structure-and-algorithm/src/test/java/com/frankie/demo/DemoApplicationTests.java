@@ -1,18 +1,16 @@
 package com.frankie.demo;
 
-import net.bytebuddy.asm.Advice;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.HashMap;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DemoApplicationTests {
 
-    int[] a = {3, 2, 3, 6, 2};
+    int[] a = {2, 3, 7, 9};
+    int[] b = {3, 6, 9, 12};
 
     @Test
     public void findMinElement(){
@@ -45,6 +43,12 @@ public class DemoApplicationTests {
     @Test
     public void findFirstNonRepeatingElemUsingHashMap(){
         int result = ArrayPlayground.getFirstNonRepeatingElemUsingHashMap(a);
+        System.out.println(result);
+    }
+
+    @Test
+    public void mergeTwoSortedArray(){
+        int[] result = ArrayPlayground.mergeTwoSortedArray(a, b);
         System.out.println(result);
     }
 }

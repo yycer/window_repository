@@ -80,4 +80,24 @@ public class ArrayPlayground {
         }
         return -1;
     }
+
+    public static int[] mergeTwoSortedArray(int[] a, int[] b){
+        int aLength = a.length;
+        int bLength = b.length;
+        int[] result = new int[aLength + bLength];
+        int i = 0, j = 0, k = 0;
+
+        while (i < aLength && j < bLength){
+            if (Sort.less(a[i], b[j])){
+                result[k++] = a[i++];
+            } else{
+                result[k++] = b[j++];
+            }
+        }
+
+        while (i < aLength) result[k++] = a[i++];
+        while (j < bLength) result[k++] = b[j++];
+
+        return result;
+    }
 }
