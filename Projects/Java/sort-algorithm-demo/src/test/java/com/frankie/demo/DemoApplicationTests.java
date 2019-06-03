@@ -1,5 +1,6 @@
 package com.frankie.demo;
 
+import com.frankie.demo.module.HeapSort;
 import com.frankie.demo.module.MergeSort;
 import com.frankie.demo.module.QuickSort;
 import com.frankie.demo.module.Sort;
@@ -204,6 +205,11 @@ public class DemoApplicationTests {
     }
 
 
+    @Test
+    public void heapSort(){
+        int[] a = {1, 6, 7, 2, 3, 4, 5};
+        HeapSort.heapSort(a);
+    }
     // endregion
 
 }
