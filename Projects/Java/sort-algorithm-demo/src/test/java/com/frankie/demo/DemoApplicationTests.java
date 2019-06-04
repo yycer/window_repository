@@ -212,6 +212,19 @@ public class DemoApplicationTests {
 
         System.out.println(a);
     }
+
+
+    @Test
+    public void bubbleSortTest(){
+
+        int[] a = {6, 3, 5, 2, 8};
+
+        for (int i = 0; i < a.length - 1; i++){
+            for (int j = 0; j < a.length - i - 1; j++){
+                if (Sort.larger(a[j], a[j + 1])) Sort.swap(a, j, j + 1);
+            }
+        }
+    }
     // endregion
 
 }
