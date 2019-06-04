@@ -209,6 +209,8 @@ public class DemoApplicationTests {
     public void heapSortTest(){
         int[] a = {6, 3, 5, 2, 8, 1, 4};
         HeapSort.heapSort(a);
+
+        System.out.println(a);
     }
     // endregion
 
