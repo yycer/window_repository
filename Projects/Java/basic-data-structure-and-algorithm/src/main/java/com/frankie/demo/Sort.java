@@ -7,4 +7,8 @@ public class Sort {
         return a.compareTo(b) < 0;
     }
 
+    public static boolean larger(Comparable a, Comparable b){
+        return a.compareTo(b) > 0;
+    }
+
 }

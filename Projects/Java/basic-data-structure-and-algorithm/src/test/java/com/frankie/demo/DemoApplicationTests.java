@@ -5,6 +5,8 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Stack;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DemoApplicationTests {
@@ -50,5 +52,17 @@ public class DemoApplicationTests {
     public void mergeTwoSortedArray(){
         int[] result = ArrayPlayground.mergeTwoSortedArray(a, b);
         System.out.println(result);
+    }
+
+    @Test
+    public void sortStack(){
+        Stack<Integer> input = new Stack<>();
+        input.add(4);
+        input.add(9);
+        input.add(7);
+        input.add(3);
+        input.add(5);
+
+        Stack<Integer> sortstack = SortStack.doSortStack(input);
     }
 }

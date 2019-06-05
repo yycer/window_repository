@@ -206,9 +206,30 @@ public class DemoApplicationTests {
 
 
     @Test
+<<<<<<< HEAD
     public void heapSort(){
         int[] a = {1, 6, 7, 2, 3, 4, 5};
         HeapSort.heapSort(a);
+=======
+    public void heapSortTest(){
+        int[] a = {6, 3, 5, 2, 8, 1, 4};
+        HeapSort.heapSort(a);
+
+        System.out.println(a);
+    }
+
+
+    @Test
+    public void bubbleSortTest(){
+
+        int[] a = {6, 3, 5, 2, 8};
+
+        for (int i = 0; i < a.length - 1; i++){
+            for (int j = 0; j < a.length - i - 1; j++){
+                if (Sort.larger(a[j], a[j + 1])) Sort.swap(a, j, j + 1);
+            }
+        }
+>>>>>>> 4553301bfb0e5e4ce364074cff76518c2a10d5f9
     }
     // endregion
 
