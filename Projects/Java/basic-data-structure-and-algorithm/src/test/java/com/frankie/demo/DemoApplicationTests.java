@@ -2,6 +2,7 @@ package com.frankie.demo;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.boot.test.autoconfigure.filter.TypeExcludeFilters;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -108,6 +109,35 @@ public class DemoApplicationTests {
 //        Integer y1 = (Integer) q.poll();
 //        Integer y2 = (Integer) q.poll();
 //        Integer y3 = (Integer) q.poll(); // null
+
+
+    }
+
+    @Test
+    public void reverseFirstKElementOfQueue(){
+        Queue<Integer> q = new LinkedList<>();
+        int k = 3;
+        q.add(2);
+        q.add(6);
+        q.add(5);
+        q.add(9);
+        q.add(7);
+
+        // Step1: 将队列中前n个元素以相同排序顺序插入一个栈中。
+        Stack<Integer> stack = new Stack<>();
+        for (int i = 0; i < k; i++){
+            stack.push(q.remove());
+        }
+
+        // Step2: 将前n个元素以相反的顺序插入之前的队列。
+        while (!stack.isEmpty()){
+            q.add(stack.pop());
+        }
+
+        // Step3: 将其余的元素以相同的顺序转移到原来的位置。
+        for (int i = 0; i < q.size() - k; i++){
+            q.add(q.remove());
+        }
 
 
     }
