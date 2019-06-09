@@ -5,8 +5,10 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.filter.TypeExcludeFilters;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.w3c.dom.Node;
 
 import java.net.Inet4Address;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
@@ -138,7 +140,61 @@ public class DemoApplicationTests {
         for (int i = 0; i < q.size() - k; i++){
             q.add(q.remove());
         }
+    }
 
+    @Test
+    public void convertNumber2Binary(){
+        int x = 1;
+
+        String s = "";
+        while (x > 0){
+            s = (x % 2 == 0 ? "0" : "1") + s;
+            x /= 2;
+        }
+        System.out.println(s);
+    }
+
+    @Test
+    public void generateBinaryNumber(){
+        int k = 4;
+        ArrayList<String> result = new ArrayList<>();
+
+        for (int i = 0; i <= k; i++){
+            result.add(DigitUtils.number2Binary(i));
+        }
+        System.out.println(result);
+    }
+
+    @Test
+    public void reverseALinkedList(){
+        MyLinkedList.doReverse();
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
