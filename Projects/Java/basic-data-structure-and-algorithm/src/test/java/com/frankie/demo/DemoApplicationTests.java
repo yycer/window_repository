@@ -5,6 +5,9 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.net.Inet4Address;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 @RunWith(SpringRunner.class)
@@ -64,5 +67,48 @@ public class DemoApplicationTests {
         input.add(5);
 
         Stack<Integer> sortstack = SortStack.doSortStack(input);
+    }
+
+    @Test
+    public void implStackUsingAQueue(){
+
+        CustomStack customStack = new CustomStack();
+        customStack.push(2);
+        customStack.push(8);
+        customStack.push(5);
+
+        int pop1 = customStack.pop();
+        int pop2 = customStack.pop();
+        int pop3 = customStack.pop();
+        int pop4 = customStack.pop();
+    }
+
+    @Test
+    public void removePollPeek(){
+
+        Queue q = new LinkedList<>();
+        q.add(2);
+        q.add(6);
+        q.add(5);
+        q.add(9);
+
+        Integer x = (Integer) q.remove(); // 2
+        System.out.println(q); // {6, 5, 9}
+
+        Integer y = (Integer) q.poll(); // 6
+        System.out.println(q); // {5, 9}
+
+        Integer z = (Integer) q.peek(); // 5
+        System.out.println(q); // {5, 9}
+
+//        Integer x1 = (Integer) q.remove();
+//        Integer x2 = (Integer) q.remove();
+//        Integer x3 = (Integer) q.remove(); // NoSuchElementException
+
+//        Integer y1 = (Integer) q.poll();
+//        Integer y2 = (Integer) q.poll();
+//        Integer y3 = (Integer) q.poll(); // null
+
+
     }
 }
