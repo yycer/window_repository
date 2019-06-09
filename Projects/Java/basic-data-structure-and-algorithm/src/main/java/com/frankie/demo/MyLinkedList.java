@@ -4,21 +4,58 @@ package com.frankie.demo;/*
 */
 
 
+import javax.naming.NamingException;
+
 public class MyLinkedList {
 
-    // region Basic Data Structure
-    public Node head;
+    // region Public Methods
+    public static void doReverse(){
 
-    public static class Node{
+        MyLinkedList mll = new MyLinkedList();
+        Node head = new Node(5);
+        mll.addToLast(head);
+        mll.addToLast(new Node(6));
+        mll.addToLast(new Node(7));
+        mll.addToLast(new Node(1));
+        mll.addToLast(new Node(2));
 
-        private int value;
-        private Node next;
-
-        public Node(int value){
-            this.value = value;
-        }
+        mll.printList(head);
+        Node reversedNode = mll.reverseList(head);
+        mll.printList(reversedNode);
     }
 
+    public static void removeDuplicate(){
+        MyLinkedList mll = new MyLinkedList();
+        Node head = new Node(5);
+        mll.addToLast(head);
+        mll.addToLast(new Node(6));
+        mll.addToLast(new Node(5));
+        mll.addToLast(new Node(1));
+        mll.addToLast(new Node(1));
+
+        System.out.println("Print init linked list: ");
+        mll.printList(head);
+        mll.doRemoveDupl();
+        System.out.println("Print duplicated linked list: ");
+        mll.printList(head);
+    }
+
+    private void doRemoveDupl() {
+        Node currentNode = head;
+
+        while (currentNode != null && currentNode.next != null ){
+            Node tempNode = currentNode;
+
+            while (tempNode.next != null){
+                if (currentNode.value == tempNode.next.value){
+                    tempNode.next = tempNode.next.next;
+                } else{
+                    tempNode = tempNode.next;
+                }
+            }
+            currentNode = currentNode.next;
+        }
+    }
     // endregion
 
     // region Support Methods
@@ -57,21 +94,20 @@ public class MyLinkedList {
     }
     // endregion
 
+    // region Basic Data Structure
+    public Node head;
 
-    public static void doReverse(){
+    public static class Node{
 
-        MyLinkedList mll = new MyLinkedList();
-        Node head = new Node(5);
-        mll.addToLast(head);
-        mll.addToLast(new Node(6));
-        mll.addToLast(new Node(7));
-        mll.addToLast(new Node(1));
-        mll.addToLast(new Node(2));
+        private int value;
+        private Node next;
 
-        mll.printList(head);
-        Node reversedNode = mll.reverseList(head);
-        mll.printList(reversedNode);
+        public Node(int value){
+            this.value = value;
+        }
     }
+
+    // endregion
 
 }
 

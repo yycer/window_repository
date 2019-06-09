@@ -168,7 +168,11 @@ public class DemoApplicationTests {
     @Test
     public void reverseALinkedList(){
         MyLinkedList.doReverse();
+    }
 
+    @Test
+    public void removeDuplicateFromALinkedList(){
+        MyLinkedList.removeDuplicate();
     }
 }
 
