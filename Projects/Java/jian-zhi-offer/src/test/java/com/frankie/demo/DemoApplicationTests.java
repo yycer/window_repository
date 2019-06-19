@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -117,6 +118,25 @@ public class DemoApplicationTests {
         }
         String result = new String(sb);
         Assert.assertEquals(result, "hello%20world%20a%20b%20c");
+    }
+
+    @Test
+    public void createLinkedList(){
+        LinkedListUtils linkedListUtils = new LinkedListUtils();
+        linkedListUtils.addNode(3);
+        linkedListUtils.addNode(6);
+        linkedListUtils.addNode(9);
+        linkedListUtils.addNode(5);
+//        linkedListUtils.printNodes();
+//        Integer count = linkedListUtils.countNodes();
+        String s = linkedListUtils.printReverseNode();
+
+    }
+
+    @Test
+    public void replaceStrTest(){
+        String s = "5 -> 9 -> 6 -> 3 -> ";
+        String substring = s.substring(0, s.length() - 4);
     }
 
 }

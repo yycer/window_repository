@@ -11,8 +11,8 @@ public class Node {
     private Node next;
 
     public Node(int val){
-        val  = val;
-        next = null;
+        this.val  = val;
+        this.next = null;
     }
 
     public Node getNext() {
