@@ -133,7 +133,20 @@ public class DemoApplicationTests {
         llu.addNode(5);
         llu.addNode(8);
         llu.addNode(6);
-        llu.deleteMiddleNode();
+        String llu1 = llu.printLinkList(null);
+//        llu.deleteMiddleNode();
+//        boolean existed = llu.findNode(50);
+//        llu.removeNode(2);
+//        String llu2 = llu.printLinkList();
+        System.out.println(llu1);
+        System.out.println("------ Reverse Time ------");
+//        llu.printLinkListReverselyUsingStack();
+//        Node node = llu.reverseLinkList();
+//        String llu2 = llu.printLinkList(node);
+
+        llu.printLinkListReverselyUsingRecursive(llu.head);
+
+        System.out.println("aaaaa");
 
     }
 
