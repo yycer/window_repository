@@ -1,13 +1,11 @@
 package com.frankie.demo;
 
-import com.sun.org.apache.bcel.internal.generic.ARRAYLENGTH;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -127,5 +125,16 @@ public class DemoApplicationTests {
     }
 
 
+    @Test
+    public void deleteMiddleOfLinkListTest(){
+        LinkedListUtils llu = new LinkedListUtils();
+        llu.addNode(2);
+        llu.addNode(4);
+        llu.addNode(5);
+        llu.addNode(8);
+        llu.addNode(6);
+        llu.deleteMiddleNode();
+
+    }
 
 }

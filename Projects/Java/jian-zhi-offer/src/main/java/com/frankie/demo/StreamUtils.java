@@ -36,6 +36,5 @@ public class StreamUtils {
                 .sorted(Comparator.comparing(Product::getStartDate).reversed())
                 .map(p -> new Order(p.getName(), p.getRetailPrice()))
                 .collect(Collectors.toList());
-        System.out.println(2);
     }
 }

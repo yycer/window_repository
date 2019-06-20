@@ -17,4 +17,21 @@ public class LinkedListUtils {
     }
 
 
+    public Node deleteMiddleNode(){
+        if (head == null || head.getNext() == null) return null;
+
+        Node fastPointer = head;
+        Node slowPointer = head;
+
+        Node prevoius = null;
+        while (fastPointer != null && fastPointer.getNext() != null){
+            fastPointer = fastPointer.getNext().getNext();
+            prevoius = slowPointer;
+            slowPointer = slowPointer.getNext();
+        }
+
+        prevoius.setNext(slowPointer.getNext());
+
+        return head;
+    }
 }
