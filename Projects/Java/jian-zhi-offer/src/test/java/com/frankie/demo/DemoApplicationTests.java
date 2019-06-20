@@ -11,7 +11,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -121,22 +120,12 @@ public class DemoApplicationTests {
     }
 
     @Test
-    public void createLinkedList(){
-        LinkedListUtils linkedListUtils = new LinkedListUtils();
-        linkedListUtils.addNode(3);
-        linkedListUtils.addNode(6);
-        linkedListUtils.addNode(9);
-        linkedListUtils.addNode(5);
-//        linkedListUtils.printNodes();
-//        Integer count = linkedListUtils.countNodes();
-        String s = linkedListUtils.printReverseNode();
-
+    public void convertTest(){
+        StreamUtils streamUtils = new StreamUtils();
+//        streamUtils.convertInTwoListWay1();
+        streamUtils.convertInTwoListWay2();
     }
 
-    @Test
-    public void replaceStrTest(){
-        String s = "5 -> 9 -> 6 -> 3 -> ";
-        String substring = s.substring(0, s.length() - 4);
-    }
+
 
 }
