@@ -135,19 +135,81 @@ public class DemoApplicationTests {
         llu.addNode(6);
         String llu1 = llu.printLinkList(null);
 //        llu.deleteMiddleNode();
-//        boolean existed = llu.findNode(50);
+//        boolean existed = llu.checkNodeIsExisted(50);
 //        llu.removeNode(2);
 //        String llu2 = llu.printLinkList();
         System.out.println(llu1);
-        System.out.println("------ Reverse Time ------");
+//        System.out.println("------ Reverse Time ------");
 //        llu.printLinkListReverselyUsingStack();
 //        Node node = llu.reverseLinkList();
 //        String llu2 = llu.printLinkList(node);
+//        llu.printLinkListReverselyUsingRecursive(llu.head);
 
-        llu.printLinkListReverselyUsingRecursive(llu.head);
-
+        llu.removeNodeOptimization(4);
         System.out.println("aaaaa");
 
     }
 
+    @Test
+    public void doWhileTest(){
+        int i = 5;
+        do {
+            System.out.println(i);
+            i++;
+        }while (i < 10);
+    }
+
+
+    @Test
+    public void deleteNodeTest(){
+        LinkedListUtils llu1 = new LinkedListUtils();
+        llu1.addNode(2);
+        llu1.removeNodeOptimization(3);
+        llu1.removeNodeOptimization(2);
+        Node head1 = llu1.head;
+
+
+        LinkedListUtils llu2 = new LinkedListUtils();
+        llu2.addNode(2);
+        llu2.addNode(4);
+        llu2.addNode(5);
+        llu2.addNode(8);
+        llu2.addNode(6);
+        llu2.removeNodeOptimization(6);
+        Node head2 = llu2.head;
+        llu2.removeNodeOptimization(4);
+        Node head3 = llu2.head;
+
+    }
+
+    @Test
+    public void deleteDuplicateNodesTest(){
+
+        LinkedListUtils llu1 = new LinkedListUtils();
+        llu1.addNode(2);
+        llu1.addNode(3);
+        llu1.deleteDuplicateNodes();
+
+
+        // failed
+        LinkedListUtils llu2 = new LinkedListUtils();
+        llu2.addNode(2);
+        llu2.addNode(2);
+        llu2.deleteDuplicateNodes();
+
+        // failed
+        LinkedListUtils llu3 = new LinkedListUtils();
+        llu3.addNode(5);
+        llu3.addNode(5);
+        llu3.addNode(6);
+        llu3.deleteDuplicateNodes();
+
+
+        LinkedListUtils llu4 = new LinkedListUtils();
+        llu4.addNode(3);
+        llu4.addNode(4);
+        llu4.addNode(5);
+        llu4.addNode(5);
+        llu4.deleteDuplicateNodes();
+    }
 }

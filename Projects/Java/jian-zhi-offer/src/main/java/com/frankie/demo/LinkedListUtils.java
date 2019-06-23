@@ -1,8 +1,11 @@
 package com.frankie.demo;
 
 import com.sun.xml.internal.bind.marshaller.NoEscapeHandler;
+import jdk.nashorn.internal.ir.IfNode;
 
+import java.time.Period;
 import java.util.Stack;
+import java.util.UnknownFormatConversionException;
 
 public class LinkedListUtils {
 
@@ -57,7 +60,7 @@ public class LinkedListUtils {
         return result.substring(0, sb.length() - specifiedLabel.length());
     }
 
-    public boolean findNode(int val){
+    public boolean checkNodeIsExisted(int val){
         Node cur = head;
         if (cur == null) return false;
 
@@ -143,4 +146,115 @@ public class LinkedListUtils {
         }
         System.out.println(node.getValue());
     }
+
+    public Node findNode(int val){
+        Node cur = head;
+        if (cur == null) return null;
+
+        do {
+            if (cur.getValue() == val) return cur;
+            cur = cur.getNext();
+        } while (cur != null);
+        return null;
+    }
+
+    public void removeNodeOptimization(int val){
+
+        // Step1: Base check.
+        if (head == null) System.out.println("The link list is empty!");
+
+        // Step2: Find the specified node if existed.
+        Node specifiedNode = findNode(val);
+        if (specifiedNode == null){
+            System.out.println("The node is not included in the link list!");
+            return;
+        }
+
+        // Step3: 链表仅有一个结点，即头结点或尾结点
+        if (head == specifiedNode){
+            head = null;
+            return;
+        }
+
+        // 以下链表包含多个结点的情况
+        // Step4: 待删除结点为尾结点
+        if (specifiedNode.getNext() == null){
+            Node cur = head;
+            // 按照O(n)时间复杂度遍历链表
+            while (cur.getNext() != specifiedNode){
+                cur = cur.getNext();
+            }
+            cur.setNext(null);
+        } else{
+            // Step5: Delete the node using O(1) time complexity.
+            specifiedNode.setValue(specifiedNode.getNext().getValue());
+            specifiedNode.setNext(specifiedNode.getNext().getNext());
+        }
+    }
+
+    public void deleteDuplicateNodes(){
+        // 2 -> 3 -> 5 -> 5 -> 7 -> 7 -> 9
+
+        if (head == null) return;
+
+        Node pre = new Node(-1);
+        pre.setNext(head);
+
+        Node cur = head;
+
+        while (cur != null && cur.getNext() != null){
+
+            if (cur.getValue() == cur.getNext().getValue()){
+                int val = cur.getValue();
+                while (cur.getNext() != null && cur.getValue() == val){
+                    cur = cur.getNext();
+                }
+                pre.setNext(cur);
+
+            } else{
+                pre = cur;
+                cur = cur.getNext();
+            }
+        }
+
+    }
+
+    public void addNodeForHeadTest(int val) {
+        Node cur = head;
+        Node next = cur.getNext();
+
+        // Step1: Base check.
+        if (cur == null || next == null) return;
+
+        Node node = new Node(val);
+        while (cur.getNext() != null){
+            cur = cur.getNext();
+        }
+        cur.setNext(node);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
