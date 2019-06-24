@@ -185,6 +185,17 @@ public class DemoApplicationTests {
     @Test
     public void deleteDuplicateNodesTest(){
 
+        LinkedListUtils llu = new LinkedListUtils();
+        llu.addNode(2);
+        llu.addNode(3);
+        llu.addNode(5);
+        llu.addNode(5);
+        llu.addNode(7);
+        llu.addNode(7);
+        llu.addNode(9);
+        llu.deleteDuplicateNodes();
+
+
         LinkedListUtils llu1 = new LinkedListUtils();
         llu1.addNode(2);
         llu1.addNode(3);

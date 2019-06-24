@@ -196,27 +196,36 @@ public class LinkedListUtils {
         // 2 -> 3 -> 5 -> 5 -> 7 -> 7 -> 9
 
         if (head == null) return;
+        Node preNode = null;
+        Node node = head;
 
-        Node pre = new Node(-1);
-        pre.setNext(head);
+        while (node != null){
+            Node nextNode = node.getNext();
+            boolean needDelete = false;
+            if (nextNode != null && nextNode.getValue() == node.getValue()){
+                needDelete = true;
+            }
 
-        Node cur = head;
+            if (!needDelete){
+                preNode = node;
+                node = node.getNext();
+            }
 
-        while (cur != null && cur.getNext() != null){
-
-            if (cur.getValue() == cur.getNext().getValue()){
-                int val = cur.getValue();
-                while (cur.getNext() != null && cur.getValue() == val){
-                    cur = cur.getNext();
+            // 删除重复结点
+            else{
+                int value = node.getValue();
+                Node toBeDelNode = node;
+                while (toBeDelNode != null && toBeDelNode.getValue() == value){
+                    nextNode = toBeDelNode.getNext();
+                    toBeDelNode = nextNode;
+                    if (preNode == null)
+                        head = nextNode;
+                    else
+                        preNode.setNext(nextNode);
+                    node = nextNode;
                 }
-                pre.setNext(cur);
-
-            } else{
-                pre = cur;
-                cur = cur.getNext();
             }
         }
-
     }
 
     public void addNodeForHeadTest(int val) {
