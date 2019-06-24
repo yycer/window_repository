@@ -196,25 +196,29 @@ public class LinkedListUtils {
         // 2 -> 3 -> 5 -> 5 -> 7 -> 7 -> 9
 
         if (head == null) return;
+        // 当前结点的前一个结点
         Node preNode = null;
-        Node node = head;
+        // 当前结点
+        Node curNode = head;
 
-        while (node != null){
-            Node nextNode = node.getNext();
+        // 外层循环，依次遍历所有结点
+        while (curNode != null){
+            Node nextNode = curNode.getNext();
             boolean needDelete = false;
-            if (nextNode != null && nextNode.getValue() == node.getValue()){
+            if (nextNode != null && nextNode.getValue() == curNode.getValue()){
                 needDelete = true;
             }
 
             if (!needDelete){
-                preNode = node;
-                node = node.getNext();
+                preNode = curNode;
+                curNode = curNode.getNext();
             }
 
             // 删除重复结点
             else{
-                int value = node.getValue();
-                Node toBeDelNode = node;
+                int value = curNode.getValue();
+                Node toBeDelNode = curNode;
+                // 内层循环，依次遍历重复结点
                 while (toBeDelNode != null && toBeDelNode.getValue() == value){
                     nextNode = toBeDelNode.getNext();
                     toBeDelNode = nextNode;
@@ -222,7 +226,7 @@ public class LinkedListUtils {
                         head = nextNode;
                     else
                         preNode.setNext(nextNode);
-                    node = nextNode;
+                    curNode = nextNode;
                 }
             }
         }
