@@ -231,10 +231,13 @@ public class DemoApplicationTests {
         llu.addNode(1);
         llu.addNode(2);
         llu.addNode(3);
-        llu.addNode(4);
-        llu.addNode(5);
-        llu.addNode(6);
+//        llu.addNode(4);
+//        llu.addNode(5);
+//        llu.addNode(6);
+//        llu.addNode(7);
 
-        llu.findLastKNode(4);
+//        Integer lastKNode5 = llu.findLastKNode(3);
+//        Integer lastKNode3 = llu.findLastKNode(5);
+        Integer lastKNode = llu.findLastKNode(4);
     }
 }

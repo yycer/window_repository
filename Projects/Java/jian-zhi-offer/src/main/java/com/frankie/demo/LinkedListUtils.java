@@ -247,22 +247,33 @@ public class LinkedListUtils {
         cur.setNext(node);
     }
 
-    public void findLastKNode(int k){
-        Node firstNode = head;
-        if (firstNode == null) return;
-        // 边界条件1： k大于链表结点数量？
+    /**
+     * 边界条件
+     * 1. head == null
+     * 2. 节点总数小于k
+     * 3. k = 0 => secondNode.getValue => NullPointerException
+     * @param k
+     * @return
+     */
+    public Integer findLastKNode(int k){
+        if (head == null || k <= 0) return -1;
 
-        // Step1: 定位到firstNode(k-1)。
-        for (int i = 0; i < k - 1; i++){
-            firstNode = firstNode.getNext();
+        Node firstNode = head;
+        // Step1: Locate the first node position(k-1).
+        for (int i = 0; i < k; i++){
+            Node nextNode = firstNode.getNext();
+            // 防止节点总数小于k，导致空引用
+            if (nextNode != null) firstNode = nextNode;
+            else return -1;
         }
 
-        // Step2: firstNode、secondNode每次往前跨一步，直至fistNode为null。
+        // Step2: Locate the required position.
         Node secondNode = head;
         while (firstNode != null){
             secondNode = secondNode.getNext();
             firstNode = firstNode.getNext();
         }
+        return secondNode.getValue();
     }
 }
 
