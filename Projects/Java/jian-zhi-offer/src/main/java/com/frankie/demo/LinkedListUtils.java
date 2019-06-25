@@ -1,12 +1,6 @@
 package com.frankie.demo;
 
-import com.sun.xml.internal.bind.marshaller.NoEscapeHandler;
-import jdk.nashorn.internal.ir.IfNode;
-
-import java.io.FileReader;
-import java.time.Period;
 import java.util.Stack;
-import java.util.UnknownFormatConversionException;
 
 public class LinkedListUtils {
 
@@ -276,39 +270,6 @@ public class LinkedListUtils {
         return secondNode.getValue();
     }
 
-    /**
-     * 输出链表中环的入口节点，准备工作，计算环的节点总数。
-     */
-    public Integer countNodesInARing(){
-        if (head == null || head.getNext() == null) return -1;
-        // Step1: Find meetingNode.
-        Node meetingNode = null;
-        Node slowNode = head.getNext();
-        if (slowNode.getNext() == null) return -1;
-        Node fastNode = slowNode.getNext();
-
-        while (slowNode != null && fastNode != null){
-
-            if (slowNode == fastNode) {
-                meetingNode = slowNode;
-                break;
-            }
-            slowNode = slowNode.getNext();
-            fastNode = fastNode.getNext();
-            if (fastNode.getNext() != null) fastNode = fastNode.getNext();
-        }
-
-        // Step2: Count the nodes in a ring.
-        // 考虑正常闭环情况，如: 1 -> 2 -> 3 -> 1
-        int count = 1;
-        Node curNode = head;
-        while (curNode.getNext() != meetingNode){
-            count++;
-            curNode = curNode.getNext();
-        }
-
-        return count;
-    }
 
     public void generateLoopSingleTraceLinkList(int k){
         // Step1: 确定连接的后续节点。
@@ -323,6 +284,54 @@ public class LinkedListUtils {
             tmpNode = tmpNode.getNext();
         }
         tmpNode.setNext(connectedNode);
+    }
+
+
+    public Node meetingNode(){
+        Node slowNode = head.getNext();
+        if (slowNode.getNext() == null) return null;
+        Node fastNode = slowNode.getNext();
+
+        while (slowNode != null && fastNode != null){
+
+            if (slowNode == fastNode) return fastNode;
+            slowNode = slowNode.getNext();
+            fastNode = fastNode.getNext();
+            if (fastNode != null) fastNode = fastNode.getNext();
+        }
+        return null;
+    }
+
+
+    /**
+     * 边界条件
+     * 1. 无闭环 => meetingNode = null.
+     * @return
+     */
+    public Integer printEntranceNode(){
+        // Step1: Base check.
+        if (head == null) return -1;
+
+        // Step2: 获取相遇节点。
+        Node meetingNode = meetingNode();
+        // 代表链表无环。
+        if (meetingNode == null) return -1;
+
+        // Step3: 计算环中的节点总数。
+        Node fastNode = head;
+        while (fastNode != meetingNode){
+            fastNode = fastNode.getNext();
+        }
+
+        // Step4: 打印入口节点。
+        Node slowNode = head;
+        while (fastNode != slowNode){
+            fastNode  = fastNode.getNext();
+            slowNode = slowNode.getNext();
+        }
+        Integer result = fastNode.getValue();
+
+        return result;
     }
 }
 

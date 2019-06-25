@@ -252,7 +252,8 @@ public class DemoApplicationTests {
         llu.addNode(6);
 
         llu.generateLoopSingleTraceLinkList(3);
-        Integer integer = llu.countNodesInARing();
+//        Integer integer = llu.meetingNode();
+        Integer integer = llu.printEntranceNode();
         System.out.println(integer);
     }
 }
