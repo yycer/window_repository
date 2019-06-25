@@ -281,22 +281,33 @@ public class LinkedListUtils {
      */
     public Integer countNodesInARing(){
         if (head == null || head.getNext() == null) return -1;
-        Node meetingNode;
+        // Step1: Find meetingNode.
+        Node meetingNode = null;
         Node slowNode = head.getNext();
         if (slowNode.getNext() == null) return -1;
         Node fastNode = slowNode.getNext();
 
         while (slowNode != null && fastNode != null){
 
-            if (slowNode == fastNode) meetingNode = slowNode;
-
+            if (slowNode == fastNode) {
+                meetingNode = slowNode;
+                break;
+            }
             slowNode = slowNode.getNext();
             fastNode = fastNode.getNext();
             if (fastNode.getNext() != null) fastNode = fastNode.getNext();
         }
 
-        return 0;
+        // Step2: Count the nodes in a ring.
+        // 考虑正常闭环情况，如: 1 -> 2 -> 3 -> 1
+        int count = 1;
+        Node curNode = head;
+        while (curNode.getNext() != meetingNode){
+            count++;
+            curNode = curNode.getNext();
+        }
 
+        return count;
     }
 
     public void generateLoopSingleTraceLinkList(int k){
