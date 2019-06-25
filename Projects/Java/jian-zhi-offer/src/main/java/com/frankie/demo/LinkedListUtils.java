@@ -3,6 +3,7 @@ package com.frankie.demo;
 import com.sun.xml.internal.bind.marshaller.NoEscapeHandler;
 import jdk.nashorn.internal.ir.IfNode;
 
+import java.io.FileReader;
 import java.time.Period;
 import java.util.Stack;
 import java.util.UnknownFormatConversionException;
@@ -244,6 +245,24 @@ public class LinkedListUtils {
             cur = cur.getNext();
         }
         cur.setNext(node);
+    }
+
+    public void findLastKNode(int k){
+        Node firstNode = head;
+        if (firstNode == null) return;
+        // 边界条件1： k大于链表结点数量？
+
+        // Step1: 定位到firstNode(k-1)。
+        for (int i = 0; i < k - 1; i++){
+            firstNode = firstNode.getNext();
+        }
+
+        // Step2: firstNode、secondNode每次往前跨一步，直至fistNode为null。
+        Node secondNode = head;
+        while (firstNode != null){
+            secondNode = secondNode.getNext();
+            firstNode = firstNode.getNext();
+        }
     }
 }
 

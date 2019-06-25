@@ -223,4 +223,18 @@ public class DemoApplicationTests {
         llu4.addNode(5);
         llu4.deleteDuplicateNodes();
     }
+
+
+    @Test
+    public void findLastKNodeTest(){
+        LinkedListUtils llu = new LinkedListUtils();
+        llu.addNode(1);
+        llu.addNode(2);
+        llu.addNode(3);
+        llu.addNode(4);
+        llu.addNode(5);
+        llu.addNode(6);
+
+        llu.findLastKNode(4);
+    }
 }
