@@ -275,6 +275,44 @@ public class LinkedListUtils {
         }
         return secondNode.getValue();
     }
+
+    /**
+     * 输出链表中环的入口节点，准备工作，计算环的节点总数。
+     */
+    public Integer countNodesInARing(){
+        if (head == null || head.getNext() == null) return -1;
+        Node meetingNode;
+        Node slowNode = head.getNext();
+        if (slowNode.getNext() == null) return -1;
+        Node fastNode = slowNode.getNext();
+
+        while (slowNode != null && fastNode != null){
+
+            if (slowNode == fastNode) meetingNode = slowNode;
+
+            slowNode = slowNode.getNext();
+            fastNode = fastNode.getNext();
+            if (fastNode.getNext() != null) fastNode = fastNode.getNext();
+        }
+
+        return 0;
+
+    }
+
+    public void generateLoopSingleTraceLinkList(int k){
+        // Step1: 确定连接的后续节点。
+        Node tmpNode = head;
+        for (int i = 0; i < k - 1; i++){
+            tmpNode = tmpNode.getNext();
+        }
+        Node connectedNode = tmpNode;
+
+        // Step2: 遍历到尾部，重新连上后续节点。
+        while (tmpNode.getNext() != null){
+            tmpNode = tmpNode.getNext();
+        }
+        tmpNode.setNext(connectedNode);
+    }
 }
 
 

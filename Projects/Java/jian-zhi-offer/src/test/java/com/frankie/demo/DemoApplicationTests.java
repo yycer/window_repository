@@ -240,4 +240,18 @@ public class DemoApplicationTests {
 //        Integer lastKNode3 = llu.findLastKNode(5);
         Integer lastKNode = llu.findLastKNode(4);
     }
+
+    @Test
+    public void countNodesInARing(){
+        LinkedListUtils llu = new LinkedListUtils();
+        llu.addNode(1);
+        llu.addNode(2);
+        llu.addNode(3);
+        llu.addNode(4);
+        llu.addNode(5);
+        llu.addNode(6);
+
+        llu.generateLoopSingleTraceLinkList(3);
+//        Integer integer = llu.countNodesInARing();
+    }
 }
