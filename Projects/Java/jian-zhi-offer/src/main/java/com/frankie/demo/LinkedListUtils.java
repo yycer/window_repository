@@ -334,6 +334,29 @@ public class LinkedListUtils {
 
         return result;
     }
+
+    /**
+     * 1. 合并两个有序的链表。
+     * 2. 边界条件
+     * <1> 单个链表中存在连续节点
+     * <2> 任意一个链表为null，或者均为null。
+     * <3> 任意一个链表仅包含一个结点。
+     */
+    public Node mergeTwoSortedLinkList(Node n1, Node n2){
+        if (n1 == null) return n2;
+        else if (n2 == null) return n1;
+
+        Node mergedNode = null;
+        if (n1.getValue() < n2.getValue()){
+            mergedNode = n1;
+            mergedNode.setNext(mergeTwoSortedLinkList(n1.getNext(), n2));
+        } else {
+            mergedNode = n2;
+            mergedNode.setNext(mergeTwoSortedLinkList(n1, n2.getNext()));
+        }
+
+        return mergedNode;
+    }
 }
 
 

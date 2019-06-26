@@ -271,4 +271,23 @@ public class DemoApplicationTests {
         System.out.println(node);
     }
 
+    @Test
+    public void mergeTwoSortedLinkList(){
+        LinkedListUtils llu1 = new LinkedListUtils();
+//        llu1.addNode(1);
+//        llu1.addNode(3);
+        llu1.addNode(3);
+//        llu1.addNode(8);
+
+        LinkedListUtils llu2 = new LinkedListUtils();
+        llu2.addNode(2);
+//        llu2.addNode(4);
+//        llu2.addNode(4);
+//        llu2.addNode(5);
+
+        LinkedListUtils llu = new LinkedListUtils();
+        Node node = llu.mergeTwoSortedLinkList(llu1.head, llu2.head);
+
+    }
+
 }
