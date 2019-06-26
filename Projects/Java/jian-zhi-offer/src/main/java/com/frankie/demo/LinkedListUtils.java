@@ -105,28 +105,29 @@ public class LinkedListUtils {
         }
     }
 
+    /**
+     * 1. 需要三个指针： preNode、curNode、nextNode
+     * 2. 边界条件
+     * <1> head == null
+     * <2> 一个结点
+     * <3> 多个结点
+     * @return
+     */
     public Node reverseLinkList(){
-        /**
-         * next     = cur.next;
-         * cur.next = previous;
-         * previous = cur;
-         * cur      = next;
-         */
+        if (head == null) return null;
 
-        // Step1: Base check.
-        Node cur = head;
-        if (cur == null) return null;
+        Node preNode  = null;
+        Node nextNode = null;
+        Node curNode  = head;
 
-        // Step2: Reverse and return link list.
-        Node next;
-        Node previous = null;
-        while (cur != null){
-            next = cur.getNext();
-            cur.setNext(previous);
-            previous = cur;
-            cur = next;
+        while (curNode != null){
+            nextNode = curNode.getNext();
+            curNode.setNext(preNode);
+            preNode = curNode;
+            curNode = nextNode;
         }
-        return previous;
+
+        return preNode;
     }
 
     public void printLinkListReverselyUsingRecursive(Node node) {

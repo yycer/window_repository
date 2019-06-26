@@ -256,4 +256,19 @@ public class DemoApplicationTests {
         Integer integer = llu.printEntranceNode();
         System.out.println(integer);
     }
+
+    @Test
+    public void reverseLinkListTest(){
+        LinkedListUtils llu = new LinkedListUtils();
+        llu.addNode(1);
+//        llu.addNode(2);
+//        llu.addNode(3);
+//        llu.addNode(4);
+//        llu.addNode(5);
+//        llu.addNode(6);
+
+        Node node = llu.reverseLinkList();
+        System.out.println(node);
+    }
+
 }
