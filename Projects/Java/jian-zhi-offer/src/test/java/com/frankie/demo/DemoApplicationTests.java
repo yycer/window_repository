@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.beans.Transient;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -288,6 +289,38 @@ public class DemoApplicationTests {
         LinkedListUtils llu = new LinkedListUtils();
         Node node = llu.mergeTwoSortedLinkList(llu1.head, llu2.head);
 
+    }
+
+    @Test
+    public void countNodesTest(){
+        LinkedListUtils llu = new LinkedListUtils();
+        llu.addNode(1);
+        llu.addNode(2);
+        llu.addNode(3);
+        llu.addNode(4);
+        llu.addNode(5);
+        int i = llu.countNodes(llu.head);
+    }
+
+    @Test
+    public void findTheFirstCommonNode(){
+        LinkedListUtils llu1 = new LinkedListUtils();
+//        llu1.addNode(1);
+//        llu1.addNode(2);
+//        llu1.addNode(3);
+        llu1.addNode(1);
+        llu1.addNode(2);
+        llu1.addNode(3);
+        llu1.addNode(9);
+
+        LinkedListUtils llu2 = new LinkedListUtils();
+        llu2.addNode(4);
+        llu2.addNode(5);
+        llu2.addNode(6);
+        llu2.addNode(7);
+
+        Node resultNode = llu1.findFirstCommonNodeBetweenTwoLinkList(llu1.head, llu2.head);
+        System.out.println(2);
     }
 
 }

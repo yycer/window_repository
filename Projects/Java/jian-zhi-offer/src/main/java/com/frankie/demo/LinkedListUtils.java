@@ -357,6 +357,65 @@ public class LinkedListUtils {
 
         return mergedNode;
     }
+
+    public int countNodes(Node node){
+        if (node == null) return 0;
+
+        Node curNode = node;
+        int count = 0;
+        do {
+            count++;
+            curNode = curNode.getNext();
+        }while (curNode != null);
+        return count;
+    }
+
+    /**
+     * 边界条件:
+     * √1. 无公共节点。
+     * √2. 公共节点在结尾。
+     * √3. 两个链表完全一样。
+     * @param n1
+     * @param n2
+     * @return
+     */
+    public Node findFirstCommonNodeBetweenTwoLinkList(Node n1, Node n2){
+        // Base check.
+        if (n1 == null || n2 == null) return null;
+
+        // Step1: Get the length of node1 and node2.
+        int size1 = countNodes(n1);
+        int size2 = countNodes(n2);
+        int distance;
+        Node longNode;
+        Node shortNode;
+        if (size1 >= size2) {
+            longNode  = n1;
+            shortNode = n2;
+            distance  = size1 - size2;
+        } else {
+            longNode  = n2;
+            shortNode = n1;
+            distance  = size2 - size1;
+        }
+
+        // Step2: 长的那个链表先往前走distance步。
+        while (distance > 0){
+            longNode = longNode.getNext();
+            distance--;
+        }
+
+        // Step3: 遍历两个链表，若当前两个节点相同，该节点即为公共节点。
+        while (longNode            != null &&
+               shortNode           != null &&
+               longNode.getValue() != shortNode.getValue()){
+            longNode  = longNode.getNext();
+            shortNode = shortNode.getNext();
+        }
+
+        return longNode;
+
+    }
 }
 
 
