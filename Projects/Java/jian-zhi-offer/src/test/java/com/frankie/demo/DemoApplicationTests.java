@@ -323,4 +323,28 @@ public class DemoApplicationTests {
         System.out.println(2);
     }
 
+    @Test
+    public void ifElseTest(){
+        /**
+         * 若存在多个if语句，按顺序执行，只要符合相应if语句的条件，均会进入该代码块。
+         */
+        int a = 10;
+        if (a > 2){
+            System.out.println("(a = " + a + ") > 2"); // Hit
+        }
+        if (a > 5){
+            System.out.println("(a = " + a + ") > 5"); // Hit
+        }
+
+        /**
+         * 若存在多个if、else if语句，按顺序执行，一旦符合某一条件语句，执行完相应代码，即结束。
+         */
+        int b = 20;
+        if (b > 2){
+            System.out.println("(b = " + b + ") > 2"); // Hit
+        } else if (b > 5){
+            System.out.println("(b = " + b + ") > 5");
+        }
+    }
+
 }
