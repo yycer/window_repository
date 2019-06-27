@@ -1,0 +1,17 @@
+Source: https://codegym.cc/groups/posts/32-wrappers-unboxing-and-boxing
+
+1. 什么是包装类？
+答：包装类是一种特殊的类，它保存着对应的基元类型。
+
+2. 为什么使用包装类？
+<1> 提供很多方便的方法或字段，如: toString()、MAX_VALUE
+<2> 有的地方必须要用，比如集合(泛型)。
+
+
+3. 既然一切皆对象，为什么Java中还要保存8个基元类型？
+<1> 提高性能，也就是在正常的计算过程中，避免频繁地装箱、拆箱。
+
+Words:
+1. be well acquainted with 对...相当熟悉
+2. mantra  /'mæntrə/  口头禅
+3. ultimately /'ʌltɪmətlɪ/  最后
