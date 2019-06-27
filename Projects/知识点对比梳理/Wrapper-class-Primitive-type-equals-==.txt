@@ -92,7 +92,7 @@ public class DemoApplicationTests {
         Integer i2 = 10086;
         Integer i3 = 10000;
 
-        boolean integer1 = i1 == i2; // false
+        boolean integer1 = i1 == i2;     // false
         boolean integer2 = i1 == i3;
         boolean integer3 = i1.equals(i2);
         boolean integer4 = i1.equals(i3);
@@ -175,29 +175,5 @@ public class DemoApplicationTests {
         double d2 = 5.2;
         boolean b111 = d1 == d2;
         boolean b112 = d1 == 5.2;
-    }
-
-    @Test
-    public void objectEqualTest(){
-
-        String uuidStr1 = UUID.randomUUID().toString();
-        String uuidStr2 = UUID.randomUUID().toString();
-
-        Order order1 = new Order();
-        order1.setBasketOrderId(uuidStr1);
-        order1.setRetailPrice(new BigDecimal(10.20));
-
-        Order order2 = new Order();
-        order2.setBasketOrderId(uuidStr1);
-        order2.setRetailPrice(new BigDecimal(10.20));
-
-        Order order3 = new Order();
-        order3.setBasketOrderId(uuidStr2);
-        order3.setRetailPrice(new BigDecimal(88.50));
-
-        boolean b1 = order1 == order2; // false
-        boolean b2 = order1 == order3; // false
-        boolean b3 = order1.equals(order2); // false
-        boolean b4 = order1.equals(order3); // false
     }
 }
