@@ -1,8 +1,11 @@
 package com.frankie.demo;
 
+import com.frankie.demo.binaryTree.BinaryTree;
+import com.frankie.demo.binaryTree.BinaryTreePrinter;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -345,6 +348,19 @@ public class DemoApplicationTests {
         } else if (b > 5){
             System.out.println("(b = " + b + ") > 5");
         }
+    }
+
+    @Test
+    public void buildBinaryTree(){
+        BinaryTree bt = new BinaryTree();
+        bt.addNode(6);
+        bt.addNode(4);
+        bt.addNode(8);
+        bt.addNode(3);
+        bt.addNode(5);
+        bt.addNode(7);
+        bt.addNode(9);
+        BinaryTreePrinter.printNode(bt.root);
     }
 
 }
