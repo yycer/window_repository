@@ -359,8 +359,13 @@ public class DemoApplicationTests {
         bt.addNode(3);
         bt.addNode(5);
         bt.addNode(7);
-        bt.addNode(9);
+        bt.addNode(10);
+        bt.addNode(88);
+        bt.addNode(23);
         BinaryTreePrinter.printNode(bt.root);
+        boolean b1 = bt.containNode(5);
+        boolean b2 = bt.containNode(7);
+        boolean b3 = bt.containNode(77);
     }
 
 }
