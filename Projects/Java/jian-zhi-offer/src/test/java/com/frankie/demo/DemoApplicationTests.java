@@ -2,6 +2,7 @@ package com.frankie.demo;
 
 import com.frankie.demo.binaryTree.BinaryTree;
 import com.frankie.demo.binaryTree.BinaryTreePrinter;
+import com.frankie.demo.review.linkList.LinkListUtils;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -368,4 +369,111 @@ public class DemoApplicationTests {
         boolean b3 = bt.containNode(77);
     }
 
+    /**
+     * Professional test.
+     */
+
+    @Test
+    public void addNodeTest(){
+        LinkListUtils llu = new LinkListUtils();
+        llu.addNode(1);
+        llu.addNode(3);
+        llu.addNode(9);
+        llu.addNode(6);
+        String result = llu.printNodes();
+        Assert.assertEquals(result, "1 -> 3 -> 9 -> 6");
+    }
+
+    @Test
+    public void containNodeTest(){
+        LinkListUtils llu = new LinkListUtils();
+        llu.addNode(1);
+        llu.addNode(3);
+        llu.addNode(9);
+        llu.addNode(6);
+
+        boolean contain3 = llu.containNode(3);
+        boolean contain9 = llu.containNode(9);
+        boolean contain7 = llu.containNode(7);
+
+        Assert.assertTrue(contain3);
+        Assert.assertTrue(contain9);
+        Assert.assertFalse(contain7);
+    }
+
+//    @Test
+//    public void findPreviousNodeBeforeDeleteNode(){
+//        LinkListUtils llu = new LinkListUtils();
+//        llu.addNode(1);
+//        llu.addNode(3);
+//        llu.addNode(9);
+//        llu.addNode(6);
+//
+//        com.frankie.demo.review.linkList.Node previousNodeBeforeDeleted = llu.findPreviousNodeBeforeDeleted(9);
+//        Assert.assertEquals(previousNodeBeforeDeleted.getVal(), 3);
+//    }
+
+
+    @Test
+    public void deleteNodeTest2(){
+        LinkListUtils llu = new LinkListUtils();
+        llu.addNode(1);
+        llu.addNode(3);
+        llu.addNode(9);
+        llu.addNode(6);
+
+        llu.deleteNode(10);
+        String deleteNode10 = llu.printNodes();
+        Assert.assertEquals(deleteNode10, "1 -> 3 -> 9 -> 6");
+
+
+        llu.deleteNode(9);
+        String deleteNode9 = llu.printNodes();
+        Assert.assertEquals(deleteNode9, "1 -> 3 -> 6");
+
+        llu.deleteNode(1);
+        String deleteNode1 = llu.printNodes();
+        Assert.assertEquals(deleteNode1, "3 -> 6");
+
+        llu.deleteNode(6);
+        String deleteNode6 = llu.printNodes();
+        Assert.assertEquals(deleteNode6, "3");
+    }
+
+    @Test
+    public void buildCircleLinkListTest(){
+        LinkListUtils llu = new LinkListUtils();
+        llu.addNode(1);
+        llu.addNode(3);
+        llu.addNode(5);
+        llu.addNode(7);
+        llu.buildCircleNodeForLastOne(3);
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
