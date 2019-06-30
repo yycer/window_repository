@@ -501,6 +501,78 @@ public class DemoApplicationTests {
         Assert.assertEquals(result5, "The link list is empty!");
 
     }
+
+    @Test
+    public void deleteDuplicateNodes2(){
+        // 常规情况
+        LinkListUtils llu1 = new LinkListUtils();
+        llu1.addNode(1);
+        llu1.addNode(3);
+        llu1.addNode(3);
+        llu1.addNode(5);
+        llu1.deleteDuplicateNodes();
+        String r1 = llu1.printNodes();
+        Assert.assertEquals(r1, "1 -> 5");
+
+        // 边界条件1: 链表中仅包含一个节点。
+        LinkListUtils llu2 = new LinkListUtils();
+        llu2.addNode(1);
+        llu2.deleteDuplicateNodes();
+        String r2 = llu2.printNodes();
+        Assert.assertEquals(r2, "1");
+
+        // 边界条件2: 链表中均为重复节点。
+        LinkListUtils llu3 = new LinkListUtils();
+        llu3.addNode(1);
+        llu3.addNode(1);
+        llu3.addNode(3);
+        llu3.addNode(3);
+        llu3.deleteDuplicateNodes();
+        String r3 = llu3.printNodes();
+        Assert.assertEquals(r3, "The link list is empty!");
+
+        // 边界条件3: 链表中包含的重复节点在头节点。
+        LinkListUtils llu4 = new LinkListUtils();
+        llu4.addNode(1);
+        llu4.addNode(1);
+        llu4.addNode(3);
+        llu4.addNode(5);
+        llu4.deleteDuplicateNodes();
+        String r4 = llu4.printNodes();
+        Assert.assertEquals(r4, "3 -> 5");
+
+        // 边界条件4: 链表中包含的重复节点在尾节点。
+        LinkListUtils llu5 = new LinkListUtils();
+        llu5.addNode(1);
+        llu5.addNode(3);
+        llu5.addNode(5);
+        llu5.addNode(5);
+        llu5.deleteDuplicateNodes();
+        String r5 = llu5.printNodes();
+        Assert.assertEquals(r5, "1 -> 3");
+
+        // 边界条件5: 链表中包含多个值不同的重复节点。
+        LinkListUtils llu6 = new LinkListUtils();
+        llu6.addNode(1);
+        llu6.addNode(3);
+        llu6.addNode(3);
+        llu6.addNode(5);
+        llu6.addNode(5);
+        llu6.addNode(7);
+        llu6.deleteDuplicateNodes();
+        String r6 = llu6.printNodes();
+        Assert.assertEquals(r6, "1 -> 7");
+
+        // 边界条件6: 链表中不包含重复节点。
+        LinkListUtils llu7 = new LinkListUtils();
+        llu7.addNode(1);
+        llu7.addNode(3);
+        llu7.addNode(5);
+        llu7.addNode(7);
+        llu7.deleteDuplicateNodes();
+        String r7 = llu7.printNodes();
+        Assert.assertEquals(r7, "1 -> 3 -> 5 -> 7");
+    }
 }
 
 
