@@ -226,7 +226,44 @@ public class LinkListUtils {
         }
     }
 
+    /**
+     * 一. 删除链表中间节点
+     * 二. 边界条件
+     * 1. 链表总数为1或2，不作任何修改。
+     */
+    public void deleteMiddleNode(){
+        int count = countNodes();
+        if (count <= 2) return;
+
+        Node fastNode     = head;
+        Node slowNode     = head;
+        Node previousNode = null;
+        while (fastNode != null && fastNode.getNext() != null){
+            fastNode     = fastNode.getNext().getNext();
+            previousNode = slowNode;
+            slowNode     = slowNode.getNext();
+        }
+        if (previousNode == null) return;
+        previousNode.setNext(slowNode.getNext());
+    }
+
+
     // region Private methods.
+
+    /**
+     * 计算链表的总节点数。
+     * @return
+     */
+    private int countNodes(){
+        if (head == null) return 0;
+        Node curNode = head;
+        int count = 0;
+        do {
+            count++;
+            curNode = curNode.getNext();
+        } while (curNode != null);
+        return count;
+    }
 
     /**
      * 找到待删除节点的前一个节点
@@ -249,6 +286,7 @@ public class LinkListUtils {
 //
 //        return previousNode;
 //    }
+
     // endregion
 
 }

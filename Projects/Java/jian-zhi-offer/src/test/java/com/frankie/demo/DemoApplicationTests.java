@@ -295,37 +295,37 @@ public class DemoApplicationTests {
 
     }
 
-    @Test
-    public void countNodesTest() {
-        LinkedListUtils llu = new LinkedListUtils();
-        llu.addNode(1);
-        llu.addNode(2);
-        llu.addNode(3);
-        llu.addNode(4);
-        llu.addNode(5);
-        int i = llu.countNodes(llu.head);
-    }
-
-    @Test
-    public void findTheFirstCommonNode() {
-        LinkedListUtils llu1 = new LinkedListUtils();
+//    @Test
+//    public void countNodesTest() {
+//        LinkedListUtils llu = new LinkedListUtils();
+//        llu.addNode(1);
+//        llu.addNode(2);
+//        llu.addNode(3);
+//        llu.addNode(4);
+//        llu.addNode(5);
+//        int i = llu.countNodes(llu.head);
+//    }
+//
+//    @Test
+//    public void findTheFirstCommonNode() {
+//        LinkedListUtils llu1 = new LinkedListUtils();
+////        llu1.addNode(1);
+////        llu1.addNode(2);
+////        llu1.addNode(3);
 //        llu1.addNode(1);
 //        llu1.addNode(2);
 //        llu1.addNode(3);
-        llu1.addNode(1);
-        llu1.addNode(2);
-        llu1.addNode(3);
-        llu1.addNode(9);
-
-        LinkedListUtils llu2 = new LinkedListUtils();
-        llu2.addNode(4);
-        llu2.addNode(5);
-        llu2.addNode(6);
-        llu2.addNode(7);
-
-        Node resultNode = llu1.findFirstCommonNodeBetweenTwoLinkList(llu1.head, llu2.head);
-        System.out.println(2);
-    }
+//        llu1.addNode(9);
+//
+//        LinkedListUtils llu2 = new LinkedListUtils();
+//        llu2.addNode(4);
+//        llu2.addNode(5);
+//        llu2.addNode(6);
+//        llu2.addNode(7);
+//
+//        Node resultNode = llu1.findFirstCommonNodeBetweenTwoLinkList(llu1.head, llu2.head);
+//        System.out.println(2);
+//    }
 
     @Test
     public void ifElseTest() {
@@ -572,6 +572,45 @@ public class DemoApplicationTests {
         llu7.deleteDuplicateNodes();
         String r7 = llu7.printNodes();
         Assert.assertEquals(r7, "1 -> 3 -> 5 -> 7");
+    }
+
+    @Test
+    public void deleteMiddleNode2(){
+        LinkListUtils llu1 = new LinkListUtils();
+        llu1.addNode(1);
+        llu1.addNode(3);
+        llu1.addNode(5);
+        llu1.addNode(7);
+        // 链表总数为奇数。
+        llu1.deleteMiddleNode();
+        String r1 = llu1.printNodes();
+        Assert.assertEquals(r1, "1 -> 3 -> 7");
+
+        LinkListUtils llu2 = new LinkListUtils();
+        llu2.addNode(1);
+        llu2.addNode(3);
+        llu2.addNode(5);
+        llu2.addNode(7);
+        llu2.addNode(9);
+        // 链表总数为偶数。
+        llu2.deleteMiddleNode();
+        String r2 = llu2.printNodes();
+        Assert.assertEquals(r2, "1 -> 3 -> 7 -> 9");
+
+        LinkListUtils llu3 = new LinkListUtils();
+        llu3.addNode(1);
+        // 边界条件1: 链表仅包含1个节点。
+        llu3.deleteMiddleNode();
+        String r3 = llu3.printNodes();
+        Assert.assertEquals(r3, "1");
+
+        LinkListUtils llu4 = new LinkListUtils();
+        llu4.addNode(1);
+        llu4.addNode(2);
+        // 边界条件2: 链表仅包含2个节点。
+        llu4.deleteMiddleNode();
+        String r4 = llu4.printNodes();
+        Assert.assertEquals(r4, "1 -> 2");
     }
 }
 
