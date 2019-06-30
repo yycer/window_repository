@@ -114,6 +114,69 @@ public class LinkListUtils {
         curNode.setNext(connectedNode);
     }
 
+    /**
+     * 在O(1)时间复杂度下删除链表节点
+     * 边界条件:
+     * 1. 待删除节点在头结点
+     * 2. 链表中无待删除节点。 - 如何区分待删除节点在尾节点(curNode.getNext == null)、链表中无待删除节点(curNode == null)？
+     * 3. 待删除节点在尾节点。 - 解决方案: 遍历整个链表，定位到待删除节点的前一个节点，并将其连接上null
+     *
+
+     * @param val
+     */
+    public void deleteNodeUsingO1(int val){
+
+        if (head == null) return;
+
+        /**
+         * 定位待删除节点
+         * <1> 若链表中不存在待删除节点   => curNode           == null;
+         * <2> 若待删除节点处于链表的尾部 => curNode.getNext() == null;
+         * <3> 若待删除节点处于链表的首部 => curNode           == head;
+         */
+        Node curNode = head;
+        do {
+            if (curNode.getVal() == val) break;
+            curNode = curNode.getNext();
+        } while (curNode != null);
+
+        /**
+         * 边界条件1: 待删除节点在头结点，包含两种情况
+         * <1> 链表仅包含一个节点。
+         * <2> 链表包含多个节点。
+         *
+         */
+        if (head == curNode){
+            head = curNode.getNext();
+            return;
+        }
+
+        /**
+         * 边界条件2：链表中无待删除节点。
+         */
+        if (curNode == null){
+            return;
+        }
+        /**
+         * 边界条件3: 待删除节点在尾节点。
+         */
+        else if (curNode.getNext() == null){
+            Node previousNode = head;
+            while (previousNode.getNext() != curNode){
+                previousNode = previousNode.getNext();
+            }
+            previousNode.setNext(null);
+        } else{
+
+            /**
+             * Step1: 将待删除后一个节点的值复制到待删除节点。
+             * Step2: 将更新后的待删除节点连上待删除节点的下下个节点。
+             */
+            curNode.setVal(curNode.getNext().getVal());
+            curNode.setNext(curNode.getNext().getNext());
+        }
+    }
+
     // region Private methods.
 
     /**
@@ -140,3 +203,25 @@ public class LinkListUtils {
     // endregion
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

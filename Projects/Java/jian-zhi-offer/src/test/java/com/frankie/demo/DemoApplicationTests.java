@@ -26,10 +26,10 @@ public class DemoApplicationTests {
         ArrayList<Integer> uniqueList = new ArrayList<>();
         ArrayList<Integer> repeatedList = new ArrayList<>();
 
-        for (int i = 0; i < a.length; i++){
-            if (!uniqueList.contains(a[i])){
+        for (int i = 0; i < a.length; i++) {
+            if (!uniqueList.contains(a[i])) {
                 uniqueList.add(a[i]);
-            } else{
+            } else {
                 repeatedList.add(a[i]);
             }
         }
@@ -37,7 +37,7 @@ public class DemoApplicationTests {
     }
 
     @Test
-    public void indexWayTest(){
+    public void indexWayTest() {
         int[] a = {2, 0, 3, 1, 2};
 
         boolean duplicated = ArrayUtils.isDuplicated(a);
@@ -45,7 +45,7 @@ public class DemoApplicationTests {
     }
 
     @Test
-    public void localDatetimeTest(){
+    public void localDatetimeTest() {
         LocalDateTime ldt = LocalDateTime.of(LocalDateTime.now().getYear(), 6, 13, 0, 0);
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String format = ldt.format(dateTimeFormatter);
@@ -54,7 +54,7 @@ public class DemoApplicationTests {
     }
 
     @Test
-    public void getMonthAndDay(){
+    public void getMonthAndDay() {
         /**
          * 月: 7
          * 日: 10
@@ -70,9 +70,9 @@ public class DemoApplicationTests {
          * 48 represents 0.
          * 57 represents 9.
          */
-        if (c1 > 48 || c1 < 57){
+        if (c1 > 48 || c1 < 57) {
             result = String.valueOf(c1) + c;
-        } else{
+        } else {
             result = String.valueOf(c);
         }
 
@@ -85,19 +85,19 @@ public class DemoApplicationTests {
     }
 
     @Test
-    public void duplicateDichotomyTest(){
+    public void duplicateDichotomyTest() {
         int[] a = {2, 7, 3, 4, 2, 6, 4, 1};
         Integer duplicateInteger = ArrayUtils.isDuplicateDichotomy(a);
         System.out.println(duplicateInteger);
     }
 
     @Test
-    public void printMatrix(){
+    public void printMatrix() {
         ArrayUtils.printMatrix();
     }
 
     @Test
-    public void isExistedInMatrix(){
+    public void isExistedInMatrix() {
         int[][] matrix = {
                 {1, 2, 8, 9},
                 {2, 4, 9, 12},
@@ -110,11 +110,11 @@ public class DemoApplicationTests {
     }
 
     @Test
-    public void replaceBlank(){
+    public void replaceBlank() {
 
         String s = "hello world a b c";
         StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < s.length(); i++){
+        for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) != 32) sb.append(s.charAt(i));
             else sb.append("%20");
         }
@@ -123,7 +123,7 @@ public class DemoApplicationTests {
     }
 
     @Test
-    public void convertTest(){
+    public void convertTest() {
         StreamUtils streamUtils = new StreamUtils();
 //        streamUtils.convertInTwoListWay1();
         streamUtils.convertInTwoListWay2();
@@ -131,7 +131,7 @@ public class DemoApplicationTests {
 
 
     @Test
-    public void deleteMiddleOfLinkListTest(){
+    public void deleteMiddleOfLinkListTest() {
         LinkedListUtils llu = new LinkedListUtils();
         llu.addNode(2);
         llu.addNode(4);
@@ -156,17 +156,17 @@ public class DemoApplicationTests {
     }
 
     @Test
-    public void doWhileTest(){
+    public void doWhileTest() {
         int i = 5;
         do {
             System.out.println(i);
             i++;
-        }while (i < 10);
+        } while (i < 10);
     }
 
 
     @Test
-    public void deleteNodeTest(){
+    public void deleteNodeTest() {
         LinkedListUtils llu1 = new LinkedListUtils();
         llu1.addNode(2);
         llu1.removeNodeOptimization(3);
@@ -188,7 +188,7 @@ public class DemoApplicationTests {
     }
 
     @Test
-    public void deleteDuplicateNodesTest(){
+    public void deleteDuplicateNodesTest() {
 
         LinkedListUtils llu = new LinkedListUtils();
         llu.addNode(2);
@@ -231,7 +231,7 @@ public class DemoApplicationTests {
 
 
     @Test
-    public void findLastKNodeTest(){
+    public void findLastKNodeTest() {
         LinkedListUtils llu = new LinkedListUtils();
         llu.addNode(1);
         llu.addNode(2);
@@ -247,7 +247,7 @@ public class DemoApplicationTests {
     }
 
     @Test
-    public void countNodesInARing(){
+    public void countNodesInARing() {
         LinkedListUtils llu = new LinkedListUtils();
         llu.addNode(1);
         llu.addNode(2);
@@ -263,7 +263,7 @@ public class DemoApplicationTests {
     }
 
     @Test
-    public void reverseLinkListTest(){
+    public void reverseLinkListTest() {
         LinkedListUtils llu = new LinkedListUtils();
         llu.addNode(1);
 //        llu.addNode(2);
@@ -277,7 +277,7 @@ public class DemoApplicationTests {
     }
 
     @Test
-    public void mergeTwoSortedLinkList(){
+    public void mergeTwoSortedLinkList() {
         LinkedListUtils llu1 = new LinkedListUtils();
 //        llu1.addNode(1);
 //        llu1.addNode(3);
@@ -296,7 +296,7 @@ public class DemoApplicationTests {
     }
 
     @Test
-    public void countNodesTest(){
+    public void countNodesTest() {
         LinkedListUtils llu = new LinkedListUtils();
         llu.addNode(1);
         llu.addNode(2);
@@ -307,7 +307,7 @@ public class DemoApplicationTests {
     }
 
     @Test
-    public void findTheFirstCommonNode(){
+    public void findTheFirstCommonNode() {
         LinkedListUtils llu1 = new LinkedListUtils();
 //        llu1.addNode(1);
 //        llu1.addNode(2);
@@ -328,15 +328,15 @@ public class DemoApplicationTests {
     }
 
     @Test
-    public void ifElseTest(){
+    public void ifElseTest() {
         /**
          * 若存在多个if语句，按顺序执行，只要符合相应if语句的条件，均会进入该代码块。
          */
         int a = 10;
-        if (a > 2){
+        if (a > 2) {
             System.out.println("(a = " + a + ") > 2"); // Hit
         }
-        if (a > 5){
+        if (a > 5) {
             System.out.println("(a = " + a + ") > 5"); // Hit
         }
 
@@ -344,15 +344,15 @@ public class DemoApplicationTests {
          * 若存在多个if、else if语句，按顺序执行，一旦符合某一条件语句，执行完相应代码，即结束。
          */
         int b = 20;
-        if (b > 2){
+        if (b > 2) {
             System.out.println("(b = " + b + ") > 2"); // Hit
-        } else if (b > 5){
+        } else if (b > 5) {
             System.out.println("(b = " + b + ") > 5");
         }
     }
 
     @Test
-    public void buildBinaryTree(){
+    public void buildBinaryTree() {
         BinaryTree bt = new BinaryTree();
         bt.addNode(6);
         bt.addNode(4);
@@ -374,7 +374,7 @@ public class DemoApplicationTests {
      */
 
     @Test
-    public void addNodeTest(){
+    public void addNodeTest() {
         LinkListUtils llu = new LinkListUtils();
         llu.addNode(1);
         llu.addNode(3);
@@ -385,7 +385,7 @@ public class DemoApplicationTests {
     }
 
     @Test
-    public void containNodeTest(){
+    public void containNodeTest() {
         LinkListUtils llu = new LinkListUtils();
         llu.addNode(1);
         llu.addNode(3);
@@ -415,7 +415,7 @@ public class DemoApplicationTests {
 
 
     @Test
-    public void deleteNodeTest2(){
+    public void deleteNodeTest2() {
         LinkListUtils llu = new LinkListUtils();
         llu.addNode(1);
         llu.addNode(3);
@@ -441,7 +441,7 @@ public class DemoApplicationTests {
     }
 
     @Test
-    public void buildCircleLinkListTest(){
+    public void buildCircleLinkListTest() {
         LinkListUtils llu = new LinkListUtils();
         llu.addNode(1);
         llu.addNode(3);
@@ -450,6 +450,57 @@ public class DemoApplicationTests {
         llu.buildCircleNodeForLastOne(3);
     }
 
+    @Test
+    public void deleteNodeUsingO1Test() {
+        LinkListUtils llu1 = new LinkListUtils();
+        llu1.addNode(1);
+        llu1.addNode(3);
+        llu1.addNode(5);
+        llu1.addNode(7);
+        // 常规情况
+        llu1.deleteNodeUsingO1(3);
+        String result1 = llu1.printNodes();
+        Assert.assertEquals(result1, "1 -> 5 -> 7");
+
+        LinkListUtils llu2 = new LinkListUtils();
+        llu2.addNode(1);
+        llu2.addNode(3);
+        llu2.addNode(5);
+        llu2.addNode(7);
+        // 边界条件1: 待删除节点位于头节点
+        llu2.deleteNodeUsingO1(1);
+        String result2 = llu2.printNodes();
+        Assert.assertEquals(result2, "3 -> 5 -> 7");
+
+        LinkListUtils llu3 = new LinkListUtils();
+        llu3.addNode(1);
+        llu3.addNode(3);
+        llu3.addNode(5);
+        llu3.addNode(7);
+        // 边界条件2: 待删除节点位于尾节点
+        llu3.deleteNodeUsingO1(7);
+        String result3 = llu3.printNodes();
+        Assert.assertEquals(result3, "1 -> 3 -> 5");
+
+
+        LinkListUtils llu4 = new LinkListUtils();
+        llu4.addNode(1);
+        llu4.addNode(3);
+        llu4.addNode(5);
+        llu4.addNode(7);
+        // 边界条件3: 链表中不包含待删除节点。
+        llu4.deleteNodeUsingO1(9);
+        String result4 = llu4.printNodes();
+        Assert.assertEquals(result4, "1 -> 3 -> 5 -> 7");
+
+        LinkListUtils llu5 = new LinkListUtils();
+        llu5.addNode(1);
+        // 边界条件4: 链表中仅包含一个节点。
+        llu5.deleteNodeUsingO1(1);
+        String result5 = llu5.printNodes();
+        Assert.assertEquals(result5, "The link list is empty!");
+
+    }
 }
 
 
