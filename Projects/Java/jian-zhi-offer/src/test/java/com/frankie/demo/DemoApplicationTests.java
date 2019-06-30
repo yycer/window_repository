@@ -633,6 +633,47 @@ public class DemoApplicationTests {
 //        llu1.printLinkListReverselyUsingRecursive(llu1.head);
         llu1.printLinkListReverselyUsingStack(llu1.head);
     }
+
+    @Test
+    public void printLastKNodeTest2(){
+        LinkListUtils llu1 = new LinkListUtils();
+        llu1.addNode(1);
+        llu1.addNode(3);
+        llu1.addNode(5);
+        llu1.addNode(7);
+        llu1.addNode(9);
+        com.frankie.demo.review.linkList.Node last2Node = llu1.printLastKNode(2);
+        Assert.assertEquals(String.valueOf(last2Node.getVal()), "7");
+
+        com.frankie.demo.review.linkList.Node last4Node = llu1.printLastKNode(4);
+        Assert.assertEquals(String.valueOf(last4Node.getVal()), "3");
+
+        // 边界条件1: k > length
+        LinkListUtils llu2 = new LinkListUtils();
+        llu2.addNode(1);
+        llu2.addNode(3);
+        llu2.addNode(5);
+        com.frankie.demo.review.linkList.Node node1 = llu2.printLastKNode(4);
+        Assert.assertEquals(node1, null);
+
+        // 边界条件2: k < 0
+        LinkListUtils llu3 = new LinkListUtils();
+        llu3.addNode(1);
+        llu3.addNode(3);
+        llu3.addNode(5);
+        com.frankie.demo.review.linkList.Node node2 = llu3.printLastKNode(-2);
+        Assert.assertEquals(node2, null);
+
+
+        // 边界条件3: k = 0
+        LinkListUtils llu4 = new LinkListUtils();
+        llu4.addNode(1);
+        llu4.addNode(3);
+        llu4.addNode(5);
+        com.frankie.demo.review.linkList.Node node3 = llu4.printLastKNode(0);
+        Assert.assertEquals(node3, null);
+
+    }
 }
 
 

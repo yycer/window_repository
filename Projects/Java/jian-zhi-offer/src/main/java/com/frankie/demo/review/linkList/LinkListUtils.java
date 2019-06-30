@@ -300,6 +300,34 @@ public class LinkListUtils {
         }
     }
 
+    /**
+     * 一. 输出倒数第k个节点。
+     * 二. 边界条件
+     * 1. k > length?
+     * 2. k <= 0?
+     * @param k: 代表倒数第几个节点。
+     * @return
+     */
+    public Node printLastKNode(int k){
+        int count = countNodes();
+        if (head == null || k <= 0 || k > count) return null;
+
+        // Step1: 快节点先往前走k步。
+        Node fastNode = head;
+        Node slowNode = head;
+        while (k > 0){
+            fastNode = fastNode.getNext();
+            k--;
+        }
+
+        // Step2: 快慢节点同时往前走，直至快节点为null.
+        while (fastNode != null){
+            slowNode = slowNode.getNext();
+            fastNode = fastNode.getNext();
+        }
+        return slowNode;
+    }
+
     // region Private methods.
 
     /**
