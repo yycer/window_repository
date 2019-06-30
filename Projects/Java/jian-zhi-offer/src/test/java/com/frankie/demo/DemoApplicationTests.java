@@ -6,11 +6,9 @@ import com.frankie.demo.review.linkList.LinkListUtils;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.beans.Transient;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -611,6 +609,29 @@ public class DemoApplicationTests {
         llu4.deleteMiddleNode();
         String r4 = llu4.printNodes();
         Assert.assertEquals(r4, "1 -> 2");
+    }
+
+    @Test
+    public void reverseLinkListTest2(){
+        LinkListUtils llu1 = new LinkListUtils();
+        llu1.addNode(1);
+        llu1.addNode(3);
+        llu1.addNode(5);
+        com.frankie.demo.review.linkList.Node reversedLinkList1 = llu1.reverseLinkList();
+
+        LinkListUtils llu2 = new LinkListUtils();
+        llu2.addNode(1);
+        com.frankie.demo.review.linkList.Node reversedLinkList2 = llu2.reverseLinkList();
+    }
+
+    @Test
+    public void printLinkedListReverselyUsingRecursiveTest(){
+        LinkListUtils llu1 = new LinkListUtils();
+        llu1.addNode(1);
+        llu1.addNode(3);
+        llu1.addNode(5);
+//        llu1.printLinkListReverselyUsingRecursive(llu1.head);
+        llu1.printLinkListReverselyUsingStack(llu1.head);
     }
 }
 

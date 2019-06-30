@@ -130,18 +130,18 @@ public class LinkedListUtils {
         return preNode;
     }
 
-    public void printLinkListReverselyUsingRecursive(Node node) {
-
-        // Step1: Base check.
-        if (node == null) System.out.println("The link list is empty!");
-
-        // Step2: Print link list reversely using recursive.
-        Node next = node.getNext();
-        if (next != null){
-            printLinkListReverselyUsingRecursive(next);
-        }
-        System.out.println(node.getValue());
-    }
+//    public void printLinkListReverselyUsingRecursive(Node node) {
+//
+//        // Step1: Base check.
+//        if (node == null) System.out.println("The link list is empty!");
+//
+//        // Step2: Print link list reversely using recursive.
+//        Node next = node.getNext();
+//        if (next != null){
+//            printLinkListReverselyUsingRecursive(next);
+//        }
+//        System.out.println(node.getValue());
+//    }
 
     public Node findNode(int val){
         Node cur = head;
