@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Stack;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -676,99 +677,28 @@ public class DemoApplicationTests {
     }
 
     @Test
-    public void findMeetingNode(){
-        LinkListUtils llu1 = new LinkListUtils();
-        llu1.addNode(1);
-        llu1.addNode(2);
-        llu1.addNode(3);
-        llu1.addNode(4);
-        llu1.addNode(5);
-        llu1.addNode(6);
-        llu1.buildCircleNodeForLastOne(3);
-        com.frankie.demo.review.linkList.Node node = llu1.returnMeetingNode(llu1.head);
+    public void pushTest(){
+        Stack<Integer> stack = new Stack<>();
+        stack.push(1);
+        stack.push(null);
+
+        Integer pop = stack.pop();
     }
 
     @Test
-    public void printEntranceNodeTest2(){
-        LinkListUtils llu1 = new LinkListUtils();
-        llu1.addNode(1);
-        llu1.addNode(2);
-        llu1.addNode(3);
-        llu1.addNode(4);
-        llu1.addNode(5);
-        llu1.addNode(6);
-        llu1.buildCircleNodeForLastOne(3);
-        com.frankie.demo.review.linkList.Node node = llu1.printEntranceNode(llu1.head);
-        Assert.assertEquals(String.valueOf(node.getVal()), "3");
-    }
-
-    @Test
-    public void mergeTwoSortedLinkListTest2(){
-        LinkListUtils llu1 = new LinkListUtils();
-        llu1.addNode(1);
-        llu1.addNode(3);
-
-        LinkListUtils llu2 = new LinkListUtils();
-        llu2.addNode(2);
-        llu2.addNode(4);
-
-        LinkListUtils llu = new LinkListUtils();
-//        com.frankie.demo.review.linkList.Node node = llu.mergeTwoSortedLinkList(llu1.head, llu2.head);
-
-        // 边界条件1. 某一链表仅包含一个节点。
-        LinkListUtils llu3 = new LinkListUtils();
-        llu3.addNode(2);
-//        com.frankie.demo.review.linkList.Node node = llu.mergeTwoSortedLinkList(llu1.head, llu3.head);
-
-        // 边界条件2. 某一链表包含重复节点。
-        LinkListUtils llu4 = new LinkListUtils();
-        llu4.addNode(2);
-        llu4.addNode(2);
-        com.frankie.demo.review.linkList.Node node = llu.mergeTwoSortedLinkList(llu1.head, llu4.head);
-    }
-
-    @Test
-    public void printFirstCommonNodeTest(){
-        // 边界条件1: 两个链表无公共节点。
-        LinkListUtils llu1 = new LinkListUtils();
-        llu1.addNode(1);
-        llu1.addNode(2);
-        llu1.addNode(3);
-        llu1.addNode(6);
-        llu1.addNode(7);
-
-        LinkListUtils llu2 = new LinkListUtils();
-        llu2.addNode(4);
-        llu2.addNode(5);
-        llu2.addNode(11);
-        llu2.addNode(12);
-
-        com.frankie.demo.review.linkList.Node node = llu1.returnFirstCommonNode(llu1.head, llu2.head);
-        Assert.assertEquals(node, null);
-
-        // 边界条件2: 两个链表的公共节点为尾节点。
-        LinkListUtils llu3 = new LinkListUtils();
-        llu3.addNode(1);
-        llu3.addNode(2);
-
-        LinkListUtils llu4 = new LinkListUtils();
-        llu4.addNode(1);
-        llu4.addNode(5);
-        llu4.addNode(11);
-        llu4.addNode(2);
-        com.frankie.demo.review.linkList.Node node1 = llu1.returnFirstCommonNode(llu3.head, llu4.head);
-        Assert.assertEquals(String.valueOf(node1.getVal()), "2");
-
-        // 边界条件3: 两个链表完全一样。
-        LinkListUtils llu5 = new LinkListUtils();
-        llu5.addNode(1);
-        llu5.addNode(2);
-
-        LinkListUtils llu6 = new LinkListUtils();
-        llu6.addNode(1);
-        llu6.addNode(2);
-
-        com.frankie.demo.review.linkList.Node node2 = llu5.returnFirstCommonNode(llu5.head, llu6.head);
+    public void buildBinaryTreeTest(){
+        BinaryTree bt = new BinaryTree();
+        bt.addNode(4);
+        bt.addNode(2);
+        bt.addNode(6);
+        bt.addNode(1);
+        bt.addNode(3);
+        bt.addNode(5);
+        bt.addNode(7);
+        BinaryTreePrinter.printNode(bt.root);
+//        bt.preOrderTraversal(bt.root);
+//        bt.inOrderTraversal(bt.root);
+        bt.postOrderTraversal(bt.root);
     }
 }
 
