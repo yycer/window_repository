@@ -9,7 +9,6 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.beans.Transient;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -726,7 +725,50 @@ public class DemoApplicationTests {
         llu4.addNode(2);
         llu4.addNode(2);
         com.frankie.demo.review.linkList.Node node = llu.mergeTwoSortedLinkList(llu1.head, llu4.head);
+    }
 
+    @Test
+    public void printFirstCommonNodeTest(){
+        // 边界条件1: 两个链表无公共节点。
+        LinkListUtils llu1 = new LinkListUtils();
+        llu1.addNode(1);
+        llu1.addNode(2);
+        llu1.addNode(3);
+        llu1.addNode(6);
+        llu1.addNode(7);
+
+        LinkListUtils llu2 = new LinkListUtils();
+        llu2.addNode(4);
+        llu2.addNode(5);
+        llu2.addNode(11);
+        llu2.addNode(12);
+
+        com.frankie.demo.review.linkList.Node node = llu1.returnFirstCommonNode(llu1.head, llu2.head);
+        Assert.assertEquals(node, null);
+
+        // 边界条件2: 两个链表的公共节点为尾节点。
+        LinkListUtils llu3 = new LinkListUtils();
+        llu3.addNode(1);
+        llu3.addNode(2);
+
+        LinkListUtils llu4 = new LinkListUtils();
+        llu4.addNode(1);
+        llu4.addNode(5);
+        llu4.addNode(11);
+        llu4.addNode(2);
+        com.frankie.demo.review.linkList.Node node1 = llu1.returnFirstCommonNode(llu3.head, llu4.head);
+        Assert.assertEquals(String.valueOf(node1.getVal()), "2");
+
+        // 边界条件3: 两个链表完全一样。
+        LinkListUtils llu5 = new LinkListUtils();
+        llu5.addNode(1);
+        llu5.addNode(2);
+
+        LinkListUtils llu6 = new LinkListUtils();
+        llu6.addNode(1);
+        llu6.addNode(2);
+
+        com.frankie.demo.review.linkList.Node node2 = llu5.returnFirstCommonNode(llu5.head, llu6.head);
     }
 }
 
