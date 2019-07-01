@@ -367,6 +367,30 @@ public class LinkListUtils {
         return meetingNode;
     }
 
+    /**
+     * 一. 合并两个有序的链表。
+     * 二. 边界条件
+     * 1. 某一链表仅包含一个节点。
+     * 2. 某一链表包含重复节点。
+     *
+     * @return
+     */
+    public Node mergeTwoSortedLinkList(Node n1, Node n2){
+        if      (n1 == null) return n2;
+        else if (n2 == null) return n1;
+
+        Node mergeNode;
+
+        if (n1.getVal() <= n2.getVal()){
+            mergeNode = n1;
+            mergeNode.setNext(mergeTwoSortedLinkList(n1.getNext(), n2));
+        } else{
+            mergeNode = n2;
+            mergeNode.setNext(mergeTwoSortedLinkList(n1, n2.getNext()));
+        }
+        return mergeNode;
+    }
+
     // region Private methods.
 
     /**

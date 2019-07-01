@@ -702,6 +702,32 @@ public class DemoApplicationTests {
         com.frankie.demo.review.linkList.Node node = llu1.printEntranceNode(llu1.head);
         Assert.assertEquals(String.valueOf(node.getVal()), "3");
     }
+
+    @Test
+    public void mergeTwoSortedLinkListTest2(){
+        LinkListUtils llu1 = new LinkListUtils();
+        llu1.addNode(1);
+        llu1.addNode(3);
+
+        LinkListUtils llu2 = new LinkListUtils();
+        llu2.addNode(2);
+        llu2.addNode(4);
+
+        LinkListUtils llu = new LinkListUtils();
+//        com.frankie.demo.review.linkList.Node node = llu.mergeTwoSortedLinkList(llu1.head, llu2.head);
+
+        // 边界条件1. 某一链表仅包含一个节点。
+        LinkListUtils llu3 = new LinkListUtils();
+        llu3.addNode(2);
+//        com.frankie.demo.review.linkList.Node node = llu.mergeTwoSortedLinkList(llu1.head, llu3.head);
+
+        // 边界条件2. 某一链表包含重复节点。
+        LinkListUtils llu4 = new LinkListUtils();
+        llu4.addNode(2);
+        llu4.addNode(2);
+        com.frankie.demo.review.linkList.Node node = llu.mergeTwoSortedLinkList(llu1.head, llu4.head);
+
+    }
 }
 
 
