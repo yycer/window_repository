@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.beans.Transient;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -673,6 +674,33 @@ public class DemoApplicationTests {
         com.frankie.demo.review.linkList.Node node3 = llu4.printLastKNode(0);
         Assert.assertEquals(node3, null);
 
+    }
+
+    @Test
+    public void findMeetingNode(){
+        LinkListUtils llu1 = new LinkListUtils();
+        llu1.addNode(1);
+        llu1.addNode(2);
+        llu1.addNode(3);
+        llu1.addNode(4);
+        llu1.addNode(5);
+        llu1.addNode(6);
+        llu1.buildCircleNodeForLastOne(3);
+        com.frankie.demo.review.linkList.Node node = llu1.returnMeetingNode(llu1.head);
+    }
+
+    @Test
+    public void printEntranceNodeTest2(){
+        LinkListUtils llu1 = new LinkListUtils();
+        llu1.addNode(1);
+        llu1.addNode(2);
+        llu1.addNode(3);
+        llu1.addNode(4);
+        llu1.addNode(5);
+        llu1.addNode(6);
+        llu1.buildCircleNodeForLastOne(3);
+        com.frankie.demo.review.linkList.Node node = llu1.printEntranceNode(llu1.head);
+        Assert.assertEquals(String.valueOf(node.getVal()), "3");
     }
 }
 

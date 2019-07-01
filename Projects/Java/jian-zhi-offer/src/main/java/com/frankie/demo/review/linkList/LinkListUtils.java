@@ -328,6 +328,45 @@ public class LinkListUtils {
         return slowNode;
     }
 
+    /**
+     * 返回链表中环的相遇节点，假设给的链表一定包含环喔。
+     * @param circleNode
+     * @return
+     */
+    public Node returnMeetingNode(Node circleNode){
+        if (circleNode == null) return null;
+
+        Node slowNode = circleNode.getNext();
+        Node fastNode = circleNode.getNext().getNext();
+
+        while (fastNode != slowNode){
+            slowNode = slowNode.getNext();
+            fastNode = fastNode.getNext().getNext();
+        }
+
+        return fastNode;
+    }
+
+    /**
+     * 一. 输出链表中环的入口节点。
+     * 二. 边界条件
+     * 1.
+     * @param circleNode
+     * @return
+     */
+    public Node printEntranceNode(Node circleNode){
+        // Step1: 找到相遇节点meetingNode，并将其作为快节点。
+        Node meetingNode = returnMeetingNode(circleNode);
+
+        // Step2: 慢指针从头节点开始，当快节点指向null，慢节点即为环入口节点。
+        Node slowNode = circleNode;
+        while (meetingNode != slowNode){
+            meetingNode = meetingNode.getNext();
+            slowNode    = slowNode.getNext();
+        }
+        return meetingNode;
+    }
+
     // region Private methods.
 
     /**
@@ -365,6 +404,22 @@ public class LinkListUtils {
 //        }
 //
 //        return previousNode;
+//    }
+
+    //    /**
+//     * 计算走到指定节点的步数。
+//     * @param node
+//     * @param speNode
+//     * @return
+//     */
+//    private int countStepToSpecifiedNode(Node node, Node speNode){
+//        if (node == null || speNode == null) return -1;
+//        int count = 0;
+//        do {
+//           count++;
+//           node = node.getNext();
+//        } while (node != speNode);
+//        return count;
 //    }
 
     // endregion
