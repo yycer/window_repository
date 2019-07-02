@@ -9,6 +9,8 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.swing.tree.TreeNode;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -698,8 +700,22 @@ public class DemoApplicationTests {
         BinaryTreePrinter.printNode(bt.root);
 //        bt.preOrderTraversal(bt.root);
 //        bt.inOrderTraversal(bt.root);
-        bt.postOrderTraversal(bt.root);
+//        bt.postOrderTraversal(bt.root);
+//        bt.preOrderTraversalUsingRecursive(bt.root);
+//        bt.inOrderTraversalUsingRecursive(bt.root);
+        bt.postOrderTraversalUsingRecursive(bt.root);
     }
+
+    @Test
+    public void fibonaciiEfficiencyTest(){
+        LocalDateTime start = LocalDateTime.now();
+        BinaryTree bt = new BinaryTree();
+        bt.fibonaciiOptimize1(500);
+        LocalDateTime end = LocalDateTime.now();
+        long l = Duration.between(start, end).toMillis();
+        System.out.println(l);
+    }
+
 }
 
 

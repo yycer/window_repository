@@ -1,6 +1,5 @@
 package com.frankie.demo.binaryTree;
 
-import javax.swing.tree.TreeNode;
 import java.util.Stack;
 
 public class BinaryTree {
@@ -113,6 +112,66 @@ public class BinaryTree {
         while (!valueStack.isEmpty()){
             System.out.print(valueStack.pop() + " ");
         }
+    }
+
+    public int fibonacii(int n){
+        if (n <= 0) return 0;
+        if (n == 1) return 1;
+
+        return fibonacii(n-1) + fibonacii(n - 2);
+    }
+
+    public int fibonaciiOptimize1(int n){
+        if (n <= 0) return 0;
+        if (n == 1) return 1;
+
+        long fibNMinusOne = 1;
+        long fibNMinusTwo = 0;
+        long result       = 0;
+
+        for (int i = 2; i < n; i++){
+            result       = fibNMinusOne + fibNMinusTwo;
+            fibNMinusTwo = fibNMinusOne;
+            fibNMinusOne = result;
+        }
+
+        return (int)result;
+    }
+
+    /**
+     * 先序遍历(递归法)
+     * @param node
+     */
+    public void preOrderTraversalUsingRecursive(Node node){
+        if (node == null) return;
+
+        System.out.print(node.getVal() + " ");
+        preOrderTraversalUsingRecursive(node.getLeftNode());
+        preOrderTraversalUsingRecursive(node.getRightNode());
+    }
+
+    /**
+     * 中序遍历(递归法)
+     * @param node
+     */
+    public void inOrderTraversalUsingRecursive(Node node){
+        if (node == null) return;
+
+        inOrderTraversalUsingRecursive(node.getLeftNode());
+        System.out.print(node.getVal() + " ");
+        inOrderTraversalUsingRecursive(node.getRightNode());
+    }
+
+    /**
+     * 后序遍历(递归法)
+     * @param node
+     */
+    public void postOrderTraversalUsingRecursive(Node node){
+        if (node == null) return;
+
+        postOrderTraversalUsingRecursive(node.getLeftNode());
+        postOrderTraversalUsingRecursive(node.getRightNode());
+        System.out.print(node.getVal() + " ");
     }
 }
 
