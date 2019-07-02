@@ -1,5 +1,11 @@
 package com.frankie.demo.binaryTree;
 
+import com.frankie.demo.LinkedListUtils;
+import com.sun.jmx.remote.internal.ArrayQueue;
+
+import java.util.ArrayDeque;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class BinaryTree {
@@ -172,6 +178,31 @@ public class BinaryTree {
         postOrderTraversalUsingRecursive(node.getLeftNode());
         postOrderTraversalUsingRecursive(node.getRightNode());
         System.out.print(node.getVal() + " ");
+    }
+
+
+    /**
+     * 广度优先遍历(队列)
+     */
+    public void levelOrderTraserval(Node node){
+        if (node == null){
+            System.out.println("Empty tree!");
+            return;
+        }
+
+        Queue<Node> queue = new ArrayDeque<>();
+        queue.add(node);
+
+        while (!queue.isEmpty()){
+            Node curNode = queue.remove();
+            System.out.print(curNode.getVal() + " ");
+            if (curNode.getLeftNode() != null){
+                queue.add(curNode.getLeftNode());
+            }
+            if (curNode.getRightNode() != null){
+                queue.add(curNode.getRightNode());
+            }
+        }
     }
 }
 

@@ -3,17 +3,21 @@ package com.frankie.demo;
 import com.frankie.demo.binaryTree.BinaryTree;
 import com.frankie.demo.binaryTree.BinaryTreePrinter;
 import com.frankie.demo.review.linkList.LinkListUtils;
+import com.sun.jmx.remote.internal.ArrayQueue;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.yaml.snakeyaml.util.ArrayStack;
 
 import javax.swing.tree.TreeNode;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Queue;
 import java.util.Stack;
 
 @RunWith(SpringRunner.class)
@@ -703,7 +707,8 @@ public class DemoApplicationTests {
 //        bt.postOrderTraversal(bt.root);
 //        bt.preOrderTraversalUsingRecursive(bt.root);
 //        bt.inOrderTraversalUsingRecursive(bt.root);
-        bt.postOrderTraversalUsingRecursive(bt.root);
+//        bt.postOrderTraversalUsingRecursive(bt.root);
+        bt.levelOrderTraserval(bt.root);
     }
 
     @Test
@@ -715,6 +720,29 @@ public class DemoApplicationTests {
         long l = Duration.between(start, end).toMillis();
         System.out.println(l);
     }
+
+    @Test
+    public void operatorTest(){
+        int a = 224;
+        int i = a >> 3;  // Signed
+        int b = a >>> 3; // Unsigned
+    }
+
+
+    @Test
+    public void stackTest(){
+        Stack<Integer> stack = new Stack<>();
+        stack.push(1);
+        stack.push(3);
+        stack.push(5);
+
+        Integer pop5 = stack.pop();
+        Integer peek3 = stack.peek();
+
+        Assert.assertEquals(String.valueOf(pop5), "5");
+        Assert.assertEquals(String.valueOf(peek3), "3");
+    }
+
 
 }
 
