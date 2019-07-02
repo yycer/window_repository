@@ -204,6 +204,73 @@ public class BinaryTree {
             }
         }
     }
+
+    /**
+
+     */
+    /**
+     * 删除树中节点。
+     * 1. 删除的为叶子节点   => null
+     * 2. 删除的包含一个节点 => 直接顶替。
+     * 3. 删除的包含两个节点 => 找右子树中最小的顶替。
+     * @param node
+     * @param val: 待删除节点的值。
+     */
+    public Node deleteNode(Node node, int val){
+        // Step0: Base check.
+        if (node == null) return null;
+
+        // Step1: 定位待删除元素。
+        if      (node.getVal() > val){
+            node.setLeftNode(deleteNode(node.getLeftNode(), val));
+        }
+        else if (node.getVal() < val){
+            node.setRightNode(deleteNode(node.getRightNode(), val));
+        }
+        else {
+            // Step2: 三种情况。
+            // 情况1: 删除的包含两个节点。
+            if      (node.getLeftNode() != null && node.getRightNode() != null){
+                Node tmpNode = node;
+                Node minNodeForRight = minElementInRight(tmpNode.getRightNode());
+                node.setVal(minNodeForRight.getVal());
+                deleteNode(node.getRightNode(), minNodeForRight.getVal());
+            }
+            // 情况2.1: 删除的包含一个节点(左)
+            else if (node.getLeftNode() != null){
+                node = node.getLeftNode();
+            }
+            // 情况2.2: 删除的包含一个节点(右)
+            else if (node.getRightNode() != null){
+                node = node.getRightNode();
+            }
+            // 删除的为叶子节点
+            else{
+                node = null;
+            }
+        }
+        return node;
+    }
+
+
+
+    // region Private methods
+
+    /**
+     * 定位到当前结点右子树中最小的元素。
+     * @param node
+     * @return
+     */
+    private Node minElementInRight(Node node){
+        if (node.getLeftNode() == null) {
+            return node;
+        } else {
+            return minElementInRight(root.getLeftNode());
+        }
+
+    }
+
+    // endregion
 }
 
 

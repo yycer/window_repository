@@ -708,7 +708,11 @@ public class DemoApplicationTests {
 //        bt.preOrderTraversalUsingRecursive(bt.root);
 //        bt.inOrderTraversalUsingRecursive(bt.root);
 //        bt.postOrderTraversalUsingRecursive(bt.root);
-        bt.levelOrderTraserval(bt.root);
+//        bt.levelOrderTraserval(bt.root);
+        bt.deleteNode(bt.root, 6);
+
+        System.out.println("After delete node.");
+        BinaryTreePrinter.printNode(bt.root);
     }
 
     @Test
