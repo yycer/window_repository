@@ -206,9 +206,6 @@ public class BinaryTree {
     }
 
     /**
-
-     */
-    /**
      * 删除树中节点。
      * 1. 删除的为叶子节点   => null
      * 2. 删除的包含一个节点 => 直接顶替。
@@ -230,11 +227,11 @@ public class BinaryTree {
         else {
             // Step2: 三种情况。
             // 情况1: 删除的包含两个节点。
-            if      (node.getLeftNode() != null && node.getRightNode() != null){
+            if (node.getLeftNode() != null && node.getRightNode() != null){
                 Node tmpNode = node;
                 Node minNodeForRight = minElementInRight(tmpNode.getRightNode());
                 node.setVal(minNodeForRight.getVal());
-                deleteNode(node.getRightNode(), minNodeForRight.getVal());
+                node.setRightNode(deleteNode(node.getRightNode(), minNodeForRight.getVal()));
             }
             // 情况2.1: 删除的包含一个节点(左)
             else if (node.getLeftNode() != null){
@@ -265,7 +262,7 @@ public class BinaryTree {
         if (node.getLeftNode() == null) {
             return node;
         } else {
-            return minElementInRight(root.getLeftNode());
+            return minElementInRight(node.getLeftNode());
         }
 
     }

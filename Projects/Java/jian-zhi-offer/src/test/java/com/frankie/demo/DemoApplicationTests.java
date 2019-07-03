@@ -694,13 +694,17 @@ public class DemoApplicationTests {
     @Test
     public void buildBinaryTreeTest(){
         BinaryTree bt = new BinaryTree();
-        bt.addNode(4);
-        bt.addNode(2);
-        bt.addNode(6);
-        bt.addNode(1);
-        bt.addNode(3);
-        bt.addNode(5);
-        bt.addNode(7);
+        bt.addNode(40);
+        bt.addNode(20);
+        bt.addNode(60);
+        bt.addNode(10);
+        bt.addNode(30);
+        bt.addNode(50);
+        bt.addNode(70);
+        bt.addNode(42);
+        bt.addNode(55);
+        bt.addNode(53);
+        bt.addNode(59);
         BinaryTreePrinter.printNode(bt.root);
 //        bt.preOrderTraversal(bt.root);
 //        bt.inOrderTraversal(bt.root);
@@ -709,7 +713,7 @@ public class DemoApplicationTests {
 //        bt.inOrderTraversalUsingRecursive(bt.root);
 //        bt.postOrderTraversalUsingRecursive(bt.root);
 //        bt.levelOrderTraserval(bt.root);
-        bt.deleteNode(bt.root, 6);
+        bt.deleteNode(bt.root, 59);
 
         System.out.println("After delete node.");
         BinaryTreePrinter.printNode(bt.root);
@@ -747,6 +751,71 @@ public class DemoApplicationTests {
         Assert.assertEquals(String.valueOf(peek3), "3");
     }
 
+
+    @Test
+    public void deleteLeafNodeFromTree(){
+        BinaryTree bt = new BinaryTree();
+        bt.addNode(40);
+        bt.addNode(20);
+        bt.addNode(60);
+        bt.addNode(10);
+        bt.addNode(30);
+        bt.addNode(50);
+        bt.addNode(70);
+        bt.addNode(42);
+        bt.addNode(55);
+        bt.addNode(53);
+        bt.addNode(59);
+        BinaryTreePrinter.printNode(bt.root);
+        bt.deleteNode(bt.root, 59);
+
+        System.out.println("After delete node.");
+        BinaryTreePrinter.printNode(bt.root);
+    }
+
+    @Test
+    public void deleteNodeWithOneChildFromTree(){
+        BinaryTree bt = new BinaryTree();
+        bt.addNode(40);
+        bt.addNode(20);
+        bt.addNode(60);
+        bt.addNode(10);
+        bt.addNode(30);
+        bt.addNode(50);
+        bt.addNode(70);
+        bt.addNode(42);
+        bt.addNode(55);
+        bt.addNode(53);
+        bt.addNode(59);
+        bt.addNode(80);
+        BinaryTreePrinter.printNode(bt.root);
+        bt.deleteNode(bt.root, 70);
+
+        System.out.println("After delete node.");
+        BinaryTreePrinter.printNode(bt.root);
+    }
+
+    @Test
+    public void deleteNodeWithTwoChildFromTree(){
+        BinaryTree bt = new BinaryTree();
+        bt.addNode(40);
+        bt.addNode(20);
+        bt.addNode(60);
+        bt.addNode(10);
+        bt.addNode(30);
+        bt.addNode(50);
+        bt.addNode(70);
+        bt.addNode(42);
+        bt.addNode(55);
+        bt.addNode(53);
+        bt.addNode(59);
+        bt.addNode(80);
+        BinaryTreePrinter.printNode(bt.root);
+        bt.deleteNode(bt.root, 50);
+
+        System.out.println("After delete node.");
+        BinaryTreePrinter.printNode(bt.root);
+    }
 
 }
 
