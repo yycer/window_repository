@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.yaml.snakeyaml.util.ArrayStack;
 
 import javax.swing.tree.TreeNode;
+import java.beans.Transient;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -845,6 +846,43 @@ public class DemoApplicationTests {
         double b = 9.9;
 
         double v = a - b;
+    }
+
+    @Test
+    public void nextNodeTesT(){
+        BinaryTree bt = new BinaryTree();
+        bt.root = new com.frankie.demo.binaryTree.Node(40);
+        com.frankie.demo.binaryTree.Node node20 = new com.frankie.demo.binaryTree.Node(20);
+        com.frankie.demo.binaryTree.Node node60 = new com.frankie.demo.binaryTree.Node(60);
+        com.frankie.demo.binaryTree.Node node10 = new com.frankie.demo.binaryTree.Node(10);
+        com.frankie.demo.binaryTree.Node node30 = new com.frankie.demo.binaryTree.Node(30);
+        com.frankie.demo.binaryTree.Node node50 = new com.frankie.demo.binaryTree.Node(50);
+        com.frankie.demo.binaryTree.Node node70 = new com.frankie.demo.binaryTree.Node(70);
+        com.frankie.demo.binaryTree.Node node25 = new com.frankie.demo.binaryTree.Node(25);
+        com.frankie.demo.binaryTree.Node node35 = new com.frankie.demo.binaryTree.Node(35);
+
+        node30.setLeftNode(node25);
+        node30.setRightNode(node35);
+        node25.setParentNode(node30);
+        node35.setParentNode(node30);
+
+        node20.setLeftNode(node10);
+        node20.setRightNode(node30);
+        node10.setParentNode(node20);
+        node30.setParentNode(node20);
+
+        node60.setLeftNode(node50);
+        node60.setRightNode(node70);
+        node50.setParentNode(node60);
+        node50.setParentNode(node70);
+
+        bt.root.setLeftNode(node20);
+        bt.root.setRightNode(node60);
+        node20.setParentNode(bt.root);
+        node60.setParentNode(bt.root);
+
+//        BinaryTreePrinter.printNode(bt.root);
+        com.frankie.demo.binaryTree.Node node = bt.returnNextNode(node35);
     }
 
 }

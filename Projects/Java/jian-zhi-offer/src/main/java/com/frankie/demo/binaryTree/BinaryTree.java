@@ -1,5 +1,6 @@
 package com.frankie.demo.binaryTree;
 
+import ch.qos.logback.core.joran.conditional.ElseAction;
 import com.frankie.demo.LinkedListUtils;
 import com.sun.jmx.remote.internal.ArrayQueue;
 import sun.nio.cs.FastCharsetProvider;
@@ -289,6 +290,38 @@ public class BinaryTree {
     }
 
 
+    /**
+     * 返回二叉树的下一个节点
+     * 1. 该节点包含右节点，取其右子树中最小值(most leftNode)
+     * 2. 该节点为父节点的左子树，返回父节点。
+     * 3. 该节点为父节点的右子树，一路向上遍历，直至找到一个其父节点为左子树的节点，返回左子树的父节点。
+     * @return
+     */
+    public Node returnNextNode(Node curNode){
+        if (curNode == null) return null;
+
+        // Step1: 该节点包含右节点，取其右子树中最小值(最左左叶子节点)
+        if (curNode.getRightNode() != null){
+            Node rightNode = curNode.getRightNode();
+            while (rightNode.getLeftNode() != null){
+                rightNode = rightNode.getLeftNode();
+            }
+            return rightNode;
+        }
+
+        /**
+         * 结合了2、3两种情况
+         * 2. 如果该节点为父节点的左节点，就直接返回其父节点。
+         * 3. 如果该节点为父节点的右节点，一直往上遍历，直至发现它的父节点是爷爷节点的左节点，返回爷爷节点。
+         */
+        while (curNode.getParentNode() != null){
+            if (curNode.getParentNode().getLeftNode() == curNode) return curNode.getParentNode();
+            curNode = curNode.getParentNode();
+        }
+
+        return null;
+
+    }
 
     // region Private methods
 

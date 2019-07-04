@@ -9,8 +9,9 @@ public class Node {
     public int val;
     private Node leftNode;
     private Node rightNode;
+    private Node parentNode;
 
-    Node(int val){
+    public Node(int val){
         this.val  = val;
         leftNode  = null;
         rightNode = null;
