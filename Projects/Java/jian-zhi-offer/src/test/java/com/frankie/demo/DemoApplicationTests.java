@@ -885,9 +885,16 @@ public class DemoApplicationTests {
         com.frankie.demo.binaryTree.Node node = bt.returnNextNode(node35);
     }
 
+    @Test
+    public void rebuildBtTest(){
+        int[] pre = {1, 2, 4, 7, 3, 5, 6, 8};
+        int[] in  = {4, 7, 2, 1, 5, 3, 8, 6};
+        BinaryTree bt = new BinaryTree();
+        com.frankie.demo.binaryTree.Node node = bt.rebuildBinaryTree(pre, in);
+        System.out.println(node);
+    }
+
 }
-
-
 
 
 

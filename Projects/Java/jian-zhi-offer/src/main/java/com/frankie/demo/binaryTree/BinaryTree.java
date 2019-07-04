@@ -323,6 +323,33 @@ public class BinaryTree {
 
     }
 
+
+    /**
+     * 重建二叉树
+     * @param pre
+     * @param in
+     * @return
+     */
+    public Node rebuildBinaryTree(int[] pre, int[] in){
+
+        return rebuildBTCore(pre, 0, pre.length - 1, in, 0, in.length - 1);
+    }
+
+    private Node rebuildBTCore(int[] pre, int preLeft, int preRight, int[] in, int inLeft, int inRight) {
+        if (preLeft > preRight || inLeft > inRight) return null;
+
+        Node root = new Node(pre[preLeft]);
+        for (int i = inLeft; i <= inRight; i++){
+            // 定位中序遍历中的根节点
+            if (pre[preLeft] == in[i]){
+                root.setLeftNode(rebuildBTCore(pre, preLeft + 1, preLeft + i - inLeft, in, inLeft, i - 1));
+                root.setRightNode(rebuildBTCore(pre, preLeft + i + 1 - inLeft, preRight, in, i + 1, inRight));
+            }
+        }
+
+        return root;
+    }
+
     // region Private methods
 
     /**
