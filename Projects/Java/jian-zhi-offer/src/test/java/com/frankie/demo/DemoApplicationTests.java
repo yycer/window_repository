@@ -817,6 +817,36 @@ public class DemoApplicationTests {
         BinaryTreePrinter.printNode(bt.root);
     }
 
+
+    @Test
+    public void hasSubtreeTest(){
+        BinaryTree bt1 = new BinaryTree();
+        bt1.addNode(8);
+        bt1.addNode(5);
+        bt1.addNode(10);
+        bt1.addNode(9);
+        bt1.addNode(12);
+        bt1.addNode(11);
+        bt1.addNode(15);
+        BinaryTreePrinter.printNode(bt1.root);
+
+        BinaryTree bt2 = new BinaryTree();
+        bt2.addNode(10);
+        bt2.addNode(9);
+        bt2.addNode(13);
+
+        boolean result = bt1.hasSubtree(bt1.root, bt2.root);
+        System.out.println(result);
+    }
+
+    @Test
+    public void doubleCompareTest(){
+        double a = 19.9;
+        double b = 9.9;
+
+        double v = a - b;
+    }
+
 }
 
 

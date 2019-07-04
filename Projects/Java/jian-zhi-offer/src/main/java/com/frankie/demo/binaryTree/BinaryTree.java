@@ -2,7 +2,9 @@ package com.frankie.demo.binaryTree;
 
 import com.frankie.demo.LinkedListUtils;
 import com.sun.jmx.remote.internal.ArrayQueue;
+import sun.nio.cs.FastCharsetProvider;
 
+import javax.xml.ws.FaultAction;
 import java.util.ArrayDeque;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -247,6 +249,43 @@ public class BinaryTree {
             }
         }
         return node;
+    }
+
+    /**
+     * 判断树1是否包含树2
+     * @param root1
+     * @param root2
+     * @return
+     */
+    public boolean hasSubtree(Node root1, Node root2){
+        boolean result = false;
+        if (root1 != null && root2 != null){
+            if (root1.getVal() == root2.getVal()) result = doesTree1HasTree2(root1, root2);
+            if (!result)                          result = hasSubtree(root1.getLeftNode(), root2);
+            if (!result)                          result = hasSubtree(root1.getRightNode(), root2);
+        }
+        return result;
+    }
+
+    /**
+     * 判断子树1是否包含子树2。
+     * 1. 不包含的情况
+     * <1> tree1 == null
+     * <2> 树1、2当前节点的值不相等。
+     * @param n1
+     * @param n2
+     * @return
+     */
+    public boolean doesTree1HasTree2(Node n1, Node n2){
+        // line1在line2之上的原因是，母树除了包含子树外，还可能会有些节点延伸。
+        if (n2 == null) return true;  // line1
+
+        // 子树怎么可能比母树大叻
+        if (n1 == null) return false; // line2
+        if (n1.getVal() != n2.getVal()) return false;
+        return doesTree1HasTree2(n1.getLeftNode(), n2.getLeftNode()) &&
+               doesTree1HasTree2(n1.getRightNode(), n2.getRightNode());
+
     }
 
 
