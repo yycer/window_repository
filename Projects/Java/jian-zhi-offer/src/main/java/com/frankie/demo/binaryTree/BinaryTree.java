@@ -1,13 +1,6 @@
 package com.frankie.demo.binaryTree;
 
-import ch.qos.logback.core.joran.conditional.ElseAction;
-import com.frankie.demo.LinkedListUtils;
-import com.sun.jmx.remote.internal.ArrayQueue;
-import sun.nio.cs.FastCharsetProvider;
-
-import javax.xml.ws.FaultAction;
 import java.util.ArrayDeque;
-import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
@@ -341,13 +334,31 @@ public class BinaryTree {
         Node root = new Node(pre[preLeft]);
         for (int i = inLeft; i <= inRight; i++){
             // 定位中序遍历中的根节点
-            if (pre[preLeft] == in[i]){
+            if (in[i] == pre[preLeft]){
                 root.setLeftNode(rebuildBTCore(pre, preLeft + 1, preLeft + i - inLeft, in, inLeft, i - 1));
                 root.setRightNode(rebuildBTCore(pre, preLeft + i + 1 - inLeft, preRight, in, i + 1, inRight));
             }
         }
 
         return root;
+    }
+
+    /**
+     * 二叉树的镜像
+     * @param node
+     */
+    public Node mirrorRecursively(Node node){
+        if (node == null) return null;
+        if (node.getLeftNode() == null && node.getRightNode() == null) return null;
+
+        // 交换左右子树、节点
+        Node tmpNode = node.getLeftNode();
+        node.setLeftNode(node.getRightNode());
+        node.setRightNode(tmpNode);
+
+        if (node.getLeftNode()  != null) mirrorRecursively(node.getLeftNode());
+        if (node.getRightNode() != null) mirrorRecursively(node.getRightNode());
+        return node;
     }
 
     // region Private methods

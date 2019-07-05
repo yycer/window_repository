@@ -894,6 +894,19 @@ public class DemoApplicationTests {
         System.out.println(node);
     }
 
+    @Test
+    public void mirrorBinaryTreeTest(){
+        BinaryTree bt = new BinaryTree();
+        bt.addNode(8);
+        bt.addNode(6);
+        bt.addNode(10);
+        bt.addNode(5);
+        bt.addNode(7);
+//        bt.addNode(9);
+//        bt.addNode(11);
+        com.frankie.demo.binaryTree.Node node = bt.mirrorRecursively(bt.root);
+    }
+
 }
 
 
