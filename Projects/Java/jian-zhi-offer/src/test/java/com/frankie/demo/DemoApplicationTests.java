@@ -907,6 +907,30 @@ public class DemoApplicationTests {
         com.frankie.demo.binaryTree.Node node = bt.mirrorRecursively(bt.root);
     }
 
+    @Test
+    public void isSymmetricalTest(){
+        BinaryTree bt = new BinaryTree();
+        bt.root = new com.frankie.demo.binaryTree.Node(10);
+
+        com.frankie.demo.binaryTree.Node node201 = new com.frankie.demo.binaryTree.Node(20);
+        com.frankie.demo.binaryTree.Node node202 = new com.frankie.demo.binaryTree.Node(20);
+        com.frankie.demo.binaryTree.Node node701 = new com.frankie.demo.binaryTree.Node(70);
+        com.frankie.demo.binaryTree.Node node702 = new com.frankie.demo.binaryTree.Node(70);
+        com.frankie.demo.binaryTree.Node node301 = new com.frankie.demo.binaryTree.Node(30);
+        com.frankie.demo.binaryTree.Node node302 = new com.frankie.demo.binaryTree.Node(30);
+
+        node201.setLeftNode(node701);
+        node201.setRightNode(node301);
+        node202.setLeftNode(node302);
+        node202.setRightNode(node702);
+        bt.root.setLeftNode(node201);
+        bt.root.setRightNode(node202);
+        BinaryTreePrinter.printNode(bt.root);
+
+        boolean result = bt.isSymmetrical(bt.root);
+        Assert.assertTrue(result);
+    }
+
 }
 
 

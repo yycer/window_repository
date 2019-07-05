@@ -361,6 +361,25 @@ public class BinaryTree {
         return node;
     }
 
+    /**
+     * 判断二叉树的对称性
+     * @param node
+     * @return
+     */
+    public boolean isSymmetrical(Node node){
+        return isSymmetrical(node, node);
+    }
+
+    private boolean isSymmetrical(Node node1, Node node2) {
+        if (node1 == null && node2 == null)   return true;
+        if (node1 == null || node2 == null)   return false;
+        if (node1.getVal() != node2.getVal()) return false;
+
+        return isSymmetrical(node1.getLeftNode(),  node2.getRightNode()) &&
+               isSymmetrical(node1.getRightNode(), node2.getLeftNode());
+
+    }
+
     // region Private methods
 
     /**
