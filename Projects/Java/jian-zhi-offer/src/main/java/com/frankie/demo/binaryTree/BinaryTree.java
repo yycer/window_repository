@@ -2,6 +2,7 @@ package com.frankie.demo.binaryTree;
 
 import com.sun.org.apache.bcel.internal.generic.ARRAYLENGTH;
 
+import javax.print.attribute.standard.NumberUp;
 import java.lang.annotation.ElementType;
 import java.util.*;
 
@@ -446,6 +447,33 @@ public class BinaryTree {
         path.remove(path.size() - 1);
         return paths;
     }
+
+
+    private int index = 0;
+    /**
+     * 返回二叉搜索树中第k个节点
+     * @param node
+     * @param k
+     * @return
+     */
+    public Node returnFirstKNode(Node node, int k){
+        if (node != null){
+            Node curNode = returnFirstKNode(node.getLeftNode(), k);
+            if (curNode != null){
+                return curNode;
+            }
+            index++;
+            if (index == k){
+                return node;
+            }
+            curNode = returnFirstKNode(node.getRightNode(), k);
+            if (curNode != null){
+                return curNode;
+            }
+        }
+        return null;
+    }
+
 
     // region Private methods
 

@@ -955,6 +955,20 @@ public class DemoApplicationTests {
         ArrayList<ArrayList<Integer>> arrayLists = bt.returnPaths(bt.root, 22);
     }
 
+    @Test
+    public void returnFirstKNodeFromBST(){
+        BinaryTree bt = new BinaryTree();
+        bt.addNode(5);
+        bt.addNode(3);
+        bt.addNode(7);
+        bt.addNode(2);
+        bt.addNode(4);
+        bt.addNode(6);
+        bt.addNode(8);
+        com.frankie.demo.binaryTree.Node node = bt.returnFirstKNode(bt.root, 3);
+        System.out.println(2);
+    }
+
 }
 
 
