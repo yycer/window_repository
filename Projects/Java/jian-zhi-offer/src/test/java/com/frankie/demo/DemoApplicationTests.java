@@ -16,10 +16,7 @@ import java.beans.Transient;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -938,6 +935,24 @@ public class DemoApplicationTests {
         BinaryTree bt = new BinaryTree();
         boolean result = bt.verifySequenceOfBST(seq);
         Assert.assertTrue(result);
+    }
+
+    @Test
+    public void arrayListTest(){
+        ArrayList<Integer> integers = new ArrayList<>(Arrays.asList(1, 3, 5));
+        ArrayList<Integer> result = new ArrayList<>(integers);
+        integers.add(7);
+    }
+
+    @Test
+    public void returnPathsTest(){
+        BinaryTree bt = new BinaryTree();
+        bt.addNode(10);
+        bt.addNode(5);
+        bt.addNode(12);
+        bt.addNode(4);
+        bt.addNode(7);
+        ArrayList<ArrayList<Integer>> arrayLists = bt.returnPaths(bt.root, 22);
     }
 
 }

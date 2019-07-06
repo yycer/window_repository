@@ -1,10 +1,9 @@
 package com.frankie.demo.binaryTree;
 
+import com.sun.org.apache.bcel.internal.generic.ARRAYLENGTH;
+
 import java.lang.annotation.ElementType;
-import java.util.ArrayDeque;
-import java.util.Arrays;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 public class BinaryTree {
 
@@ -417,6 +416,35 @@ public class BinaryTree {
         }
 
         return left && right;
+    }
+
+
+    private ArrayList<ArrayList<Integer>> paths = new ArrayList<>();
+    private ArrayList<Integer> path = new ArrayList<>();
+    /**
+     * 返回树中和为某个值的所有路径。
+     * @param node
+     * @param target
+     */
+    public ArrayList<ArrayList<Integer>> returnPaths(Node node, int target){
+        if (node == null) return paths;
+        path.add(node.getVal());
+        target -= node.getVal();
+
+        if (target == 0 && node.getLeftNode() == null && node.getRightNode() == null){
+            paths.add(new ArrayList<>(path));
+        }
+
+        if (node.getLeftNode() != null){
+            returnPaths(node.getLeftNode(),target);
+        }
+
+        if (node.getRightNode() != null){
+            returnPaths(node.getRightNode(), target);
+        }
+        // 回溯，删除最后一个元素。
+        path.remove(path.size() - 1);
+        return paths;
     }
 
     // region Private methods
