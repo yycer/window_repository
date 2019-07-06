@@ -931,6 +931,15 @@ public class DemoApplicationTests {
         Assert.assertTrue(result);
     }
 
+    @Test
+    public void veriftSequenceOfBSTTest(){
+        int[] seq = {5, 7, 6, 9, 11, 10, 8};
+//        int[] seq = {5, 7, 6, 18, 12, 15, 10};
+        BinaryTree bt = new BinaryTree();
+        boolean result = bt.verifySequenceOfBST(seq);
+        Assert.assertTrue(result);
+    }
+
 }
 
 

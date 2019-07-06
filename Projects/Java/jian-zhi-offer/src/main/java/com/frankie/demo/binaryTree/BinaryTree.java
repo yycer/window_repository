@@ -1,6 +1,8 @@
 package com.frankie.demo.binaryTree;
 
+import java.lang.annotation.ElementType;
 import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Queue;
 import java.util.Stack;
 
@@ -378,6 +380,43 @@ public class BinaryTree {
         return isSymmetrical(node1.getLeftNode(),  node2.getRightNode()) &&
                isSymmetrical(node1.getRightNode(), node2.getLeftNode());
 
+    }
+
+    /**
+     * 校验是否为后续遍历序列
+     * @param sequence
+     */
+    public boolean verifySequenceOfBST(int[] sequence){
+        int length = sequence.length;
+        if (sequence == null || length <= 0){
+            return false;
+        }
+
+        int root = sequence[length - 1];
+
+        // 定位到第一个大于根节点的节点索引。
+        int i = 0;
+        for (; i < length - 1; i++){
+            if (sequence[i] > root) break;
+        }
+
+        // 防止处于右子树中的节点比根节点小。
+        int j = i;
+        for (; j < length - 1; j++){
+            if (sequence[j] < root) return false;
+        }
+
+        boolean left = true;
+        if (i > 0){
+            left = verifySequenceOfBST(Arrays.copyOfRange(sequence, 0, i));
+        }
+
+        boolean right = true;
+        if (i < length - 1){
+            right = verifySequenceOfBST(Arrays.copyOfRange(sequence, i, length -1));
+        }
+
+        return left && right;
     }
 
     // region Private methods
