@@ -503,6 +503,23 @@ public class BinaryTree {
         return isBalancedTree(node.getLeftNode()) && isBalancedTree(node.getRightNode());
     }
 
+    public boolean isBalancedTreeOptimization(Node node){
+        // -1代表非平衡二叉树，即左右子树之间的深度大于1。
+        return getDepth(node) != -1;
+    }
+
+    private int getDepth(Node node){
+        if (node == null) return 0;
+        int left  = getDepth(node.getLeftNode());
+        if (left  == -1) return -1;
+        int right = getDepth(node.getRightNode());
+        if (right == -1) return -1;
+        /**
+         * 若任何父节点下的左右子树的深度差大于1，则返回-1(非平衡二叉树)，否则返回左右子树中更大的深度。
+         */
+        return Math.abs(left - right) > 1 ? -1 : Math.max(left, right) + 1;
+    }
+
     // region Private methods
 
     /**

@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.yaml.snakeyaml.util.ArrayStack;
 
+import javax.swing.*;
 import javax.swing.tree.TreeNode;
 import java.beans.Transient;
 import java.time.Duration;
@@ -1004,7 +1005,9 @@ public class DemoApplicationTests {
         com.frankie.demo.binaryTree.Node n5 = new com.frankie.demo.binaryTree.Node(5);
         com.frankie.demo.binaryTree.Node n6 = new com.frankie.demo.binaryTree.Node(6);
         com.frankie.demo.binaryTree.Node n7 = new com.frankie.demo.binaryTree.Node(7);
+        com.frankie.demo.binaryTree.Node n8 = new com.frankie.demo.binaryTree.Node(8);
 
+        n7.setRightNode(n8);
         n5.setLeftNode(n7);
         n2.setLeftNode(n4);
         n2.setRightNode(n5);
@@ -1013,8 +1016,9 @@ public class DemoApplicationTests {
         bt.root.setRightNode(n3);
 
         BinaryTreePrinter.printNode(bt.root);
-        boolean balancedTree = bt.isBalancedTree(bt.root);
-        System.out.println(balancedTree);
+//        boolean balancedTree = bt.isBalancedTree(bt.root);
+        boolean balancedTreeOptimization = bt.isBalancedTreeOptimization(bt.root);
+        Assert.assertFalse(balancedTreeOptimization);
     }
 
 }
