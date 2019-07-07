@@ -111,7 +111,7 @@ public class LinkedListUtils {
      * <1> head == null
      * <2> 一个结点
      * <3> 多个结点
-     * @return
+
      */
     public Node reverseLinkList(){
         if (head == null) return null;
@@ -248,7 +248,7 @@ public class LinkedListUtils {
      * 2. 节点总数小于k
      * 3. k = 0 => secondNode.getValue => NullPointerException
      * @param k
-     * @return
+
      */
     public Integer findLastKNode(int k){
         if (head == null || k <= 0) return -1;

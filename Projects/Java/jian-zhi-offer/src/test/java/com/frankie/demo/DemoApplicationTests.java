@@ -734,7 +734,8 @@ public class DemoApplicationTests {
 //        bt.postOrderTraversal2(bt.root);
 //        bt.preOrderTraversalUsingRecursive(bt.root);
 //        bt.inOrderTraversalUsingRecursive(bt.root);
-        bt.postOrderTraversalUsingRecursive(bt.root);
+//        bt.postOrderTraversalUsingRecursive(bt.root);
+        bt.levelOrderTraserval2(bt.root);
     }
 
     @Test
@@ -787,13 +788,14 @@ public class DemoApplicationTests {
         bt.addNode(30);
         bt.addNode(50);
         bt.addNode(70);
+        bt.addNode(3);
         bt.addNode(42);
         bt.addNode(55);
+        bt.addNode(80);
         bt.addNode(53);
         bt.addNode(59);
         BinaryTreePrinter.printNode(bt.root);
-        bt.deleteNode(bt.root, 59);
-
+        bt.deleteNode(bt.root, 50);
         System.out.println("After delete node.");
         BinaryTreePrinter.printNode(bt.root);
     }

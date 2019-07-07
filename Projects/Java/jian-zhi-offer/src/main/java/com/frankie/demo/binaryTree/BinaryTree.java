@@ -200,23 +200,23 @@ public class BinaryTree {
     /**
      * 广度优先遍历(队列)
      */
-    public void levelOrderTraserval(Node node){
-        if (node == null){
-            System.out.println("Empty tree!");
-            return;
-        }
+    public void levelOrderTraserval2(Node node){
+        if (node == null) return;
+        ArrayDeque<Node> deque = new ArrayDeque<>();
+        deque.addLast(node);
+        System.out.println("广度优先遍历: ");
 
-        Queue<Node> queue = new ArrayDeque<>();
-        queue.add(node);
+        while (!deque.isEmpty()){
+            // 重点！不能创建一个新的变量喔，否则会造成node永远为根节点，进一步导致死循环！！！
+            node = deque.removeFirst();
+            System.out.print(node.getVal() + " ");
 
-        while (!queue.isEmpty()){
-            Node curNode = queue.remove();
-            System.out.print(curNode.getVal() + " ");
-            if (curNode.getLeftNode() != null){
-                queue.add(curNode.getLeftNode());
+            if (node.getLeftNode()  != null){
+                deque.addLast(node.getLeftNode());
             }
-            if (curNode.getRightNode() != null){
-                queue.add(curNode.getRightNode());
+
+            if (node.getRightNode() != null){
+                deque.addLast(node.getRightNode());
             }
         }
     }
@@ -224,9 +224,8 @@ public class BinaryTree {
     /**
      * 删除树中节点。
      * 1. 删除的为叶子节点   => null
-     * 2. 删除的包含一个节点 => 直接顶替。
+     * 2. 删除的包含一个节点 => 直接拿其子节点顶替。
      * 3. 删除的包含两个节点 => 找右子树中最小的顶替。
-     * @param node
      * @param val: 待删除节点的值。
      */
     public Node deleteNode(Node node, int val){
@@ -267,9 +266,6 @@ public class BinaryTree {
 
     /**
      * 判断树1是否包含树2
-     * @param root1
-     * @param root2
-     * @return
      */
     public boolean hasSubtree(Node root1, Node root2){
         boolean result = false;
@@ -286,9 +282,6 @@ public class BinaryTree {
      * 1. 不包含的情况
      * <1> tree1 == null
      * <2> 树1、2当前节点的值不相等。
-     * @param n1
-     * @param n2
-     * @return
      */
     public boolean doesTree1HasTree2(Node n1, Node n2){
         // line1在line2之上的原因是，母树除了包含子树外，还可能会有些节点延伸。
@@ -308,7 +301,6 @@ public class BinaryTree {
      * 1. 该节点包含右节点，取其右子树中最小值(most leftNode)
      * 2. 该节点为父节点的左子树，返回父节点。
      * 3. 该节点为父节点的右子树，一路向上遍历，直至找到一个其父节点为左子树的节点，返回左子树的父节点。
-     * @return
      */
     public Node returnNextNode(Node curNode){
         if (curNode == null) return null;
@@ -339,9 +331,6 @@ public class BinaryTree {
 
     /**
      * 重建二叉树
-     * @param pre
-     * @param in
-     * @return
      */
     public Node rebuildBinaryTree(int[] pre, int[] in){
 
@@ -365,7 +354,6 @@ public class BinaryTree {
 
     /**
      * 二叉树的镜像
-     * @param node
      */
     public Node mirrorRecursively(Node node){
         if (node == null) return null;
@@ -383,8 +371,6 @@ public class BinaryTree {
 
     /**
      * 判断二叉树的对称性
-     * @param node
-     * @return
      */
     public boolean isSymmetrical(Node node){
         return isSymmetrical(node, node);
@@ -402,7 +388,6 @@ public class BinaryTree {
 
     /**
      * 校验是否为后续遍历序列
-     * @param sequence
      */
     public boolean verifySequenceOfBST(int[] sequence){
         int length = sequence.length;
@@ -442,8 +427,6 @@ public class BinaryTree {
     private ArrayList<Integer> path = new ArrayList<>();
     /**
      * 返回树中和为某个值的所有路径。
-     * @param node
-     * @param target
      */
     public ArrayList<ArrayList<Integer>> returnPaths(Node node, int target){
         if (node == null) return paths;
@@ -470,9 +453,6 @@ public class BinaryTree {
     private int index = 0;
     /**
      * 返回二叉搜索树中第k个节点
-     * @param node
-     * @param k
-     * @return
      */
     public Node returnFirstKNode(Node node, int k){
         if (node != null){
@@ -495,8 +475,6 @@ public class BinaryTree {
 
     /**
      * 计算二叉树深度
-     * @param node
-     * @return
      */
     public int treeDepth(Node node){
         if (node == null) return 0;
@@ -509,8 +487,6 @@ public class BinaryTree {
 
     /**
      * 判断是否为平衡二叉树
-     * @param node
-     * @return
      */
     public boolean isBalancedTree(Node node){
         if (node == null) return true;
@@ -546,8 +522,6 @@ public class BinaryTree {
 
     /**
      * 定位到当前结点右子树中最小的元素。
-     * @param node
-     * @return
      */
     private Node minElementInRight(Node node){
         if (node.getLeftNode() == null) {
