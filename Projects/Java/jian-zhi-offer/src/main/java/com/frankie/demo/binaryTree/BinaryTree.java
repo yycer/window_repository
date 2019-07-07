@@ -1,9 +1,5 @@
 package com.frankie.demo.binaryTree;
 
-import com.sun.org.apache.bcel.internal.generic.ARRAYLENGTH;
-
-import javax.print.attribute.standard.NumberUp;
-import java.lang.annotation.ElementType;
 import java.util.*;
 
 public class BinaryTree {
@@ -474,6 +470,38 @@ public class BinaryTree {
         return null;
     }
 
+
+    /**
+     * 计算二叉树深度
+     * @param node
+     * @return
+     */
+    public int treeDepth(Node node){
+        if (node == null) return 0;
+
+        int left  = treeDepth(node.getLeftNode());
+        int rigth = treeDepth(node.getRightNode());
+
+        return (left > rigth) ? (left + 1) : (rigth + 1);
+    }
+
+    /**
+     * 判断是否为平衡二叉树
+     * @param node
+     * @return
+     */
+    public boolean isBalancedTree(Node node){
+        if (node == null) return true;
+        int left  = treeDepth(node.getLeftNode());
+        int right = treeDepth(node.getRightNode());
+        int diff = left - right;
+        if (diff > 1 || diff < -1){
+            return false;
+        }
+
+        // 这一步非常重复，重蹈fibonacci的覆辙！！！
+        return isBalancedTree(node.getLeftNode()) && isBalancedTree(node.getRightNode());
+    }
 
     // region Private methods
 

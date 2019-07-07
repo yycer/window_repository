@@ -969,6 +969,54 @@ public class DemoApplicationTests {
         System.out.println(2);
     }
 
+    @Test
+    public void calculateTreeDepth(){
+        BinaryTree bt = new BinaryTree();
+        bt.root = new com.frankie.demo.binaryTree.Node(1);
+
+        com.frankie.demo.binaryTree.Node n2 = new com.frankie.demo.binaryTree.Node(2);
+        com.frankie.demo.binaryTree.Node n3 = new com.frankie.demo.binaryTree.Node(3);
+        com.frankie.demo.binaryTree.Node n4 = new com.frankie.demo.binaryTree.Node(4);
+        com.frankie.demo.binaryTree.Node n5 = new com.frankie.demo.binaryTree.Node(5);
+        com.frankie.demo.binaryTree.Node n6 = new com.frankie.demo.binaryTree.Node(6);
+        com.frankie.demo.binaryTree.Node n7 = new com.frankie.demo.binaryTree.Node(7);
+
+        n5.setLeftNode(n7);
+        n2.setLeftNode(n4);
+        n2.setRightNode(n5);
+        n3.setRightNode(n6);
+        bt.root.setLeftNode(n2);
+        bt.root.setRightNode(n3);
+
+        BinaryTreePrinter.printNode(bt.root);
+        int depth = bt.treeDepth(bt.root);
+        Assert.assertEquals(depth, 4);
+    }
+
+    @Test
+    public void isBalancedTreeTest(){
+        BinaryTree bt = new BinaryTree();
+        bt.root = new com.frankie.demo.binaryTree.Node(1);
+
+        com.frankie.demo.binaryTree.Node n2 = new com.frankie.demo.binaryTree.Node(2);
+        com.frankie.demo.binaryTree.Node n3 = new com.frankie.demo.binaryTree.Node(3);
+        com.frankie.demo.binaryTree.Node n4 = new com.frankie.demo.binaryTree.Node(4);
+        com.frankie.demo.binaryTree.Node n5 = new com.frankie.demo.binaryTree.Node(5);
+        com.frankie.demo.binaryTree.Node n6 = new com.frankie.demo.binaryTree.Node(6);
+        com.frankie.demo.binaryTree.Node n7 = new com.frankie.demo.binaryTree.Node(7);
+
+        n5.setLeftNode(n7);
+        n2.setLeftNode(n4);
+        n2.setRightNode(n5);
+        n3.setRightNode(n6);
+        bt.root.setLeftNode(n2);
+        bt.root.setRightNode(n3);
+
+        BinaryTreePrinter.printNode(bt.root);
+        boolean balancedTree = bt.isBalancedTree(bt.root);
+        System.out.println(balancedTree);
+    }
+
 }
 
 
