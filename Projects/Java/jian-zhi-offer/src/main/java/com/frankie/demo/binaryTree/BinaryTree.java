@@ -6,51 +6,63 @@ public class BinaryTree {
 
     public Node root;
 
-    private Node addNodeRecursive(Node cur, int val){
-        if (cur == null) {
-            return new Node(val);
-        }
-
-        if (val < cur.getVal()){
-            cur.setLeftNode(addNodeRecursive(cur.getLeftNode(), val));
-        } else if (val > cur.getVal()){
-            cur.setRightNode(addNodeRecursive(cur.getRightNode(), val));
-        } else{
-            return cur;
-        }
-        return cur;
-    }
-
+    /**
+     * 递归法构建二叉搜索树。
+     */
     public void addNode(int val){
+        // 根节点随着新节点的增加而改变。
         root = addNodeRecursive(root, val);
     }
 
-    private boolean containNodeRecursive(Node cur, int val){
-        if (cur == null) return false;
-        if (cur.getVal() == val) return true;
+    private Node addNodeRecursive(Node curNode, int val){
+        if (curNode == null) {
+            return new Node(val);
+        }
 
-        // 如果待查询节点的值大于当前节点的值
-        return (val > cur.getVal())
-                // 继续遍历其右子树
-                ? containNodeRecursive(cur.getRightNode(), val)
-                // 否则继续遍历其左子树
-                : containNodeRecursive(cur.getLeftNode(), val);
+        if (val < curNode.getVal()){
+            curNode.setLeftNode(addNodeRecursive(curNode.getLeftNode(), val));
+        } else if (val > curNode.getVal()){
+            curNode.setRightNode(addNodeRecursive(curNode.getRightNode(), val));
+        } else{
+            return curNode;
+        }
+        return curNode;
     }
 
+    /**
+     * 判断一棵二叉搜索树中是否包含值为某个数的节点。
+     */
     public boolean containNode(int val){
         return containNodeRecursive(root, val);
     }
 
+    private boolean containNodeRecursive(Node curNode, int val){
+        if (curNode          == null) return false;
+        if (curNode.getVal() == val)  return true;
+
+        // 如果待查找节点的值小于当前节点的值。
+        return (val < curNode.getVal())
+                // 继续遍历其左子树。
+                ? containNodeRecursive(curNode.getLeftNode(), val)
+                // 否则继续遍历其右子树。
+                : containNodeRecursive(curNode.getRightNode(), val);
+    }
+
+
     /**
      * 先序遍历(循环法、栈方式)
+     * 1. 先将根节点压入栈中。
+     * 2. 出栈、先定位右子树、然后左子树，并将它们压入栈中。
      */
     public void preOrderTraversal(Node node){
 
         Stack<Node> stack = new Stack<>();
+        // Step1: 先将根节点压入栈中。
         stack.push(node);
-
         System.out.println("先序遍历: ");
+
         while (stack.size() > 0){
+            // Step2: 出栈、先定位右子树、然后左子树，并将它们压入栈中。
             Node curNode = stack.pop();
             System.out.print(curNode.getVal() + " ");
 
@@ -65,23 +77,28 @@ public class BinaryTree {
         }
     }
 
+
     /**
      * 中序遍历(循环法、栈方式)
+     * 1. 先将所有左子树压入栈中。
+     * 2. 出栈、定位到右子树。
      */
     public void inOrderTraversal(Node node){
-        Stack<Node> stack = new Stack<>();
-
+        if (node == null) return;
+        ArrayDeque<Node> deque = new ArrayDeque<>();
         System.out.println("中序遍历: ");
-        while (node != null || stack.size() > 0){
 
-            // 将所有左子树压入栈中。
+        while (node != null || deque.size() > 0){
+            // Step1: 先将所有左子树压入栈中。
             while (node != null){
-                stack.push(node);
+                deque.push(node);
                 node = node.getLeftNode();
             }
 
-            if (stack.size() > 0){
-                node = stack.pop();
+            if (deque.size() > 0){
+                // Step2: 出栈、定位到右子树。
+                // 执行下一个语句前，node为null，需要回溯到上一个叶子节点！
+                node = deque.pop();
                 System.out.print(node.getVal() + " ");
                 node = node.getRightNode();
             }
@@ -89,58 +106,65 @@ public class BinaryTree {
     }
 
     /**
-     * 后续遍历(循环法、栈方式)
-     * @param node
+     * 后续遍历(循环法、双栈方式)
+     * 1. 先将右子树压入节点栈中
+     * 2. 出栈、定位到左子树。
+     * 3. 打印后续遍历
      */
-    public void postOrderTraversal(Node node){
-        Stack<Node> stack = new Stack<>();
-        Stack<Integer> valueStack = new Stack<>();
+    public void postOrderTraversal2(Node node){
+        if (node == null) return;
+        ArrayDeque<Node>    nodeDeque  = new ArrayDeque<>();
+        ArrayDeque<Integer> valueDeque = new ArrayDeque<>();
 
-        while (node != null || stack.size() > 0){
-            // 先将右子树压栈。
+        while (node != null || nodeDeque.size() > 0){
+            // Step1: 先将右子树压入节点栈中
             while (node != null){
-                stack.push(node);
-                valueStack.push(node.getVal());
+                nodeDeque.push(node);
+                valueDeque.push(node.getVal());
                 node = node.getRightNode();
             }
 
-            node = stack.pop();
+            // Step2: 出栈、定位到左子树。
+            // 执行下一个语句前，node为null，需要回溯到上一个叶子节点！
+            node = nodeDeque.pop();
             node = node.getLeftNode();
         }
 
         System.out.println("后续遍历: ");
-        while (!valueStack.isEmpty()){
-            System.out.print(valueStack.pop() + " ");
+        // Step3: 打印后续遍历
+        while (!valueDeque.isEmpty()){
+            System.out.print(valueDeque.pop() + " ");
         }
     }
 
-    public int fibonacii(int n){
+    public int fibonacci(int n){
         if (n <= 0) return 0;
         if (n == 1) return 1;
 
-        return fibonacii(n-1) + fibonacii(n - 2);
+        return fibonacci(n-1) + fibonacci(n - 2);
     }
 
-    public int fibonaciiOptimize1(int n){
-        if (n <= 0) return 0;
+    /**
+     * @param n: 代表第几位fibonacci。
+     */
+    public int fibonacciOptimization(int n){
+        if (n == 0) return 0;
         if (n == 1) return 1;
 
-        long fibNMinusOne = 1;
-        long fibNMinusTwo = 0;
-        long result       = 0;
+        int nMinustwo = 0;
+        int nMinusOne = 1;
+        int result    = 0;
 
         for (int i = 2; i < n; i++){
-            result       = fibNMinusOne + fibNMinusTwo;
-            fibNMinusTwo = fibNMinusOne;
-            fibNMinusOne = result;
+            result    = nMinusOne + nMinustwo;
+            nMinustwo = nMinusOne;
+            nMinusOne = result;
         }
-
-        return (int)result;
+        return result;
     }
 
     /**
      * 先序遍历(递归法)
-     * @param node
      */
     public void preOrderTraversalUsingRecursive(Node node){
         if (node == null) return;
@@ -152,7 +176,6 @@ public class BinaryTree {
 
     /**
      * 中序遍历(递归法)
-     * @param node
      */
     public void inOrderTraversalUsingRecursive(Node node){
         if (node == null) return;
@@ -164,7 +187,6 @@ public class BinaryTree {
 
     /**
      * 后序遍历(递归法)
-     * @param node
      */
     public void postOrderTraversalUsingRecursive(Node node){
         if (node == null) return;

@@ -4,6 +4,7 @@ import com.frankie.demo.binaryTree.BinaryTree;
 import com.frankie.demo.binaryTree.BinaryTreePrinter;
 import com.frankie.demo.review.linkList.LinkListUtils;
 import com.sun.jmx.remote.internal.ArrayQueue;
+import org.assertj.core.error.ShouldBeInstanceOfAny;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -695,15 +696,16 @@ public class DemoApplicationTests {
         BinaryTree bt = new BinaryTree();
         bt.addNode(40);
         bt.addNode(20);
-        bt.addNode(60);
-        bt.addNode(10);
-        bt.addNode(30);
-        bt.addNode(50);
-        bt.addNode(70);
-        bt.addNode(42);
-        bt.addNode(55);
-        bt.addNode(53);
-        bt.addNode(59);
+        bt.addNode(20);
+//        bt.addNode(60);
+//        bt.addNode(10);
+//        bt.addNode(30);
+//        bt.addNode(50);
+//        bt.addNode(70);
+//        bt.addNode(42);
+//        bt.addNode(55);
+//        bt.addNode(53);
+//        bt.addNode(59);
         BinaryTreePrinter.printNode(bt.root);
 //        bt.preOrderTraversal(bt.root);
 //        bt.inOrderTraversal(bt.root);
@@ -712,20 +714,44 @@ public class DemoApplicationTests {
 //        bt.inOrderTraversalUsingRecursive(bt.root);
 //        bt.postOrderTraversalUsingRecursive(bt.root);
 //        bt.levelOrderTraserval(bt.root);
-        bt.deleteNode(bt.root, 59);
+//        bt.deleteNode(bt.root, 59);
 
         System.out.println("After delete node.");
         BinaryTreePrinter.printNode(bt.root);
     }
 
     @Test
+    public void traversalTest(){
+        BinaryTree bt = new BinaryTree();
+        bt.addNode(10);
+        bt.addNode(5);
+        bt.addNode(20);
+        bt.addNode(1);
+        bt.addNode(7);
+        bt.addNode(12);
+        bt.addNode(30);
+//        bt.inOrderTraversal(bt.root);
+//        bt.postOrderTraversal2(bt.root);
+//        bt.preOrderTraversalUsingRecursive(bt.root);
+//        bt.inOrderTraversalUsingRecursive(bt.root);
+        bt.postOrderTraversalUsingRecursive(bt.root);
+    }
+
+    @Test
     public void fibonaciiEfficiencyTest(){
         LocalDateTime start = LocalDateTime.now();
         BinaryTree bt = new BinaryTree();
-        bt.fibonaciiOptimize1(500);
+        bt.fibonacciOptimization(500);
         LocalDateTime end = LocalDateTime.now();
         long l = Duration.between(start, end).toMillis();
         System.out.println(l);
+    }
+
+    @Test
+    public void fibonacciTest(){
+        BinaryTree bt = new BinaryTree();
+        int result = bt.fibonacciOptimization(6);
+        Assert.assertEquals(result, 5);
     }
 
     @Test
