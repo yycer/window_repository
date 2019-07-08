@@ -265,11 +265,12 @@ public class BinaryTree {
     }
 
     /**
-     * 判断树1是否包含树2
+     * 判断树1是否包含树2。
      */
     public boolean hasSubtree(Node root1, Node root2){
         boolean result = false;
         if (root1 != null && root2 != null){
+            // 从树1定位与树2根节点一致的子树。
             if (root1.getVal() == root2.getVal()) result = doesTree1HasTree2(root1, root2);
             if (!result)                          result = hasSubtree(root1.getLeftNode(), root2);
             if (!result)                          result = hasSubtree(root1.getRightNode(), root2);
@@ -290,17 +291,17 @@ public class BinaryTree {
         // 子树怎么可能比母树大叻
         if (n1 == null) return false; // line2
         if (n1.getVal() != n2.getVal()) return false;
+
         return doesTree1HasTree2(n1.getLeftNode(), n2.getLeftNode()) &&
                doesTree1HasTree2(n1.getRightNode(), n2.getRightNode());
-
     }
 
 
     /**
      * 返回二叉树的下一个节点
-     * 1. 该节点包含右节点，取其右子树中最小值(most leftNode)
-     * 2. 该节点为父节点的左子树，返回父节点。
-     * 3. 该节点为父节点的右子树，一路向上遍历，直至找到一个其父节点为左子树的节点，返回左子树的父节点。
+     * 1. 若该节点包含右节点，取其右子树中最小值(most leftNode)
+     * 2. 若该节点为父节点的左子树，返回父节点。
+     * 3. 若该节点为父节点的右子树，一路向上遍历，直至找到一个其父节点为左子树的节点，返回其爷爷节点。
      */
     public Node returnNextNode(Node curNode){
         if (curNode == null) return null;
@@ -345,7 +346,7 @@ public class BinaryTree {
             // 定位中序遍历中的根节点
             if (in[i] == pre[preLeft]){
                 root.setLeftNode(rebuildBTCore(pre, preLeft + 1, preLeft + i - inLeft, in, inLeft, i - 1));
-                root.setRightNode(rebuildBTCore(pre, preLeft + i + 1 - inLeft, preRight, in, i + 1, inRight));
+                root.setRightNode(rebuildBTCore(pre, preLeft + i - inLeft + 1, preRight, in, i + 1, inRight));
             }
         }
 
@@ -391,7 +392,7 @@ public class BinaryTree {
      */
     public boolean verifySequenceOfBST(int[] sequence){
         int length = sequence.length;
-        if (sequence == null || length <= 0){
+        if (length <= 0){
             return false;
         }
 
@@ -424,7 +425,7 @@ public class BinaryTree {
 
 
     private ArrayList<ArrayList<Integer>> paths = new ArrayList<>();
-    private ArrayList<Integer> path = new ArrayList<>();
+    private ArrayList<Integer>            path  = new ArrayList<>();
     /**
      * 返回树中和为某个值的所有路径。
      */
@@ -480,9 +481,9 @@ public class BinaryTree {
         if (node == null) return 0;
 
         int left  = treeDepth(node.getLeftNode());
-        int rigth = treeDepth(node.getRightNode());
+        int right = treeDepth(node.getRightNode());
 
-        return (left > rigth) ? (left + 1) : (rigth + 1);
+        return (left > right) ? (left + 1) : (right + 1);
     }
 
     /**
@@ -501,6 +502,9 @@ public class BinaryTree {
         return isBalancedTree(node.getLeftNode()) && isBalancedTree(node.getRightNode());
     }
 
+    /**
+     * 判断是否为平衡二叉树(优化版)
+     */
     public boolean isBalancedTreeOptimization(Node node){
         // -1代表非平衡二叉树，即左右子树之间的深度大于1。
         return getDepth(node) != -1;
