@@ -1049,6 +1049,25 @@ public class DemoApplicationTests {
         Assert.assertFalse(balancedTreeOptimization);
     }
 
+
+    @Test
+    public void doubleStackTest(){
+        ComprehensiveUtils cu = new ComprehensiveUtils();
+        cu.queueAddElementUsingDoubleStacks(1);
+        cu.queueAddElementUsingDoubleStacks(2);
+        cu.queueAddElementUsingDoubleStacks(3);
+
+        int i1 = cu.queueRemoveElementUsingDoubleStacks();
+        int i2 = cu.queueRemoveElementUsingDoubleStacks();
+        int i3 = cu.queueRemoveElementUsingDoubleStacks();
+        int i4 = cu.queueRemoveElementUsingDoubleStacks();
+
+        Assert.assertEquals(i1, 1);
+        Assert.assertEquals(i2, 2);
+        Assert.assertEquals(i3, 3);
+        Assert.assertEquals(i4, -1);
+    }
+
 }
 
 
