@@ -1068,6 +1068,22 @@ public class DemoApplicationTests {
         Assert.assertEquals(i4, -1);
     }
 
+
+    @Test
+    public void doubleQueueTest(){
+        ComprehensiveUtils cu = new ComprehensiveUtils();
+        cu.stackAddElementUsingDoubleQueue(1);
+        cu.stackAddElementUsingDoubleQueue(2);
+        cu.stackAddElementUsingDoubleQueue(3);
+
+        int i3 = cu.stackRemoveElementUsingDoubleQueue();
+        int i2 = cu.stackRemoveElementUsingDoubleQueue();
+        int i1 = cu.stackRemoveElementUsingDoubleQueue();
+
+        Assert.assertEquals(i1, 1);
+        Assert.assertEquals(i2, 2);
+        Assert.assertEquals(i3, 3);
+    }
 }
 
 

@@ -1,5 +1,6 @@
 package com.frankie.demo;
 
+import java.util.ArrayDeque;
 import java.util.Stack;
 
 public class ComprehensiveUtils {
@@ -8,6 +9,10 @@ public class ComprehensiveUtils {
     private Stack<Integer> stackPrimary = new Stack<>();
     // 辅助栈
     private Stack<Integer> stackAuxiliary = new Stack<>();
+    // 主队列
+    private ArrayDeque<Integer> queuePrimary = new ArrayDeque<>();
+    // 辅助队列
+    private ArrayDeque<Integer> queueAuxiliary = new ArrayDeque<>();
 
     /**
      * 通过两个栈的方式实现队列的元素插入。
@@ -43,5 +48,34 @@ public class ComprehensiveUtils {
             return stackAuxiliary.pop();
     }
 
+    /**
+     * 通过两个队列模拟压栈。
+     */
+    public void stackAddElementUsingDoubleQueue(int x){
+        if (queuePrimary.size() == 0)
+            queueAuxiliary.addLast(x);
+        else
+            queuePrimary.addLast(x);
+    }
+
+    /**
+     * 通过两个队列模拟出栈。
+     */
+    public int stackRemoveElementUsingDoubleQueue(){
+
+        // Step1: Base check.
+        if (queuePrimary.isEmpty() && queueAuxiliary.isEmpty()) return -1;
+
+        if (queuePrimary.isEmpty()){
+            // 将辅助队列中的元素依次插入主队列中，仅保留最后弹出的一个。
+            while (queueAuxiliary.size() != 1)
+                queuePrimary.addLast(queueAuxiliary.removeFirst());
+            return queueAuxiliary.removeFirst();
+        } else {
+            while (queuePrimary.size()   != 1)
+                queueAuxiliary.addLast(queuePrimary.removeFirst());
+            return queuePrimary.removeFirst();
+        }
+    }
 
 }
