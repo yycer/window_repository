@@ -1099,6 +1099,22 @@ public class DemoApplicationTests {
         Assert.assertEquals(b1, 1);
         Assert.assertEquals(c0, 0);
     }
+
+    @Test
+    public void cuttingTest(){
+        ComprehensiveUtils cu = new ComprehensiveUtils();
+        int a4 = cu.maxProductAfterCutting(4);
+        int a6 = cu.maxProductAfterCutting(5);
+        int a9 = cu.maxProductAfterCutting(6);
+        int a12 = cu.maxProductAfterCutting(7);
+        int a18 = cu.maxProductAfterCutting(8);
+
+        Assert.assertEquals(a4, 4);
+        Assert.assertEquals(a6, 6);
+        Assert.assertEquals(a9, 9);
+        Assert.assertEquals(a12, 12);
+        Assert.assertEquals(a18, 18);
+    }
 }
 
 

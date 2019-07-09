@@ -1,5 +1,8 @@
 package com.frankie.demo;
 
+import com.sun.org.apache.bcel.internal.generic.FREM;
+import com.sun.org.apache.bcel.internal.generic.LNEG;
+
 import java.util.ArrayDeque;
 import java.util.Stack;
 
@@ -104,6 +107,22 @@ public class ComprehensiveUtils {
             }
         }
         return a[low];
+    }
+
+    /**
+     * 剪绳子，获取最大乘积(贪婪算法)。
+     */
+    public int maxProductAfterCutting(int length){
+        if (length <  2) return 0;
+        if (length == 2) return 1;
+        if (length == 3) return 2;
+
+        int timesOf3 = length / 3;
+        if (length - timesOf3 * 3 == 1)
+            timesOf3--;
+        int timeOf2 = (length - timesOf3 * 3) / 2;
+
+        return (int) (Math.pow(3, timesOf3) * Math.pow(2, timeOf2));
     }
 
 }
