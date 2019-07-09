@@ -1,4 +1,0 @@
-1.什么是推断(inference)？通过已知变量推测未知变量的分布。
-2.概率图模型(Probabilistic Graphical Model):Bayesian network(显式因果关系)、Markov network
-3.HMM: Hidden Markov Model(隐马尔科夫模型)是结构最简单的动态贝叶斯网络。
-4.什么是马尔科夫链(Markov chain)？系统下一时刻的状态仅由当前状态决定，不依赖于以往的任何状态。

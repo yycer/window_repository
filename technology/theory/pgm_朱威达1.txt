@@ -1,0 +1,4 @@
+1.representation(表现): directed graphical model & undirected graphical model.
+                       尽可能简单地显示出联合概率分布(joint probability distribution)？
+2.inference(推论)是什么？通过已知部分(observation)推测出未知部分(hidden).
+3.learning(学习): 如何推断系统的结构(structure)和参数(parameter)？

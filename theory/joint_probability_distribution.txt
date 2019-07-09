@@ -1,8 +1,0 @@
-？1.marginal distribution(边缘分布)是什么？ Computed from a joint distribution?
-    通过行或列变量来计算概率分布(也就是 row or column total).
-2.Joint distribution & condtional distribution
-3.Double-integration(二重积分)
-4.什么是联合概率分布(JPD)？我现在要出门，可能是因为取快递，可能是去博物馆，还可能是去吃饭...
-  多种随机(random)的因素(variables)同时(simultaneously)导致的一种状态。
-5.如果变量是离散的(discrete),这种分布可以描述成联合概率质量函数;(continuous)-->联合质量密度函数
-6.
