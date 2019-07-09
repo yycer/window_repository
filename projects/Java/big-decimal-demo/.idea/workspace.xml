@@ -1,0 +1,756 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="16ad1da7-861a-4c4d-875f-2b2166657de7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jdbc-with-h2/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jdbc-with-h2/code-nov-2017.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jdbc-with-h2/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jdbc-with-h2/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jdbc-with-h2/src/main/java/com/in28minutes/springboot/jdbc/h2/example/SpringBoot2JdbcWithH2Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jdbc-with-h2/src/main/java/com/in28minutes/springboot/jdbc/h2/example/student/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jdbc-with-h2/src/main/java/com/in28minutes/springboot/jdbc/h2/example/student/StudentJdbcRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jdbc-with-h2/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jdbc-with-h2/src/main/resources/data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jdbc-with-h2/src/main/resources/schema.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jdbc-with-h2/src/test/java/com/in28minutes/springboot/jdbc/h2/example/SpringBoot2JdbcWithH2ApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jpa-spring-data-rest/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jpa-spring-data-rest/code-nov-2017.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jpa-spring-data-rest/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jpa-spring-data-rest/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jpa-spring-data-rest/src/main/java/com/in28minutes/springboot/jpa/spring/data/rest/example/SpringBoot2JPAWithSpringDataRestApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jpa-spring-data-rest/src/main/java/com/in28minutes/springboot/jpa/spring/data/rest/example/student/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jpa-spring-data-rest/src/main/java/com/in28minutes/springboot/jpa/spring/data/rest/example/student/StudentDataRestRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jpa-spring-data-rest/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jpa-spring-data-rest/src/main/resources/data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jpa-spring-data-rest/src/test/java/com/in28minutes/springboot/jpa/spring/data/rest/example/SpringBoot2JPAWithSpringDataRestApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jpa-with-hibernate-and-h2/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jpa-with-hibernate-and-h2/code-nov-2017.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jpa-with-hibernate-and-h2/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jpa-with-hibernate-and-h2/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jpa-with-hibernate-and-h2/src/main/java/com/in28minutes/springboot/jpa/hibernate/h2/example/SpringBoot2JPAWithHibernateAndH2Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jpa-with-hibernate-and-h2/src/main/java/com/in28minutes/springboot/jpa/hibernate/h2/example/student/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jpa-with-hibernate-and-h2/src/main/java/com/in28minutes/springboot/jpa/hibernate/h2/example/student/StudentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jpa-with-hibernate-and-h2/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jpa-with-hibernate-and-h2/src/main/resources/data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-jpa-with-hibernate-and-h2/src/test/java/com/in28minutes/springboot/jpa/hibernate/h2/example/SpringBoot2JPAWithHibernateAndH2ApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-myBatis-with-h2/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-myBatis-with-h2/code-nov-2017.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-myBatis-with-h2/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-myBatis-with-h2/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-myBatis-with-h2/src/main/java/com/in28minutes/springboot/mybatis/h2/example/SpringBoot2MyBatisWithH2Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-myBatis-with-h2/src/main/java/com/in28minutes/springboot/mybatis/h2/example/student/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-myBatis-with-h2/src/main/java/com/in28minutes/springboot/mybatis/h2/example/student/StudentMyBatisRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-myBatis-with-h2/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-myBatis-with-h2/src/main/resources/data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-myBatis-with-h2/src/main/resources/schema.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-myBatis-with-h2/src/test/java/com/in28minutes/springboot/mybatis/h2/example/SpringBoot2MyBatisWithH2ApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-basic/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-basic/code-nov-2017.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-basic/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-basic/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-basic/src/main/java/com/in28minutes/springboot/rest/example/SpringBoot2RestServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-basic/src/main/java/com/in28minutes/springboot/rest/example/student/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-basic/src/main/java/com/in28minutes/springboot/rest/example/student/StudentNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-basic/src/main/java/com/in28minutes/springboot/rest/example/student/StudentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-basic/src/main/java/com/in28minutes/springboot/rest/example/student/StudentResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-basic/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-basic/src/main/resources/data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-basic/src/test/java/com/in28minutes/springboot/rest/example/SpringBoot2RestServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-content-negotiation/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-content-negotiation/code-nov-2017.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-content-negotiation/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-content-negotiation/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-content-negotiation/src/main/java/com/in28minutes/springboot/rest/example/SpringBoot2RestServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-content-negotiation/src/main/java/com/in28minutes/springboot/rest/example/student/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-content-negotiation/src/main/java/com/in28minutes/springboot/rest/example/student/StudentNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-content-negotiation/src/main/java/com/in28minutes/springboot/rest/example/student/StudentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-content-negotiation/src/main/java/com/in28minutes/springboot/rest/example/student/StudentResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-content-negotiation/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-content-negotiation/src/main/resources/data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-content-negotiation/src/test/java/com/in28minutes/springboot/rest/example/SpringBoot2RestServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-exception-handling/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-exception-handling/code-nov-2017.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-exception-handling/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-exception-handling/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-exception-handling/src/main/java/com/in28minutes/springboot/rest/example/SpringBoot2RestServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-exception-handling/src/main/java/com/in28minutes/springboot/rest/example/exception/CustomizedResponseEntityExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-exception-handling/src/main/java/com/in28minutes/springboot/rest/example/exception/ExceptionResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-exception-handling/src/main/java/com/in28minutes/springboot/rest/example/student/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-exception-handling/src/main/java/com/in28minutes/springboot/rest/example/student/StudentNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-exception-handling/src/main/java/com/in28minutes/springboot/rest/example/student/StudentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-exception-handling/src/main/java/com/in28minutes/springboot/rest/example/student/StudentResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-exception-handling/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-exception-handling/src/main/resources/data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-exception-handling/src/test/java/com/in28minutes/springboot/rest/example/SpringBoot2RestServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-filtering/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-filtering/code-nov-2017.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-filtering/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-filtering/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-filtering/src/main/java/com/in28minutes/springboot/rest/example/SpringBoot2RestServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-filtering/src/main/java/com/in28minutes/springboot/rest/example/dynamicfiltering/FilteringController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-filtering/src/main/java/com/in28minutes/springboot/rest/example/dynamicfiltering/SomeBean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-filtering/src/main/java/com/in28minutes/springboot/rest/example/student/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-filtering/src/main/java/com/in28minutes/springboot/rest/example/student/StudentNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-filtering/src/main/java/com/in28minutes/springboot/rest/example/student/StudentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-filtering/src/main/java/com/in28minutes/springboot/rest/example/student/StudentResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-filtering/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-filtering/src/main/resources/data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-filtering/src/test/java/com/in28minutes/springboot/rest/example/SpringBoot2RestServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-validation/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-validation/code-nov-2017.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-validation/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-validation/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-validation/src/main/java/com/in28minutes/springboot/rest/example/SpringBoot2RestServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-validation/src/main/java/com/in28minutes/springboot/rest/example/exception/CustomizedResponseEntityExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-validation/src/main/java/com/in28minutes/springboot/rest/example/exception/ExceptionResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-validation/src/main/java/com/in28minutes/springboot/rest/example/student/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-validation/src/main/java/com/in28minutes/springboot/rest/example/student/StudentNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-validation/src/main/java/com/in28minutes/springboot/rest/example/student/StudentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-validation/src/main/java/com/in28minutes/springboot/rest/example/student/StudentResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-validation/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-validation/src/main/resources/data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-validation/src/test/java/com/in28minutes/springboot/rest/example/SpringBoot2RestServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-versioning/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-versioning/code-nov-2017.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-versioning/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-versioning/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-versioning/src/main/java/com/in28minutes/springboot/rest/example/SpringBoot2RestServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-versioning/src/main/java/com/in28minutes/springboot/rest/example/versioning/Name.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-versioning/src/main/java/com/in28minutes/springboot/rest/example/versioning/StudentV1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-versioning/src/main/java/com/in28minutes/springboot/rest/example/versioning/StudentV2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-versioning/src/main/java/com/in28minutes/springboot/rest/example/versioning/StudentVersioningController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-versioning/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-versioning/src/test/java/com/in28minutes/springboot/rest/example/SpringBoot2RestServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-with-hateoas/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-with-hateoas/code-nov-2017.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-with-hateoas/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-with-hateoas/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-with-hateoas/src/main/java/com/in28minutes/springboot/rest/example/SpringBoot2RestServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-with-hateoas/src/main/java/com/in28minutes/springboot/rest/example/student/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-with-hateoas/src/main/java/com/in28minutes/springboot/rest/example/student/StudentNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-with-hateoas/src/main/java/com/in28minutes/springboot/rest/example/student/StudentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-with-hateoas/src/main/java/com/in28minutes/springboot/rest/example/student/StudentResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-with-hateoas/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-with-hateoas/src/main/resources/data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-with-hateoas/src/test/java/com/in28minutes/springboot/rest/example/SpringBoot2RestServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-with-swagger/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-with-swagger/code-nov-2017.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-with-swagger/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-with-swagger/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-with-swagger/src/main/java/com/in28minutes/springboot/rest/example/SpringBoot2RestServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-with-swagger/src/main/java/com/in28minutes/springboot/rest/example/student/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-with-swagger/src/main/java/com/in28minutes/springboot/rest/example/student/StudentNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-with-swagger/src/main/java/com/in28minutes/springboot/rest/example/student/StudentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-with-swagger/src/main/java/com/in28minutes/springboot/rest/example/student/StudentResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-with-swagger/src/main/java/com/in28minutes/springboot/rest/example/swagger/ApiDocumentationConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-with-swagger/src/main/java/com/in28minutes/springboot/rest/example/swagger/SwaggerConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-with-swagger/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-with-swagger/src/main/resources/data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-2-rest-service-with-swagger/src/test/java/com/in28minutes/springboot/rest/example/SpringBoot2RestServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-basic-microservice/code-nov-2017.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-basic-microservice/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-basic-microservice/spring-boot-microservice-currency-conversion-service/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-basic-microservice/spring-boot-microservice-currency-conversion-service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-basic-microservice/spring-boot-microservice-currency-conversion-service/src/main/java/com/in28minutes/springboot/microservice/example/currencyconversion/CurrencyConversionBean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-basic-microservice/spring-boot-microservice-currency-conversion-service/src/main/java/com/in28minutes/springboot/microservice/example/currencyconversion/CurrencyConversionController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-basic-microservice/spring-boot-microservice-currency-conversion-service/src/main/java/com/in28minutes/springboot/microservice/example/currencyconversion/CurrencyExchangeServiceProxy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-basic-microservice/spring-boot-microservice-currency-conversion-service/src/main/java/com/in28minutes/springboot/microservice/example/currencyconversion/SpringBootMicroserviceCurrencyConversionApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-basic-microservice/spring-boot-microservice-currency-conversion-service/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-basic-microservice/spring-boot-microservice-currency-conversion-service/src/test/java/com/in28minutes/springboot/microservice/example/currencyconversion/SpringBootMicroserviceCurrencyConversionApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-basic-microservice/spring-boot-microservice-eureka-naming-server/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-basic-microservice/spring-boot-microservice-eureka-naming-server/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-basic-microservice/spring-boot-microservice-eureka-naming-server/src/main/java/com/in28minutes/springboot/microservice/eureka/naming/server/SpringBootMicroserviceEurekaNamingServerApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-basic-microservice/spring-boot-microservice-eureka-naming-server/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-basic-microservice/spring-boot-microservice-eureka-naming-server/src/test/java/com/in28minutes/springboot/microservice/eureka/naming/server/SpringBootMicroserviceEurekaNamingServerApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-basic-microservice/spring-boot-microservice-forex-service/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-basic-microservice/spring-boot-microservice-forex-service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-basic-microservice/spring-boot-microservice-forex-service/src/main/java/com/in28minutes/springboot/microservice/example/forex/ExchangeValue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-basic-microservice/spring-boot-microservice-forex-service/src/main/java/com/in28minutes/springboot/microservice/example/forex/ExchangeValueRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-basic-microservice/spring-boot-microservice-forex-service/src/main/java/com/in28minutes/springboot/microservice/example/forex/ForexController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-basic-microservice/spring-boot-microservice-forex-service/src/main/java/com/in28minutes/springboot/microservice/example/forex/SpringBootMicroserviceForexServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-basic-microservice/spring-boot-microservice-forex-service/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-basic-microservice/spring-boot-microservice-forex-service/src/main/resources/data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-basic-microservice/spring-boot-microservice-forex-service/src/test/java/com/in28minutes/springboot/microservice/example/forex/SpringBootMicroserviceForexServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services-with-unit-and-integration-tests/code-nov-2017.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services-with-unit-and-integration-tests/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services-with-unit-and-integration-tests/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services-with-unit-and-integration-tests/src/main/java/com/in28minutes/springboot/StudentServicesApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services-with-unit-and-integration-tests/src/main/java/com/in28minutes/springboot/controller/StudentController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services-with-unit-and-integration-tests/src/main/java/com/in28minutes/springboot/model/Course.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services-with-unit-and-integration-tests/src/main/java/com/in28minutes/springboot/model/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services-with-unit-and-integration-tests/src/main/java/com/in28minutes/springboot/service/StudentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services-with-unit-and-integration-tests/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services-with-unit-and-integration-tests/src/test/java/com/in28minutes/springboot/StudentServicesApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services-with-unit-and-integration-tests/src/test/java/com/in28minutes/springboot/controller/StudentControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services/code-nov-2017.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services/src/main/java/com/in28minutes/springboot/StudentApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services/src/main/java/com/in28minutes/springboot/WelcomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services/src/main/java/com/in28minutes/springboot/WelcomeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services/src/main/java/com/in28minutes/springboot/configuration/BasicConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services/src/main/java/com/in28minutes/springboot/configuration/DevelopmentOnlyConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services/src/main/java/com/in28minutes/springboot/configuration/ProductionOnlyConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services/src/main/java/com/in28minutes/springboot/controller/StudentController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services/src/main/java/com/in28minutes/springboot/jpa/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services/src/main/java/com/in28minutes/springboot/jpa/UserCommandLineRunner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services/src/main/java/com/in28minutes/springboot/jpa/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services/src/main/java/com/in28minutes/springboot/jpa/UserRestRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services/src/main/java/com/in28minutes/springboot/model/Course.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services/src/main/java/com/in28minutes/springboot/model/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services/src/main/java/com/in28minutes/springboot/security/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services/src/main/java/com/in28minutes/springboot/service/StudentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services/src/main/resources/application-dev.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services/src/main/resources/application-prod.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services/src/test/java/com/in28minutes/springboot/controller/StudentControllerIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-rest-services/src/test/java/com/in28minutes/springboot/controller/StudentControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics-configuration/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics-configuration/code-nov-2017.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics-configuration/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics-configuration/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics-configuration/src/main/java/com/in28minutes/springboot/tutorial/basics/application/configuration/BasicConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics-configuration/src/main/java/com/in28minutes/springboot/tutorial/basics/application/configuration/SpringBootTutorialBasicsConfigurationApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics-configuration/src/main/java/com/in28minutes/springboot/tutorial/basics/application/configuration/WelcomeResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics-configuration/src/main/resources/application-dev.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics-configuration/src/main/resources/application-prod.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics-configuration/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics-configuration/src/main/resources/application.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics-configuration/src/test/java/com/in28minutes/springboot/tutorial/basics/application/configuration/SpringBootTutorialBasicsConfigurationApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics/code-nov-2017.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics/src/main/java/com/in28minutes/springboot/tutorial/basics/example/SpringBootTutorialBasicsApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics/src/main/java/com/in28minutes/springboot/tutorial/basics/example/aop/AfterAopAspect.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics/src/main/java/com/in28minutes/springboot/tutorial/basics/example/aop/UserAccessAspect.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics/src/main/java/com/in28minutes/springboot/tutorial/basics/example/aop/business/Business1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics/src/main/java/com/in28minutes/springboot/tutorial/basics/example/aop/business/Business2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics/src/main/java/com/in28minutes/springboot/tutorial/basics/example/aop/data/Dao1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics/src/main/java/com/in28minutes/springboot/tutorial/basics/example/aop/data/Dao2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics/src/main/java/com/in28minutes/springboot/tutorial/basics/example/application/context/java/JavaConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics/src/main/java/com/in28minutes/springboot/tutorial/basics/example/application/context/java/XmlConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics/src/main/java/com/in28minutes/springboot/tutorial/basics/example/student/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics/src/main/java/com/in28minutes/springboot/tutorial/basics/example/student/StudentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics/src/main/java/com/in28minutes/springboot/tutorial/basics/example/student/StudentResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics/src/main/java/com/in28minutes/springboot/tutorial/basics/example/unittesting/BusinessService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics/src/main/java/com/in28minutes/springboot/tutorial/basics/example/unittesting/DataService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics/src/main/resources/applicationContext.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics/src/test/java/com/in28minutes/springboot/tutorial/basics/example/SpringBootTutorialBasicsApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics/src/test/java/com/in28minutes/springboot/tutorial/basics/example/aop/BusinessAopSpringBootTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics/src/test/java/com/in28minutes/springboot/tutorial/basics/example/unittest/BusinessServicesMockSpringContextTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-basics/src/test/java/com/in28minutes/springboot/tutorial/basics/example/unittest/BusinessServicesMockTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-soap-web-services/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-soap-web-services/code-nov-2017.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-soap-web-services/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-soap-web-services/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-soap-web-services/src/main/java/com/in28minutes/springboot/soap/web/services/example/SpringBootTutorialSoapWebServicesApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-soap-web-services/src/main/java/com/in28minutes/springboot/soap/web/services/example/WebServiceConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-soap-web-services/src/main/java/com/in28minutes/springboot/soap/web/services/example/student/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-soap-web-services/src/main/java/com/in28minutes/springboot/soap/web/services/example/student/StudentDetailsEndpoint.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-soap-web-services/src/main/java/com/in28minutes/students/GetStudentDetailsRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-soap-web-services/src/main/java/com/in28minutes/students/GetStudentDetailsResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-soap-web-services/src/main/java/com/in28minutes/students/ObjectFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-soap-web-services/src/main/java/com/in28minutes/students/StudentDetails.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-soap-web-services/src/main/java/com/in28minutes/students/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-soap-web-services/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-soap-web-services/src/main/resources/student-details.xsd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-tutorial-soap-web-services/src/test/java/com/in28minutes/springboot/soap/web/services/example/SpringBootTutorialSoapWebServicesApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-web-application-bootstrap-jquery/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-web-application-bootstrap-jquery/code-nov-2017.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-web-application-bootstrap-jquery/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-web-application-bootstrap-jquery/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-web-application-bootstrap-jquery/src/main/java/com/in28minutes/springboot/tutorial/basics/application/configuration/SpringBootWebApplicationBootstrapJqueryApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-web-application-bootstrap-jquery/src/main/java/com/in28minutes/springboot/tutorial/basics/application/configuration/WelcomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-web-application-bootstrap-jquery/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-web-application-bootstrap-jquery/src/main/resources/static/css/custom.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-web-application-bootstrap-jquery/src/main/resources/static/js/custom.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-web-application-bootstrap-jquery/src/main/webapp/WEB-INF/jsp/welcome.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-web-application-bootstrap-jquery/src/test/java/com/in28minutes/springboot/tutorial/basics/application/configuration/SpringBootWebApplicationBootstrapJqueryApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-web-application/code-nov-2017.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-web-application/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-web-application/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-web-application/src/main/java/com/in28minutes/springboot/StudentServicesApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-web-application/src/main/java/com/in28minutes/springboot/controller/LoginController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-web-application/src/main/java/com/in28minutes/springboot/controller/StudentController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-web-application/src/main/java/com/in28minutes/springboot/model/Course.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-web-application/src/main/java/com/in28minutes/springboot/model/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-web-application/src/main/java/com/in28minutes/springboot/security/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-web-application/src/main/java/com/in28minutes/springboot/service/StudentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-web-application/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-web-application/src/main/webapp/WEB-INF/jsp/welcome.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring-boot-web-application/src/test/java/com/in28minutes/springboot/StudentServicesApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test.txt" beforeDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/frankie/demo/DemoApplicationTests.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="629">
+              <caret line="44" column="29" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
+              <folding>
+                <element signature="method#roundingModeTest#0;class#DemoApplicationTests#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12-sources.jar!/org/junit/internal/runners/model/ReflectiveCallable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-test/5.1.6.RELEASE/spring-test-5.1.6.RELEASE.jar!/org/springframework/test/context/junit4/statements/RunAfterTestExecutionCallbacks.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12-sources.jar!/org/junit/runners/model/FrameworkMethod.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="178">
+              <caret line="49" selection-start-line="49" selection-end-line="49" />
+              <folding>
+                <element signature="e#1657#1658#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Java8/jdk1.8.0_201/src.zip!/java/math/BigDecimal.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="202">
+              <caret line="1483" column="22" selection-start-line="1483" selection-start-column="22" selection-end-line="1483" selection-end-column="22" />
+              <folding>
+                <element signature="e#106405#106406#0" expanded="true" />
+                <element signature="e#106465#106466#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Java8/jdk1.8.0_201/src.zip!/java/math/MathContext.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="55" column="19" selection-start-line="55" selection-start-column="19" selection-end-line="55" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Java8/jdk1.8.0_201/src.zip!/java/math/RoundingMode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="166" column="4" selection-start-line="166" selection-start-column="4" selection-end-line="166" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/test/java/com/frankie/demo/DemoApplicationTests.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="922" />
+    <option name="width" value="943" />
+    <option name="height" value="1087" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="big-decimal-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="big-decimal-demo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="big-decimal-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="big-decimal-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="big-decimal-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="big-decimal-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="big-decimal-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="big-decimal-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="big-decimal-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="big-decimal-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="demo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="big-decimal-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="big-decimal-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="big-decimal-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="big-decimal-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="big-decimal-demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="big-decimal-demo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="demo" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556870507351" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.DemoApplicationTests.compareTo">
+    <configuration name="DemoApplicationTests.compareTo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="big-decimal-demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.frankie.demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.frankie.demo" />
+      <option name="MAIN_CLASS_NAME" value="com.frankie.demo.DemoApplicationTests" />
+      <option name="METHOD_NAME" value="compareTo" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DemoApplicationTests.divide" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="big-decimal-demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.frankie.demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.frankie.demo" />
+      <option name="MAIN_CLASS_NAME" value="com.frankie.demo.DemoApplicationTests" />
+      <option name="METHOD_NAME" value="divide" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DemoApplicationTests.multiply" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="big-decimal-demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.frankie.demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.frankie.demo" />
+      <option name="MAIN_CLASS_NAME" value="com.frankie.demo.DemoApplicationTests" />
+      <option name="METHOD_NAME" value="multiply" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DemoApplicationTests.roundingModeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="big-decimal-demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.frankie.demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.frankie.demo" />
+      <option name="MAIN_CLASS_NAME" value="com.frankie.demo.DemoApplicationTests" />
+      <option name="METHOD_NAME" value="roundingModeTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DemoApplicationTests.subtract" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="big-decimal-demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.frankie.demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.frankie.demo" />
+      <option name="MAIN_CLASS_NAME" value="com.frankie.demo.DemoApplicationTests" />
+      <option name="METHOD_NAME" value="subtract" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="big-decimal-demo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.frankie.demo.DemoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.DemoApplicationTests.compareTo" />
+        <item itemvalue="JUnit.DemoApplicationTests.divide" />
+        <item itemvalue="JUnit.DemoApplicationTests.multiply" />
+        <item itemvalue="JUnit.DemoApplicationTests.subtract" />
+        <item itemvalue="JUnit.DemoApplicationTests.roundingModeTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="16ad1da7-861a-4c4d-875f-2b2166657de7" name="Default Changelist" comment="" />
+      <created>1556865531301</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1556865531301</updated>
+      <workItem from="1556865535948" duration="3728000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="DemoApplicationTests_roundingModeTest - 2019.05.03 at 15h 14m 05s.xml">
+      <configuration name="DemoApplicationTests.roundingModeTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoApplicationTests_roundingModeTest - 2019.05.03 at 15h 14m 48s.xml">
+      <configuration name="DemoApplicationTests.roundingModeTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoApplicationTests_roundingModeTest - 2019.05.03 at 15h 17m 09s.xml">
+      <configuration name="DemoApplicationTests.roundingModeTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoApplicationTests_roundingModeTest - 2019.05.03 at 15h 17m 37s.xml">
+      <configuration name="DemoApplicationTests.roundingModeTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoApplicationTests_roundingModeTest - 2019.05.03 at 15h 17m 45s.xml">
+      <configuration name="DemoApplicationTests.roundingModeTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoApplicationTests_roundingModeTest - 2019.05.03 at 15h 18m 19s.xml">
+      <configuration name="DemoApplicationTests.roundingModeTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoApplicationTests_subtract - 2019.05.03 at 15h 52m 51s.xml">
+      <configuration name="DemoApplicationTests.subtract" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoApplicationTests_multiply - 2019.05.03 at 15h 54m 37s.xml">
+      <configuration name="DemoApplicationTests.multiply" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoApplicationTests_divide - 2019.05.03 at 15h 57m 36s.xml">
+      <configuration name="DemoApplicationTests.divide" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoApplicationTests_divide - 2019.05.03 at 15h 57m 43s.xml">
+      <configuration name="DemoApplicationTests.divide" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="3728000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1874" height="1096" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Designer" />
+      <window_info id="Image Layers" />
+      <window_info id="Capture Tool" />
+      <window_info id="UI Designer" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49894068" visible="true" weight="0.24972315" />
+      <window_info active="true" id="Structure" order="1" sideWeight="0.5010593" side_tool="true" visible="true" weight="0.24972315" />
+      <window_info anchor="bottom" id="Spring" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Messages" weight="0.32944915" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32944915" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.29661018" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Maven" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/frankie/demo/DemoApplicationTests.java</url>
+          <line>94</line>
+          <properties />
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/frankie/demo/DemoApplicationTests.java</url>
+          <line>37</line>
+          <properties />
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://C:/Java8/jdk1.8.0_201/src.zip!/java/math/RoundingMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="166" column="4" selection-start-line="166" selection-start-column="4" selection-end-line="166" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12-sources.jar!/org/junit/runners/model/FrameworkMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
+          <folding>
+            <element signature="e#1657#1658#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12-sources.jar!/org/junit/internal/runners/model/ReflectiveCallable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-test/5.1.6.RELEASE/spring-test-5.1.6.RELEASE.jar!/org/springframework/test/context/junit4/statements/RunAfterTestExecutionCallbacks.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Java8/jdk1.8.0_201/src.zip!/java/math/MathContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="55" column="19" selection-start-line="55" selection-start-column="19" selection-end-line="55" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Java8/jdk1.8.0_201/src.zip!/java/math/BigDecimal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="1483" column="22" selection-start-line="1483" selection-start-column="22" selection-end-line="1483" selection-end-column="22" />
+          <folding>
+            <element signature="e#106405#106406#0" expanded="true" />
+            <element signature="e#106465#106466#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/frankie/demo/DemoApplicationTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="44" column="29" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
+          <folding>
+            <element signature="method#roundingModeTest#0;class#DemoApplicationTests#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>11</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

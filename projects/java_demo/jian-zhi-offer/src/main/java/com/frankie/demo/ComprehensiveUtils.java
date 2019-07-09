@@ -78,4 +78,32 @@ public class ComprehensiveUtils {
         }
     }
 
+    /**
+     * 从旋转数组中查找最小值, eg: {3, 4, 5, 1, 2}
+     */
+    public int minNumberInRotatedArray(int[] a){
+
+        // Step1: Base check.
+        if (a.length <= 0) return -1;
+
+        int low  = 0;
+        int high = a.length - 1;
+        while (low < high){
+            int mid = low + ((high - low) >> 1);
+            // Step2: 若数组中间值比尾元素大，说明最小值在右边。
+            if      (a[mid] > a[high]){
+                low = mid + 1;
+            }
+            // Step3: 若数组中间值比尾元素小，说明最小值在左边。
+            else if (a[mid] < a[high]){
+                high = mid;
+            }
+            // Step4: eg. {1, 0, 1, 1, 1}
+            else {
+                high--;
+            }
+        }
+        return a[low];
+    }
+
 }

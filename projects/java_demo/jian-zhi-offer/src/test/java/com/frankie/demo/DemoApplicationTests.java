@@ -1084,7 +1084,23 @@ public class DemoApplicationTests {
         Assert.assertEquals(i2, 2);
         Assert.assertEquals(i3, 3);
     }
+
+    @Test
+    public void minNumberInRotatedArrayTest(){
+        ComprehensiveUtils cu = new ComprehensiveUtils();
+        int[] a = {3, 4, 5, 1, 2};
+        int[] b = {1, 2, 3, 4, 5};
+        int[] c = {1, 0, 1, 1, 1};
+        int a1 = cu.minNumberInRotatedArray(a);
+        int b1 = cu.minNumberInRotatedArray(b);
+        int c0 = cu.minNumberInRotatedArray(c);
+
+        Assert.assertEquals(a1, 1);
+        Assert.assertEquals(b1, 1);
+        Assert.assertEquals(c0, 0);
+    }
 }
+
 
 
 
