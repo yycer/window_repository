@@ -1103,9 +1103,9 @@ public class DemoApplicationTests {
     @Test
     public void cuttingTest(){
         ComprehensiveUtils cu = new ComprehensiveUtils();
-        int a4 = cu.maxProductAfterCutting(4);
-        int a6 = cu.maxProductAfterCutting(5);
-        int a9 = cu.maxProductAfterCutting(6);
+        int a4  = cu.maxProductAfterCutting(4);
+        int a6  = cu.maxProductAfterCutting(5);
+        int a9  = cu.maxProductAfterCutting(6);
         int a12 = cu.maxProductAfterCutting(7);
         int a18 = cu.maxProductAfterCutting(8);
 
@@ -1114,6 +1114,28 @@ public class DemoApplicationTests {
         Assert.assertEquals(a9, 9);
         Assert.assertEquals(a12, 12);
         Assert.assertEquals(a18, 18);
+    }
+
+    @Test
+    public void andOperatorTest(){
+        // 1001
+        int x = 9;
+
+        int i = x & 1;
+        Assert.assertEquals(i, 1);
+    }
+
+    @Test
+    public void numberOfOne(){
+        ComprehensiveUtils cu = new ComprehensiveUtils();
+        int i2 = cu.numberOfOne(9);
+        int i1 = cu.numberOfOne(1);
+        int i0 = cu.numberOfOne(0);
+        int i = cu.numberOfOne(-3);
+
+        Assert.assertEquals(i2, 2);
+        Assert.assertEquals(i1, 1);
+        Assert.assertEquals(i0, 0);
     }
 }
 

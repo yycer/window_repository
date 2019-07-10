@@ -125,4 +125,50 @@ public class ComprehensiveUtils {
         return (int) (Math.pow(3, timesOf3) * Math.pow(2, timeOf2));
     }
 
+
+    /**
+     * 计算二进制中1的个数。
+     * @x: 代表整数, eg: x = 15(1111)
+     *       count    x-1          x
+     * init    0                 15(1111)
+     * 1       1     14(1110)    14(1110) = 15 & 14;
+     * 2       2     13(1101)    12(1100) = 14 & 13;
+     * 3       3     11(1011)     8(1000) = 12 & 11;
+     * 4       4      7(0111)     0(0000) =  8 &  7; -> out
+     */
+    public int numberOfOne(int x){
+
+        String s = Integer.toBinaryString(x);
+
+        int count = 0;
+        while (x != 0){
+            count++;
+            x = x & (x - 1);
+        }
+        return count;
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
