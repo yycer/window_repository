@@ -148,6 +148,23 @@ public class ComprehensiveUtils {
         return count;
     }
 
+
+    /**
+     * 不用四则运算做加法
+     */
+    public int AddUsingBitOperation(int x, int y){
+
+        int sum;
+        int carry;
+        do {
+            sum   = x ^ y;
+            carry = (x & y) << 1;
+            x     = sum;
+            y     = carry;
+        } while (y != 0);
+
+        return x;
+    }
 }
 
 

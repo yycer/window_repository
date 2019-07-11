@@ -1137,6 +1137,16 @@ public class DemoApplicationTests {
         Assert.assertEquals(i1, 1);
         Assert.assertEquals(i0, 0);
     }
+
+    @Test
+    public void addUsingBitOperationTest(){
+        ComprehensiveUtils cu = new ComprehensiveUtils();
+        int a22= cu.AddUsingBitOperation(5, 17);
+        int a12= cu.AddUsingBitOperation(-5, 17);
+
+        Assert.assertEquals(a12, 12);
+        Assert.assertEquals(a22, 22);
+    }
 }
 
 
