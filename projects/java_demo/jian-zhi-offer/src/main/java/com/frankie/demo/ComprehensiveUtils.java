@@ -4,6 +4,7 @@ import com.sun.org.apache.bcel.internal.generic.FREM;
 import com.sun.org.apache.bcel.internal.generic.LNEG;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Stack;
 
 public class ComprehensiveUtils {
@@ -164,6 +165,54 @@ public class ComprehensiveUtils {
         } while (y != 0);
 
         return x;
+    }
+
+    /**
+     * 查询数组中仅出现一次的数字。
+     */
+    public int findNumberAppearingOnce(int[] nums){
+        int result = 0;
+        for (int i: nums){
+            result = result ^ i;
+        }
+
+        return result;
+    }
+
+    /**
+     * 查询数组中出现二次的数字。
+     */
+    public ArrayList<Integer> findTwoNumberAppearingOnce(int[] nums){
+
+        // Base check.
+        if (nums.length < 1) return null;
+
+        // Step1: 依次遍历数组，进行异或操作。
+        int xor = 0;
+        for (int i: nums){
+            xor = xor ^ i;
+        }
+
+        // Step2: 定位异或结果中最低位为1的位置。
+        int position =  0;
+        while ((xor & 1) == 0){
+            xor >>= 1;
+            position++;
+        }
+
+        // Step3: 根据定位位置，将元素数组一分为二，然后分别执行一遍异或操作即可。
+        int x = 0, y = 0;
+        ArrayList<Integer> result = new ArrayList<>();
+        for (int i: nums){
+            if (((i >> position) & 1) == 0)
+                x ^= i;
+            else
+                y ^= i;
+        }
+        result.add(x);
+        result.add(y);
+
+        return result;
     }
 }
 

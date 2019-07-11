@@ -1147,6 +1147,22 @@ public class DemoApplicationTests {
         Assert.assertEquals(a12, 12);
         Assert.assertEquals(a22, 22);
     }
+
+    @Test
+    public void findNumberAppearingOnceTest(){
+        ComprehensiveUtils cu = new ComprehensiveUtils();
+        int[] nums = {2000, 2222, 11111, 2222, 2000};
+        int result = cu.findNumberAppearingOnce(nums);
+
+        Assert.assertEquals(result, 11111);
+    }
+
+    @Test
+    public void findTwoNumberAppearingOnceTest(){
+        ComprehensiveUtils cu = new ComprehensiveUtils();
+        int[] nums = {2000, 2222, 11111, 2222, 2000, 333};
+        ArrayList<Integer> result = cu.findTwoNumberAppearingOnce(nums);
+    }
 }
 
 
