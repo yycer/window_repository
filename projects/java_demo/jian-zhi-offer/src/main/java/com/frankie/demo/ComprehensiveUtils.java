@@ -3,8 +3,10 @@ package com.frankie.demo;
 import com.sun.org.apache.bcel.internal.generic.FREM;
 import com.sun.org.apache.bcel.internal.generic.LNEG;
 
+import java.security.interfaces.RSAKey;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.Stack;
 
 public class ComprehensiveUtils {
@@ -211,6 +213,50 @@ public class ComprehensiveUtils {
         }
         result.add(x);
         result.add(y);
+
+        return result;
+    }
+
+    /**
+     * 一. 数值的整数次方
+     * 二. Corner case
+     * <1> 底数为0.0，同时指数小于0。
+     *
+     */
+    public double power(double base, int exponent){
+
+        // Step1: 考虑特殊情况，底数为0.0，同时指数小于0。
+        if (DoubleUtils.equals(base, 0.0) && exponent < 0){
+            return 0.0;
+        }
+
+        int absExponent = Math.abs(exponent);
+        double result = powerRecursively(base, absExponent);
+
+        // Step2: 如果指数小于0，取其倒数。
+        if (exponent < 0){
+            return 1.0 / result;
+        } else {
+            return result;
+        }
+    }
+
+    /**
+     * Origin way:       3^8 = 3 * 3 * 3 * 3 * 3 * 3 * 3 * 3
+     * Optimization way: 3^8 = ((3 * 3) * (3 * 3)) * ((3 * 3) * (3 * 3))
+     */
+    public double powerRecursively(double base, int expo){
+        if (expo == 0) return 1;
+        if (expo == 1) return base;
+        // 细节1: expo >> 1与expo /= 2运算结果上一致，但性能上更优。
+        double result = powerRecursively(base, expo >> 1);
+        result *= result;
+
+        // 如果expo为奇数，再乘以底数。
+        // 细节2: 与运算判断指数是否为奇数。
+        if ((expo & 0x1) == 1){
+            result *= base;
+        }
 
         return result;
     }

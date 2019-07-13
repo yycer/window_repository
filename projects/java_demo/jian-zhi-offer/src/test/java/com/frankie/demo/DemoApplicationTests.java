@@ -8,6 +8,8 @@ import org.assertj.core.error.ShouldBeInstanceOfAny;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.omg.IOP.MultipleComponentProfileHelper;
+import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.yaml.snakeyaml.util.ArrayStack;
@@ -1162,6 +1164,27 @@ public class DemoApplicationTests {
         ComprehensiveUtils cu = new ComprehensiveUtils();
         int[] nums = {2000, 2222, 11111, 2222, 2000, 333};
         ArrayList<Integer> result = cu.findTwoNumberAppearingOnce(nums);
+    }
+
+    @Test
+    public void powerTest(){
+        ComprehensiveUtils cu = new ComprehensiveUtils();
+        double result81 = cu.power(3.0, 4);
+        double result1_9 = cu.power(3.0, -2);
+        double result1 = cu.power(3.0, 0);
+        double result0 = cu.power(0.0, -2);
+
+        Assert.assertEquals(result81, 81.0, 0.000001);
+        Assert.assertEquals(result1_9, 1.0 / 9, 0.000001);
+        Assert.assertEquals(result1, 1.0, 0.000001);
+        Assert.assertEquals(result0, 0.0, 0.000001);
+    }
+
+    @Test
+    public void powerRecursivelyTest(){
+        ComprehensiveUtils cu = new ComprehensiveUtils();
+        double result = cu.powerRecursively(3.0, 9);
+        System.out.println("end " + result);
     }
 }
 
