@@ -1,6 +1,7 @@
 package com.frankie.demo;
 
 import com.sun.org.apache.bcel.internal.generic.FREM;
+import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 import com.sun.org.apache.bcel.internal.generic.LNEG;
 
 import java.security.interfaces.RSAKey;
@@ -8,6 +9,7 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.Stack;
+import java.util.regex.Pattern;
 
 public class ComprehensiveUtils {
 
@@ -259,6 +261,51 @@ public class ComprehensiveUtils {
         }
 
         return result;
+    }
+
+    /**
+     * 正则表达式匹配(.*)
+     */
+    public boolean match(String str, String pattern){
+        if (str.length() == 0 || pattern.length() == 0)
+            return false;
+
+//        int strIndex     = 0;
+//        int patternIndex = 0;
+        return matchCore(str, 0, pattern, 0);
+    }
+
+    private boolean matchCore(String str, int strIndex, String pattern, int patternIndex) {
+        // 依次遍历，均匹配，字符串与模式同时到尾，表示匹配成功。
+        if (strIndex == str.length() && patternIndex == pattern.length()){
+            return true;
+        }
+
+        // 字符串、模式任意一个先到头，匹配失败。
+        if (strIndex == str.length() || patternIndex == pattern.length()){
+            return false;
+        }
+
+        boolean firstElementMatch = pattern.charAt(patternIndex) == str.charAt(strIndex) ||
+                                    pattern.charAt(patternIndex) == '.';
+
+        // 模式第二个字符为*，且字符串与模式的第一个字符匹配，分为三种匹配模式，否则模式向后移2位。
+        if (patternIndex + 1 < pattern.length() && pattern.charAt(patternIndex + 1) == '*'){
+            if (firstElementMatch){
+                return matchCore(str, strIndex, pattern, patternIndex + 2) ||
+                       matchCore(str, strIndex + 1, pattern, patternIndex + 2) ||
+                       matchCore(str, strIndex + 1, pattern, patternIndex);
+            } else{
+                return matchCore(str, strIndex, pattern, patternIndex + 2);
+            }
+        }
+
+        // 模式第二个字符不是*，且字符串与模式的第一个字符匹配，则各进一步，否则false。
+        if (firstElementMatch){
+            return matchCore(str, strIndex + 1, pattern, patternIndex + 1);
+        }
+
+        return false;
     }
 }
 

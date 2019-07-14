@@ -1186,6 +1186,36 @@ public class DemoApplicationTests {
         double result = cu.powerRecursively(3.0, 9);
         System.out.println("end " + result);
     }
+
+    @Test
+    public void matchTest(){
+        ComprehensiveUtils cu = new ComprehensiveUtils();
+        String s1 = "abc";
+        String s2 = "aaaaabc";
+        String s3 = "azcd";
+
+        /**
+         * 模式的第二个字符为星号
+         */
+        String p1 = "b*abc";  // s1     , p1 >> 2
+        String p2 = ".*bc";   // s1 >> 1, p1 >> 2
+        String p3 = "a*bc";   // s2 >> 1
+
+        /**
+         * 模式的第二个字符非星号
+         */
+        String p4 = "a.cd";   // s3 >> 1, p4 >> 1
+
+        boolean match1 = cu.match(s1, p1);
+        boolean match2 = cu.match(s1, p2);
+        boolean match3 = cu.match(s2, p3);
+        boolean match4 = cu.match(s3, p4);
+
+        Assert.assertTrue(match1);
+        Assert.assertTrue(match2);
+        Assert.assertTrue(match3);
+        Assert.assertTrue(match4);
+    }
 }
 
 
