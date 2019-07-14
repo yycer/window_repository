@@ -1216,6 +1216,95 @@ public class DemoApplicationTests {
         Assert.assertTrue(match3);
         Assert.assertTrue(match4);
     }
+
+    @Test
+    public void isNumericTest(){
+        ComprehensiveUtils cu = new ComprehensiveUtils();
+        /**
+         * 带符号
+         */
+        String s1 = "+3";
+        String s2 = "10e-3";
+
+        /**
+         * 带小数点
+         */
+        String s3 = "3.14e10";
+
+        /**
+         * 带指数
+         */
+        String s4 = "-3.14e-3";
+
+        boolean n1 = cu.isNumeric(s1);
+        boolean n2 = cu.isNumeric(s2);
+        boolean n3 = cu.isNumeric(s3);
+        boolean n4 = cu.isNumeric(s4);
+
+        Assert.assertTrue(n1);
+        Assert.assertTrue(n2);
+        Assert.assertTrue(n3);
+        Assert.assertTrue(n4);
+
+        /**
+         * 错误集合
+         */
+        // 指数后面没有接数字
+        String s5 = "12e";
+
+        // 指数后面用到小数点
+        String s6 = "12e3.14";
+
+        // 超过一个小数点
+        String s7 = "1.2.3";
+
+        // 符号使用错误
+        String s8 = "+-5";
+
+        boolean n5 = cu.isNumeric(s5);
+        boolean n6 = cu.isNumeric(s6);
+        boolean n7 = cu.isNumeric(s7);
+        boolean n8 = cu.isNumeric(s8);
+
+        Assert.assertFalse(n5);
+        Assert.assertFalse(n6);
+        Assert.assertFalse(n7);
+        Assert.assertFalse(n8);
+    }
+
+    @Test
+    public void isNumericRegExpTest(){
+        ComprehensiveUtils cu = new ComprehensiveUtils();
+        String s1 = "+3";
+        String s2 = "10e-3";
+        String s3 = "3.14e10";
+        String s4 = "-3.14e-3";
+
+        boolean n1 = cu.isNumerciRegExp(s1);
+        boolean n2 = cu.isNumerciRegExp(s2);
+        boolean n3 = cu.isNumerciRegExp(s3);
+        boolean n4 = cu.isNumerciRegExp(s4);
+
+        Assert.assertTrue(n1);
+        Assert.assertTrue(n2);
+        Assert.assertTrue(n3);
+        Assert.assertTrue(n4);
+
+        String s5 = "12e";
+        String s6 = "12e3.14";
+        String s7 = "1.2.3";
+        String s8 = "+-5";
+
+        boolean n5 = cu.isNumerciRegExp(s5);
+        boolean n6 = cu.isNumerciRegExp(s6);
+        boolean n7 = cu.isNumerciRegExp(s7);
+        boolean n8 = cu.isNumerciRegExp(s8);
+
+        Assert.assertFalse(n5);
+        Assert.assertFalse(n6);
+        Assert.assertFalse(n7);
+        Assert.assertFalse(n8);
+    }
 }
 
 

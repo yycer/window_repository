@@ -1,5 +1,6 @@
 package com.frankie.demo;
 
+import com.sun.org.apache.bcel.internal.generic.FASTORE;
 import com.sun.org.apache.bcel.internal.generic.FREM;
 import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 import com.sun.org.apache.bcel.internal.generic.LNEG;
@@ -306,6 +307,69 @@ public class ComprehensiveUtils {
         }
 
         return false;
+    }
+
+    /**
+     * 表示数值的字符串。
+     */
+    public boolean isNumeric(String s){
+
+        if (s.length() == 0) return false;
+        boolean hasSign     = false;
+        boolean hasDecimal  = false;
+        boolean hasExponent = false;
+
+        for (int i = 0; i < s.length(); i++){
+
+            /**
+             * 1. 正负值符号
+             * <1> 第一次, (开头) hasSign = false, i = 0; || (e/E后面) hasSign = false, i > 0, 符号前面一位必须是e/E
+             * <2> 第二次, hasSign = true, 符号前面一位必须是e/E
+             */
+            if (s.charAt(i) == '+' ||s.charAt(i) == '-'){
+                if (!hasSign && i > 0 && s.charAt(i - 1) != 'e' && s.charAt(i - 1) != 'E') return false;
+                if (hasSign && s.charAt(i - 1) != 'e' && s.charAt(i - 1) != 'E') return false;
+                hasSign = true;
+            }
+
+            /**
+             * 2. 小数点
+             * <1> 指数后面不能出现，小数点不能出现两次: if(hasDecimal || hasExpo) return false;
+             */
+            else if (s.charAt(i) == '.'){
+                if (hasDecimal || hasExponent) return false;
+                hasDecimal = true;
+            }
+
+            /**
+             * 3. 指数
+             * <1> 指数后面必须接数字: if(i == s.length - 1) return false;
+             * <2> 不能出现两个指数:   if(hasExpo) return false;
+             */
+            else if (s.charAt(i) == 'e' || s.charAt(i) == 'E'){
+                if (i == s.length() - 1) return false;
+                if (hasExponent)         return false;
+                hasExponent = true;
+            }
+
+            else if(s.charAt(i) > '9' || s.charAt(i) < '0'){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 表示数值的字符串(正则表达式方式)
+     */
+    public boolean isNumerciRegExp(String s){
+        /**
+         * [\\+\\-]?            : 代表正负符号出现与否。
+         * \\d*                 : 代表整数部分是否出现，如: -.314
+         * (\\.\\d+)?           : 代表如果出现过小数点，就一定会伴随着数字，否则都不出现。
+         * ([eE][\\+\\-]?\\d+)? : 代表如果存在指数，e/E一定会出现，正负号可以不出现，但必须紧跟数字，要么全部不出现。
+         */
+        return s.matches("[\\+\\-]?\\d*(\\.\\d+)?([eE][\\+\\-]?\\d+)?");
     }
 }
 
