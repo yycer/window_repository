@@ -1324,6 +1324,48 @@ public class DemoApplicationTests {
         Assert.assertEquals(Arrays.toString(r3), "[1, 3, 7, 2, 4, 6]");
         Assert.assertEquals(Arrays.toString(r4), "[1, 3, 5, 2, 4, 6]");
     }
+
+    @Test
+    public void stackMinTest() throws Exception {
+        ArrayDequeUtils adu = new ArrayDequeUtils();
+        adu.push(3);
+        adu.push(4);
+        adu.push(2);
+        adu.push(1);
+
+        int m1 = adu.min();
+        Assert.assertEquals(m1, 1);
+
+        adu.pop();
+        adu.pop();
+        int m3 = adu.min();
+        Assert.assertEquals(m3, 3);
+
+        adu.push(5);
+        int m4 = adu.min();
+        Assert.assertEquals(m4, 3);
+
+        adu.push(0);
+        int m0 = adu.min();
+        Assert.assertEquals(m0, 0);
+    }
+
+    @Test
+    public void popOrderTest(){
+        ArrayDequeUtils adu = new ArrayDequeUtils();
+        int[] pushSeq1 = {1, 2, 3, 4, 5};
+        int[] popSeq1  = {4, 5, 3, 2, 1};
+
+        int[] pushSeq2 = {4, 5, 6, 1, 7};
+        int[] popSeq2  = {6, 5, 1, 7, 4};
+
+
+        boolean r1 = adu.isPopOrder(pushSeq1, popSeq1);
+        boolean r2 = adu.isPopOrder(pushSeq2, popSeq2);
+
+        Assert.assertTrue(r1);
+        Assert.assertTrue(r2);
+    }
 }
 
 

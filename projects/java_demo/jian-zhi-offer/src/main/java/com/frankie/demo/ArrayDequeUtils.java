@@ -1,5 +1,7 @@
 package com.frankie.demo;
 
+import java.util.ArrayDeque;
+
 public class ArrayDequeUtils {
 
     /**
@@ -36,5 +38,61 @@ public class ArrayDequeUtils {
      * 6. peek()        - 也有这个方法，但本质是peekFirst()
      *
      */
+
+    private ArrayDeque<Integer> mainStack      = new ArrayDeque<>();
+    private ArrayDeque<Integer> auxiliaryStack = new ArrayDeque<>();
+
+    public void push(int x){
+        mainStack.addFirst(x);
+        if (auxiliaryStack.isEmpty()){
+            auxiliaryStack.addFirst(x);
+        } else{
+            if (x > auxiliaryStack.peek()){
+                auxiliaryStack.addFirst(auxiliaryStack.peek());
+            } else {
+                auxiliaryStack.addFirst(x);
+            }
+        }
+    }
+
+    public int pop() throws Exception {
+        if (mainStack.isEmpty() || auxiliaryStack.isEmpty()){
+            throw new Exception("The stack is empty!");
+        }
+
+        auxiliaryStack.removeFirst();
+        return mainStack.removeFirst();
+    }
+
+
+    public int min() throws Exception {
+        if (mainStack.isEmpty()){
+            throw new Exception("The stack is empty!");
+        }
+
+        return auxiliaryStack.peek();
+    }
+
+
+    /**
+     * 栈的压入、弹出序列。
+     */
+    public boolean isPopOrder(int[] pushedSeq, int[] popSeq){
+        // Base check.
+        if (pushedSeq.length == 0 || popSeq.length == 0) return false;
+
+        ArrayDeque<Integer> auxiliaryStack = new ArrayDeque<>();
+        int popIndex = 0;
+
+        for (int i = 0; i < pushedSeq.length; i++){
+            auxiliaryStack.addFirst(pushedSeq[i]);
+            while (!auxiliaryStack.isEmpty() && auxiliaryStack.peek() == popSeq[popIndex]){
+                auxiliaryStack.pop();
+                popIndex++;
+            }
+        }
+        // 通过辅助栈是否为空判断压入、弹出序列是否一致。
+        return auxiliaryStack.isEmpty();
+    }
 
 }
