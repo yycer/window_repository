@@ -371,6 +371,34 @@ public class ComprehensiveUtils {
          */
         return s.matches("[\\+\\-]?\\d*(\\.\\d+)?([eE][\\+\\-]?\\d+)?");
     }
+
+    /**
+     * 调整数组顺序，使奇数位于偶数前面。
+     */
+    public int[] reorderOddEven(int[] nums){
+        if (nums.length <= 1) return nums;
+
+        // 符合要求元素的数量，如移到数组头部的奇数个数。
+        int hit  = 0;
+
+        for (int i = 0; i < nums.length; i++){
+            if (hitCondition(nums, i)){
+                ArrayUtils.swap(nums, i, hit);
+                hit++;
+            }
+        }
+        return nums;
+    }
+
+    /**
+     * 命中条件 - 解耦！
+     * <1> 判断是否为奇数。
+     * <2> 判断是否为负数。
+     * <3> 判断是否能被3整除。
+     */
+    private boolean hitCondition(int[] nums, int i){
+        return (nums[i] & 0x1) == 1;
+    }
 }
 
 

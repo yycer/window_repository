@@ -1305,6 +1305,25 @@ public class DemoApplicationTests {
         Assert.assertFalse(n7);
         Assert.assertFalse(n8);
     }
+
+    @Test
+    public void reOrderOddEvenTest(){
+        int[] nums1 = {2, 5, 7, 8, 3, 6};
+        int[] nums2 = {2};
+        int[] nums3 = {1, 3, 7, 2, 4, 6};
+        int[] nums4 = {2, 4, 6, 1, 3, 5};
+
+        ComprehensiveUtils cu = new ComprehensiveUtils();
+        int[] r1 = cu.reorderOddEven(nums1);
+        int[] r2 = cu.reorderOddEven(nums2);
+        int[] r3 = cu.reorderOddEven(nums3);
+        int[] r4 = cu.reorderOddEven(nums4);
+
+        Assert.assertEquals(Arrays.toString(r1), "[5, 7, 3, 8, 2, 6]");
+        Assert.assertEquals(Arrays.toString(r2), "[2]");
+        Assert.assertEquals(Arrays.toString(r3), "[1, 3, 7, 2, 4, 6]");
+        Assert.assertEquals(Arrays.toString(r4), "[1, 3, 5, 2, 4, 6]");
+    }
 }
 
 

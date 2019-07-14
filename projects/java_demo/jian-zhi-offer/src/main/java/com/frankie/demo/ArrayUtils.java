@@ -105,4 +105,13 @@ public class ArrayUtils {
         return found;
     }
 
+    /**
+     * 根据索引，交换数组中两个元素的值。
+     */
+    public static void swap(int[] a, int i, int j){
+        int tmp = a[i];
+        a[i]    = a[j];
+        a[j]    = tmp;
+    }
+
 }
