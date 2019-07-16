@@ -3,20 +3,12 @@ package com.frankie.demo;
 import com.frankie.demo.binaryTree.BinaryTree;
 import com.frankie.demo.binaryTree.BinaryTreePrinter;
 import com.frankie.demo.review.linkList.LinkListUtils;
-import com.sun.jmx.remote.internal.ArrayQueue;
-import org.assertj.core.error.ShouldBeInstanceOfAny;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.omg.IOP.MultipleComponentProfileHelper;
-import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.yaml.snakeyaml.util.ArrayStack;
 
-import javax.swing.*;
-import javax.swing.tree.TreeNode;
-import java.beans.Transient;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -1365,6 +1357,30 @@ public class DemoApplicationTests {
 
         Assert.assertTrue(r1);
         Assert.assertTrue(r2);
+    }
+
+    @Test
+    public void bitOperationTest(){
+        int r1 = 1 << 8;
+        int r2 = 8 >> 1;
+
+        Assert.assertEquals(r1, 256);
+        Assert.assertEquals(r2, 4);
+    }
+
+    @Test
+    public void combinationTest(){
+        ComprehensiveUtils cu = new ComprehensiveUtils();
+        char[] c = {'a', 'b', 'c'};
+        List<String> result = cu.combination(c);
+    }
+
+    @Test
+    public void permutationTest(){
+        ComprehensiveUtils cu = new ComprehensiveUtils();
+        char[] c = {'a', 'b', 'c'};
+        List<String> result = cu.permutation(c, 0, c.length);
+        System.out.println(2);
     }
 }
 

@@ -4,12 +4,10 @@ import com.sun.org.apache.bcel.internal.generic.FASTORE;
 import com.sun.org.apache.bcel.internal.generic.FREM;
 import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 import com.sun.org.apache.bcel.internal.generic.LNEG;
+import netscape.security.ForbiddenTargetException;
 
 import java.security.interfaces.RSAKey;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.Stack;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class ComprehensiveUtils {
@@ -398,6 +396,49 @@ public class ComprehensiveUtils {
      */
     private boolean hitCondition(int[] nums, int i){
         return (nums[i] & 0x1) == 1;
+    }
+
+    /**
+     * 组合算法：[abc]的组合方式有[a,b,c,ab,bc,ac,abc]六种组合方式
+     */
+    public List<String> combination(char[] buf){
+        ArrayList<String> list = new ArrayList<>();
+        for(int i = 1 ; i < (1 << buf.length); i++){
+            String result = "";
+            for(int j = 0 ; j < buf.length; j++){
+                //判断哪一位为1
+                if((i & (1 << j)) != 0){
+                    result += buf[j];
+                }
+            }
+            list.add(result);
+        }
+        return list;
+    }
+
+    private ArrayList<String> permutationList = new ArrayList<>();
+    /**
+     * 字符串的排列。
+     */
+    public List<String> permutation(char[] buf, int start, int end){
+
+        if (start == end){
+            String result = "";
+            for (int i = 0; i < end; i++){
+                result += buf[i];
+            }
+            permutationList.add(result);
+            result = "";
+        } else {
+            for (int i = start; i < buf.length; i++){
+                // 排列
+                ArrayUtils.swap(buf, i, start);
+                permutation(buf, start + 1, end);
+                // 还原
+                ArrayUtils.swap(buf, i, start);
+            }
+        }
+        return permutationList;
     }
 }
 

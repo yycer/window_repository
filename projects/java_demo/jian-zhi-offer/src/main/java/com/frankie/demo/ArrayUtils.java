@@ -114,4 +114,10 @@ public class ArrayUtils {
         a[j]    = tmp;
     }
 
+    public static void swap(char[] a, int i, int j){
+        char tmp = a[i];
+        a[i]     = a[j];
+        a[j]     = tmp;
+    }
+
 }
