@@ -59,8 +59,10 @@ public class ComprehensiveUtils {
      * 通过两个队列模拟压栈。
      */
     public void stackAddElementUsingDoubleQueue(int x){
+        // 若主栈，则往辅栈压入元素。
         if (queuePrimary.size() == 0)
             queueAuxiliary.addLast(x);
+        // 否则，往主栈里面压入元素。
         else
             queuePrimary.addLast(x);
     }
