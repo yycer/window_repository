@@ -1054,12 +1054,27 @@ public class DemoApplicationTests {
         int i1 = cu.queueRemoveElementUsingDoubleStacks();
         int i2 = cu.queueRemoveElementUsingDoubleStacks();
         int i3 = cu.queueRemoveElementUsingDoubleStacks();
-        int i4 = cu.queueRemoveElementUsingDoubleStacks();
+//        int i4 = cu.queueRemoveElementUsingDoubleStacks();
 
         Assert.assertEquals(i1, 1);
         Assert.assertEquals(i2, 2);
         Assert.assertEquals(i3, 3);
-        Assert.assertEquals(i4, -1);
+//        Assert.assertEquals(i4, -1);
+    }
+
+    @Test
+    public void doubleStackOptimizationTest(){
+        ComprehensiveUtils cu = new ComprehensiveUtils();
+        cu.queueAddElementUsingDoubleStacks(4);
+        cu.queueAddElementUsingDoubleStacks(2);
+        int i4 = cu.queueRemoveElementUsingDoubleStacks();
+        cu.queueAddElementUsingDoubleStacks(5);
+        int i2 = cu.queueRemoveElementUsingDoubleStacks();
+        int i5 = cu.queueRemoveElementUsingDoubleStacks();
+
+        Assert.assertEquals(i4, 4);
+        Assert.assertEquals(i5, 5);
+        Assert.assertEquals(i2, 2);
     }
 
 
@@ -1078,6 +1093,28 @@ public class DemoApplicationTests {
         Assert.assertEquals(i2, 2);
         Assert.assertEquals(i3, 3);
     }
+
+    @Test
+    public void doubleQueueOptimizationTest(){
+        ComprehensiveUtils cu = new ComprehensiveUtils();
+        cu.stackAddElementUsingDoubleQueue(4);
+        cu.stackAddElementUsingDoubleQueue(2);
+
+        int i2 = cu.stackRemoveElementUsingDoubleQueue();
+        cu.stackAddElementUsingDoubleQueue(8);
+        cu.stackAddElementUsingDoubleQueue(3);
+
+        int i3 = cu.stackRemoveElementUsingDoubleQueue();
+        int i8 = cu.stackRemoveElementUsingDoubleQueue();
+        int i4 = cu.stackRemoveElementUsingDoubleQueue();
+
+        Assert.assertEquals(i2, 2);
+        Assert.assertEquals(i3, 3);
+        Assert.assertEquals(i4,4);
+        Assert.assertEquals(i8,8);
+    }
+
+
 
     @Test
     public void minNumberInRotatedArrayTest(){
