@@ -99,6 +99,7 @@ public class ComprehensiveUtils {
 
         int low  = 0;
         int high = a.length - 1;
+        // 跳出循环的标志就是low == high。
         while (low < high){
             int mid = low + ((high - low) >> 1);
             // Step2: 若数组中间值比尾元素大，说明最小值在右边。
