@@ -291,11 +291,15 @@ public class ComprehensiveUtils {
         if (str.length() == 0 || pattern.length() == 0)
             return false;
 
-//        int strIndex     = 0;
-//        int patternIndex = 0;
         return matchCore(str, 0, pattern, 0);
     }
 
+    /**
+     * 总结步骤:
+     * 1. 递归结束条件: 字符串与模式同时走到头，返回true，任意一个先走到头，返回false.
+     * 2. 任意时刻模式的第二个元素是否为*，需要注意是否在模式长度范围内，若首元素匹配，则递归三种情况，否则模式往后走2步。
+     * 3. 当模式的第二个元素不是*，且字符串与模式首元素匹配时，各往后走1步。
+     */
     private boolean matchCore(String str, int strIndex, String pattern, int patternIndex) {
         // 依次遍历，均匹配，字符串与模式同时到尾，表示匹配成功。
         if (strIndex == str.length() && patternIndex == pattern.length()){
@@ -335,26 +339,23 @@ public class ComprehensiveUtils {
     public boolean isNumeric(String s){
 
         if (s.length() == 0) return false;
-        boolean hasSign     = false;
         boolean hasDecimal  = false;
         boolean hasExponent = false;
 
         for (int i = 0; i < s.length(); i++){
 
             /**
-             * 1. 正负值符号
-             * <1> 第一次, (开头) hasSign = false, i = 0; || (e/E后面) hasSign = false, i > 0, 符号前面一位必须是e/E
-             * <2> 第二次, hasSign = true, 符号前面一位必须是e/E
+             * 1. 正负值符号(以下为不合理的情况)
+             * 不在首元素出现，同时前一个元素不是e。
              */
             if (s.charAt(i) == '+' ||s.charAt(i) == '-'){
-                if (!hasSign && i > 0 && s.charAt(i - 1) != 'e' && s.charAt(i - 1) != 'E') return false;
-                if (hasSign && s.charAt(i - 1) != 'e' && s.charAt(i - 1) != 'E') return false;
-                hasSign = true;
+                if (i > 0 && s.charAt(i - 1) != 'e' && s.charAt(i - 1) != 'E') return false;
             }
 
             /**
              * 2. 小数点
-             * <1> 指数后面不能出现，小数点不能出现两次: if(hasDecimal || hasExpo) return false;
+             * <1> 正常情况下第一次出现小数，指数一定没有出现，eg: -0.5e2
+             * <2> 小数不能出现两次。
              */
             else if (s.charAt(i) == '.'){
                 if (hasDecimal || hasExponent) return false;
@@ -363,12 +364,11 @@ public class ComprehensiveUtils {
 
             /**
              * 3. 指数
-             * <1> 指数后面必须接数字: if(i == s.length - 1) return false;
-             * <2> 不能出现两个指数:   if(hasExpo) return false;
+             * <1> 指数后面不可能是最后一个元素，后面一个跟整数。
+             * <2> 不能出现两个指数。
              */
             else if (s.charAt(i) == 'e' || s.charAt(i) == 'E'){
-                if (i == s.length() - 1) return false;
-                if (hasExponent)         return false;
+                if (i == s.length() - 1 || hasExponent) return false;
                 hasExponent = true;
             }
 

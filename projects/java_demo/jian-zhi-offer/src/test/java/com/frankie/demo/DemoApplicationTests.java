@@ -1311,6 +1311,18 @@ public class DemoApplicationTests {
         Assert.assertFalse(n6);
         Assert.assertFalse(n7);
         Assert.assertFalse(n8);
+
+
+        /**
+         * 关于符号的测试用例
+         */
+
+        String s9 = "0.-5";
+        String s10 = "0.5e-2+";
+        boolean n9 = cu.isNumeric(s9);
+        boolean n10 = cu.isNumeric(s10);
+        Assert.assertFalse(n9);
+        Assert.assertFalse(n10);
     }
 
     @Test
