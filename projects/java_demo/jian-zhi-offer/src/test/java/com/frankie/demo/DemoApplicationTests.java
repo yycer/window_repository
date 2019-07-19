@@ -1196,6 +1196,18 @@ public class DemoApplicationTests {
     }
 
     @Test
+    public void calculateFirstOnePositionTest(){
+        ComprehensiveUtils cu = new ComprehensiveUtils();
+        int i0 = cu.calculateFirstOnePosition(5);
+        int i2 = cu.calculateFirstOnePosition(4);
+        int i1 = cu.calculateFirstOnePosition(18);
+
+        Assert.assertEquals(i0, 0);
+        Assert.assertEquals(i1, 1);
+        Assert.assertEquals(i2, 2);
+    }
+
+    @Test
     public void powerTest(){
         ComprehensiveUtils cu = new ComprehensiveUtils();
         double result81 = cu.power(3.0, 4);

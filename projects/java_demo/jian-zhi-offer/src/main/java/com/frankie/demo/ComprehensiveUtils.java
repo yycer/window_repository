@@ -127,6 +127,11 @@ public class ComprehensiveUtils {
         if (length == 3) return 2;
 
         int timesOf3 = length / 3;
+        /**
+         *  重点: 2 * 2 > 3 * 1
+         *  eg: length = 16, 3^5*1 = 243, 3^4*2^2 = 324
+         */
+
         if (length - timesOf3 * 3 == 1)
             timesOf3--;
         int timeOf2 = (length - timesOf3 * 3) / 2;
@@ -146,20 +151,17 @@ public class ComprehensiveUtils {
      * 4       4      7(0111)     0(0000) =  8 &  7; -> out
      */
     public int numberOfOne(int x){
-
-        String s = Integer.toBinaryString(x);
-
         int count = 0;
         while (x != 0){
-            count++;
             x = x & (x - 1);
+            count++;
         }
         return count;
     }
 
 
     /**
-     * 不用四则运算做加法
+     * 不用四则运算做加法(按位亦或、按位与)
      */
     public int AddUsingBitOperation(int x, int y){
 
@@ -167,6 +169,7 @@ public class ComprehensiveUtils {
         int carry;
         do {
             sum   = x ^ y;
+            // 进位是关键。
             carry = (x & y) << 1;
             x     = sum;
             y     = carry;
@@ -208,7 +211,7 @@ public class ComprehensiveUtils {
             position++;
         }
 
-        // Step3: 根据定位位置，将元素数组一分为二，然后分别执行一遍异或操作即可。
+        // Step3: 根据异或结果的第一位1的位置，虚拟地分为两个集合(因为遍历次数仍为1)，然后依次做异或。
         int x = 0, y = 0;
         ArrayList<Integer> result = new ArrayList<>();
         for (int i: nums){
@@ -221,6 +224,20 @@ public class ComprehensiveUtils {
         result.add(y);
 
         return result;
+    }
+
+    /**
+     * 计算二进制表示中第一个1的位置(从低位到高位遍历)，仅考虑正数。
+     */
+    public int calculateFirstOnePosition(int x){
+        if (x <= 0) return -1;
+        int pos = 0;
+        // 当最后一位不是1时
+        while ((x & 0x1) == 0){
+            x >>= 1;
+            pos++;
+        }
+        return pos;
     }
 
     /**
