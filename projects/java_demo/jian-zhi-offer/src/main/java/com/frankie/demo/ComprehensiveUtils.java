@@ -8,6 +8,7 @@ import netscape.security.ForbiddenTargetException;
 
 import java.security.interfaces.RSAKey;
 import java.util.*;
+import java.util.concurrent.ExecutionException;
 import java.util.regex.Pattern;
 
 public class ComprehensiveUtils {
@@ -464,6 +465,43 @@ public class ComprehensiveUtils {
             }
         }
         return permutationList;
+    }
+
+    /**
+     * 找出数组中出现次数超过一半的数字。
+     * 1. 判断数组是否有效。
+     * 2. 次数法，次数数量需要大于0，返回结果。
+     * 3. 验证该结果在数组中出现的次数是否大于一半。
+     */
+    public int moreThanHalfNumber(int[] a) throws Exception {
+        // Step1: 判断数组是否有效。
+        if (a.length <= 0){
+            throw new Exception("The array is invalid!");
+        }
+
+        // Step2: 次数法，次数数量需要大于0，返回结果。
+        int result = a[0];
+        int times  = 1;
+        for (int i = 1; i < a.length; i++){
+            if (times == 0){
+                result = a[i];
+                times  = 1;
+            }
+            else if (a[i] == result){
+                times++;
+            }
+            else {
+                times--;
+            }
+        }
+
+        // Step3: 验证该结果在数组中出现的次数是否大于一半。
+        int resultCount = 0;
+        for (int i: a){
+            if (i == result) resultCount++;
+        }
+        if (resultCount * 2 > a.length) return result;
+        else throw new Exception("The array is invalid!");
     }
 }
 

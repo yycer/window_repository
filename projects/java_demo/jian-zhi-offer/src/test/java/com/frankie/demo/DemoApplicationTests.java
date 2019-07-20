@@ -1443,6 +1443,24 @@ public class DemoApplicationTests {
         List<String> result = cu.permutation(c, 0, c.length);
         System.out.println(2);
     }
+
+    @Test
+    public void moreThanHalfNumberTest() throws Exception {
+        ComprehensiveUtils cu = new ComprehensiveUtils();
+        int[] a = {1, 2, 1, 3, 1 ,1};
+        int result = cu.moreThanHalfNumber(a);
+        Assert.assertEquals(result, 1);
+
+        // 数组中仅包含一个元素。
+        int[] b = {1};
+        int r2 = cu.moreThanHalfNumber(b);
+        Assert.assertEquals(r2, 1);
+
+
+        // 数组中不包含超过一半的元素。
+        int[] c = {1, 2, 1, 3, 3 ,4};
+        int r3 = cu.moreThanHalfNumber(c);
+    }
 }
 
 
