@@ -398,13 +398,13 @@ public class ComprehensiveUtils {
     public int[] reorderOddEven(int[] nums){
         if (nums.length <= 1) return nums;
 
-        // 符合要求元素的数量，如移到数组头部的奇数个数。
-        int hit  = 0;
+        // 第一个偶数的索引。
+        int firstEvenIndex  = 0;
 
         for (int i = 0; i < nums.length; i++){
             if (hitCondition(nums, i)){
-                ArrayUtils.swap(nums, i, hit);
-                hit++;
+                ArrayUtils.swap(nums, i, firstEvenIndex);
+                firstEvenIndex++;
             }
         }
         return nums;
@@ -425,15 +425,16 @@ public class ComprehensiveUtils {
      */
     public List<String> combination(char[] buf){
         ArrayList<String> list = new ArrayList<>();
+        // 1 << buf.length，即2的buf.length次方。
         for(int i = 1 ; i < (1 << buf.length); i++){
-            String result = "";
+            StringBuilder sb = new StringBuilder();
             for(int j = 0 ; j < buf.length; j++){
                 //判断哪一位为1
                 if((i & (1 << j)) != 0){
-                    result += buf[j];
+                    sb.append(buf[j]);
                 }
             }
-            list.add(result);
+            list.add(new String(sb));
         }
         return list;
     }
@@ -441,16 +442,18 @@ public class ComprehensiveUtils {
     private ArrayList<String> permutationList = new ArrayList<>();
     /**
      * 字符串的排列。
+     * 1. 递归结束条件: start等于end，拼buf，加入list即可。
+     * 2. 否则调整数组、递归(start+1)、还原数组。
      */
     public List<String> permutation(char[] buf, int start, int end){
 
         if (start == end){
-            String result = "";
+            StringBuilder sb = new StringBuilder();
             for (int i = 0; i < end; i++){
-                result += buf[i];
+               sb.append(buf[i]);
             }
-            permutationList.add(result);
-            result = "";
+            permutationList.add(new String(sb));
+            sb = new StringBuilder();
         } else {
             for (int i = start; i < buf.length; i++){
                 // 排列
