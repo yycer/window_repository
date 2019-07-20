@@ -503,6 +503,49 @@ public class ComprehensiveUtils {
         if (resultCount * 2 > a.length) return result;
         else throw new Exception("The array is invalid!");
     }
+
+    /**
+     * 连续子数组的最大和。
+     * 1. 需要两个临时变量，当前累计和(curSum)、当前最大累计和(greatestSum)。
+     * 2. 当前累计和一旦小于0，则令其等于当前元素，一旦curSum > greatestSum, greatestSum = curSum.
+     */
+    public int findGreatestSumOfSubArray(int[] a){
+        if (a.length <= 0) return -1;
+
+        int curSum      = a[0];
+        int greatestSum = a[0];
+
+        for (int i = 1; i < a.length; i++){
+            if (curSum < 0){
+                curSum = a[i];
+            } else{
+                curSum += a[i];
+            }
+
+            if (curSum > greatestSum){
+                greatestSum = curSum;
+            }
+        }
+        return greatestSum;
+    }
+
+    /**
+     * 连续子数组的最大和(动态规划)。
+     */
+    public int findGreatestSumOfSubArrayUsingDP(int[] a){
+
+        if (a.length <= 0) return -1;
+        int curSum      = a[0];
+        int greatestSum = a[0];
+
+        for (int i = 1; i < a.length; i++){
+            curSum      = Math.max(curSum + a[i], a[i]);
+            greatestSum = Math.max(curSum, greatestSum);
+        }
+
+        return greatestSum;
+    }
+
 }
 
 

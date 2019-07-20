@@ -1461,6 +1461,42 @@ public class DemoApplicationTests {
         int[] c = {1, 2, 1, 3, 3 ,4};
         int r3 = cu.moreThanHalfNumber(c);
     }
+
+    @Test
+    public void findGreatestSumOfSubArrayTest(){
+        ComprehensiveUtils cu = new ComprehensiveUtils();
+        int[] a = {1, -2, 3, 4, -2, 8, -3};
+        int r1 = cu.findGreatestSumOfSubArray(a);
+        Assert.assertEquals(r1, 13);
+
+        // 全正
+        int[] b = {1, 2, 3};
+        int r2 = cu.findGreatestSumOfSubArray(b);
+        Assert.assertEquals(r2, 6);
+
+        // 全负
+        int[] c = {-1, -2, -3};
+        int r3 = cu.findGreatestSumOfSubArray(c);
+        Assert.assertEquals(r3, -1);
+    }
+
+    @Test
+    public void findGreatestSumOfSubArrayUsingDPTest(){
+        ComprehensiveUtils cu = new ComprehensiveUtils();
+        int[] a = {1, -2, 3, 4, 5, -2, 6};
+        int r1 = cu.findGreatestSumOfSubArrayUsingDP(a);
+        Assert.assertEquals(r1, 16);
+
+        // 全正
+        int[] b = {1, 2, 3};
+        int r2 = cu.findGreatestSumOfSubArrayUsingDP(b);
+        Assert.assertEquals(r2, 6);
+
+        // 全负
+        int[] c = {-1, -2, -3};
+        int r3 = cu.findGreatestSumOfSubArrayUsingDP(c);
+        Assert.assertEquals(r3, -1);
+    }
 }
 
 
