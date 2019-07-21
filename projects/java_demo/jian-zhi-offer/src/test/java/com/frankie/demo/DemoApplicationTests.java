@@ -18,6 +18,9 @@ import java.util.*;
 @SpringBootTest
 public class DemoApplicationTests {
 
+
+    ComprehensiveUtils cu = new ComprehensiveUtils();
+
     @Test
     public void findRepeatedEleInArray() {
         int[] a = {8, 3, 7, 6, 8, 7};
@@ -1469,6 +1472,10 @@ public class DemoApplicationTests {
         int r1 = cu.findGreatestSumOfSubArray(a);
         Assert.assertEquals(r1, 13);
 
+        int[] a1 = {1, -2, 3, 4, -5, 2, 7};
+        int r11 = cu.findGreatestSumOfSubArray(a1);
+        Assert.assertEquals(r11, 11);
+
         // 全正
         int[] b = {1, 2, 3};
         int r2 = cu.findGreatestSumOfSubArray(b);
@@ -1496,6 +1503,60 @@ public class DemoApplicationTests {
         int[] c = {-1, -2, -3};
         int r3 = cu.findGreatestSumOfSubArrayUsingDP(c);
         Assert.assertEquals(r3, -1);
+        
+    }
+
+    @Test
+    public void maxGiftTest(){
+        ComprehensiveUtils cu = new ComprehensiveUtils();
+        int[][] a = {{1, 10, 3, 8},
+                     {12, 2, 9, 6},
+                     {5, 7, 4, 11},
+                     {3, 7, 16, 5}};
+        int r1 = cu.maxGift(a);
+        Assert.assertEquals(r1, 53);
+
+        int[][] b= {{3, 4, 7, 5, 9},
+                    {2, 7, 8, 2, 1},
+                    {10, 16, 3, 4, 7},
+                    {7, 12, 3, 16, 2}};
+        int r2 = cu.maxGift(b);
+        Assert.assertEquals(r2, 64);
+    }
+
+    @Test
+    public void divideTest(){
+        int x = 311 % 10;
+        System.out.println(x);
+    }
+
+    @Test
+    public void numberOf1Test(){
+
+        int r1 = cu.numberOf1(311211);
+        int r2 = cu.numberOf1(1);
+        Assert.assertEquals(r1, 4);
+        Assert.assertEquals(r2, 1);
+    }
+
+    @Test
+    public void numberOf1Between1AndNTest(){
+        int r1 = cu.numberOf1Between1AndN(12);
+        Assert.assertEquals(r1, 5);
+
+        int r2 = cu.numberOf1Between1AndN(20195);
+        System.out.println(r2);
+    }
+
+    @Test
+    public void print1ToNTest(){
+        cu.print1ToN(328);
+    }
+
+    @Test
+    public void numberOf1Between1AndNOptimizationTest(){
+        int r1 = cu.numberOf1Between1AndNOptimization(20195);
+        Assert.assertEquals(r1, 18136);
     }
 }
 

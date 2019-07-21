@@ -37,8 +37,12 @@ public class BinaryTree {
     }
 
     private boolean containNodeRecursive(Node curNode, int val){
-        if (curNode          == null) return false;
-        if (curNode.getVal() == val)  return true;
+        if (curNode          == null) {
+            return false;
+        }
+        if (curNode.getVal() == val) {
+            return true;
+        }
 
         // 如果待查找节点的值小于当前节点的值。
         return (val < curNode.getVal())
@@ -84,7 +88,9 @@ public class BinaryTree {
      * 2. 出栈、定位到右子树。
      */
     public void inOrderTraversal(Node node){
-        if (node == null) return;
+        if (node == null) {
+            return;
+        }
         ArrayDeque<Node> deque = new ArrayDeque<>();
         System.out.println("中序遍历: ");
 
@@ -112,7 +118,9 @@ public class BinaryTree {
      * 3. 打印后续遍历
      */
     public void postOrderTraversal2(Node node){
-        if (node == null) return;
+        if (node == null) {
+            return;
+        }
         ArrayDeque<Node>    nodeDeque  = new ArrayDeque<>();
         ArrayDeque<Integer> valueDeque = new ArrayDeque<>();
 
@@ -138,8 +146,12 @@ public class BinaryTree {
     }
 
     public int fibonacci(int n){
-        if (n <= 0) return 0;
-        if (n == 1) return 1;
+        if (n <= 0) {
+            return 0;
+        }
+        if (n == 1) {
+            return 1;
+        }
 
         return fibonacci(n-1) + fibonacci(n - 2);
     }
@@ -148,8 +160,12 @@ public class BinaryTree {
      * @param n: 代表第几位fibonacci。
      */
     public int fibonacciOptimization(int n){
-        if (n == 0) return 0;
-        if (n == 1) return 1;
+        if (n == 0) {
+            return 0;
+        }
+        if (n == 1) {
+            return 1;
+        }
 
         int nMinustwo = 0;
         int nMinusOne = 1;
@@ -167,7 +183,9 @@ public class BinaryTree {
      * 先序遍历(递归法)
      */
     public void preOrderTraversalUsingRecursive(Node node){
-        if (node == null) return;
+        if (node == null) {
+            return;
+        }
 
         System.out.print(node.getVal() + " ");
         preOrderTraversalUsingRecursive(node.getLeftNode());
@@ -178,7 +196,9 @@ public class BinaryTree {
      * 中序遍历(递归法)
      */
     public void inOrderTraversalUsingRecursive(Node node){
-        if (node == null) return;
+        if (node == null) {
+            return;
+        }
 
         inOrderTraversalUsingRecursive(node.getLeftNode());
         System.out.print(node.getVal() + " ");
@@ -189,7 +209,9 @@ public class BinaryTree {
      * 后序遍历(递归法)
      */
     public void postOrderTraversalUsingRecursive(Node node){
-        if (node == null) return;
+        if (node == null) {
+            return;
+        }
 
         postOrderTraversalUsingRecursive(node.getLeftNode());
         postOrderTraversalUsingRecursive(node.getRightNode());
@@ -201,7 +223,9 @@ public class BinaryTree {
      * 广度优先遍历(队列)
      */
     public void levelOrderTraserval2(Node node){
-        if (node == null) return;
+        if (node == null) {
+            return;
+        }
         ArrayDeque<Node> deque = new ArrayDeque<>();
         deque.addLast(node);
         System.out.println("广度优先遍历: ");
@@ -230,7 +254,9 @@ public class BinaryTree {
      */
     public Node deleteNode(Node node, int val){
         // Step0: Base check.
-        if (node == null) return null;
+        if (node == null) {
+            return null;
+        }
 
         // Step1: 定位待删除元素。
         if      (node.getVal() > val){
@@ -271,9 +297,15 @@ public class BinaryTree {
         boolean result = false;
         if (root1 != null && root2 != null){
             // 从树1定位与树2根节点一致的子树。
-            if (root1.getVal() == root2.getVal()) result = doesTree1HasTree2(root1, root2);
-            if (!result)                          result = hasSubtree(root1.getLeftNode(), root2);
-            if (!result)                          result = hasSubtree(root1.getRightNode(), root2);
+            if (root1.getVal() == root2.getVal()) {
+                result = doesTree1HasTree2(root1, root2);
+            }
+            if (!result) {
+                result = hasSubtree(root1.getLeftNode(), root2);
+            }
+            if (!result) {
+                result = hasSubtree(root1.getRightNode(), root2);
+            }
         }
         return result;
     }
@@ -286,11 +318,17 @@ public class BinaryTree {
      */
     public boolean doesTree1HasTree2(Node n1, Node n2){
         // line1在line2之上的原因是，母树除了包含子树外，还可能会有些节点延伸。
-        if (n2 == null) return true;  // line1
+        if (n2 == null) {
+            return true;  // line1
+        }
 
         // 子树怎么可能比母树大叻
-        if (n1 == null) return false; // line2
-        if (n1.getVal() != n2.getVal()) return false;
+        if (n1 == null) {
+            return false; // line2
+        }
+        if (n1.getVal() != n2.getVal()) {
+            return false;
+        }
 
         return doesTree1HasTree2(n1.getLeftNode(), n2.getLeftNode()) &&
                doesTree1HasTree2(n1.getRightNode(), n2.getRightNode());
@@ -304,7 +342,9 @@ public class BinaryTree {
      * 3. 若该节点为父节点的右子树，一路向上遍历，直至找到一个其父节点为左子树的节点，返回其爷爷节点。
      */
     public Node returnNextNode(Node curNode){
-        if (curNode == null) return null;
+        if (curNode == null) {
+            return null;
+        }
 
         // Step1: 该节点包含右节点，取其右子树中最小值(最左左叶子节点)
         if (curNode.getRightNode() != null){
@@ -321,7 +361,9 @@ public class BinaryTree {
          * 3. 如果该节点为父节点的右节点，一直往上遍历，直至发现它的父节点是爷爷节点的左节点，返回爷爷节点。
          */
         while (curNode.getParentNode() != null){
-            if (curNode.getParentNode().getLeftNode() == curNode) return curNode.getParentNode();
+            if (curNode.getParentNode().getLeftNode() == curNode) {
+                return curNode.getParentNode();
+            }
             curNode = curNode.getParentNode();
         }
 
@@ -339,7 +381,9 @@ public class BinaryTree {
     }
 
     private Node rebuildBTCore(int[] pre, int preLeft, int preRight, int[] in, int inLeft, int inRight) {
-        if (preLeft > preRight || inLeft > inRight) return null;
+        if (preLeft > preRight || inLeft > inRight) {
+            return null;
+        }
 
         Node root = new Node(pre[preLeft]);
         for (int i = inLeft; i <= inRight; i++){
@@ -357,16 +401,24 @@ public class BinaryTree {
      * 二叉树的镜像
      */
     public Node mirrorRecursively(Node node){
-        if (node == null) return null;
-        if (node.getLeftNode() == null && node.getRightNode() == null) return null;
+        if (node == null) {
+            return null;
+        }
+        if (node.getLeftNode() == null && node.getRightNode() == null) {
+            return null;
+        }
 
         // 交换左右子树、节点
         Node tmpNode = node.getLeftNode();
         node.setLeftNode(node.getRightNode());
         node.setRightNode(tmpNode);
 
-        if (node.getLeftNode()  != null) mirrorRecursively(node.getLeftNode());
-        if (node.getRightNode() != null) mirrorRecursively(node.getRightNode());
+        if (node.getLeftNode()  != null) {
+            mirrorRecursively(node.getLeftNode());
+        }
+        if (node.getRightNode() != null) {
+            mirrorRecursively(node.getRightNode());
+        }
         return node;
     }
 
@@ -378,9 +430,15 @@ public class BinaryTree {
     }
 
     private boolean isSymmetrical(Node node1, Node node2) {
-        if (node1 == null && node2 == null)   return true;
-        if (node1 == null || node2 == null)   return false;
-        if (node1.getVal() != node2.getVal()) return false;
+        if (node1 == null && node2 == null) {
+            return true;
+        }
+        if (node1 == null || node2 == null) {
+            return false;
+        }
+        if (node1.getVal() != node2.getVal()) {
+            return false;
+        }
 
         return isSymmetrical(node1.getLeftNode(),  node2.getRightNode()) &&
                isSymmetrical(node1.getRightNode(), node2.getLeftNode());
@@ -401,13 +459,17 @@ public class BinaryTree {
         // 定位到第一个大于根节点的节点索引。
         int i = 0;
         for (; i < length - 1; i++){
-            if (sequence[i] > root) break;
+            if (sequence[i] > root) {
+                break;
+            }
         }
 
         // 防止处于右子树中的节点比根节点小。
         int j = i;
         for (; j < length - 1; j++){
-            if (sequence[j] < root) return false;
+            if (sequence[j] < root) {
+                return false;
+            }
         }
 
         boolean left = true;
@@ -430,7 +492,9 @@ public class BinaryTree {
      * 返回树中和为某个值的所有路径。
      */
     public ArrayList<ArrayList<Integer>> returnPaths(Node node, int target){
-        if (node == null) return paths;
+        if (node == null) {
+            return paths;
+        }
         path.add(node.getVal());
         target -= node.getVal();
 
@@ -478,7 +542,9 @@ public class BinaryTree {
      * 计算二叉树深度
      */
     public int treeDepth(Node node){
-        if (node == null) return 0;
+        if (node == null) {
+            return 0;
+        }
 
         int left  = treeDepth(node.getLeftNode());
         int right = treeDepth(node.getRightNode());
@@ -490,7 +556,9 @@ public class BinaryTree {
      * 判断是否为平衡二叉树
      */
     public boolean isBalancedTree(Node node){
-        if (node == null) return true;
+        if (node == null) {
+            return true;
+        }
         int left  = treeDepth(node.getLeftNode());
         int right = treeDepth(node.getRightNode());
         int diff = left - right;
@@ -511,11 +579,17 @@ public class BinaryTree {
     }
 
     private int getDepth(Node node){
-        if (node == null) return 0;
+        if (node == null) {
+            return 0;
+        }
         int left  = getDepth(node.getLeftNode());
-        if (left  == -1) return -1;
+        if (left  == -1) {
+            return -1;
+        }
         int right = getDepth(node.getRightNode());
-        if (right == -1) return -1;
+        if (right == -1) {
+            return -1;
+        }
         /**
          * 若任何父节点下的左右子树的深度差大于1，则返回-1(非平衡二叉树)，否则返回左右子树中更大的深度。
          */

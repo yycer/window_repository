@@ -5,6 +5,7 @@ import com.sun.org.apache.bcel.internal.generic.FREM;
 import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 import com.sun.org.apache.bcel.internal.generic.LNEG;
 import netscape.security.ForbiddenTargetException;
+import org.springframework.boot.web.servlet.filter.OrderedHiddenHttpMethodFilter;
 
 import java.security.interfaces.RSAKey;
 import java.util.*;
@@ -61,11 +62,13 @@ public class ComprehensiveUtils {
      */
     public void stackAddElementUsingDoubleQueue(int x){
         // 若主栈，则往辅栈压入元素。
-        if (queuePrimary.isEmpty())
+        if (queuePrimary.isEmpty()) {
             queueAuxiliary.addLast(x);
+        }
         // 否则，往主栈里面压入元素。
-        else
+        else {
             queuePrimary.addLast(x);
+        }
     }
 
     /**
@@ -80,12 +83,14 @@ public class ComprehensiveUtils {
 
         if (queuePrimary.isEmpty()){
             // 将辅助队列中的元素依次插入主队列中，仅保留最后弹出的一个。
-            while (queueAuxiliary.size() != 1)
+            while (queueAuxiliary.size() != 1) {
                 queuePrimary.addLast(queueAuxiliary.removeFirst());
+            }
             return queueAuxiliary.removeFirst();
         } else {
-            while (queuePrimary.size()   != 1)
+            while (queuePrimary.size()   != 1) {
                 queueAuxiliary.addLast(queuePrimary.removeFirst());
+            }
             return queuePrimary.removeFirst();
         }
     }
@@ -96,7 +101,9 @@ public class ComprehensiveUtils {
     public int minNumberInRotatedArray(int[] a){
 
         // Step1: Base check.
-        if (a.length <= 0) return -1;
+        if (a.length <= 0) {
+            return -1;
+        }
 
         int low  = 0;
         int high = a.length - 1;
@@ -123,9 +130,15 @@ public class ComprehensiveUtils {
      * 剪绳子，获取最大乘积(贪婪算法)。
      */
     public int maxProductAfterCutting(int length){
-        if (length <  2) return 0;
-        if (length == 2) return 1;
-        if (length == 3) return 2;
+        if (length <  2) {
+            return 0;
+        }
+        if (length == 2) {
+            return 1;
+        }
+        if (length == 3) {
+            return 2;
+        }
 
         int timesOf3 = length / 3;
         /**
@@ -133,8 +146,9 @@ public class ComprehensiveUtils {
          *  eg: length = 16, 3^5*1 = 243, 3^4*2^2 = 324
          */
 
-        if (length - timesOf3 * 3 == 1)
+        if (length - timesOf3 * 3 == 1) {
             timesOf3--;
+        }
         int timeOf2 = (length - timesOf3 * 3) / 2;
 
         return (int) (Math.pow(3, timesOf3) * Math.pow(2, timeOf2));
@@ -197,7 +211,9 @@ public class ComprehensiveUtils {
     public ArrayList<Integer> findTwoNumberAppearingOnce(int[] nums){
 
         // Base check.
-        if (nums.length < 1) return null;
+        if (nums.length < 1) {
+            return null;
+        }
 
         // Step1: 依次遍历数组，进行异或操作。
         int xor = 0;
@@ -216,10 +232,11 @@ public class ComprehensiveUtils {
         int x = 0, y = 0;
         ArrayList<Integer> result = new ArrayList<>();
         for (int i: nums){
-            if (((i >> position) & 1) == 0)
+            if (((i >> position) & 1) == 0) {
                 x ^= i;
-            else
+            } else {
                 y ^= i;
+            }
         }
         result.add(x);
         result.add(y);
@@ -231,7 +248,9 @@ public class ComprehensiveUtils {
      * 计算二进制表示中第一个1的位置(从低位到高位遍历)，仅考虑正数。
      */
     public int calculateFirstOnePosition(int x){
-        if (x <= 0) return -1;
+        if (x <= 0) {
+            return -1;
+        }
         int pos = 0;
         // 当最后一位不是1时
         while ((x & 0x1) == 0){
@@ -270,8 +289,12 @@ public class ComprehensiveUtils {
      * Optimization way: 3^8 = ((3 * 3) * (3 * 3)) * ((3 * 3) * (3 * 3))
      */
     public double powerRecursively(double base, int expo){
-        if (expo == 0) return 1;
-        if (expo == 1) return base;
+        if (expo == 0) {
+            return 1;
+        }
+        if (expo == 1) {
+            return base;
+        }
         // 细节1: expo >> 1与expo /= 2运算结果上一致，但性能上更优。
         double result = powerRecursively(base, expo >> 1);
         result *= result;
@@ -289,8 +312,9 @@ public class ComprehensiveUtils {
      * 正则表达式匹配(.*)
      */
     public boolean match(String str, String pattern){
-        if (str.length() == 0 || pattern.length() == 0)
+        if (str.length() == 0 || pattern.length() == 0) {
             return false;
+        }
 
         return matchCore(str, 0, pattern, 0);
     }
@@ -339,7 +363,9 @@ public class ComprehensiveUtils {
      */
     public boolean isNumeric(String s){
 
-        if (s.length() == 0) return false;
+        if (s.length() == 0) {
+            return false;
+        }
         boolean hasDecimal  = false;
         boolean hasExponent = false;
 
@@ -350,7 +376,9 @@ public class ComprehensiveUtils {
              * 不在首元素出现，同时前一个元素不是e。
              */
             if (s.charAt(i) == '+' ||s.charAt(i) == '-'){
-                if (i > 0 && s.charAt(i - 1) != 'e' && s.charAt(i - 1) != 'E') return false;
+                if (i > 0 && s.charAt(i - 1) != 'e' && s.charAt(i - 1) != 'E') {
+                    return false;
+                }
             }
 
             /**
@@ -359,7 +387,9 @@ public class ComprehensiveUtils {
              * <2> 小数不能出现两次。
              */
             else if (s.charAt(i) == '.'){
-                if (hasDecimal || hasExponent) return false;
+                if (hasDecimal || hasExponent) {
+                    return false;
+                }
                 hasDecimal = true;
             }
 
@@ -369,7 +399,9 @@ public class ComprehensiveUtils {
              * <2> 不能出现两个指数。
              */
             else if (s.charAt(i) == 'e' || s.charAt(i) == 'E'){
-                if (i == s.length() - 1 || hasExponent) return false;
+                if (i == s.length() - 1 || hasExponent) {
+                    return false;
+                }
                 hasExponent = true;
             }
 
@@ -397,7 +429,9 @@ public class ComprehensiveUtils {
      * 调整数组顺序，使奇数位于偶数前面。
      */
     public int[] reorderOddEven(int[] nums){
-        if (nums.length <= 1) return nums;
+        if (nums.length <= 1) {
+            return nums;
+        }
 
         // 第一个偶数的索引。
         int firstEvenIndex  = 0;
@@ -498,10 +532,15 @@ public class ComprehensiveUtils {
         // Step3: 验证该结果在数组中出现的次数是否大于一半。
         int resultCount = 0;
         for (int i: a){
-            if (i == result) resultCount++;
+            if (i == result) {
+                resultCount++;
+            }
         }
-        if (resultCount * 2 > a.length) return result;
-        else throw new Exception("The array is invalid!");
+        if (resultCount * 2 > a.length) {
+            return result;
+        } else {
+            throw new Exception("The array is invalid!");
+        }
     }
 
     /**
@@ -510,7 +549,9 @@ public class ComprehensiveUtils {
      * 2. 当前累计和一旦小于0，则令其等于当前元素，一旦curSum > greatestSum, greatestSum = curSum.
      */
     public int findGreatestSumOfSubArray(int[] a){
-        if (a.length <= 0) return -1;
+        if (a.length <= 0) {
+            return -1;
+        }
 
         int curSum      = a[0];
         int greatestSum = a[0];
@@ -534,7 +575,9 @@ public class ComprehensiveUtils {
      */
     public int findGreatestSumOfSubArrayUsingDP(int[] a){
 
-        if (a.length <= 0) return -1;
+        if (a.length <= 0) {
+            return -1;
+        }
         int curSum      = a[0];
         int greatestSum = a[0];
 
@@ -546,6 +589,123 @@ public class ComprehensiveUtils {
         return greatestSum;
     }
 
+    /**
+     * 礼物的最大价值
+     */
+    public int maxGift(int[][] matrix){
+       if (matrix.length <= 0 || matrix[0].length <= 0) {
+           return -1;
+       }
+
+       for (int i = 0; i < matrix.length; i++){
+           for (int j = 0; j < matrix[i].length; j++){
+               int top  = i > 0 ? matrix[i - 1][j] : 0;
+               int left = j > 0 ? matrix[i][j - 1] : 0;
+
+               matrix[i][j] += Math.max(top, left);
+           }
+       }
+
+       // 返回二维数组的最后一个元素。
+       return matrix[matrix.length - 1][matrix[0].length - 1];
+    }
+
+
+    /**
+     * 计算1~n整数中1出现的次数。
+     */
+    public int numberOf1Between1AndN(int n){
+        if (n <= 0){
+            return -1;
+        }
+
+        int start = 1;
+        int count = 0;
+        // 1 ~ n => [1, n]
+        while (start <= n){
+            count += numberOf1(start);
+            start++;
+        }
+        return count;
+    }
+
+    /**
+     * 计算某个正整数中1的个数。
+     */
+    public int numberOf1(int x){
+        if (x <= 0) {
+            return -1;
+        }
+
+        int count = 0;
+
+        while (x != 0){
+            if (x % 10 == 1){
+                count++;
+            }
+            x /= 10;
+        }
+        return count;
+    }
+
+    /**
+     * 从0打印到n
+     */
+    public void print1ToN(int n){
+        int flag = 0;
+        int i    = 1;
+        while (i <= n){
+            if (flag == 10){
+                flag = 0;
+                System.out.println();
+            }
+            System.out.print(i + " ");
+            flag++;
+            i++;
+        }
+    }
+
+    /**
+     * 计算1~n整数中1出现的次数(优化版)。
+     * 1. i初始值为1，循环跳出条件为high = 0;
+     * 2. 高位  (high): x / 10 ^ i;
+     * 3. 当前位(cur) : (x / 10 ^ (i - 1)) % 10;
+     * 4. 低位  (low): x - (x / 10 ^ (i - 1) * (10 ^ (i - 1)))
+     */
+    public int numberOf1Between1AndNOptimization(int x){
+
+        if (x <= 0) {
+            return -1;
+        }
+
+        /**
+         * 为什么需要i，事关定位高位、当前位、低位。
+         * 为什么需要high，事关循环。
+         * 为什么需要sum，事关1的总数。
+         */
+        int i = 1, high = x, sum = 0;
+
+        while (high != 0){
+            high = x / (int) Math.pow(10, i);
+            // temp存在的意义在于，方便求出当前位、低位。
+            int temp = x / (int) Math.pow(10, i - 1);
+            int cur  = temp % 10;
+            int low  = x - temp * (int) Math.pow(10, i - 1);
+
+            if (cur >  1){
+                sum += (high + 1) * (int) Math.pow(10, i - 1);
+            }
+            else if (cur < 1){
+                sum += high * (int) Math.pow(10, i - 1);
+            }
+            else{
+                sum += high * (int) Math.pow(10, i - 1) + low + 1;
+            }
+            i++;
+        }
+
+        return sum;
+    }
 }
 
 
