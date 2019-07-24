@@ -706,6 +706,43 @@ public class ComprehensiveUtils {
 
         return sum;
     }
+
+
+    /**
+     * 数字序列中某一位的数字
+     */
+    public int digitAtIndex(int index){
+
+        int bit = 0;
+        while (countOfIndexes(bit) < index){
+            bit++;
+        }
+
+        /**
+         * eg: index = 1002
+         * restDigit = 1002 - 190 = 812;
+         * realDigit = 812 / 3 = 270;
+         * digitBit  = 812 % 3 = 2;
+         * digitAtIndex = 7;
+         */
+        int restDigit = index - countOfIndexes(bit - 1);
+        int realDigit = restDigit / bit;
+        int digitBit  = restDigit % bit;
+
+        return (realDigit / (int) Math.pow(10, bit - digitBit - 1)) % 10;
+    }
+
+    public int countOfIndexes(int bit){
+        if (bit == 0) {
+            return 0;
+        }
+        else if (bit == 1){
+            return 10;
+        }
+        else{
+            return 9 * (int) Math.pow(10, bit - 1) * bit + countOfIndexes(bit - 1);
+        }
+    }
 }
 
 

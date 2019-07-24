@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.Duration;
@@ -1557,6 +1558,30 @@ public class DemoApplicationTests {
     public void numberOf1Between1AndNOptimizationTest(){
         int r1 = cu.numberOf1Between1AndNOptimization(20195);
         Assert.assertEquals(r1, 18136);
+    }
+
+    @Test
+    public void countOfIndexesTest(){
+        int r3 = cu.countOfIndexes(3);
+        int r0 = cu.countOfIndexes(0);
+        int r1 = cu.countOfIndexes(1);
+        int r2 = cu.countOfIndexes(2);
+        Assert.assertEquals(r3, 2890);
+        Assert.assertEquals(r0, 0);
+        Assert.assertEquals(r1, 10);
+        Assert.assertEquals(r2, 190);
+    }
+
+    @Test
+    public void digitAtIndexTest(){
+        int r7 = cu.digitAtIndex(1002);
+        int r5 = cu.digitAtIndex(5);
+        int r1 = cu.digitAtIndex(13);
+        int r4 = cu.digitAtIndex(19);
+        Assert.assertEquals(r7, 7);
+        Assert.assertEquals(r5, 5);
+        Assert.assertEquals(r1, 1);
+        Assert.assertEquals(r4, 4);
     }
 }
 
