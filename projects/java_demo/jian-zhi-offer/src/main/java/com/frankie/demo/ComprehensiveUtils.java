@@ -1,5 +1,6 @@
 package com.frankie.demo;
 
+import com.sun.javafx.iio.ImageFormatDescription;
 import com.sun.org.apache.bcel.internal.generic.FASTORE;
 import com.sun.org.apache.bcel.internal.generic.FREM;
 import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
@@ -713,23 +714,34 @@ public class ComprehensiveUtils {
      */
     public int digitAtIndex(int index){
 
+        if (index >= 0 && index < 10){
+            return index;
+        }
+
         int bit = 0;
         while (countOfIndexes(bit) < index){
             bit++;
         }
 
         /**
-         * eg: index = 1002
-         * restDigit = 1002 - 190 = 812;
-         * realDigit = 812 / 3 = 270;
-         * digitBit  = 812 % 3 = 2;
-         * digitAtIndex = 7;
+         * eg: index = 2803
+         * bit       = 3;
+         * restDigit = index - countOfIndexes(bit - 1) = 2803 - 190 = 2613;
+         * realDigit = (restDigit / bit) + 10 ^ (bit - 1) = (2613 / 3) + 10 ^ 2 = 871 + 100 = 971;
+         * digitBit  = restDigit % bit = 2613 % 3 = 0;
+         * digitAtIndex = 1;
          */
+        // 2613
         int restDigit = index - countOfIndexes(bit - 1);
-        int realDigit = restDigit / bit;
+        // 971
+        int realDigit = (int) Math.pow(10, bit - 1) +  restDigit / bit;
+        // 0
+        // 从左到右，从1开始。
         int digitBit  = restDigit % bit;
+        // 9
+        int digit = getDigitByIndex(realDigit, digitBit);
 
-        return (realDigit / (int) Math.pow(10, bit - digitBit - 1)) % 10;
+        return digit;
     }
 
     public int countOfIndexes(int bit){
@@ -742,6 +754,18 @@ public class ComprehensiveUtils {
         else{
             return 9 * (int) Math.pow(10, bit - 1) * bit + countOfIndexes(bit - 1);
         }
+    }
+
+    /**
+     * 根据位数推出该位上的数字。
+     */
+    public int getDigitByIndex(int num, int index){
+
+//        int restNum = num / (int) Math.pow(10, index);
+//        int digit = restNum % 10;
+
+        int digit = String.valueOf(num).charAt(index) - '0';
+        return digit;
     }
 }
 

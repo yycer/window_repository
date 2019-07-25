@@ -1561,27 +1561,43 @@ public class DemoApplicationTests {
     }
 
     @Test
-    public void countOfIndexesTest(){
-        int r3 = cu.countOfIndexes(3);
-        int r0 = cu.countOfIndexes(0);
-        int r1 = cu.countOfIndexes(1);
-        int r2 = cu.countOfIndexes(2);
-        Assert.assertEquals(r3, 2890);
+    public void digitAtIndexTest(){
+//        for (int j = 2803; j < 2890; j++){
+//            int i = cu.digitAtIndex(j);
+//            System.out.println("index = " + j + ", digit = " + i);
+//        }
+
+        int r3  = cu.digitAtIndex(1000); // 3
+        int r7  = cu.digitAtIndex(1001); // 7
+        int r0  = cu.digitAtIndex(1002); // 0
+        int r4  = cu.digitAtIndex(19);   // 4
+        int r5  = cu.digitAtIndex(5);    // 5
+        int r00 = cu.digitAtIndex(0);    // 0
+        int r1  = cu.digitAtIndex(1);    // 1
+        int r11 = cu.digitAtIndex(10);   // 1
+
+
+        Assert.assertEquals(r3, 3);
+        Assert.assertEquals(r7, 7);
         Assert.assertEquals(r0, 0);
-        Assert.assertEquals(r1, 10);
-        Assert.assertEquals(r2, 190);
+        Assert.assertEquals(r4, 4);
+        Assert.assertEquals(r5, 5);
+        Assert.assertEquals(r00, 0);
+        Assert.assertEquals(r1, 1);
+        Assert.assertEquals(r11, 1);
     }
 
+
     @Test
-    public void digitAtIndexTest(){
-        int r7 = cu.digitAtIndex(1002);
-        int r5 = cu.digitAtIndex(5);
-        int r1 = cu.digitAtIndex(13);
-        int r4 = cu.digitAtIndex(19);
-        Assert.assertEquals(r7, 7);
+    public void getDigitByIndex(){
+        int r0 = cu.getDigitByIndex(8762406, 1);
+        int r6 = cu.getDigitByIndex(8762406, 4);
+        int r5 = cu.getDigitByIndex(5, 0);
+
+        Assert.assertEquals(r0, 0);
+        Assert.assertEquals(r6, 6);
         Assert.assertEquals(r5, 5);
-        Assert.assertEquals(r1, 1);
-        Assert.assertEquals(r4, 4);
+
     }
 }
 
