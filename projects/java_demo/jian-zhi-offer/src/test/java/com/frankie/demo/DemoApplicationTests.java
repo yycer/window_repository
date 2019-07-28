@@ -1599,6 +1599,19 @@ public class DemoApplicationTests {
         Assert.assertEquals(r5, 5);
 
     }
+
+    @Test
+    public void maxProfitTest(){
+        int[] a = {3, 11, 8, 7, 19, 5};
+        int m1 = cu.maxProfit(a);
+        Assert.assertEquals(m1, 16);
+
+        // Corner test
+        int[] b = {18, 3};
+        int[] c = {3, 18};
+        int m2 = cu.maxProfit(b); // -15
+        int m3 = cu.maxProfit(c); // 15
+    }
 }
 
 

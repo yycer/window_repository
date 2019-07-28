@@ -767,6 +767,37 @@ public class ComprehensiveUtils {
         int digit = String.valueOf(num).charAt(index) - '0';
         return digit;
     }
+
+
+    /**
+     * 股票的最大利润
+     * <1> 依次遍历至某个元素a[i]，先找出之前所有元素中最小的那个，默认为第一个元素。
+     * 然后求当前元素与最小值的差，若差大于maxProfit，则替换它。
+     */
+    public int maxProfit(int[] a){
+        if (a.length < 2) {
+            return -1;
+        }
+
+        int min       = a[0];
+        int maxProfit = a[1] - min;
+
+        for (int i = 2; i < a.length; i++){
+
+            // 定位当前元素及之前的最小值。
+            if (a[i] < min){
+                min = a[i];
+            }
+
+            // 当前元素与最小值的差，若大于maxProfit，其替换之。
+            int curDiff = a[i] - min;
+            if ((curDiff) > maxProfit){
+                maxProfit = curDiff;
+            }
+        }
+        return maxProfit;
+    }
+
 }
 
 
