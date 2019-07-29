@@ -798,6 +798,40 @@ public class ComprehensiveUtils {
         return maxProfit;
     }
 
+    /**
+     * 判断是否为丑数(只能整除2、3、5的数，习惯上我们把1当做第一个丑数)。
+     */
+    public boolean isUgly(int x){
+
+        while (x % 2 == 0){
+            x /= 2;
+        }
+        while (x % 3 == 0){
+            x /= 3;
+        }
+        while (x % 5 == 0){
+            x /= 5;
+        }
+
+        return x == 1;
+    }
+
+    /**
+     * 求第n个丑数(原始方法)
+     */
+    public int getUglyNumberByIndex1(int index){
+
+        int count  = 0;
+        int curNum = 0;
+
+        while (count < index){
+            curNum++;
+            if (isUgly(curNum)){
+                count++;
+            }
+        }
+        return curNum;
+    }
 }
 
 

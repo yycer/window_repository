@@ -1612,6 +1612,12 @@ public class DemoApplicationTests {
         int m2 = cu.maxProfit(b); // -15
         int m3 = cu.maxProfit(c); // 15
     }
+
+    @Test
+    public void getUglyNumberTest1(){
+        int r1 = cu.getUglyNumberByIndex1(5);
+        Assert.assertEquals(r1, 5);
+    }
 }
 
 
