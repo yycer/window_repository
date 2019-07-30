@@ -1616,7 +1616,10 @@ public class DemoApplicationTests {
     @Test
     public void getUglyNumberTest1(){
         int r1 = cu.getUglyNumberByIndex1(5);
+        int r2 = cu.getUglyNumberOptimization(10);
+
         Assert.assertEquals(r1, 5);
+        Assert.assertEquals(r2, 12);
     }
 }
 

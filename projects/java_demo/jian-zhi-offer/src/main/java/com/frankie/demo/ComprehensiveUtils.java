@@ -832,6 +832,50 @@ public class ComprehensiveUtils {
         }
         return curNum;
     }
+
+    /**
+     * 查找三个元素中的最小值。
+     */
+    public int minAmongThreeElements(int a, int b, int c){
+        int tmpMin = a > b ? b : a;
+        return tmpMin > c ? c : tmpMin;
+    }
+
+    /**
+     * 求第n个丑数(优化版)。
+     */
+    public int getUglyNumberOptimization(int index){
+        if (index <= 0){
+            return -1;
+        }
+
+        int[] uglyArray = new int[index];
+        uglyArray[0] = 1;
+
+        int multi2 = 0;
+        int multi3 = 0;
+        int multi5 = 0;
+        int i      = 1;
+
+        while (i < index){
+            int min = minAmongThreeElements(uglyArray[multi2] * 2, uglyArray[multi3] * 3, uglyArray[multi5] * 5);
+            uglyArray[i] = min;
+
+            if (uglyArray[multi2] * 2 <= min){
+                multi2++;
+            }
+            if (uglyArray[multi3] * 3 <= min){
+                multi3++;
+            }
+            if (uglyArray[multi5] * 5 <= min){
+                multi5++;
+            }
+            i++;
+        }
+
+        return uglyArray[index - 1];
+    }
+
 }
 
 
