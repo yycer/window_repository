@@ -1621,6 +1621,18 @@ public class DemoApplicationTests {
         Assert.assertEquals(r1, 5);
         Assert.assertEquals(r2, 12);
     }
+
+    @Test
+    public void findNumberWithSumTest() throws Exception {
+        int[] a = {1, 4, 6, 7, 10, 12, 18};
+        int[] r1 = cu.findNumbersWithSum(a, 13);
+    }
+
+    @Test
+    public void firstNotRepeatingNumberTest() throws Exception {
+        char r1 = cu.firstNotRepeatingChar("abcadba");
+        Assert.assertEquals(r1, 'c');
+    }
 }
 
 

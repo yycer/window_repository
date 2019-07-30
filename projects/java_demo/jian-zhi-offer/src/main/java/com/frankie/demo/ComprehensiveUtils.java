@@ -1,5 +1,6 @@
 package com.frankie.demo;
 
+import com.sun.javafx.collections.MappingChange;
 import com.sun.javafx.iio.ImageFormatDescription;
 import com.sun.org.apache.bcel.internal.generic.FASTORE;
 import com.sun.org.apache.bcel.internal.generic.FREM;
@@ -876,6 +877,60 @@ public class ComprehensiveUtils {
         return uglyArray[index - 1];
     }
 
+    /**
+     * 从一个递增数组中，找个和为sum的两个数字。
+     */
+    public int[] findNumbersWithSum(int[] a, int sum) throws Exception {
+        int length = a.length;
+        if (length <= 1 || sum <= 0){
+            throw new Exception("Please check input!");
+        }
+
+        int[] result = new int[2];
+        int start = 0;
+        int end   = length - 1;
+
+        while (start < end){
+            if (a[start] + a[end] > sum){
+                end--;
+            }
+            else if (a[start] + a[end] < sum) {
+                start++;
+            }
+            else{
+                result[0] = a[start];
+                result[1] = a[end];
+                break;
+            }
+        }
+        return result;
+    }
+
+    /**
+     * 第一次只出现一次的字符(维护一个hashMap，以空间换时间，O(n^2) -> O(n))
+     */
+    public char firstNotRepeatingChar(String s) throws Exception {
+        if (s.length() <= 0){
+            throw new Exception("The input is invalid");
+        }
+
+        Map<Character, Integer> map = new HashMap<>();
+        char[] chars = s.toCharArray();
+        for (char c: chars){
+            if (!map.containsKey(c)){
+                map.put(c, 1);
+            } else {
+                map.put(c, map.get(c) + 1);
+            }
+        }
+
+        for (char c: chars){
+            if (map.get(c) == 1){
+                return c;
+            }
+        }
+        throw new Exception("Failed to find not repeating char from s");
+    }
 }
 
 
