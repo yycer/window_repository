@@ -1633,6 +1633,18 @@ public class DemoApplicationTests {
         char r1 = cu.firstNotRepeatingChar("abcadba");
         Assert.assertEquals(r1, 'c');
     }
+
+    @Test
+    public void getFirstKTest(){
+        int[] a = {1, 2, 3, 3, 3, 3, 4, 5};
+//        int r1 = cu.getFirstK(a, 0, a.length - 1, 3);
+//        int r2 = cu.getLastK(a, 0, a.length - 1, 3);
+
+        int r1 = cu.countK(a, 3);
+        int r2 = cu.countK(a, 6);
+        Assert.assertEquals(r1, 4);
+        Assert.assertEquals(r2, 0);
+    }
 }
 
 
