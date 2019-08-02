@@ -1645,6 +1645,23 @@ public class DemoApplicationTests {
         Assert.assertEquals(r1, 4);
         Assert.assertEquals(r2, 0);
     }
+
+
+    @Test
+    public void getMissingNumberTest(){
+        int[] a = {0, 1, 2, 3, 5, 6, 7};
+        int r1 = cu.getMissingNumberIndexWay(a, 0, a.length - 1);
+        Assert.assertEquals(r1, 4);
+
+        // 缺失数组出现在开头或结尾。
+        int[] b = {1, 2, 3, 4, 5, 6, 7};
+        int r2 = cu.getMissingNumberIndexWay(b, 0, a.length - 1);
+
+        int[] c = {0, 1, 2, 3, 4, 5, 6};
+        int r3 = cu.getMissingNumberIndexWay(c, 0, a.length - 1);
+
+        System.out.println(2);
+    }
 }
 
 

@@ -998,6 +998,30 @@ public class ComprehensiveUtils {
         }
         return lastKIndex - firstKIndex + 1;
     }
+
+    /**
+     * 获得长度为n-1的递增排序数组中的缺失数字(索引法)。
+     * 1. 功能测试
+     * <1> 缺失的数字位于数组的开始、中间。
+     */
+    public int getMissingNumberIndexWay(int[] a, int start, int end){
+        if (a.length <= 0 || start > end) {
+            return -1;
+        }
+
+        int mid = (start + end) >> 1;
+
+        if (a[mid] == mid){
+            return getMissingNumberIndexWay(a, mid + 1, end);
+        }
+        // 终结条件: mid元素与索引mid不定，但是前一个元素相等。
+        else if (mid == 0 || (a[mid - 1] == mid - 1)){
+            return mid;
+        }
+        else {
+            return getMissingNumberIndexWay(a, start, mid - 1);
+        }
+    }
 }
 
 
