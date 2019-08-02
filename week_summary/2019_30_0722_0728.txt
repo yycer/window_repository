@@ -17,3 +17,41 @@
 <6> 驼峰找个使用的插件。
 
 3. 健身(2~3次)
+
+
+
+这周做了什么？
+1. 工作
+<1> 检查库存：
+a. 父子货号匹配关系。
+b. 确定待检查库存的子货号或单品。
+c. 找出缺号的待检查商品。
+d. 反推出父货号。
+
+
+2. 技术
+<1> 本地缓存Caffine.@Cachable 不生效的原因？
+答: @Cachable注解实现了AOP（动态代理），因此不能在自己调用自己（类A中方法1调用cachable方法），
+因此解决方案是，将cachable方法抽离出来写到类B中，从而让类A中方法1调用类B中cachable方法。
+
+<2> Spring boot项目起不来的原因？
+答：断点打在方法上。
+
+<3> 代理
+a. 分为静态代理、JDK动态代理、cglib动态代理。
+
+<4> 使用MyBatis执行包含Out参数的sp时，执行成功后，返回值会出现在map中。
+<5> 符号引用 & 直接引用。
+<6> 类加载流程: 加载、验证、准备、解析、初始化。
+
+
+3. 效率
+<1> IDEA插件
+a. Translation -> Ctrl + Shift + Y -> Ctrl + Y
+b. JsonFormat  -> Alt + S
+c. GetAllSetter
+
+
+4. 博客
+<1> 你应该知道的Java缓存进化史: https://mp.weixin.qq.com/s/DV5eSZtShs2twGe0UwzPuA
+
