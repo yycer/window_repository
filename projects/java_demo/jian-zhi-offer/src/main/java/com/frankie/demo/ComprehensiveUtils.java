@@ -1022,6 +1022,37 @@ public class ComprehensiveUtils {
             return getMissingNumberIndexWay(a, start, mid - 1);
         }
     }
+
+    /**
+     * 在递增数组中，获得首个索引与元素相等的元素。
+     * 1. 边界条件
+     * <1> 数组中没有这样的元素，返回-1。
+     * <2> 符合要求的元素出现在数组开头或结尾。
+     */
+    public int getNumberSameAsIndex(int[] a){
+        if (a.length <= 0) {
+            return -1;
+        }
+
+        int left = 0;
+        int right = a.length - 1;
+
+        while (left <= right){
+            int mid = (left + right) >> 1;
+            if (a[mid] == mid){
+                return mid;
+            }
+            // 若当前值大于索引，说明要往前找。
+            else if (a[mid] > mid){
+                right = mid - 1;
+            }
+            // 若当前值小于索引，说明要往后找。
+            else{
+                left = mid + 1;
+            }
+        }
+        return -1;
+    }
 }
 
 

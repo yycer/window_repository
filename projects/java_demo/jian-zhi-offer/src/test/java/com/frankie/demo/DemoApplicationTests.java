@@ -1662,6 +1662,39 @@ public class DemoApplicationTests {
 
         System.out.println(2);
     }
+
+    @Test
+    public void getNumberAsIndexTest(){
+        // 命中元素在右。
+        int[] a = {-3, -1, 1, 3, 5};
+        int r1 = cu.getNumberSameAsIndex(a);
+        Assert.assertEquals(r1, 3);
+
+        // 命中元素在左。
+        int[] b = {-2, 1, 4, 7, 9, 12};
+        int r2 = cu.getNumberSameAsIndex(b);
+        Assert.assertEquals(r2, 1);
+
+        // 直接命中。
+        int[] c = {-2, 0, 2, 4, 7};
+        int r3 = cu.getNumberSameAsIndex(c);
+        Assert.assertEquals(r3, 2);
+
+        // 数组中不包含与这样的元素。
+        int[] d = {-2, 0, 1, 4, 7};
+        int r4 = cu.getNumberSameAsIndex(d);
+        Assert.assertEquals(r4, -1);
+
+        // 这样的元素在开头或结尾。
+        int[] e = {0, 3, 4, 7, 9};
+        int r5 = cu.getNumberSameAsIndex(e);
+        Assert.assertEquals(r5, 0);
+
+        int[] f = {-1, 0, 1, 2, 4};
+        int r6 = cu.getNumberSameAsIndex(f);
+        Assert.assertEquals(r6, 4);
+
+    }
 }
 
 
