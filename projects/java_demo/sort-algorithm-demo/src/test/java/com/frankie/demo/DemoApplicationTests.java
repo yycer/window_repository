@@ -9,6 +9,8 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Arrays;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DemoApplicationTests {
@@ -186,6 +188,19 @@ public class DemoApplicationTests {
         System.out.println(2);
     }
 
+    @Test
+    public void bubbleSortTest(){
+        int[] a = {6, 1, 4, 8, 5};
+        int length = a.length;
+        for (int i = 0; i < length - 1; i++){
+            for (int j = length - 1; j > i; j--){
+                if (a[j] < a[j - 1]){
+                    Sort.swap(a, j, j - 1);
+                }
+            }
+        }
+    }
+
     // region Deliberate exercise.
 
     @Test
@@ -206,30 +221,9 @@ public class DemoApplicationTests {
 
 
     @Test
-<<<<<<< HEAD
     public void heapSort(){
         int[] a = {1, 6, 7, 2, 3, 4, 5};
         HeapSort.heapSort(a);
-=======
-    public void heapSortTest(){
-        int[] a = {6, 3, 5, 2, 8, 1, 4};
-        HeapSort.heapSort(a);
-
-        System.out.println(a);
-    }
-
-
-    @Test
-    public void bubbleSortTest(){
-
-        int[] a = {6, 3, 5, 2, 8};
-
-        for (int i = 0; i < a.length - 1; i++){
-            for (int j = 0; j < a.length - i - 1; j++){
-                if (Sort.larger(a[j], a[j + 1])) Sort.swap(a, j, j + 1);
-            }
-        }
->>>>>>> 4553301bfb0e5e4ce364074cff76518c2a10d5f9
     }
     // endregion
 
