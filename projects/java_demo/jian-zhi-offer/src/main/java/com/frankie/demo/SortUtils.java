@@ -7,4 +7,8 @@ public class SortUtils {
         a[x] = a[y];
         a[y] = temp;
     }
+
+    public static boolean less(Comparable a, Comparable b){
+        return a.compareTo(b) < 0;
+    }
 }
