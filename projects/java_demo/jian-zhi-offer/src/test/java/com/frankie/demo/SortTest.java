@@ -40,4 +40,28 @@ public class SortTest {
         int[] r1 = Sort.mergeSort(a);
         Assert.assertEquals(Arrays.toString(r1), "[1, 2, 3, 4, 5, 7, 8]");
     }
+
+    @Test
+    public void quickSortTest(){
+        int[] a = {6, 3, 5, 2, 8, 1, 4};
+        Sort.quickSort(a, 0, a.length - 1);
+        Assert.assertEquals(Arrays.toString(a), "[1, 2, 3, 4, 5, 6, 8]");
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

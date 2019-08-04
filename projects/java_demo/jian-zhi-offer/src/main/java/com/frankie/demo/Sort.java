@@ -169,6 +169,30 @@ public class Sort {
             a[k++] = rightArray[j++];
         }
     }
+
+    /**
+     * 快速排序。
+     */
+    public static void quickSort(int[] a, int l, int r){
+        if (a.length < 1 || l >= r){
+            return;
+        }
+        int lt = l, gt = r, i = l + 1;
+        int pivot = a[l];
+        while (i <= gt){
+            if (SortUtils.less(a[i], pivot)){
+                SortUtils.swap(a, i++, lt++);
+            }
+            else if (SortUtils.greater(a[i], pivot)){
+                SortUtils.swap(a, gt--, i);
+            }
+            else{
+                i++;
+            }
+        }
+        quickSort(a, l, lt - 1);
+        quickSort(a, gt + 1, r);
+    }
 }
 
 
