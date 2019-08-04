@@ -33,4 +33,11 @@ public class SortTest {
         int[] r1 = Sort.shellSort(a);
         System.out.println(2);
     }
+
+    @Test
+    public void mergeSortTest(){
+        int[] a = {2, 3, 1, 5, 4, 8, 7};
+        int[] r1 = Sort.mergeSort(a);
+        Assert.assertEquals(Arrays.toString(r1), "[1, 2, 3, 4, 5, 7, 8]");
+    }
 }

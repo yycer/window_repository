@@ -3,7 +3,8 @@ package com.frankie.demo;/*
  @date: 2019/8/3-18:34
 */
 
-import java.util.UnknownFormatConversionException;
+import org.springframework.core.SpringVersion;
+import org.springframework.format.support.FormatterPropertyEditorAdapter;
 
 public class Sort {
 
@@ -110,4 +111,77 @@ public class Sort {
         }
         return a;
     }
+
+    /**
+     * 递归排序(分治)。
+     */
+    public static int[] mergeSort(int[] a){
+        if (a.length < 1){
+            return null;
+        }
+        sep(a, 0, a.length - 1);
+        return a;
+    }
+
+    /**
+     * 分
+     */
+    private static void sep(int[] a, int l, int r) {
+        if (l >= r) {
+            return;
+        }
+
+        int mid = (l + r) >> 1;
+        sep(a, l, mid);
+        sep(a, mid + 1, r);
+        merge(a, l, mid + 1, r);
+    }
+
+    /**
+     * 治
+     */
+    private static void merge(int[] a, int l, int mid, int r) {
+        // Step1: 分别构建左、右数组，并对其赋值。
+        int[] leftArray = new int[mid - l];
+        int[] rightArray = new int[r - mid + 1];
+
+        for (int i = l; i < mid; i++){
+            leftArray[i - l] = a[i];
+        }
+
+        for (int j = mid; j <= r; j++){
+            rightArray[j - mid] = a[j];
+        }
+
+        // Step2: 针对第一步涉及的部分数组进行排序。
+        int i = 0, j = 0, k = l;
+        while (i < leftArray.length && j < rightArray.length){
+            if (SortUtils.less(leftArray[i], rightArray[j])){
+                a[k++] = leftArray[i++];
+            } else {
+                a[k++] = rightArray[j++];
+            }
+        }
+        while (i < leftArray.length){
+            a[k++] = leftArray[i++];
+        }
+        while (j < rightArray.length){
+            a[k++] = rightArray[j++];
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
