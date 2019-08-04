@@ -26,4 +26,11 @@ public class SortTest {
         Assert.assertEquals(Arrays.toString(r1), "[1, 2, 4, 5, 6]");
         Assert.assertEquals(Arrays.toString(r2), "[1, 2, 4, 5, 6]");
     }
+
+    @Test
+    public void shellSortTest(){
+        int[] a = {8, 9, 1, 7, 2, 3, 5, 4, 6, 0};
+        int[] r1 = Sort.shellSort(a);
+        System.out.println(2);
+    }
 }

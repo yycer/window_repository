@@ -89,4 +89,25 @@ public class Sort {
         }
         return a;
     }
+
+    /**
+     * 希尔排序(关键是gap)。
+     */
+    public static int[] shellSort(int[] a){
+        int length = a.length;
+        if (length < 1){
+            return null;
+        }
+
+        int gap = length >> 1;
+        while (gap >= 1){
+            for (int i = gap; i < length; i++){
+                for (int j = i; j >= gap && SortUtils.less(a[j], a[j - gap]); j -= gap){
+                    SortUtils.swap(a, j, j - gap);
+                }
+            }
+            gap >>= 1;
+        }
+        return a;
+    }
 }
