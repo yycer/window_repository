@@ -1,0 +1,46 @@
+/**
+ * 找出数组中重复的数字。
+ * 2. 在一个长度为n+1的数组中，其中的所有数字的范围都在1~n内，请找出重复的数字。
+ */
+public static int isDuplicateDichotomy(int[] a) {
+
+	int length = a.length;
+	if (length == 0) {
+		return -1;
+	}
+
+	int s = 0;
+	int e = length - 1;
+
+	while (s <= e) {
+		int mid = (s + e) >> 1;
+		Integer count = count(a, s, mid);
+
+		if (e == s) {
+			if (count > 1) {
+				return e;
+			} else {
+				break;
+			}
+		}
+
+		if (count > (mid - s)) {
+			e = mid;
+		} else {
+			s = mid + 1;
+		}
+	}
+	return -1;
+}
+
+private static Integer count(int[] a, int start, int end) {
+	int count = 0;
+	for (int i = 0; i < a.length; i++) {
+		if (a[i] >= start && a[i] <= end) {
+			count++;
+		}
+	}
+
+	return count;
+}
+// endregion

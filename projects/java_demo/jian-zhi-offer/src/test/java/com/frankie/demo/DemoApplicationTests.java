@@ -42,7 +42,7 @@ public class DemoApplicationTests {
     public void indexWayTest() {
         int[] a = {2, 0, 3, 1, 2};
 
-        boolean duplicated = ArrayUtils.isDuplicated(a);
+        boolean duplicated = cu.isDuplicated(a);
         System.out.println(2);
     }
 
@@ -89,7 +89,7 @@ public class DemoApplicationTests {
     @Test
     public void duplicateDichotomyTest() {
         int[] a = {2, 7, 3, 4, 2, 6, 4, 1};
-        Integer duplicateInteger = ArrayUtils.isDuplicateDichotomy(a);
+        int duplicateInteger = cu.isDuplicateDichotomy(a);
         System.out.println(duplicateInteger);
     }
 

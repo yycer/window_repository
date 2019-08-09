@@ -1,18 +1,6 @@
 package com.frankie.demo;
 
-import com.sun.javafx.collections.MappingChange;
-import com.sun.javafx.iio.ImageFormatDescription;
-import com.sun.org.apache.bcel.internal.generic.FASTORE;
-import com.sun.org.apache.bcel.internal.generic.FREM;
-import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
-import com.sun.org.apache.bcel.internal.generic.LNEG;
-import netscape.security.ForbiddenTargetException;
-import org.springframework.boot.web.servlet.filter.OrderedHiddenHttpMethodFilter;
-
-import java.security.interfaces.RSAKey;
 import java.util.*;
-import java.util.concurrent.ExecutionException;
-import java.util.regex.Pattern;
 
 public class ComprehensiveUtils {
 
@@ -98,37 +86,6 @@ public class ComprehensiveUtils {
     }
 
     /**
-     * 从旋转数组中查找最小值, eg: {3, 4, 5, 1, 2}
-     */
-    public int minNumberInRotatedArray(int[] a){
-
-        // Step1: Base check.
-        if (a.length <= 0) {
-            return -1;
-        }
-
-        int l  = 0;
-        int r = a.length - 1;
-        // 跳出循环的标志就是low == high。
-        while (l < r){
-            int mid = (l + r) >> 1;
-            // Step2: 若数组中间值比尾元素大，说明最小值在右边。
-            if (a[mid] > a[r]){
-                l = mid + 1;
-            }
-            // Step3: 若数组中间值比尾元素小，说明最小值在左边。
-            else if (a[mid] < a[r]){
-                r = mid;
-            }
-            // Step4: eg. {1, 0, 1, 1, 1}
-            else {
-                r--;
-            }
-        }
-        return a[l];
-    }
-
-    /**
      * 剪绳子，获取最大乘积(贪婪算法)。
      */
     public int maxProductAfterCutting(int length){
@@ -156,7 +113,6 @@ public class ComprehensiveUtils {
         return (int) (Math.pow(3, timesOf3) * Math.pow(2, timeOf2));
     }
 
-
     /**
      * 计算二进制中1的个数。
      * @x: 代表整数, eg: x = 15(1111)
@@ -175,7 +131,6 @@ public class ComprehensiveUtils {
         }
         return count;
     }
-
 
     /**
      * 不用四则运算做加法(按位亦或、按位与)
@@ -428,26 +383,6 @@ public class ComprehensiveUtils {
     }
 
     /**
-     * 调整数组顺序，使奇数位于偶数前面。
-     */
-    public int[] reorderOddEven(int[] nums){
-        if (nums.length <= 1) {
-            return nums;
-        }
-
-        // 第一个偶数的索引。
-        int firstEvenIndex  = 0;
-
-        for (int i = 0; i < nums.length; i++){
-            if (hitCondition(nums, i)){
-                ArrayUtils.swap(nums, i, firstEvenIndex);
-                firstEvenIndex++;
-            }
-        }
-        return nums;
-    }
-
-    /**
      * 命中条件 - 解耦！
      * <1> 判断是否为奇数。
      * <2> 判断是否为负数。
@@ -504,75 +439,6 @@ public class ComprehensiveUtils {
     }
 
     /**
-     * 找出数组中出现次数超过一半的数字。
-     * 1. 判断数组是否有效。
-     * 2. 次数法，次数数量需要大于0，返回结果。
-     * 3. 验证该结果在数组中出现的次数是否大于一半。
-     */
-    public int moreThanHalfNumber(int[] a) throws Exception {
-        // Step1: 判断数组是否有效。
-        if (a.length <= 0){
-            throw new Exception("The array is invalid!");
-        }
-
-        // Step2: 次数法，次数数量需要大于0，返回结果。
-        int result = a[0];
-        int times  = 1;
-        for (int i = 1; i < a.length; i++){
-            if (times == 0){
-                result = a[i];
-                times  = 1;
-            }
-            else if (a[i] == result){
-                times++;
-            }
-            else {
-                times--;
-            }
-        }
-
-        // Step3: 验证该结果在数组中出现的次数是否大于一半。
-        int resultCount = 0;
-        for (int i: a){
-            if (i == result) {
-                resultCount++;
-            }
-        }
-        if (resultCount * 2 > a.length) {
-            return result;
-        } else {
-            throw new Exception("The array is invalid!");
-        }
-    }
-
-    /**
-     * 连续子数组的最大和。
-     * 1. 需要两个临时变量，当前累计和(curSum)、当前最大累计和(greatestSum)。
-     * 2. 当前累计和一旦小于0，则令其等于当前元素，一旦curSum > greatestSum, greatestSum = curSum.
-     */
-    public int findGreatestSumOfSubArray(int[] a){
-        if (a.length <= 0) {
-            return -1;
-        }
-
-        int curSum      = a[0];
-        int greatestSum = a[0];
-
-        for (int i = 1; i < a.length; i++){
-            if (curSum < 0){
-                curSum = a[i];
-            } else{
-                curSum += a[i];
-            }
-
-            if (curSum > greatestSum){
-                greatestSum = curSum;
-            }
-        }
-        return greatestSum;
-    }
-
-    /**
      * 连续子数组的最大和(动态规划)。
      */
     public int findGreatestSumOfSubArrayUsingDP(int[] a){
@@ -590,28 +456,6 @@ public class ComprehensiveUtils {
 
         return greatestSum;
     }
-
-    /**
-     * 礼物的最大价值
-     */
-    public int maxGift(int[][] matrix){
-       if (matrix.length <= 0 || matrix[0].length <= 0) {
-           return -1;
-       }
-
-       for (int i = 0; i < matrix.length; i++){
-           for (int j = 0; j < matrix[i].length; j++){
-               int top  = i > 0 ? matrix[i - 1][j] : 0;
-               int left = j > 0 ? matrix[i][j - 1] : 0;
-
-               matrix[i][j] += Math.max(top, left);
-           }
-       }
-
-       // 返回二维数组的最后一个元素。
-       return matrix[matrix.length - 1][matrix[0].length - 1];
-    }
-
 
     /**
      * 计算1~n整数中1出现的次数。
@@ -709,7 +553,6 @@ public class ComprehensiveUtils {
         return sum;
     }
 
-
     /**
      * 数字序列中某一位的数字
      */
@@ -767,36 +610,6 @@ public class ComprehensiveUtils {
 
         int digit = String.valueOf(num).charAt(index) - '0';
         return digit;
-    }
-
-
-    /**
-     * 股票的最大利润
-     * <1> 依次遍历至某个元素a[i]，先找出之前所有元素中最小的那个，默认为第一个元素。
-     * 然后求当前元素与最小值的差，若差大于maxProfit，则替换它。
-     */
-    public int maxProfit(int[] a){
-        if (a.length < 2) {
-            return -1;
-        }
-
-        int min       = a[0];
-        int maxProfit = a[1] - min;
-
-        for (int i = 2; i < a.length; i++){
-
-            // 定位当前元素及之前的最小值。
-            if (a[i] < min){
-                min = a[i];
-            }
-
-            // 当前元素与最小值的差，若大于maxProfit，其替换之。
-            int curDiff = a[i] - min;
-            if ((curDiff) > maxProfit){
-                maxProfit = curDiff;
-            }
-        }
-        return maxProfit;
     }
 
     /**
@@ -878,6 +691,63 @@ public class ComprehensiveUtils {
     }
 
     /**
+     * 第一次只出现一次的字符(维护一个hashMap，以空间换时间，O(n^2) -> O(n))
+     */
+    public char firstNotRepeatingChar(String s) throws Exception {
+        if (s.length() <= 0){
+            throw new Exception("The input is invalid");
+        }
+
+        Map<Character, Integer> map = new HashMap<>();
+        char[] chars = s.toCharArray();
+        for (char c: chars){
+            if (!map.containsKey(c)){
+                map.put(c, 1);
+            } else {
+                map.put(c, map.get(c) + 1);
+            }
+        }
+
+        for (char c: chars){
+            if (map.get(c) == 1){
+                return c;
+            }
+        }
+        throw new Exception("Failed to find not repeating char from s");
+    }
+
+    // region Array
+
+    /**
+     * 股票的最大利润
+     * <1> 依次遍历至某个元素a[i]，先找出之前所有元素中最小的那个，默认为第一个元素。
+     * 然后求当前元素与最小值的差，若差大于maxProfit，则替换它。
+     */
+    public int maxProfit(int[] a){
+        if (a.length < 2) {
+            return -1;
+        }
+
+        int min       = a[0];
+        int maxProfit = a[1] - min;
+
+        for (int i = 2; i < a.length; i++){
+
+            // 定位当前元素及之前的最小值。
+            if (a[i] < min){
+                min = a[i];
+            }
+
+            // 当前元素与最小值的差，若大于maxProfit，其替换之。
+            int curDiff = a[i] - min;
+            if ((curDiff) > maxProfit){
+                maxProfit = curDiff;
+            }
+        }
+        return maxProfit;
+    }
+
+    /**
      * 从一个递增数组中，找个和为sum的两个数字。
      */
     public int[] findNumbersWithSum(int[] a, int sum) throws Exception {
@@ -907,29 +777,18 @@ public class ComprehensiveUtils {
     }
 
     /**
-     * 第一次只出现一次的字符(维护一个hashMap，以空间换时间，O(n^2) -> O(n))
+     * 在排序数组中查找数字。
+     * 1. 二分法计算有序数组中k出现的次数。
      */
-    public char firstNotRepeatingChar(String s) throws Exception {
-        if (s.length() <= 0){
-            throw new Exception("The input is invalid");
+    public int countK(int[] a, int k){
+        int start = 0;
+        int end   = a.length - 1;
+        int firstKIndex = getFirstK(a, start, end, k);
+        int lastKIndex  = getLastK(a, start, end, k);
+        if (firstKIndex == -1 && lastKIndex == -1){
+            return 0;
         }
-
-        Map<Character, Integer> map = new HashMap<>();
-        char[] chars = s.toCharArray();
-        for (char c: chars){
-            if (!map.containsKey(c)){
-                map.put(c, 1);
-            } else {
-                map.put(c, map.get(c) + 1);
-            }
-        }
-
-        for (char c: chars){
-            if (map.get(c) == 1){
-                return c;
-            }
-        }
-        throw new Exception("Failed to find not repeating char from s");
+        return lastKIndex - firstKIndex + 1;
     }
 
     /**
@@ -986,22 +845,6 @@ public class ComprehensiveUtils {
     }
 
     /**
-     * 在排序数组中查找数字。
-     * 1. 二分法计算有序数组中k出现的次数。
-     */
-    public int countK(int[] a, int k){
-        int start = 0;
-        int end   = a.length - 1;
-        int firstKIndex = getFirstK(a, start, end, k);
-        int lastKIndex  = getLastK(a, start, end, k);
-        if (firstKIndex == -1 && lastKIndex == -1){
-            return 0;
-        }
-        return lastKIndex - firstKIndex + 1;
-    }
-
-
-    /**
      * 查找o~n-1缺失数字（循环法）。
      */
     public int getMissingNumberUsingLoop(int[] a, int s, int e){
@@ -1027,7 +870,6 @@ public class ComprehensiveUtils {
         return -1;
     }
 
-
     /**
      * 在排序数组中查找数字。
      * 2. 获得长度为n-1的递增排序数组中的缺失数字(递归法、二分)。
@@ -1051,7 +893,6 @@ public class ComprehensiveUtils {
             return getMissingNumberIndexWay(a, start, mid - 1);
         }
     }
-
 
     /**
      * 在排序数组中查找数字。
@@ -1104,6 +945,225 @@ public class ComprehensiveUtils {
             return getNumberSameAsIndexUsingRecursively(a, l, m - 1);
         }
     }
+
+    /**
+     * 礼物的最大价值
+     */
+    public int maxGift(int[][] matrix){
+        if (matrix.length <= 0 || matrix[0].length <= 0) {
+            return -1;
+        }
+
+        for (int i = 0; i < matrix.length; i++){
+            for (int j = 0; j < matrix[i].length; j++){
+                int top  = i > 0 ? matrix[i - 1][j] : 0;
+                int left = j > 0 ? matrix[i][j - 1] : 0;
+
+                matrix[i][j] += Math.max(top, left);
+            }
+        }
+
+        // 返回二维数组的最后一个元素。
+        return matrix[matrix.length - 1][matrix[0].length - 1];
+    }
+
+    /**
+     * 连续子数组的最大和。
+     * 1. 需要两个临时变量，当前累计和(curSum)、当前最大累计和(greatestSum)。
+     * 2. 当前累计和一旦小于0，则令其等于当前元素，一旦curSum > greatestSum, greatestSum = curSum.
+     */
+    public int findGreatestSumOfSubArray(int[] a){
+        if (a.length <= 0) {
+            return -1;
+        }
+
+        int curSum      = a[0];
+        int greatestSum = a[0];
+
+        for (int i = 1; i < a.length; i++){
+            if (curSum < 0){
+                curSum = a[i];
+            } else{
+                curSum += a[i];
+            }
+
+            if (curSum > greatestSum){
+                greatestSum = curSum;
+            }
+        }
+        return greatestSum;
+    }
+
+    /**
+     * 找出数组中出现次数超过一半的数字。
+     * 1. 判断数组是否有效。
+     * 2. 次数法，次数数量需要大于0，返回结果。
+     * 3. 验证该结果在数组中出现的次数是否大于一半。
+     */
+    public int moreThanHalfNumber(int[] a) throws Exception {
+        // Step1: 判断数组是否有效。
+        if (a.length <= 0){
+            throw new Exception("The array is invalid!");
+        }
+
+        // Step2: 次数法，次数数量需要大于0，返回结果。
+        int result = a[0];
+        int times  = 1;
+        for (int i = 1; i < a.length; i++){
+            if (times == 0){
+                result = a[i];
+                times  = 1;
+            }
+            else if (a[i] == result){
+                times++;
+            }
+            else {
+                times--;
+            }
+        }
+
+        // Step3: 验证该结果在数组中出现的次数是否大于一半。
+        int resultCount = 0;
+        for (int i: a){
+            if (i == result) {
+                resultCount++;
+            }
+        }
+        if (resultCount * 2 > a.length) {
+            return result;
+        } else {
+            throw new Exception("The array is invalid!");
+        }
+    }
+
+    /**
+     * 调整数组顺序，使奇数位于偶数前面。
+     */
+    public int[] reorderOddEven(int[] nums){
+        if (nums.length <= 1) {
+            return nums;
+        }
+
+        // 第一个偶数的索引。
+        int firstEvenIndex  = 0;
+
+        for (int i = 0; i < nums.length; i++){
+            if (hitCondition(nums, i)){
+                ArrayUtils.swap(nums, i, firstEvenIndex);
+                firstEvenIndex++;
+            }
+        }
+        return nums;
+    }
+
+    /**
+     * 从旋转数组中查找最小值, eg: {3, 4, 5, 1, 2}
+     */
+    public int minNumberInRotatedArray(int[] a){
+
+        // Step1: Base check.
+        if (a.length <= 0) {
+            return -1;
+        }
+
+        int l  = 0;
+        int r = a.length - 1;
+        // 跳出循环的标志就是low == high。
+        while (l < r){
+            int mid = (l + r) >> 1;
+            // Step2: 若数组中间值比尾元素大，说明最小值在右边。
+            if (a[mid] > a[r]){
+                l = mid + 1;
+            }
+            // Step3: 若数组中间值比尾元素小，说明最小值在左边。
+            else if (a[mid] < a[r]){
+                r = mid;
+            }
+            // Step4: eg. {1, 0, 1, 1, 1}
+            else {
+                r--;
+            }
+        }
+        return a[l];
+    }
+
+    /**
+     * 找出数组中重复的数字。
+     * 1. 在一个长度为n的数组中，所有数字都在0~n-1范围内，请找出数组中重复的数字。
+     */
+    public static boolean isDuplicated(int[] a) {
+
+        int length = a.length;
+        if (length == 0) {
+            return false;
+        }
+
+        /**
+         * 数组元素限制(0 ~ n-1)。
+         */
+        for (int i: a){
+            if (i < 0 || i > length - 1){
+                return false;
+            }
+        }
+
+        for (int i = 0; i < length; i++) {
+            while (i != a[i]) {
+                if (a[i] == a[a[i]]) {
+                    return true;
+                }
+                SortUtils.swap(a, i, a[i]);
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 找出数组中重复的数字。
+     * 2. 在一个长度为n+1的数组中，其中的所有数字的范围都在1~n内，请找出重复的数字。
+     */
+    public static int isDuplicateDichotomy(int[] a) {
+
+        int length = a.length;
+        if (length == 0) {
+            return -1;
+        }
+
+        int s = 0;
+        int e = length - 1;
+
+        while (s <= e) {
+            int mid = (s + e) >> 1;
+            Integer count = count(a, s, mid);
+
+            if (e == s) {
+                if (count > 1) {
+                    return e;
+                } else {
+                    break;
+                }
+            }
+
+            if (count > (mid - s)) {
+                e = mid;
+            } else {
+                s = mid + 1;
+            }
+        }
+        return -1;
+    }
+
+    private static Integer count(int[] a, int start, int end) {
+        int count = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] >= start && a[i] <= end) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+    // endregion
 }
 
 

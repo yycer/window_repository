@@ -1,0 +1,51 @@
+/**
+ * 在排序数组中查找数字。
+ * 3. 在递增数组中，获得首个索引与元素相等的元素（循环法）。
+ * 边界条件
+ * <1> 数组中没有这样的元素，返回-1。
+ * <2> 符合要求的元素出现在数组开头或结尾。
+ */
+public int getNumberSameAsIndexUsingLoop(int[] a){
+	if (a.length <= 0) {
+		return -1;
+	}
+
+	int left = 0;
+	int right = a.length - 1;
+
+	while (left <= right){
+		int mid = (left + right) >> 1;
+		if (a[mid] == mid){
+			return mid;
+		}
+		// 若当前值大于索引，说明要往前找。
+		else if (a[mid] > mid){
+			right = mid - 1;
+		}
+		// 若当前值小于索引，说明要往后找。
+		else{
+			left = mid + 1;
+		}
+	}
+	return -1;
+}
+
+/**
+ * 在递增数组中，查找首个与其索引相等的元素（递归法）。
+ */
+public int getNumberSameAsIndexUsingRecursively(int[] a, int l, int r){
+	if (a.length < 1 || l > r){
+		return -1;
+	}
+
+	int m = (l + r) >> 1;
+	if (a[m] == m){
+		return m;
+	}
+	else if (a[m] < m){
+		return getNumberSameAsIndexUsingRecursively(a, m + 1, r);
+	}
+	else {
+		return getNumberSameAsIndexUsingRecursively(a, l, m - 1);
+	}
+}

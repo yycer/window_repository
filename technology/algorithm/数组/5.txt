@@ -1,0 +1,47 @@
+/**
+ * 礼物的最大价值
+ */
+public int maxGift(int[][] matrix){
+	if (matrix.length <= 0 || matrix[0].length <= 0) {
+		return -1;
+	}
+
+	for (int i = 0; i < matrix.length; i++){
+		for (int j = 0; j < matrix[i].length; j++){
+			int top  = i > 0 ? matrix[i - 1][j] : 0;
+			int left = j > 0 ? matrix[i][j - 1] : 0;
+
+			matrix[i][j] += Math.max(top, left);
+		}
+	}
+
+	// 返回二维数组的最后一个元素。
+	return matrix[matrix.length - 1][matrix[0].length - 1];
+}
+
+/**
+ * 连续子数组的最大和。
+ * 1. 需要两个临时变量，当前累计和(curSum)、当前最大累计和(greatestSum)。
+ * 2. 当前累计和一旦小于0，则令其等于当前元素，一旦curSum > greatestSum, greatestSum = curSum.
+ */
+public int findGreatestSumOfSubArray(int[] a){
+	if (a.length <= 0) {
+		return -1;
+	}
+
+	int curSum      = a[0];
+	int greatestSum = a[0];
+
+	for (int i = 1; i < a.length; i++){
+		if (curSum < 0){
+			curSum = a[i];
+		} else{
+			curSum += a[i];
+		}
+
+		if (curSum > greatestSum){
+			greatestSum = curSum;
+		}
+	}
+	return greatestSum;
+}

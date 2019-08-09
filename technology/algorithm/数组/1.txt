@@ -1,0 +1,58 @@
+// region Array
+/**
+ * 股票的最大利润
+ * <1> 依次遍历至某个元素a[i]，先找出之前所有元素中最小的那个，默认为第一个元素。
+ * 然后求当前元素与最小值的差，若差大于maxProfit，则替换它。
+ */
+public int maxProfit(int[] a){
+	if (a.length < 2) {
+		return -1;
+	}
+
+	int min       = a[0];
+	int maxProfit = a[1] - min;
+
+	for (int i = 2; i < a.length; i++){
+
+		// 定位当前元素及之前的最小值。
+		if (a[i] < min){
+			min = a[i];
+		}
+
+		// 当前元素与最小值的差，若大于maxProfit，其替换之。
+		int curDiff = a[i] - min;
+		if ((curDiff) > maxProfit){
+			maxProfit = curDiff;
+		}
+	}
+	return maxProfit;
+}
+
+/**
+ * 从一个递增数组中，找个和为sum的两个数字。
+ */
+public int[] findNumbersWithSum(int[] a, int sum) throws Exception {
+	int length = a.length;
+	if (length <= 1 || sum <= 0){
+		throw new Exception("Please check input!");
+	}
+
+	int[] result = new int[2];
+	int start = 0;
+	int end   = length - 1;
+
+	while (start < end){
+		if (a[start] + a[end] > sum){
+			end--;
+		}
+		else if (a[start] + a[end] < sum) {
+			start++;
+		}
+		else{
+			result[0] = a[start];
+			result[1] = a[end];
+			break;
+		}
+	}
+	return result;
+}
