@@ -107,25 +107,25 @@ public class ComprehensiveUtils {
             return -1;
         }
 
-        int low  = 0;
-        int high = a.length - 1;
+        int l  = 0;
+        int r = a.length - 1;
         // 跳出循环的标志就是low == high。
-        while (low < high){
-            int mid = low + ((high - low) >> 1);
+        while (l < r){
+            int mid = (l + r) >> 1;
             // Step2: 若数组中间值比尾元素大，说明最小值在右边。
-            if      (a[mid] > a[high]){
-                low = mid + 1;
+            if (a[mid] > a[r]){
+                l = mid + 1;
             }
             // Step3: 若数组中间值比尾元素小，说明最小值在左边。
-            else if (a[mid] < a[high]){
-                high = mid;
+            else if (a[mid] < a[r]){
+                r = mid;
             }
             // Step4: eg. {1, 0, 1, 1, 1}
             else {
-                high--;
+                r--;
             }
         }
-        return a[low];
+        return a[l];
     }
 
     /**
