@@ -7,7 +7,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.Duration;
@@ -1651,14 +1650,17 @@ public class DemoApplicationTests {
     public void getMissingNumberTest(){
         int[] a = {0, 1, 2, 3, 5, 6, 7};
         int r1 = cu.getMissingNumberIndexWay(a, 0, a.length - 1);
+        int r11 = cu.getMissingNumberUsingLoop(a, 0, a.length - 1);
         Assert.assertEquals(r1, 4);
 
         // 缺失数组出现在开头或结尾。
         int[] b = {1, 2, 3, 4, 5, 6, 7};
         int r2 = cu.getMissingNumberIndexWay(b, 0, a.length - 1);
+        int r22 = cu.getMissingNumberUsingLoop(b, 0, a.length - 1);
 
         int[] c = {0, 1, 2, 3, 4, 5, 6};
         int r3 = cu.getMissingNumberIndexWay(c, 0, a.length - 1);
+        int r33 = cu.getMissingNumberUsingLoop(c, 0, a.length - 1);
 
         System.out.println(2);
     }
@@ -1667,31 +1669,37 @@ public class DemoApplicationTests {
     public void getNumberAsIndexTest(){
         // 命中元素在右。
         int[] a = {-3, -1, 1, 3, 5};
-        int r1 = cu.getNumberSameAsIndex(a);
+        int r1 = cu.getNumberSameAsIndexUsingLoop(a);
+        int r11 = cu.getNumberSameAsIndexUsingRecursively(a, 0, a.length - 1);
         Assert.assertEquals(r1, 3);
 
         // 命中元素在左。
         int[] b = {-2, 1, 4, 7, 9, 12};
-        int r2 = cu.getNumberSameAsIndex(b);
+        int r2 = cu.getNumberSameAsIndexUsingLoop(b);
+        int r22 = cu.getNumberSameAsIndexUsingRecursively(b, 0, b.length - 1);
         Assert.assertEquals(r2, 1);
 
         // 直接命中。
         int[] c = {-2, 0, 2, 4, 7};
-        int r3 = cu.getNumberSameAsIndex(c);
+        int r3 = cu.getNumberSameAsIndexUsingLoop(c);
+        int r33 = cu.getNumberSameAsIndexUsingRecursively(c, 0, c.length - 1);
         Assert.assertEquals(r3, 2);
 
         // 数组中不包含与这样的元素。
         int[] d = {-2, 0, 1, 4, 7};
-        int r4 = cu.getNumberSameAsIndex(d);
+        int r4 = cu.getNumberSameAsIndexUsingLoop(d);
+        int r44 = cu.getNumberSameAsIndexUsingRecursively(d, 0, d.length - 1);
         Assert.assertEquals(r4, -1);
 
         // 这样的元素在开头或结尾。
         int[] e = {0, 3, 4, 7, 9};
-        int r5 = cu.getNumberSameAsIndex(e);
+        int r5 = cu.getNumberSameAsIndexUsingLoop(e);
+        int r55 = cu.getNumberSameAsIndexUsingRecursively(e, 0, e.length - 1);
         Assert.assertEquals(r5, 0);
 
         int[] f = {-1, 0, 1, 2, 4};
-        int r6 = cu.getNumberSameAsIndex(f);
+        int r6 = cu.getNumberSameAsIndexUsingLoop(f);
+        int r66 = cu.getNumberSameAsIndexUsingRecursively(f, 0, f.length - 1);
         Assert.assertEquals(r6, 4);
 
     }

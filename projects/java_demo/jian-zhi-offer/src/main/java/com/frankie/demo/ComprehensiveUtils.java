@@ -986,7 +986,8 @@ public class ComprehensiveUtils {
     }
 
     /**
-     * 二分法计算有序数组中k出现的次数。
+     * 在排序数组中查找数字。
+     * 1. 二分法计算有序数组中k出现的次数。
      */
     public int countK(int[] a, int k){
         int start = 0;
@@ -999,9 +1000,37 @@ public class ComprehensiveUtils {
         return lastKIndex - firstKIndex + 1;
     }
 
+
     /**
-     * 获得长度为n-1的递增排序数组中的缺失数字(索引法)。
-     * 1. 功能测试
+     * 查找o~n-1缺失数字（循环法）。
+     */
+    public int getMissingNumberUsingLoop(int[] a, int s, int e){
+        if (a.length < 1){
+            return -1;
+        }
+
+        while (s <= e){
+            int mid = (s + e) >> 1;
+            // 因为是递增数组，若中间元素值与索引相等，向后考虑。
+            if (a[mid] == mid){
+                s = mid + 1;
+            }
+            // 若当前元素为首元素、且与索引不等，或者当前元素值与索引值不等、且前一个值相等。
+            else if (mid == 0 || a[mid - 1] == mid - 1){
+                return mid;
+            }
+            // 前一个元素也不等，那就要往前考虑。
+            else {
+                e = mid - 1;
+            }
+        }
+        return -1;
+    }
+
+
+    /**
+     * 在排序数组中查找数字。
+     * 2. 获得长度为n-1的递增排序数组中的缺失数字(递归法、二分)。
      * <1> 缺失的数字位于数组的开始、中间。
      */
     public int getMissingNumberIndexWay(int[] a, int start, int end){
@@ -1023,13 +1052,15 @@ public class ComprehensiveUtils {
         }
     }
 
+
     /**
-     * 在递增数组中，获得首个索引与元素相等的元素。
-     * 1. 边界条件
+     * 在排序数组中查找数字。
+     * 3. 在递增数组中，获得首个索引与元素相等的元素（循环法）。
+     * 边界条件
      * <1> 数组中没有这样的元素，返回-1。
      * <2> 符合要求的元素出现在数组开头或结尾。
      */
-    public int getNumberSameAsIndex(int[] a){
+    public int getNumberSameAsIndexUsingLoop(int[] a){
         if (a.length <= 0) {
             return -1;
         }
@@ -1052,6 +1083,26 @@ public class ComprehensiveUtils {
             }
         }
         return -1;
+    }
+
+    /**
+     * 在递增数组中，查找首个与其索引相等的元素（递归法）。
+     */
+    public int getNumberSameAsIndexUsingRecursively(int[] a, int l, int r){
+        if (a.length < 1 || l > r){
+            return -1;
+        }
+
+        int m = (l + r) >> 1;
+        if (a[m] == m){
+            return m;
+        }
+        else if (a[m] < m){
+            return getNumberSameAsIndexUsingRecursively(a, m + 1, r);
+        }
+        else {
+            return getNumberSameAsIndexUsingRecursively(a, l, m - 1);
+        }
     }
 }
 
