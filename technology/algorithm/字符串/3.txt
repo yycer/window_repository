@@ -1,0 +1,63 @@
+/**
+ * 正则表达式匹配(.*)
+ */
+public boolean match(String str, String pattern){
+	if (str.length() == 0 || pattern.length() == 0) {
+		return false;
+	}
+	return matchCore(str, 0, pattern, 0);
+}
+
+/**
+ * 总结步骤:
+ * 1. 递归结束条件: 字符串与模式同时走到头，返回true，任意一个先走到头，返回false.
+ * 2. 任意时刻模式的第二个元素是否为*，需要注意是否在模式长度范围内，若首元素匹配，则递归三种情况，否则模式往后走2步。
+ * 3. 当模式的第二个元素不是*，且字符串与模式首元素匹配时，各往后走1步。
+ */
+private boolean matchCore(String str, int strIndex, String pattern, int patternIndex) {
+	// 依次遍历，均匹配，字符串与模式同时到尾，表示匹配成功。
+	if (strIndex == str.length() && patternIndex == pattern.length()){
+		return true;
+	}
+
+	// 字符串、模式任意一个先到头，匹配失败。
+	if (strIndex == str.length() || patternIndex == pattern.length()){
+		return false;
+	}
+
+	boolean firstElementMatch = pattern.charAt(patternIndex) == str.charAt(strIndex) ||
+			pattern.charAt(patternIndex) == '.';
+
+	// 模式第二个字符为*，且字符串与模式的第一个字符匹配，分为三种匹配模式，否则模式向后移2位。
+	if (patternIndex + 1 < pattern.length() && pattern.charAt(patternIndex + 1) == '*'){
+		if (firstElementMatch){
+			return matchCore(str, strIndex, pattern, patternIndex + 2) ||
+					matchCore(str, strIndex + 1, pattern, patternIndex + 2) ||
+					matchCore(str, strIndex + 1, pattern, patternIndex);
+		} else{
+			return matchCore(str, strIndex, pattern, patternIndex + 2);
+		}
+	}
+
+	// 模式第二个字符不是*，且字符串与模式的第一个字符匹配，则各进一步，否则false。
+	if (firstElementMatch){
+		return matchCore(str, strIndex + 1, pattern, patternIndex + 1);
+	}
+
+	return false;
+}
+
+/**
+ * 替换空格
+ */
+public String replaceBlank(String s){
+	StringBuffer sb = new StringBuffer();
+	for (int i = 0; i < s.length(); i++) {
+		if (s.charAt(i) != 32) {
+			sb.append(s.charAt(i));
+		} else {
+			sb.append("%20");
+		}
+	}
+	return new String(sb);
+}

@@ -113,14 +113,8 @@ public class DemoApplicationTests {
 
     @Test
     public void replaceBlank() {
-
         String s = "hello world a b c";
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) != 32) sb.append(s.charAt(i));
-            else sb.append("%20");
-        }
-        String result = new String(sb);
+        String result = cu.replaceBlank(s);
         Assert.assertEquals(result, "hello%20world%20a%20b%20c");
     }
 
@@ -1336,10 +1330,10 @@ public class DemoApplicationTests {
         String s3 = "3.14e10";
         String s4 = "-3.14e-3";
 
-        boolean n1 = cu.isNumerciRegExp(s1);
-        boolean n2 = cu.isNumerciRegExp(s2);
-        boolean n3 = cu.isNumerciRegExp(s3);
-        boolean n4 = cu.isNumerciRegExp(s4);
+        boolean n1 = cu.isNumericRegExp(s1);
+        boolean n2 = cu.isNumericRegExp(s2);
+        boolean n3 = cu.isNumericRegExp(s3);
+        boolean n4 = cu.isNumericRegExp(s4);
 
         Assert.assertTrue(n1);
         Assert.assertTrue(n2);
@@ -1351,10 +1345,10 @@ public class DemoApplicationTests {
         String s7 = "1.2.3";
         String s8 = "+-5";
 
-        boolean n5 = cu.isNumerciRegExp(s5);
-        boolean n6 = cu.isNumerciRegExp(s6);
-        boolean n7 = cu.isNumerciRegExp(s7);
-        boolean n8 = cu.isNumerciRegExp(s8);
+        boolean n5 = cu.isNumericRegExp(s5);
+        boolean n6 = cu.isNumericRegExp(s6);
+        boolean n7 = cu.isNumericRegExp(s7);
+        boolean n8 = cu.isNumericRegExp(s8);
 
         Assert.assertFalse(n5);
         Assert.assertFalse(n6);

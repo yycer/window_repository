@@ -1,0 +1,63 @@
+/**
+ * 表示数值的字符串。
+ */
+public boolean isNumeric(String s){
+	if (s.length() == 0) {
+		return false;
+	}
+	boolean hasDecimal  = false;
+	boolean hasExponent = false;
+
+	for (int i = 0; i < s.length(); i++){
+
+		 // 1. 正负值符号。
+		if (s.charAt(i) == '+' ||s.charAt(i) == '-'){
+			// 不合理情况：不在头元素出现，同时前一个元素不是e/E。
+			if (i > 0 && s.charAt(i - 1) != 'e' && s.charAt(i - 1) != 'E') {
+				return false;
+			}
+		}
+
+		/**
+		 * 2. 小数点
+		 * <1> 正常情况下第一次出现小数，指数一定没有出现，eg: -0.5e2
+		 * <2> 小数不能出现两次。
+		 */
+		else if (s.charAt(i) == '.'){
+			if (hasDecimal || hasExponent) {
+				return false;
+			}
+			hasDecimal = true;
+		}
+
+		/**
+		 * 3. 指数
+		 * <1> 指数后面不可能是最后一个元素，后面一个跟整数。
+		 * <2> 不能出现两个指数。
+		 */
+		else if (s.charAt(i) == 'e' || s.charAt(i) == 'E'){
+			if (i == s.length() - 1 || hasExponent) {
+				return false;
+			}
+			hasExponent = true;
+		}
+
+		else if(s.charAt(i) > '9' || s.charAt(i) < '0'){
+			return false;
+		}
+	}
+	return true;
+}
+
+/**
+ * 表示数值的字符串(正则表达式方式)
+ */
+public boolean isNumericRegExp(String s){
+	/**
+	 * [\\+\\-]?            : 代表正负符号出现与否。
+	 * \\d*                 : 代表整数部分是否出现，如: -.314
+	 * (\\.\\d+)?           : 代表如果出现过小数点，就一定会伴随着数字，否则都不出现。
+	 * ([eE][\\+\\-]?\\d+)? : 代表如果存在指数，e/E一定会出现，正负号可以不出现，但必须紧跟数字，要么全部不出现。
+	 */
+	return s.matches("[\\+\\-]?\\d*(\\.\\d+)?([eE][\\+\\-]?\\d+)?");
+}
