@@ -16,33 +16,7 @@ public class ComprehensiveUtils {
     // 辅助队列
     private ArrayDeque<Integer> queueAuxiliary = new ArrayDeque<>();
 
-    /**
-     * 剪绳子，获取最大乘积(贪婪算法)。
-     */
-    public int maxProductAfterCutting(int length){
-        if (length <  2) {
-            return 0;
-        }
-        if (length == 2) {
-            return 1;
-        }
-        if (length == 3) {
-            return 2;
-        }
 
-        int timesOf3 = length / 3;
-        /**
-         *  重点: 2 * 2 > 3 * 1
-         *  eg: length = 16, 3^5*1 = 243, 3^4*2^2 = 324
-         */
-
-        if (length - timesOf3 * 3 == 1) {
-            timesOf3--;
-        }
-        int timeOf2 = (length - timesOf3 * 3) / 2;
-
-        return (int) (Math.pow(3, timesOf3) * Math.pow(2, timeOf2));
-    }
 
     /**
      * 计算二进制中1的个数。
@@ -1184,6 +1158,65 @@ public class ComprehensiveUtils {
             return queuePrimary.removeFirst();
         }
     }
+
+    // endregion
+
+    // region Others
+
+    /**
+     * @param n: 代表第几位fibonacci。
+     */
+    public int fibonacciOptimization(int n){
+        if (n <= 1){
+            return n;
+        }
+        int x0 = 0;
+        int x1 = 1;
+        int tempSum = 0;
+
+        for (int i = 2; i < n; i++){
+            tempSum = x1 + x0;
+            x0 = x1;
+            x1 = tempSum;
+        }
+        return tempSum;
+    }
+
+    /**
+     * 剪绳子，获取最大乘积(贪婪算法)。
+     */
+    public int maxProductAfterCutting(int length){
+        if (length <  2) {
+            return 0;
+        }
+        // 长度为2，只能切成两段: 1 + 1
+        if (length == 2) {
+            return 1;
+        }
+        // 长度为3，只能切成两段: 1 + 2
+        if (length == 3) {
+            return 2;
+        }
+
+        int timesOf3 = length / 3;
+        /**
+         *  重点: 2 * 2 > 3 * 1
+         *  eg: length = 16, 3^5*1 = 243, 3^4*2^2 = 324
+         */
+
+        if (length % 3 == 1) {
+            timesOf3--;
+        }
+        /**
+         * 下面不能写(length % 3) / 2的原因:
+         * 若length = 4, length % 3的结果为1，但是真正想要的结果是 4 / 2 = 2, 而不是 1 / 2 = 0;
+         * 那么这个4怎么来的？ 4 = length - 3 * timesOf3 = 4 - 3 * 0 = 4;
+         */
+        int timeOf2 = (length - 3 * timesOf3) / 2;
+
+        return (int) (Math.pow(3, timesOf3) * Math.pow(2, timeOf2));
+    }
+
 
     // endregion
 }

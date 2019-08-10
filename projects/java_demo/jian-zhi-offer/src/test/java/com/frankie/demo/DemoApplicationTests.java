@@ -732,8 +732,7 @@ public class DemoApplicationTests {
     @Test
     public void fibonaciiEfficiencyTest(){
         LocalDateTime start = LocalDateTime.now();
-        BinaryTree bt = new BinaryTree();
-        bt.fibonacciOptimization(500);
+        cu.fibonacciOptimization(500);
         LocalDateTime end = LocalDateTime.now();
         long l = Duration.between(start, end).toMillis();
         System.out.println(l);
@@ -741,9 +740,8 @@ public class DemoApplicationTests {
 
     @Test
     public void fibonacciTest(){
-        BinaryTree bt = new BinaryTree();
-        int result = bt.fibonacciOptimization(6);
-        Assert.assertEquals(result, 5);
+        int result = cu.fibonacciOptimization(5);
+        Assert.assertEquals(result, 3);
     }
 
     @Test

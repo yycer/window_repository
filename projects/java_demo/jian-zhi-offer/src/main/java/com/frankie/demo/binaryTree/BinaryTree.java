@@ -156,28 +156,7 @@ public class BinaryTree {
         return fibonacci(n-1) + fibonacci(n - 2);
     }
 
-    /**
-     * @param n: 代表第几位fibonacci。
-     */
-    public int fibonacciOptimization(int n){
-        if (n == 0) {
-            return 0;
-        }
-        if (n == 1) {
-            return 1;
-        }
 
-        int nMinustwo = 0;
-        int nMinusOne = 1;
-        int result    = 0;
-
-        for (int i = 2; i < n; i++){
-            result    = nMinusOne + nMinustwo;
-            nMinustwo = nMinusOne;
-            nMinusOne = result;
-        }
-        return result;
-    }
 
     /**
      * 先序遍历(递归法)
