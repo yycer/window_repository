@@ -17,78 +17,6 @@ public class ComprehensiveUtils {
     private ArrayDeque<Integer> queueAuxiliary = new ArrayDeque<>();
 
     /**
-     * 通过两个栈的方式实现队列的元素插入。
-     */
-    public void queueAddElementUsingDoubleStacks(int x){
-        stackPrimary.push(x);
-    }
-
-    /**
-     * 一. 通过两个栈的方式实现队列的元素删除。
-     * 1. 若辅栈不为空，直接弹出栈顶元素。
-     * 2. 若辅栈为空，将主栈中的元素依次弹出，并插入辅栈中。
-     *
-     * 二. 边界条件:
-     * 1. 主、辅栈均为空。
-     */
-    public int queueRemoveElementUsingDoubleStacks(){
-
-        if (stackPrimary.isEmpty() && stackAuxiliary.isEmpty()){
-            throw new RuntimeException("Both stacks is empty!");
-        }
-
-        // Step1: 若辅栈不为空，直接弹出栈顶元素。
-        while (!stackAuxiliary.isEmpty()){
-            return stackAuxiliary.pop();
-        }
-
-        // Step2: 若辅栈为空，将主栈中的元素依次弹出，并插入辅栈中。
-        while (!stackPrimary.isEmpty()){
-            stackAuxiliary.push(stackPrimary.pop());
-        }
-
-        return stackAuxiliary.pop();
-    }
-
-    /**
-     * 通过两个队列模拟压栈，需要保留一个空队列用于数据转移。
-     */
-    public void stackAddElementUsingDoubleQueue(int x){
-        // 若主栈，则往辅栈压入元素。
-        if (queuePrimary.isEmpty()) {
-            queueAuxiliary.addLast(x);
-        }
-        // 否则，往主栈里面压入元素。
-        else {
-            queuePrimary.addLast(x);
-        }
-    }
-
-    /**
-     * 通过两个队列模拟出栈。
-     */
-    public int stackRemoveElementUsingDoubleQueue(){
-
-        // Step1: 当两个队列均为空、或均有值，则不符合逻辑，抛异常。
-        if (queuePrimary.isEmpty() == queueAuxiliary.isEmpty()){
-            throw new RuntimeException("Both queue is empty or has elements!");
-        }
-
-        if (queuePrimary.isEmpty()){
-            // 将辅助队列中的元素依次插入主队列中，仅保留最后弹出的一个。
-            while (queueAuxiliary.size() != 1) {
-                queuePrimary.addLast(queueAuxiliary.removeFirst());
-            }
-            return queueAuxiliary.removeFirst();
-        } else {
-            while (queuePrimary.size()   != 1) {
-                queueAuxiliary.addLast(queuePrimary.removeFirst());
-            }
-            return queuePrimary.removeFirst();
-        }
-    }
-
-    /**
      * 剪绳子，获取最大乘积(贪婪算法)。
      */
     public int maxProductAfterCutting(int length){
@@ -1182,6 +1110,81 @@ public class ComprehensiveUtils {
         }
         return new String(sb);
     }
+    // endregion
+
+    // region Stack、Queue
+    /**
+     * 通过两个栈的方式实现队列的元素插入。
+     */
+    public void queueAddElementUsingDoubleStacks(int x){
+        stackPrimary.push(x);
+    }
+
+    /**
+     * 一. 通过两个栈的方式实现队列的元素删除。
+     * 1. 若辅栈不为空，直接弹出栈顶元素。
+     * 2. 若辅栈为空，将主栈中的元素依次弹出，并插入辅栈中。
+     *
+     * 二. 边界条件:
+     * 1. 主、辅栈均为空。
+     */
+    public int queueRemoveElementUsingDoubleStacks(){
+
+        if (stackPrimary.isEmpty() && stackAuxiliary.isEmpty()){
+            throw new RuntimeException("Both stacks is empty!");
+        }
+
+        // Step1: 若辅栈不为空，直接弹出栈顶元素。
+        while (!stackAuxiliary.isEmpty()){
+            return stackAuxiliary.pop();
+        }
+
+        // Step2: 若辅栈为空，将主栈中的元素依次弹出，并插入辅栈中。
+        while (!stackPrimary.isEmpty()){
+            stackAuxiliary.push(stackPrimary.pop());
+        }
+
+        return stackAuxiliary.pop();
+    }
+
+    /**
+     * 通过两个队列模拟压栈，需要保留一个空队列用于数据转移。
+     */
+    public void stackAddElementUsingDoubleQueue(int x){
+        // 若主栈，则往辅栈压入元素。
+        if (queuePrimary.isEmpty()) {
+            queueAuxiliary.addLast(x);
+        }
+        // 否则，往主栈里面压入元素。
+        else {
+            queuePrimary.addLast(x);
+        }
+    }
+
+    /**
+     * 通过两个队列模拟出栈。
+     */
+    public int stackRemoveElementUsingDoubleQueue(){
+
+        // Step1: 当两个队列均为空、或均有值，则不符合逻辑，抛异常。
+        if (queuePrimary.isEmpty() == queueAuxiliary.isEmpty()){
+            throw new RuntimeException("Both queue is empty or has elements!");
+        }
+
+        if (queuePrimary.isEmpty()){
+            // 将辅助队列中的元素依次插入主队列中，仅保留最后弹出的一个。
+            while (queueAuxiliary.size() != 1) {
+                queuePrimary.addLast(queueAuxiliary.removeFirst());
+            }
+            return queueAuxiliary.removeFirst();
+        } else {
+            while (queuePrimary.size() != 1) {
+                queueAuxiliary.addLast(queuePrimary.removeFirst());
+            }
+            return queuePrimary.removeFirst();
+        }
+    }
+
     // endregion
 }
 
