@@ -1,8 +1,6 @@
 package com.frankie.demo;
 
-import ch.qos.logback.core.pattern.util.RegularEscapeUtil;
 import com.frankie.demo.model.ThreePart;
-import javafx.scene.control.TableView;
 
 import java.util.*;
 
@@ -183,7 +181,6 @@ public class ComprehensiveUtils {
         }
     }
 
-
     /**
      * 数字序列中某一位的数字
      */
@@ -241,110 +238,6 @@ public class ComprehensiveUtils {
 
         int digit = String.valueOf(num).charAt(index) - '0';
         return digit;
-    }
-
-    /**
-     * 判断是否为丑数(只能整除2、3、5的数，习惯上我们把1当做第一个丑数)。
-     */
-    public boolean isUgly(int x){
-
-        while (x % 2 == 0){
-            x /= 2;
-        }
-        while (x % 3 == 0){
-            x /= 3;
-        }
-        while (x % 5 == 0){
-            x /= 5;
-        }
-
-        return x == 1;
-    }
-
-    /**
-     * 求第n个丑数(原始方法)
-     */
-    public int getUglyNumberByIndex1(int index){
-
-        int count  = 0;
-        int curNum = 0;
-
-        while (count < index){
-            curNum++;
-            if (isUgly(curNum)){
-                count++;
-            }
-        }
-        return curNum;
-    }
-
-    /**
-     * 查找三个元素中的最小值。
-     */
-    public int minAmongThreeElements(int a, int b, int c){
-        int tmpMin = a > b ? b : a;
-        return tmpMin > c ? c : tmpMin;
-    }
-
-    /**
-     * 求第n个丑数(优化版)。
-     */
-    public int getUglyNumberOptimization(int index){
-        if (index <= 0){
-            return -1;
-        }
-
-        int[] uglyArray = new int[index];
-        uglyArray[0] = 1;
-
-        int multi2 = 0;
-        int multi3 = 0;
-        int multi5 = 0;
-        int i      = 1;
-
-        while (i < index){
-            int min = minAmongThreeElements(uglyArray[multi2] * 2, uglyArray[multi3] * 3, uglyArray[multi5] * 5);
-            uglyArray[i] = min;
-
-            if (uglyArray[multi2] * 2 <= min){
-                multi2++;
-            }
-            if (uglyArray[multi3] * 3 <= min){
-                multi3++;
-            }
-            if (uglyArray[multi5] * 5 <= min){
-                multi5++;
-            }
-            i++;
-        }
-
-        return uglyArray[index - 1];
-    }
-
-    /**
-     * 第一次只出现一次的字符(维护一个hashMap，以空间换时间，O(n^2) -> O(n))
-     */
-    public char firstNotRepeatingChar(String s) throws Exception {
-        if (s.length() <= 0){
-            throw new Exception("The input is invalid");
-        }
-
-        Map<Character, Integer> map = new HashMap<>();
-        char[] chars = s.toCharArray();
-        for (char c: chars){
-            if (!map.containsKey(c)){
-                map.put(c, 1);
-            } else {
-                map.put(c, map.get(c) + 1);
-            }
-        }
-
-        for (char c: chars){
-            if (map.get(c) == 1){
-                return c;
-            }
-        }
-        throw new Exception("Failed to find not repeating char from s");
     }
 
     // region Array
@@ -1238,6 +1131,110 @@ public class ComprehensiveUtils {
      */
     public int powHelper(int i){
         return (int) Math.pow(10, i);
+    }
+
+    /**
+     * 判断是否为丑数(只能整除2、3、5的数，习惯上我们把1当做第一个丑数)。
+     */
+    public boolean isUgly(int x){
+
+        while (x % 2 == 0){
+            x /= 2;
+        }
+        while (x % 3 == 0){
+            x /= 3;
+        }
+        while (x % 5 == 0){
+            x /= 5;
+        }
+
+        return x == 1;
+    }
+
+    /**
+     * 求第n个丑数(原始方法)
+     */
+    public int getUglyNumberByIndex1(int index){
+
+        int count  = 0;
+        int curNum = 0;
+
+        while (count < index){
+            curNum++;
+            if (isUgly(curNum)){
+                count++;
+            }
+        }
+        return curNum;
+    }
+
+    /**
+     * 求第n个丑数(优化版)。
+     */
+    public int getUglyNumberOptimization(int index){
+        if (index <= 0){
+            return -1;
+        }
+
+        int[] uglyArray = new int[index];
+        uglyArray[0] = 1;
+
+        int x2 = 0;
+        int x3 = 0;
+        int x5 = 0;
+        int i  = 1;
+
+        while (i < index){
+            int min = getMinAmongThreeElement(uglyArray[x2] * 2, uglyArray[x3] * 3, uglyArray[x5] * 5);
+            uglyArray[i] = min;
+
+            if (uglyArray[x2] * 2 <= min){
+                x2++;
+            }
+            if (uglyArray[x3] * 3 <= min){
+                x3++;
+            }
+            if (uglyArray[x5] * 5 <= min){
+                x5++;
+            }
+            i++;
+        }
+
+        return uglyArray[index - 1];
+    }
+
+    /**
+     * 查找三个元素中的最小值。
+     */
+    public int getMinAmongThreeElement(int a, int b, int c){
+        int tempMin = a < b ? a : b;
+        return tempMin < c ? tempMin : c;
+    }
+
+    /**
+     * 第一个只出现一次的字符(维护一个hashMap，以空间换时间，O(n^2) -> O(n))
+     */
+    public char firstNotRepeatingChar(String s) throws Exception {
+        if (s.length() <= 0){
+            throw new Exception("The input is invalid");
+        }
+
+        Map<Character, Integer> map = new HashMap<>();
+        char[] chars = s.toCharArray();
+        for (char c: chars){
+            if (!map.containsKey(c)){
+                map.put(c, 1);
+            } else {
+                map.put(c, map.get(c) + 1);
+            }
+        }
+
+        for (char c: chars){
+            if (map.get(c) == 1){
+                return c;
+            }
+        }
+        throw new Exception("Failed to find not repeating char from s");
     }
 
     // endregion
