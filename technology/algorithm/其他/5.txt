@@ -1,0 +1,42 @@
+/**
+ * 求第n个丑数(优化版)。
+ */
+public int getUglyNumberOptimization(int index){
+	if (index <= 0){
+		return -1;
+	}
+
+	int[] uglyArray = new int[index];
+	uglyArray[0] = 1;
+
+	int x2 = 0;
+	int x3 = 0;
+	int x5 = 0;
+	int i  = 1;
+
+	while (i < index){
+		int min = getMinAmongThreeElement(uglyArray[x2] * 2, uglyArray[x3] * 3, uglyArray[x5] * 5);
+		uglyArray[i] = min;
+
+		if (uglyArray[x2] * 2 <= min){
+			x2++;
+		}
+		if (uglyArray[x3] * 3 <= min){
+			x3++;
+		}
+		if (uglyArray[x5] * 5 <= min){
+			x5++;
+		}
+		i++;
+	}
+
+	return uglyArray[index - 1];
+}
+
+/**
+ * 查找三个元素中的最小值。
+ */
+public int getMinAmongThreeElement(int a, int b, int c){
+	int tempMin = a < b ? a : b;
+	return tempMin < c ? tempMin : c;
+}
