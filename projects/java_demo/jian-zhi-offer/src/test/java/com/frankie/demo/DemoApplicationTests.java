@@ -2,6 +2,7 @@ package com.frankie.demo;
 
 import com.frankie.demo.binaryTree.BinaryTree;
 import com.frankie.demo.binaryTree.BinaryTreePrinter;
+import com.frankie.demo.model.ThreePart;
 import com.frankie.demo.review.linkList.LinkListUtils;
 import org.junit.Assert;
 import org.junit.Test;
@@ -1548,6 +1549,7 @@ public class DemoApplicationTests {
     @Test
     public void numberOf1Between1AndNOptimizationTest(){
         int r1 = cu.numberOf1Between1AndNOptimization(20195);
+        int r2 = cu.numberOf1Between1AndNOptimization(21345);
         Assert.assertEquals(r1, 18136);
     }
 
@@ -1694,6 +1696,15 @@ public class DemoApplicationTests {
         int r66 = cu.getNumberSameAsIndexUsingRecursively(f, 0, f.length - 1);
         Assert.assertEquals(r6, 4);
 
+    }
+
+    @Test
+    public void getThreePartTest(){
+        ThreePart threePart1 = cu.getThreePart(1234567, 1);
+        ThreePart threePart2 = cu.getThreePart(1234567, 3);
+        ThreePart threePart3 = cu.getThreePart(1234567, 4);
+        ThreePart threePart4 = cu.getThreePart(1234567, 5);
+        System.out.println(2);
     }
 }
 

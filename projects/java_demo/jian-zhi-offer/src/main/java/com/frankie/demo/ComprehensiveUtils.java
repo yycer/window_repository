@@ -1,6 +1,7 @@
 package com.frankie.demo;
 
 import ch.qos.logback.core.pattern.util.RegularEscapeUtil;
+import com.frankie.demo.model.ThreePart;
 import javafx.scene.control.TableView;
 
 import java.util.*;
@@ -182,47 +183,6 @@ public class ComprehensiveUtils {
         }
     }
 
-    /**
-     * 计算1~n整数中1出现的次数(优化版)。
-     * 1. i初始值为1，循环跳出条件为high = 0;
-     * 2. 高位  (high): x / 10 ^ i;
-     * 3. 当前位(cur) : (x / 10 ^ (i - 1)) % 10;
-     * 4. 低位  (low): x - (x / 10 ^ (i - 1) * (10 ^ (i - 1)))
-     */
-    public int numberOf1Between1AndNOptimization(int x){
-
-        if (x <= 0) {
-            return -1;
-        }
-
-        /**
-         * 为什么需要i，事关定位高位、当前位、低位。
-         * 为什么需要high，事关循环。
-         * 为什么需要sum，事关1的总数。
-         */
-        int i = 1, high = x, sum = 0;
-
-        while (high != 0){
-            high = x / (int) Math.pow(10, i);
-            // temp存在的意义在于，方便求出当前位、低位。
-            int temp = x / (int) Math.pow(10, i - 1);
-            int cur  = temp % 10;
-            int low  = x - temp * (int) Math.pow(10, i - 1);
-
-            if (cur >  1){
-                sum += (high + 1) * (int) Math.pow(10, i - 1);
-            }
-            else if (cur < 1){
-                sum += high * (int) Math.pow(10, i - 1);
-            }
-            else{
-                sum += high * (int) Math.pow(10, i - 1) + low + 1;
-            }
-            i++;
-        }
-
-        return sum;
-    }
 
     /**
      * 数字序列中某一位的数字
@@ -1216,6 +1176,68 @@ public class ComprehensiveUtils {
         result.add(y);
 
         return result;
+    }
+
+    /**
+     * 计算1~n整数中1出现的次数(优化版)。
+     * 1. i初始值为1，循环跳出条件为high = 0;
+     * 2. 高位  (high): x / 10 ^ i;
+     * 3. 当前位(cur) : (x / 10 ^ (i - 1)) % 10;
+     * 4. 低位  (low): x - (x / 10 ^ (i - 1) * (10 ^ (i - 1)))
+     */
+    public int numberOf1Between1AndNOptimization(int x){
+        if (x <= 0) {
+            return -1;
+        }
+        // i为什么等于1？ 因为循环的总结条件是 high != 0。
+        int i = 1, high = x, sum = 0;
+
+        while (high != 0){
+            ThreePart threePart = getThreePart(x, i);
+            high = threePart.getHigh();
+            int cur = threePart.getCur();
+            int low = threePart.getLow();
+
+            if (cur > 1){
+                sum += ((high + 1) * powHelper(i - 1));
+            }
+            else if (cur < 1){
+                sum += (high * powHelper(i - 1));
+            }
+            else{
+                sum += (high * powHelper(i - 1) + low + 1);
+            }
+            // Don't forget!
+            i++;
+        }
+        return sum;
+    }
+
+    /**
+     * 根据索引(从1开始)，获得当前高位值、当前值、低位值。
+     * 如： x = 12345, i = 2
+     * high = 123
+     * cur  = 4
+     * low  = 5
+     */
+    public ThreePart getThreePart(int x, int i){
+        ThreePart result = new ThreePart();
+        int high = x / (int) Math.pow(10, i);
+        int rest = (int) (x - high * Math.pow(10, i));
+        int cur  = rest / (int) Math.pow(10, i - 1);
+        int low  = rest  - cur * (int) Math.pow(10, i - 1);
+
+        result.setHigh(high);
+        result.setCur(cur);
+        result.setLow(low);
+        return result;
+    }
+
+    /**
+     * 将平方值转换为整数。
+     */
+    public int powHelper(int i){
+        return (int) Math.pow(10, i);
     }
 
     // endregion
