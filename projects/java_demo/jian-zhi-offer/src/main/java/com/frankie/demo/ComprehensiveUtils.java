@@ -17,26 +17,6 @@ public class ComprehensiveUtils {
     private ArrayDeque<Integer> queueAuxiliary = new ArrayDeque<>();
 
 
-
-    /**
-     * 计算二进制中1的个数。
-     * @x: 代表整数, eg: x = 15(1111)
-     *       count    x-1          x
-     * init    0                 15(1111)
-     * 1       1     14(1110)    14(1110) = 15 & 14;
-     * 2       2     13(1101)    12(1100) = 14 & 13;
-     * 3       3     11(1011)     8(1000) = 12 & 11;
-     * 4       4      7(0111)     0(0000) =  8 &  7; -> out
-     */
-    public int numberOfOne(int x){
-        int count = 0;
-        while (x != 0){
-            x = x & (x - 1);
-            count++;
-        }
-        return count;
-    }
-
     /**
      * 不用四则运算做加法(按位亦或、按位与)
      */
@@ -53,57 +33,6 @@ public class ComprehensiveUtils {
         } while (y != 0);
 
         return x;
-    }
-
-    /**
-     * 查询数组中仅出现一次的数字。
-     */
-    public int findNumberAppearingOnce(int[] nums){
-        int result = 0;
-        for (int i: nums){
-            result = result ^ i;
-        }
-
-        return result;
-    }
-
-    /**
-     * 查询数组中出现二次的数字。
-     */
-    public ArrayList<Integer> findTwoNumberAppearingOnce(int[] nums){
-
-        // Base check.
-        if (nums.length < 1) {
-            return null;
-        }
-
-        // Step1: 依次遍历数组，进行异或操作。
-        int xor = 0;
-        for (int i: nums){
-            xor = xor ^ i;
-        }
-
-        // Step2: 定位异或结果中最低位为1的位置。
-        int position =  0;
-        while ((xor & 1) == 0){
-            xor >>= 1;
-            position++;
-        }
-
-        // Step3: 根据异或结果的第一位1的位置，虚拟地分为两个集合(因为遍历次数仍为1)，然后依次做异或。
-        int x = 0, y = 0;
-        ArrayList<Integer> result = new ArrayList<>();
-        for (int i: nums){
-            if (((i >> position) & 1) == 0) {
-                x ^= i;
-            } else {
-                y ^= i;
-            }
-        }
-        result.add(x);
-        result.add(y);
-
-        return result;
     }
 
     /**
@@ -1217,6 +1146,77 @@ public class ComprehensiveUtils {
         return (int) (Math.pow(3, timesOf3) * Math.pow(2, timeOf2));
     }
 
+    /**
+     * 计算二进制中1的个数。
+     * @x: 代表整数, eg: x = 15(1111)
+     *       count    x-1          x
+     * init    0                 15(1111)
+     * 1       1     14(1110)    14(1110) = 15 & 14;
+     * 2       2     13(1101)    12(1100) = 14 & 13;
+     * 3       3     11(1011)     8(1000) = 12 & 11;
+     * 4       4      7(0111)     0(0000) =  8 &  7; -> out
+     */
+    public int numberOfOne(int x){
+        int count = 0;
+        while (x != 0){
+            x = x & (x - 1);
+            count++;
+        }
+        return count;
+    }
+
+    /**
+     * 数组中数字出现的次数。
+     * 1. 查询数组中仅出现一次的数字。
+     */
+    public int findNumberAppearingOnce(int[] nums){
+        int result = 0;
+        for (int i: nums){
+            result = result ^ i;
+        }
+
+        return result;
+    }
+
+    /**
+     * 数组中数字出现的次数。
+     * 2. 查询数组中出现二次的数字。
+     */
+    public ArrayList<Integer> findTwoNumberAppearingOnce(int[] nums){
+
+        // Base check.
+        if (nums.length < 1) {
+            return null;
+        }
+
+        // Step1: 依次遍历数组，进行异或操作。
+        int xor = 0;
+        for (int i: nums){
+            xor = xor ^ i;
+        }
+
+        // Step2: 定位异或结果中最低位为1的位置。
+        int position =  0;
+        while ((xor & 1) == 0){
+            xor >>= 1;
+            position++;
+        }
+
+        // Step3: 根据异或结果的第一位1的位置，虚拟地分为两个集合(因为遍历次数仍为1)，然后依次做异或。
+        int x = 0, y = 0;
+        ArrayList<Integer> result = new ArrayList<>();
+        for (int i: nums){
+            if (((i >> position) & 1) == 0) {
+                x ^= i;
+            } else {
+                y ^= i;
+            }
+        }
+        result.add(x);
+        result.add(y);
+
+        return result;
+    }
 
     // endregion
 }
