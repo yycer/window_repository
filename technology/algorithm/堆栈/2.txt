@@ -1,0 +1,37 @@
+/**
+ * 通过两个队列模拟压栈，需要保留一个空队列用于数据转移。
+ */
+public void stackAddElementUsingDoubleQueue(int x){
+	// 若主栈，则往辅栈压入元素。
+	if (queuePrimary.isEmpty()) {
+		queueAuxiliary.addLast(x);
+	}
+	// 否则，往主栈里面压入元素。
+	else {
+		queuePrimary.addLast(x);
+	}
+}
+
+/**
+ * 通过两个队列模拟出栈。
+ */
+public int stackRemoveElementUsingDoubleQueue(){
+
+	// Step1: 当两个队列均为空、或均有值，则不符合逻辑，抛异常。
+	if (queuePrimary.isEmpty() == queueAuxiliary.isEmpty()){
+		throw new RuntimeException("Both queue is empty or has elements!");
+	}
+
+	if (queuePrimary.isEmpty()){
+		// 将辅助队列中的元素依次插入主队列中，仅保留最后弹出的一个。
+		while (queueAuxiliary.size() != 1) {
+			queuePrimary.addLast(queueAuxiliary.removeFirst());
+		}
+		return queueAuxiliary.removeFirst();
+	} else {
+		while (queuePrimary.size() != 1) {
+			queueAuxiliary.addLast(queuePrimary.removeFirst());
+		}
+		return queuePrimary.removeFirst();
+	}
+}
