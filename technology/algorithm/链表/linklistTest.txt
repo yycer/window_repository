@@ -1,0 +1,386 @@
+/**
+ * Professional test.
+ */
+
+@Test
+public void addNodeTest() {
+	LinkListUtils llu = new LinkListUtils();
+	llu.addNode(1);
+	llu.addNode(3);
+	llu.addNode(9);
+	llu.addNode(6);
+	String result = llu.printNodes();
+	Assert.assertEquals(result, "1 -> 3 -> 9 -> 6");
+}
+
+@Test
+public void containNodeTest() {
+	LinkListUtils llu = new LinkListUtils();
+	llu.addNode(1);
+	llu.addNode(3);
+	llu.addNode(9);
+	llu.addNode(6);
+
+	boolean contain3 = llu.containNode(3);
+	boolean contain9 = llu.containNode(9);
+	boolean contain7 = llu.containNode(7);
+
+	Assert.assertTrue(contain3);
+	Assert.assertTrue(contain9);
+	Assert.assertFalse(contain7);
+}
+
+@Test
+public void deleteNodeTest2() {
+	LinkListUtils llu = new LinkListUtils();
+	llu.addNode(1);
+	llu.addNode(3);
+	llu.addNode(9);
+	llu.addNode(6);
+
+	llu.deleteNode(10);
+	String deleteNode10 = llu.printNodes();
+	Assert.assertEquals(deleteNode10, "1 -> 3 -> 9 -> 6");
+
+	llu.deleteNode(9);
+	String deleteNode9 = llu.printNodes();
+	Assert.assertEquals(deleteNode9, "1 -> 3 -> 6");
+
+	llu.deleteNode(1);
+	String deleteNode1 = llu.printNodes();
+	Assert.assertEquals(deleteNode1, "3 -> 6");
+
+	llu.deleteNode(6);
+	String deleteNode6 = llu.printNodes();
+	Assert.assertEquals(deleteNode6, "3");
+}
+
+@Test
+public void buildCircleLinkListTest() {
+	LinkListUtils llu = new LinkListUtils();
+	llu.addNode(1);
+	llu.addNode(3);
+	llu.addNode(5);
+	llu.addNode(7);
+	llu.buildCircleNodeForLastOne(3);
+}
+
+@Test
+public void deleteNodeUsingO1Test() {
+	LinkListUtils llu1 = new LinkListUtils();
+	llu1.addNode(1);
+	llu1.addNode(3);
+	llu1.addNode(5);
+	llu1.addNode(7);
+	// 常规情况
+	llu1.deleteNodeUsingO1(3);
+	String result1 = llu1.printNodes();
+	Assert.assertEquals(result1, "1 -> 5 -> 7");
+
+	LinkListUtils llu2 = new LinkListUtils();
+	llu2.addNode(1);
+	llu2.addNode(3);
+	llu2.addNode(5);
+	llu2.addNode(7);
+	// 边界条件1: 待删除节点位于头节点
+	llu2.deleteNodeUsingO1(1);
+	String result2 = llu2.printNodes();
+	Assert.assertEquals(result2, "3 -> 5 -> 7");
+
+	LinkListUtils llu3 = new LinkListUtils();
+	llu3.addNode(1);
+	llu3.addNode(3);
+	llu3.addNode(5);
+	llu3.addNode(7);
+	// 边界条件2: 待删除节点位于尾节点
+	llu3.deleteNodeUsingO1(7);
+	String result3 = llu3.printNodes();
+	Assert.assertEquals(result3, "1 -> 3 -> 5");
+
+	LinkListUtils llu4 = new LinkListUtils();
+	llu4.addNode(1);
+	llu4.addNode(3);
+	llu4.addNode(5);
+	llu4.addNode(7);
+	// 边界条件3: 链表中不包含待删除节点。
+	llu4.deleteNodeUsingO1(9);
+	String result4 = llu4.printNodes();
+	Assert.assertEquals(result4, "1 -> 3 -> 5 -> 7");
+
+	LinkListUtils llu5 = new LinkListUtils();
+	llu5.addNode(1);
+	// 边界条件4: 链表中仅包含一个节点。
+	llu5.deleteNodeUsingO1(1);
+	String result5 = llu5.printNodes();
+	Assert.assertEquals(result5, "The link list is empty!");
+
+}
+
+@Test
+public void deleteDuplicateNodes2(){
+	// 常规情况
+	LinkListUtils llu1 = new LinkListUtils();
+	llu1.addNode(1);
+	llu1.addNode(3);
+	llu1.addNode(3);
+	llu1.addNode(5);
+	llu1.deleteDuplicateNodes();
+	String r1 = llu1.printNodes();
+	Assert.assertEquals(r1, "1 -> 5");
+
+	// 边界条件1: 链表中仅包含一个节点。
+	LinkListUtils llu2 = new LinkListUtils();
+	llu2.addNode(1);
+	llu2.deleteDuplicateNodes();
+	String r2 = llu2.printNodes();
+	Assert.assertEquals(r2, "1");
+
+	// 边界条件2: 链表中均为重复节点。
+	LinkListUtils llu3 = new LinkListUtils();
+	llu3.addNode(1);
+	llu3.addNode(1);
+	llu3.addNode(3);
+	llu3.addNode(3);
+	llu3.deleteDuplicateNodes();
+	String r3 = llu3.printNodes();
+	Assert.assertEquals(r3, "The link list is empty!");
+
+	// 边界条件3: 链表中包含的重复节点在头节点。
+	LinkListUtils llu4 = new LinkListUtils();
+	llu4.addNode(1);
+	llu4.addNode(1);
+	llu4.addNode(3);
+	llu4.addNode(5);
+	llu4.deleteDuplicateNodes();
+	String r4 = llu4.printNodes();
+	Assert.assertEquals(r4, "3 -> 5");
+
+	// 边界条件4: 链表中包含的重复节点在尾节点。
+	LinkListUtils llu5 = new LinkListUtils();
+	llu5.addNode(1);
+	llu5.addNode(3);
+	llu5.addNode(5);
+	llu5.addNode(5);
+	llu5.deleteDuplicateNodes();
+	String r5 = llu5.printNodes();
+	Assert.assertEquals(r5, "1 -> 3");
+
+	// 边界条件5: 链表中包含多个值不同的重复节点。
+	LinkListUtils llu6 = new LinkListUtils();
+	llu6.addNode(1);
+	llu6.addNode(3);
+	llu6.addNode(3);
+	llu6.addNode(5);
+	llu6.addNode(5);
+	llu6.addNode(7);
+	llu6.deleteDuplicateNodes();
+	String r6 = llu6.printNodes();
+	Assert.assertEquals(r6, "1 -> 7");
+
+	// 边界条件6: 链表中不包含重复节点。
+	LinkListUtils llu7 = new LinkListUtils();
+	llu7.addNode(1);
+	llu7.addNode(3);
+	llu7.addNode(5);
+	llu7.addNode(7);
+	llu7.deleteDuplicateNodes();
+	String r7 = llu7.printNodes();
+	Assert.assertEquals(r7, "1 -> 3 -> 5 -> 7");
+}
+
+@Test
+public void deleteMiddleNode2(){
+	LinkListUtils llu1 = new LinkListUtils();
+	llu1.addNode(1);
+	llu1.addNode(3);
+	llu1.addNode(5);
+	llu1.addNode(7);
+	// 链表总数为奇数。
+	llu1.deleteMiddleNode();
+	String r1 = llu1.printNodes();
+	Assert.assertEquals(r1, "1 -> 3 -> 7");
+
+	LinkListUtils llu2 = new LinkListUtils();
+	llu2.addNode(1);
+	llu2.addNode(3);
+	llu2.addNode(5);
+	llu2.addNode(7);
+	llu2.addNode(9);
+	// 链表总数为偶数。
+	llu2.deleteMiddleNode();
+	String r2 = llu2.printNodes();
+	Assert.assertEquals(r2, "1 -> 3 -> 7 -> 9");
+
+	LinkListUtils llu3 = new LinkListUtils();
+	llu3.addNode(1);
+	// 边界条件1: 链表仅包含1个节点。
+	llu3.deleteMiddleNode();
+	String r3 = llu3.printNodes();
+	Assert.assertEquals(r3, "1");
+
+	LinkListUtils llu4 = new LinkListUtils();
+	llu4.addNode(1);
+	llu4.addNode(2);
+	// 边界条件2: 链表仅包含2个节点。
+	llu4.deleteMiddleNode();
+	String r4 = llu4.printNodes();
+	Assert.assertEquals(r4, "1 -> 2");
+}
+
+@Test
+public void reverseLinkListTest2(){
+	LinkListUtils llu1 = new LinkListUtils();
+	llu1.addNode(1);
+	llu1.addNode(3);
+	llu1.addNode(5);
+	com.frankie.demo.review.linkList.Node reversedLinkList1 = llu1.reverseLinkList();
+
+	LinkListUtils llu2 = new LinkListUtils();
+	llu2.addNode(1);
+	com.frankie.demo.review.linkList.Node reversedLinkList2 = llu2.reverseLinkList();
+}
+
+@Test
+public void printLinkedListReverselyUsingRecursiveTest(){
+	LinkListUtils llu1 = new LinkListUtils();
+	llu1.addNode(1);
+	llu1.addNode(3);
+	llu1.addNode(5);
+//        llu1.printLinkListReverselyUsingRecursive(llu1.head);
+	llu1.printLinkListReverselyUsingStack(llu1.head);
+}
+
+@Test
+public void printLastKNodeTest2(){
+	LinkListUtils llu1 = new LinkListUtils();
+	llu1.addNode(1);
+	llu1.addNode(3);
+	llu1.addNode(5);
+	llu1.addNode(7);
+	llu1.addNode(9);
+	com.frankie.demo.review.linkList.Node last2Node = llu1.printLastKNode(2);
+	Assert.assertEquals(String.valueOf(last2Node.getVal()), "7");
+
+	com.frankie.demo.review.linkList.Node last4Node = llu1.printLastKNode(4);
+	Assert.assertEquals(String.valueOf(last4Node.getVal()), "3");
+
+	// 边界条件1: k > length
+	LinkListUtils llu2 = new LinkListUtils();
+	llu2.addNode(1);
+	llu2.addNode(3);
+	llu2.addNode(5);
+	com.frankie.demo.review.linkList.Node node1 = llu2.printLastKNode(4);
+	Assert.assertEquals(node1, null);
+
+	// 边界条件2: k < 0
+	LinkListUtils llu3 = new LinkListUtils();
+	llu3.addNode(1);
+	llu3.addNode(3);
+	llu3.addNode(5);
+	com.frankie.demo.review.linkList.Node node2 = llu3.printLastKNode(-2);
+	Assert.assertEquals(node2, null);
+
+	// 边界条件3: k = 0
+	LinkListUtils llu4 = new LinkListUtils();
+	llu4.addNode(1);
+	llu4.addNode(3);
+	llu4.addNode(5);
+	com.frankie.demo.review.linkList.Node node3 = llu4.printLastKNode(0);
+	Assert.assertEquals(node3, null);
+}
+
+@Test
+public void findMeetingNode(){
+	LinkListUtils llu1 = new LinkListUtils();
+	llu1.addNode(1);
+	llu1.addNode(2);
+	llu1.addNode(3);
+	llu1.addNode(4);
+	llu1.addNode(5);
+	llu1.addNode(6);
+	llu1.buildCircleNodeForLastOne(3);
+	com.frankie.demo.review.linkList.Node node = llu1.returnMeetingNode(llu1.head);
+}
+
+@Test
+public void printEntranceNodeTest2(){
+	LinkListUtils llu1 = new LinkListUtils();
+	llu1.addNode(1);
+	llu1.addNode(2);
+	llu1.addNode(3);
+	llu1.addNode(4);
+	llu1.addNode(5);
+	llu1.addNode(6);
+	llu1.buildCircleNodeForLastOne(3);
+	com.frankie.demo.review.linkList.Node node = llu1.printEntranceNode(llu1.head);
+	Assert.assertEquals(String.valueOf(node.getVal()), "3");
+}
+
+@Test
+public void mergeTwoSortedLinkListTest2(){
+	LinkListUtils llu1 = new LinkListUtils();
+	llu1.addNode(1);
+	llu1.addNode(3);
+
+	LinkListUtils llu2 = new LinkListUtils();
+	llu2.addNode(2);
+	llu2.addNode(4);
+
+	LinkListUtils llu = new LinkListUtils();
+//        com.frankie.demo.review.linkList.Node node = llu.mergeTwoSortedLinkList(llu1.head, llu2.head);
+
+	// 边界条件1. 某一链表仅包含一个节点。
+	LinkListUtils llu3 = new LinkListUtils();
+	llu3.addNode(2);
+//        com.frankie.demo.review.linkList.Node node = llu.mergeTwoSortedLinkList(llu1.head, llu3.head);
+
+	// 边界条件2. 某一链表包含重复节点。
+	LinkListUtils llu4 = new LinkListUtils();
+	llu4.addNode(2);
+	llu4.addNode(2);
+	com.frankie.demo.review.linkList.Node node = llu.mergeTwoSortedLinkList(llu1.head, llu4.head);
+}
+
+@Test
+public void printFirstCommonNodeTest(){
+	// 边界条件1: 两个链表无公共节点。
+	LinkListUtils llu1 = new LinkListUtils();
+	llu1.addNode(1);
+	llu1.addNode(2);
+	llu1.addNode(3);
+	llu1.addNode(6);
+	llu1.addNode(7);
+
+	LinkListUtils llu2 = new LinkListUtils();
+	llu2.addNode(4);
+	llu2.addNode(5);
+	llu2.addNode(11);
+	llu2.addNode(12);
+
+	com.frankie.demo.review.linkList.Node node = llu1.returnFirstCommonNode(llu1.head, llu2.head);
+	Assert.assertEquals(node, null);
+
+	// 边界条件2: 两个链表的公共节点为尾节点。
+	LinkListUtils llu3 = new LinkListUtils();
+	llu3.addNode(1);
+	llu3.addNode(2);
+
+	LinkListUtils llu4 = new LinkListUtils();
+	llu4.addNode(1);
+	llu4.addNode(5);
+	llu4.addNode(11);
+	llu4.addNode(2);
+	com.frankie.demo.review.linkList.Node node1 = llu1.returnFirstCommonNode(llu3.head, llu4.head);
+	Assert.assertEquals(String.valueOf(node1.getVal()), "2");
+
+	// 边界条件3: 两个链表完全一样。
+	LinkListUtils llu5 = new LinkListUtils();
+	llu5.addNode(1);
+	llu5.addNode(2);
+
+	LinkListUtils llu6 = new LinkListUtils();
+	llu6.addNode(1);
+	llu6.addNode(2);
+
+	com.frankie.demo.review.linkList.Node node2 = llu5.returnFirstCommonNode(llu5.head, llu6.head);
+}

@@ -1,0 +1,65 @@
+/**
+ * 一. 合并两个有序的链表。
+ * 二. 边界条件
+ * 1. 某一链表仅包含一个节点。
+ * 2. 某一链表包含重复节点。
+ *
+ */
+public Node mergeTwoSortedLinkList(Node n1, Node n2){
+	if      (n1 == null) return n2;
+	else if (n2 == null) return n1;
+
+	Node mergeNode;
+
+	if (n1.getVal() <= n2.getVal()){
+		mergeNode = n1;
+		mergeNode.setNext(mergeTwoSortedLinkList(n1.getNext(), n2));
+	} else{
+		mergeNode = n2;
+		mergeNode.setNext(mergeTwoSortedLinkList(n1, n2.getNext()));
+	}
+	return mergeNode;
+}
+
+/**
+ * 一. 输出两个链表的第一个公共节点。
+ * 二. 边界条件
+ * 1. 两个链表无公共节点。
+ * 2. 最后一个节点为公共节点。
+ * 3. 两个链表完全一样。
+ */
+public Node returnFirstCommonNode(Node n1, Node n2){
+
+	// Step1: Base check.
+	if (n1 == null || n2 == null) return null;
+
+	// Step2: 计算n1、n2哪个链表更长，长的链表先往前走n2.length - n1.length步。
+	int length1 = countNodes(n1);
+	int length2 = countNodes(n2);
+	int gap;
+
+	if (length1 >= length2) {
+		gap = length1 - length2;
+		while (n1.getNext() != null && gap > 0){
+			n1 = n1.getNext();
+			gap--;
+		}
+	} else {
+		gap = length2 - length1;
+		while (n2.getNext() != null && gap > 0){
+			n2 = n2.getNext();
+			gap--;
+		}
+	}
+
+	/**
+	 * Step3: n1.val == n2.val; bingo!
+	 * 1. n1 != null的作用，防止两个公共节点的链表。
+	 */
+	while (n1 != null && n1.getVal() != n2.getVal()){
+		n1 = n1.getNext();
+		n2 = n2.getNext();
+	}
+
+	return n1;
+}

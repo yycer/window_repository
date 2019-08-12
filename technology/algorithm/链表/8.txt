@@ -1,0 +1,34 @@
+
+    // region Private methods.
+
+    /**
+     * 计算指定链表的节点总数。
+     * @param node
+     * @return
+     */
+    private int countNodes(Node node){
+        if (node == null) return 0;
+        int count = 0;
+        do {
+            count++;
+            node = node.getNext();
+        } while (node != null);
+        return count;
+    }
+
+    /**
+     * 计算链表的总节点数。
+     * @return
+     */
+    private int countNodes(){
+        if (head == null) return 0;
+        Node curNode = head;
+        int count = 0;
+        do {
+            count++;
+            curNode = curNode.getNext();
+        } while (curNode != null);
+        return count;
+    }
+    // endregion
+}

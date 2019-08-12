@@ -1,0 +1,62 @@
+/**
+ * 校验是否为后续遍历序列
+ */
+public boolean verifySequenceOfBST(int[] sequence){
+	int length = sequence.length;
+	if (length <= 0){
+		return false;
+	}
+
+	int root = sequence[length - 1];
+
+	// 定位到第一个大于根节点的节点索引。
+	int i = 0;
+	for (; i < length - 1; i++){
+		if (sequence[i] > root) break;
+	}
+
+	// 防止处于右子树中的节点比根节点小。
+	int j = i;
+	for (; j < length - 1; j++){
+		if (sequence[j] < root) return false;
+	}
+
+	boolean left = true;
+	if (i > 0){
+		left = verifySequenceOfBST(Arrays.copyOfRange(sequence, 0, i));
+	}
+
+	boolean right = true;
+	if (i < length - 1){
+		right = verifySequenceOfBST(Arrays.copyOfRange(sequence, i, length -1));
+	}
+
+	return left && right;
+}
+
+
+private ArrayList<ArrayList<Integer>> paths = new ArrayList<>();
+private ArrayList<Integer>            path  = new ArrayList<>();
+/**
+ * 返回树中和为某个值的所有路径。
+ */
+public ArrayList<ArrayList<Integer>> returnPaths(Node node, int target){
+	if (node == null) return paths;
+	path.add(node.getVal());
+	target -= node.getVal();
+
+	if (target == 0 && node.getLeftNode() == null && node.getRightNode() == null){
+		paths.add(new ArrayList<>(path));
+	}
+
+	if (node.getLeftNode() != null){
+		returnPaths(node.getLeftNode(),target);
+	}
+
+	if (node.getRightNode() != null){
+		returnPaths(node.getRightNode(), target);
+	}
+	// 回溯，删除最后一个元素。
+	path.remove(path.size() - 1);
+	return paths;
+}

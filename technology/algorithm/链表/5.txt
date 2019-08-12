@@ -1,0 +1,52 @@
+/**
+ * 一. 反转链表
+ * 二. 边界条件
+ * <1> 链表仅包含一个节点
+ */
+public Node reverseLinkList(){
+	if (head == null) return null;
+
+	Node curNode = head;
+	Node previousNode = null;
+
+	while (curNode != null){
+		Node nextNode = curNode.getNext();
+		curNode.setNext(previousNode);
+		previousNode  = curNode;
+		curNode       = nextNode;
+	}
+	return previousNode;
+}
+
+/**
+ * 以递归的方式从尾到头依次输出链表节点。
+ */
+public void printLinkListReverselyUsingRecursive(Node node){
+	if (node == null) return;
+
+	Node nextNode = node.getNext();
+	if (nextNode != null){
+		printLinkListReverselyUsingRecursive(nextNode);
+	}
+	System.out.println(node.getVal());
+}
+
+/**
+ * 以栈的方式从尾到头依次输出链表节点。
+ */
+public void printLinkListReverselyUsingStack(Node node){
+	if (node == null) return;
+
+	Stack<Integer> stack = new Stack<>();
+
+	// Step1: Push value into stack.
+	while (node != null){
+		stack.push(node.getVal());
+		node = node.getNext();
+	}
+
+	// Step2: Pop value.
+	while (!stack.isEmpty()){
+		System.out.println(stack.pop());
+	}
+}

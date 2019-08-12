@@ -1,0 +1,50 @@
+private int index = 0;
+/**
+ * 返回二叉搜索树中第k个节点
+ */
+public Node returnFirstKNode(Node node, int k){
+	if (node != null){
+		Node curNode = returnFirstKNode(node.getLeftNode(), k);
+		if (curNode != null){
+			return curNode;
+		}
+		index++;
+		if (index == k){
+			return node;
+		}
+		curNode = returnFirstKNode(node.getRightNode(), k);
+		if (curNode != null){
+			return curNode;
+		}
+	}
+	return null;
+}
+
+
+/**
+ * 计算二叉树深度
+ */
+public int treeDepth(Node node){
+	if (node == null) return 0;
+
+	int left  = treeDepth(node.getLeftNode());
+	int right = treeDepth(node.getRightNode());
+
+	return (left > right) ? (left + 1) : (right + 1);
+}
+
+/**
+ * 判断是否为平衡二叉树
+ */
+public boolean isBalancedTree(Node node){
+	if (node == null) return true;
+	int left  = treeDepth(node.getLeftNode());
+	int right = treeDepth(node.getRightNode());
+	int diff = left - right;
+	if (diff > 1 || diff < -1){
+		return false;
+	}
+
+	// 这一步非常重复，重蹈fibonacci的覆辙！！！
+	return isBalancedTree(node.getLeftNode()) && isBalancedTree(node.getRightNode());
+}

@@ -1,0 +1,68 @@
+/**
+ * 一.删除链表中重复节点。
+ * 1. 外层循环，判断当前节点是否需要删除？判断依据是什么？ 当前节点是否与下一个结点值相等。
+ * 2. 内层循环，直至下一个不同节点，且将previousNode连上当前不同节点。
+ *
+ * 二. 边界条件
+ * 1. 链表仅包含一个节点，不作任何修改。
+ * 2. 链表仅包含重复节点，整个链表为null。解决方案： 在内层循环中，判断previous是否为null，若是，head指向当前节点的下一个节点。
+ * 3. 链表中包含的重复节点在头节点。
+ * 4. 链表中包含的重复节点在尾节点。
+ * 5. 链表中间包含多个不同值的重复节点。
+ * 6. 链表中不包含重复节点，不做任何修改。
+ */
+public void deleteDuplicateNodes(){
+	if (head == null) return;
+
+	Node curNode      = head;
+	Node previousNode = null;
+	while (curNode != null){
+
+		if (curNode.getNext() == null) return;
+		Node nextNode = curNode.getNext();
+
+		// 当前节点不需要删除。
+		if (curNode.getVal() != nextNode.getVal()){
+			previousNode = curNode;
+			curNode      = curNode.getNext();
+		}
+		// 当前节点需要删除。
+		else {
+			int duplicateValue = curNode.getVal();
+			Node tmpNode       = curNode;
+
+			while (tmpNode != null && tmpNode.getVal() == duplicateValue){
+				tmpNode = tmpNode.getNext();
+				if (previousNode == null){
+					head = tmpNode;
+				}
+				// 将下面else语句放在该while语句块的原因是: 防止对previousNode多赋值一遍，还有可能造成空引用。
+				else{
+					previousNode.setNext(tmpNode);
+				}
+			}
+			curNode = tmpNode;
+		}
+	}
+}
+
+/**
+ * 一. 删除链表中间节点
+ * 二. 边界条件
+ * 1. 链表总数为1或2，不作任何修改。
+ */
+public void deleteMiddleNode(){
+	int count = countNodes();
+	if (count <= 2) return;
+
+	Node fastNode     = head;
+	Node slowNode     = head;
+	Node previousNode = null;
+	while (fastNode != null && fastNode.getNext() != null){
+		fastNode     = fastNode.getNext().getNext();
+		previousNode = slowNode;
+		slowNode     = slowNode.getNext();
+	}
+	if (previousNode == null) return;
+	previousNode.setNext(slowNode.getNext());
+}

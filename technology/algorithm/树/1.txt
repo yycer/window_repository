@@ -1,0 +1,67 @@
+public void addNode(int val){
+	// 根节点随着新节点的增加而改变。
+	root = addNodeRecursive(root, val);
+}
+
+private Node addNodeRecursive(Node curNode, int val){
+	if (curNode == null) {
+		return new Node(val);
+	}
+
+	if (val < curNode.getVal()){
+		curNode.setLeftNode(addNodeRecursive(curNode.getLeftNode(), val));
+	} else if (val > curNode.getVal()){
+		curNode.setRightNode(addNodeRecursive(curNode.getRightNode(), val));
+	} else{
+		return curNode;
+	}
+	return curNode;
+}
+
+/**
+ * 判断一棵二叉搜索树中是否包含值为某个数的节点。
+ */
+public boolean containNode(int val){
+	return containNodeRecursive(root, val);
+}
+
+private boolean containNodeRecursive(Node curNode, int val){
+	if (curNode          == null) return false;
+	if (curNode.getVal() == val)  return true;
+
+	// 如果待查找节点的值小于当前节点的值。
+	return (val < curNode.getVal())
+			// 继续遍历其左子树。
+			? containNodeRecursive(curNode.getLeftNode(), val)
+			// 否则继续遍历其右子树。
+			: containNodeRecursive(curNode.getRightNode(), val);
+}
+
+
+/**
+ * 先序遍历(循环法、栈方式)
+ * 1. 先将根节点压入栈中。
+ * 2. 出栈、先定位右子树、然后左子树，并将它们压入栈中。
+ */
+public void preOrderTraversal(Node node){
+
+	Stack<Node> stack = new Stack<>();
+	// Step1: 先将根节点压入栈中。
+	stack.push(node);
+	System.out.println("先序遍历: ");
+
+	while (stack.size() > 0){
+		// Step2: 出栈、先定位右子树、然后左子树，并将它们压入栈中。
+		Node curNode = stack.pop();
+		System.out.print(curNode.getVal() + " ");
+
+		// 先右再左的原因: 符合栈的特性，后进先出。
+		if (curNode.getRightNode() != null){
+			stack.push(curNode.getRightNode());
+		}
+
+		if (curNode.getLeftNode()  != null){
+			stack.push(curNode.getLeftNode());
+		}
+	}
+}

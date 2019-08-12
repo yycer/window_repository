@@ -1,0 +1,66 @@
+/**
+ * 一. 输出倒数第k个节点。
+ * 二. 边界条件
+ * 1. k > length?
+ * 2. k <= 0?
+ * @param k: 代表倒数第几个节点。
+ * @return
+ */
+public Node printLastKNode(int k){
+	int count = countNodes();
+	if (head == null || k <= 0 || k > count) return null;
+
+	// Step1: 快节点先往前走k步。
+	Node fastNode = head;
+	Node slowNode = head;
+	while (k > 0){
+		fastNode = fastNode.getNext();
+		k--;
+	}
+
+	// Step2: 快慢节点同时往前走，直至快节点为null.
+	while (fastNode != null){
+		slowNode = slowNode.getNext();
+		fastNode = fastNode.getNext();
+	}
+	return slowNode;
+}
+
+/**
+ * 返回链表中环的相遇节点，假设给的链表一定包含环喔。
+ * @param circleNode
+ * @return
+ */
+public Node returnMeetingNode(Node circleNode){
+	if (circleNode == null) return null;
+
+	Node slowNode = circleNode.getNext();
+	Node fastNode = circleNode.getNext().getNext();
+
+	while (fastNode != slowNode){
+		slowNode = slowNode.getNext();
+		fastNode = fastNode.getNext().getNext();
+	}
+
+	return fastNode;
+}
+
+/**
+ * 一. 输出链表中环的入口节点。
+ * 二. 边界条件
+ * 1.
+ * @param circleNode
+ * @return
+ */
+public Node printEntranceNode(Node circleNode){
+	// Step1: 找到相遇节点meetingNode，并将其作为快节点。
+	Node meetingNode = returnMeetingNode(circleNode);
+
+	// Step2: 慢指针从头节点开始，当快节点指向null，慢节点即为环入口节点。
+	Node slowNode = circleNode;
+	while (meetingNode != slowNode){
+		meetingNode = meetingNode.getNext();
+		slowNode    = slowNode.getNext();
+	}
+	return meetingNode;
+}

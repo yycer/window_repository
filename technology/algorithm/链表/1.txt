@@ -1,0 +1,51 @@
+package com.frankie.demo.review.linkList;
+
+
+import java.util.Stack;
+
+public class LinkListUtils {
+
+    public Node head;
+    private final String ARROW = " -> ";
+
+    public void addNode(int val){
+        Node node = new Node(val);
+        if (head == null) {
+            head = node;
+            return;
+        }
+        Node curNode = head;
+        // 定位到链表的最后一个节点。
+        while (curNode.getNext() != null){
+            curNode = curNode.getNext();
+        }
+
+        curNode.setNext(node);
+    }
+
+    public String printNodes(){
+        if (head == null){
+            return "The link list is empty!";
+        }
+
+        Node curNode = head;
+        StringBuilder sb = new StringBuilder();
+        while (curNode != null){
+            sb.append(curNode.getVal());
+            sb.append(ARROW);
+            curNode = curNode.getNext();
+        }
+        String result = new String(sb);
+        return result.substring(0, result.length() - ARROW.length());
+    }
+
+    public boolean containNode(int val){
+        if (head == null) return false;
+
+        Node curNode = head;
+        while (curNode != null){
+            if (curNode.getVal() == val) return true;
+            curNode = curNode.getNext();
+        }
+        return false;
+    }

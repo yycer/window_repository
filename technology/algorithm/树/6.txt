@@ -1,0 +1,56 @@
+/**
+ * 重建二叉树
+ */
+public Node rebuildBinaryTree(int[] pre, int[] in){
+
+	return rebuildBTCore(pre, 0, pre.length - 1, in, 0, in.length - 1);
+}
+
+private Node rebuildBTCore(int[] pre, int preLeft, int preRight, int[] in, int inLeft, int inRight) {
+	if (preLeft > preRight || inLeft > inRight) return null;
+
+	Node root = new Node(pre[preLeft]);
+	for (int i = inLeft; i <= inRight; i++){
+		// 定位中序遍历中的根节点
+		if (in[i] == pre[preLeft]){
+			root.setLeftNode(rebuildBTCore(pre, preLeft + 1, preLeft + i - inLeft, in, inLeft, i - 1));
+			root.setRightNode(rebuildBTCore(pre, preLeft + i - inLeft + 1, preRight, in, i + 1, inRight));
+		}
+	}
+
+	return root;
+}
+
+/**
+ * 二叉树的镜像
+ */
+public Node mirrorRecursively(Node node){
+	if (node == null) return null;
+	if (node.getLeftNode() == null && node.getRightNode() == null) return null;
+
+	// 交换左右子树、节点
+	Node tmpNode = node.getLeftNode();
+	node.setLeftNode(node.getRightNode());
+	node.setRightNode(tmpNode);
+
+	if (node.getLeftNode()  != null) mirrorRecursively(node.getLeftNode());
+	if (node.getRightNode() != null) mirrorRecursively(node.getRightNode());
+	return node;
+}
+
+/**
+ * 判断二叉树的对称性
+ */
+public boolean isSymmetrical(Node node){
+	return isSymmetrical(node, node);
+}
+
+private boolean isSymmetrical(Node node1, Node node2) {
+	if (node1 == null && node2 == null)   return true;
+	if (node1 == null || node2 == null)   return false;
+	if (node1.getVal() != node2.getVal()) return false;
+
+	return isSymmetrical(node1.getLeftNode(),  node2.getRightNode()) &&
+		   isSymmetrical(node1.getRightNode(), node2.getLeftNode());
+
+}
