@@ -6,7 +6,7 @@
 3. 多线程
 <1> run() vs start()
 <2> volatile vs synchronized
-<3> 线程五个状态: 创建、就绪、运行、阻塞、死亡。
+<3> 线程五个状态: new、runable、wait、blocked、terminated.
 
 4. xxlJob练手
 <1> 执行一个简单的查询sp。 								(3.8个番茄包括熟悉结构)
