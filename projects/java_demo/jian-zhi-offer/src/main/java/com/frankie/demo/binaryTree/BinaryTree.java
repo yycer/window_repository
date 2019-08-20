@@ -101,13 +101,11 @@ public class BinaryTree {
                 node = node.getLeftNode();
             }
 
-            if (deque.size() > 0){
-                // Step2: 出栈、定位到右子树。
-                // 执行下一个语句前，node为null，需要回溯到上一个叶子节点！
-                node = deque.pop();
-                System.out.print(node.getVal() + " ");
-                node = node.getRightNode();
-            }
+            // Step2: 出栈、定位到右子树。
+            // 执行下一个语句前，node为null，需要回溯到上一个叶子节点！
+            node = deque.pop();
+            System.out.print(node.getVal() + " ");
+            node = node.getRightNode();
         }
     }
 
@@ -117,7 +115,7 @@ public class BinaryTree {
      * 2. 出栈、定位到左子树。
      * 3. 打印后续遍历
      */
-    public void postOrderTraversal2(Node node){
+    public void postOrderTraversal(Node node){
         if (node == null) {
             return;
         }
@@ -156,7 +154,28 @@ public class BinaryTree {
         return fibonacci(n-1) + fibonacci(n - 2);
     }
 
+    /**
+     * @param n: 代表第几位fibonacci。
+     */
+    public int fibonacciOptimization(int n){
+        if (n == 0) {
+            return 0;
+        }
+        if (n == 1) {
+            return 1;
+        }
 
+        int nMinustwo = 0;
+        int nMinusOne = 1;
+        int result    = 0;
+
+        for (int i = 2; i < n; i++){
+            result    = nMinusOne + nMinustwo;
+            nMinustwo = nMinusOne;
+            nMinusOne = result;
+        }
+        return result;
+    }
 
     /**
      * 先序遍历(递归法)

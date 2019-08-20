@@ -2,7 +2,6 @@ package com.frankie.demo;
 
 import com.frankie.demo.binaryTree.BinaryTree;
 import com.frankie.demo.binaryTree.BinaryTreePrinter;
-import com.frankie.demo.model.ThreePart;
 import com.frankie.demo.review.linkList.LinkListUtils;
 import org.junit.Assert;
 import org.junit.Test;
@@ -43,7 +42,7 @@ public class DemoApplicationTests {
     public void indexWayTest() {
         int[] a = {2, 0, 3, 1, 2};
 
-        boolean duplicated = cu.isDuplicated(a);
+        boolean duplicated = ArrayUtils.isDuplicated(a);
         System.out.println(2);
     }
 
@@ -90,7 +89,7 @@ public class DemoApplicationTests {
     @Test
     public void duplicateDichotomyTest() {
         int[] a = {2, 7, 3, 4, 2, 6, 4, 1};
-        int duplicateInteger = cu.isDuplicateDichotomy(a);
+        Integer duplicateInteger = ArrayUtils.isDuplicateDichotomy(a);
         System.out.println(duplicateInteger);
     }
 
@@ -114,8 +113,14 @@ public class DemoApplicationTests {
 
     @Test
     public void replaceBlank() {
+
         String s = "hello world a b c";
-        String result = cu.replaceBlank(s);
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) != 32) sb.append(s.charAt(i));
+            else sb.append("%20");
+        }
+        String result = new String(sb);
         Assert.assertEquals(result, "hello%20world%20a%20b%20c");
     }
 
@@ -688,12 +693,11 @@ public class DemoApplicationTests {
         BinaryTree bt = new BinaryTree();
         bt.addNode(40);
         bt.addNode(20);
-        bt.addNode(20);
-//        bt.addNode(60);
-//        bt.addNode(10);
-//        bt.addNode(30);
-//        bt.addNode(50);
-//        bt.addNode(70);
+        bt.addNode(60);
+        bt.addNode(10);
+        bt.addNode(30);
+        bt.addNode(50);
+        bt.addNode(70);
 //        bt.addNode(42);
 //        bt.addNode(55);
 //        bt.addNode(53);
@@ -701,7 +705,7 @@ public class DemoApplicationTests {
         BinaryTreePrinter.printNode(bt.root);
 //        bt.preOrderTraversal(bt.root);
 //        bt.inOrderTraversal(bt.root);
-//        bt.postOrderTraversal(bt.root);
+        bt.postOrderTraversal(bt.root);
 //        bt.preOrderTraversalUsingRecursive(bt.root);
 //        bt.inOrderTraversalUsingRecursive(bt.root);
 //        bt.postOrderTraversalUsingRecursive(bt.root);
@@ -723,7 +727,7 @@ public class DemoApplicationTests {
         bt.addNode(12);
         bt.addNode(30);
 //        bt.inOrderTraversal(bt.root);
-//        bt.postOrderTraversal2(bt.root);
+//        bt.postOrderTraversal(bt.root);
 //        bt.preOrderTraversalUsingRecursive(bt.root);
 //        bt.inOrderTraversalUsingRecursive(bt.root);
 //        bt.postOrderTraversalUsingRecursive(bt.root);
@@ -733,7 +737,8 @@ public class DemoApplicationTests {
     @Test
     public void fibonaciiEfficiencyTest(){
         LocalDateTime start = LocalDateTime.now();
-        cu.fibonacciOptimization(500);
+        BinaryTree bt = new BinaryTree();
+        bt.fibonacciOptimization(500);
         LocalDateTime end = LocalDateTime.now();
         long l = Duration.between(start, end).toMillis();
         System.out.println(l);
@@ -741,8 +746,9 @@ public class DemoApplicationTests {
 
     @Test
     public void fibonacciTest(){
-        int result = cu.fibonacciOptimization(5);
-        Assert.assertEquals(result, 3);
+        BinaryTree bt = new BinaryTree();
+        int result = bt.fibonacciOptimization(6);
+        Assert.assertEquals(result, 5);
     }
 
     @Test
@@ -1329,10 +1335,10 @@ public class DemoApplicationTests {
         String s3 = "3.14e10";
         String s4 = "-3.14e-3";
 
-        boolean n1 = cu.isNumericRegExp(s1);
-        boolean n2 = cu.isNumericRegExp(s2);
-        boolean n3 = cu.isNumericRegExp(s3);
-        boolean n4 = cu.isNumericRegExp(s4);
+        boolean n1 = cu.isNumerciRegExp(s1);
+        boolean n2 = cu.isNumerciRegExp(s2);
+        boolean n3 = cu.isNumerciRegExp(s3);
+        boolean n4 = cu.isNumerciRegExp(s4);
 
         Assert.assertTrue(n1);
         Assert.assertTrue(n2);
@@ -1344,10 +1350,10 @@ public class DemoApplicationTests {
         String s7 = "1.2.3";
         String s8 = "+-5";
 
-        boolean n5 = cu.isNumericRegExp(s5);
-        boolean n6 = cu.isNumericRegExp(s6);
-        boolean n7 = cu.isNumericRegExp(s7);
-        boolean n8 = cu.isNumericRegExp(s8);
+        boolean n5 = cu.isNumerciRegExp(s5);
+        boolean n6 = cu.isNumerciRegExp(s6);
+        boolean n7 = cu.isNumerciRegExp(s7);
+        boolean n8 = cu.isNumerciRegExp(s8);
 
         Assert.assertFalse(n5);
         Assert.assertFalse(n6);
@@ -1549,7 +1555,6 @@ public class DemoApplicationTests {
     @Test
     public void numberOf1Between1AndNOptimizationTest(){
         int r1 = cu.numberOf1Between1AndNOptimization(20195);
-        int r2 = cu.numberOf1Between1AndNOptimization(21345);
         Assert.assertEquals(r1, 18136);
     }
 
@@ -1644,17 +1649,14 @@ public class DemoApplicationTests {
     public void getMissingNumberTest(){
         int[] a = {0, 1, 2, 3, 5, 6, 7};
         int r1 = cu.getMissingNumberIndexWay(a, 0, a.length - 1);
-        int r11 = cu.getMissingNumberUsingLoop(a, 0, a.length - 1);
         Assert.assertEquals(r1, 4);
 
         // 缺失数组出现在开头或结尾。
         int[] b = {1, 2, 3, 4, 5, 6, 7};
         int r2 = cu.getMissingNumberIndexWay(b, 0, a.length - 1);
-        int r22 = cu.getMissingNumberUsingLoop(b, 0, a.length - 1);
 
         int[] c = {0, 1, 2, 3, 4, 5, 6};
         int r3 = cu.getMissingNumberIndexWay(c, 0, a.length - 1);
-        int r33 = cu.getMissingNumberUsingLoop(c, 0, a.length - 1);
 
         System.out.println(2);
     }
@@ -1663,48 +1665,33 @@ public class DemoApplicationTests {
     public void getNumberAsIndexTest(){
         // 命中元素在右。
         int[] a = {-3, -1, 1, 3, 5};
-        int r1 = cu.getNumberSameAsIndexUsingLoop(a);
-        int r11 = cu.getNumberSameAsIndexUsingRecursively(a, 0, a.length - 1);
+        int r1 = cu.getNumberSameAsIndex(a);
         Assert.assertEquals(r1, 3);
 
         // 命中元素在左。
         int[] b = {-2, 1, 4, 7, 9, 12};
-        int r2 = cu.getNumberSameAsIndexUsingLoop(b);
-        int r22 = cu.getNumberSameAsIndexUsingRecursively(b, 0, b.length - 1);
+        int r2 = cu.getNumberSameAsIndex(b);
         Assert.assertEquals(r2, 1);
 
         // 直接命中。
         int[] c = {-2, 0, 2, 4, 7};
-        int r3 = cu.getNumberSameAsIndexUsingLoop(c);
-        int r33 = cu.getNumberSameAsIndexUsingRecursively(c, 0, c.length - 1);
+        int r3 = cu.getNumberSameAsIndex(c);
         Assert.assertEquals(r3, 2);
 
         // 数组中不包含与这样的元素。
         int[] d = {-2, 0, 1, 4, 7};
-        int r4 = cu.getNumberSameAsIndexUsingLoop(d);
-        int r44 = cu.getNumberSameAsIndexUsingRecursively(d, 0, d.length - 1);
+        int r4 = cu.getNumberSameAsIndex(d);
         Assert.assertEquals(r4, -1);
 
         // 这样的元素在开头或结尾。
         int[] e = {0, 3, 4, 7, 9};
-        int r5 = cu.getNumberSameAsIndexUsingLoop(e);
-        int r55 = cu.getNumberSameAsIndexUsingRecursively(e, 0, e.length - 1);
+        int r5 = cu.getNumberSameAsIndex(e);
         Assert.assertEquals(r5, 0);
 
         int[] f = {-1, 0, 1, 2, 4};
-        int r6 = cu.getNumberSameAsIndexUsingLoop(f);
-        int r66 = cu.getNumberSameAsIndexUsingRecursively(f, 0, f.length - 1);
+        int r6 = cu.getNumberSameAsIndex(f);
         Assert.assertEquals(r6, 4);
 
-    }
-
-    @Test
-    public void getThreePartTest(){
-        ThreePart threePart1 = cu.getThreePart(1234567, 1);
-        ThreePart threePart2 = cu.getThreePart(1234567, 3);
-        ThreePart threePart3 = cu.getThreePart(1234567, 4);
-        ThreePart threePart4 = cu.getThreePart(1234567, 5);
-        System.out.println(2);
     }
 }
 
