@@ -2,6 +2,7 @@ package com.frankie.demo.binaryTree;
 
 
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
+import java.util.ArrayDeque;
 import java.util.Stack;
 
 public class TreeDraft {
@@ -90,6 +91,20 @@ public class TreeDraft {
 //
 //        while (!values.isEmpty()){
 //            System.out.print(values.pop() + " ");
+//        }
+//    }
+//
+//    public void levelOrder(Node node){
+//        if (node == null) return;
+//        ArrayDeque<Node> queue = new ArrayDeque<>();
+//        queue.add(node);
+//
+//        while (queue.size() > 0){
+//            node = queue.removeFirst();
+//            System.out.print(node.getVal() + " ");
+//
+//            if (node.getLeftNode() != null) queue.add(node.getLeftNode());
+//            if (node.getRightNode() != null) queue.add(node.getRightNode());
 //        }
 //    }
 
