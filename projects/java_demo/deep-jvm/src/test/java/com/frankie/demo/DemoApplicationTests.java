@@ -1,5 +1,7 @@
 package com.frankie.demo;
 
+import com.frankie.demo.memorytest.ConstantPoolOOM;
+import com.frankie.demo.memorytest.HeapOutOfMemory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +27,26 @@ public class DemoApplicationTests {
         System.out.println(count);
         LocalDateTime end = LocalDateTime.now();
         System.out.println(Duration.between(start, end).toMillis());
+
+    }
+
+    @Test
+    public void heapOOMTest(){
+        HeapOutOfMemory heap = new HeapOutOfMemory();
+        heap.run();
+    }
+
+    @Test
+    public void constantPoolOOMTest(){
+        ConstantPoolOOM constantPool = new ConstantPoolOOM();
+        constantPool.run();
+    }
+
+    @Test
+    public void stringTest(){
+        String java = new StringBuilder("ja").append("va").toString();
+        boolean result = java.intern() == java;
+        System.out.println(2);
+
     }
 }

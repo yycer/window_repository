@@ -1,5 +1,6 @@
 package com.frankie.demo;
 
+import com.frankie.demo.memorytest.ConstantPoolOOM;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
