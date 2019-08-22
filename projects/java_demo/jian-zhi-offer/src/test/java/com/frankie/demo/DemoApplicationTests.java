@@ -904,8 +904,12 @@ public class DemoApplicationTests {
         node20.setParentNode(bt.root);
         node60.setParentNode(bt.root);
 
-//        BinaryTreePrinter.printNode(bt.root);
+        BinaryTreePrinter.printNode(bt.root);
         com.frankie.demo.binaryTree.Node node = bt.returnNextNode(node35);
+
+        TreeDraft td = new TreeDraft();
+        com.frankie.demo.binaryTree.Node node40 = td.findNextTreeNode(node35);
+        System.out.println(node40.getVal());
     }
 
     @Test

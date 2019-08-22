@@ -168,6 +168,32 @@ public class TreeDraft {
         return node;
     }
 
+    public Node findNextTreeNode(Node node){
+        if (node == null) return null;
+
+        if (node.getRightNode() != null){
+            Node minNode = getMinNodeFromRight(node.getRightNode());
+            return minNode;
+        }
+
+        while (node.getParentNode() != null){
+            if (node.getParentNode().getLeftNode() == node){
+                return node.getParentNode();
+            }
+            node = node.getParentNode();
+        }
+
+        return null;
+    }
+
+    private Node getMinNodeFromRight(Node node) {
+        while (node.getLeftNode() != null){
+            node = node.getLeftNode();
+        }
+
+        return node;
+    }
+
 }
 
 
