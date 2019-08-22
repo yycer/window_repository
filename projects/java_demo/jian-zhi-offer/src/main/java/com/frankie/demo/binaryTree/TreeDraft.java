@@ -126,6 +126,48 @@ public class TreeDraft {
     }
 
 
+    public Node deleteNode(Node node, int val){
+        if (node == null) return null;
+
+        if (val < node.getVal()) {
+            node.setLeftNode(deleteNode(node.getLeftNode(), val));
+        } else if (val > node.getVal()) {
+            node.setRightNode(deleteNode(node.getRightNode(), val));
+        } else{
+            if (node.getLeftNode() != null && node.getRightNode() != null){
+
+                Node tempNode = node;
+                Node minNode = minElementInRight(tempNode.getRightNode());
+                node.setVal(minNode.getVal());
+                node.setRightNode(deleteNode(node.getRightNode(), minNode.getVal()));
+            }
+            else if (node.getLeftNode() != null){
+                node = node.getLeftNode();
+            }
+            else if (node.getRightNode() != null){
+                node = node.getRightNode();
+            }
+            else{
+                return null;
+            }
+        }
+        return node;
+    }
+
+
+    public Node minElementInRight(Node node) {
+
+        if (node == null){
+            return null;
+        }
+
+        while (node.getLeftNode() != null){
+            node = node.getLeftNode();
+        }
+
+        return node;
+    }
+
 }
 
 

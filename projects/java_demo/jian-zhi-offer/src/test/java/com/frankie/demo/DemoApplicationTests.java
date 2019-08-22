@@ -2,6 +2,7 @@ package com.frankie.demo;
 
 import com.frankie.demo.binaryTree.BinaryTree;
 import com.frankie.demo.binaryTree.BinaryTreePrinter;
+import com.frankie.demo.binaryTree.TreeDraft;
 import com.frankie.demo.review.linkList.LinkListUtils;
 import org.junit.Assert;
 import org.junit.Test;
@@ -1691,6 +1692,26 @@ public class DemoApplicationTests {
         int[] f = {-1, 0, 1, 2, 4};
         int r6 = cu.getNumberSameAsIndex(f);
         Assert.assertEquals(r6, 4);
+
+    }
+
+    @Test
+    public void minElementTest(){
+        BinaryTree bt = new BinaryTree();
+        bt.addNode(4);
+        bt.addNode(2);
+        bt.addNode(6);
+        bt.addNode(1);
+        bt.addNode(3);
+        bt.addNode(5);
+        bt.addNode(7);
+
+        com.frankie.demo.binaryTree.Node node = bt.root;
+        BinaryTreePrinter.printNode(node);
+
+        TreeDraft td = new TreeDraft();
+        com.frankie.demo.binaryTree.Node result = td.minElementInRight(node);
+        System.out.println(result.getVal());
 
     }
 }

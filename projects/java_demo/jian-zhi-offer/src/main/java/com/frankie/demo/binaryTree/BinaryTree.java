@@ -257,10 +257,10 @@ public class BinaryTree {
         }
 
         // Step1: 定位待删除元素。
-        if      (node.getVal() > val){
+        if (val < node.getVal()){
             node.setLeftNode(deleteNode(node.getLeftNode(), val));
         }
-        else if (node.getVal() < val){
+        else if (val > node.getVal()){
             node.setRightNode(deleteNode(node.getRightNode(), val));
         }
         else {
