@@ -10,11 +10,11 @@ import org.springframework.stereotype.Component;
 @Configuration
 //@Component
 public class AppConfig {
-
-    @Bean
-    public Foo foo(){
-        return new Foo();
-    }
+//
+//    @Bean
+//    public Foo foo(){
+//        return new Foo();
+//    }
 
     public Bar bar(){
         return new Bar();
