@@ -5,9 +5,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class MissionImpossible implements CompactDisk {
 
-
     @Override
-    public void play() {
-        System.out.println("碟中谍系列");
+    public String getCDName() {
+        return "碟中谍";
     }
 }

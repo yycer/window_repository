@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 public class Furious implements CompactDisk{
 
     @Override
-    public void play() {
-        System.out.println("速度与激情");
+    public String getCDName() {
+        return "速度与激情";
     }
 }

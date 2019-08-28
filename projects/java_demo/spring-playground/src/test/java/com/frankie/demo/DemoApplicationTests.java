@@ -2,8 +2,8 @@ package com.frankie.demo;
 
 import com.frankie.demo.beanlifecycle.AwareBean;
 import com.frankie.demo.beanlifecycle.Person;
-import com.frankie.demo.soundsystem.CDPlayer;
-import com.frankie.demo.soundsystem.MissionImpossible;
+import com.frankie.demo.soundsystem.DVDPlayer;
+import com.frankie.demo.soundsystem.VCDPlayer;
 import com.frankie.demo.vehicle.Car;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +21,10 @@ public class DemoApplicationTests {
 //    MissonImpossible missonImpossible;
 
     @Autowired
-    CDPlayer cdPlayer;
+    DVDPlayer dvdPlayer;
+
+    @Autowired
+    VCDPlayer vcdPlayer;
 
     @Test
     public void personBeanTest() {
@@ -40,15 +43,21 @@ public class DemoApplicationTests {
     }
 
     @Test
-    public void DependencyInjectionWay(){
-        cdPlayer.play();
+    public void dvdPlayerTest(){
+        dvdPlayer.play();
     }
+
+    @Test
+    public void vcdPlayerTest(){
+        vcdPlayer.play();
+    }
+
 
     @Test
     public void traditionalWay(){
 //        MissionImpossible mi = new MissionImpossible();
-//        CDPlayer cdPlayer = new CDPlayer();
-//        cdPlayer.play();
+//        CDPlayer dvdPlayer = new CDPlayer();
+//        dvdPlayer.play();
     }
 
     @Test
