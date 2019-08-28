@@ -4,6 +4,7 @@ import com.frankie.demo.beanlifecycle.AwareBean;
 import com.frankie.demo.beanlifecycle.Person;
 import com.frankie.demo.soundsystem.CDPlayer;
 import com.frankie.demo.soundsystem.MissionImpossible;
+import com.frankie.demo.vehicle.Car;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,5 +51,9 @@ public class DemoApplicationTests {
 //        cdPlayer.play();
     }
 
+    @Test
+    public void buildCarTraditionalWay(){
+        Car car = new Car();
+    }
 
 }
