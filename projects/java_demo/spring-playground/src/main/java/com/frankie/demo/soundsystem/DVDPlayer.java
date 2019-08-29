@@ -11,9 +11,8 @@ public class DVDPlayer implements MediaPlayer {
     @Qualifier("missionImpossible")
     private CompactDisk cd;
 
-
     @Override
     public void play() {
-        System.out.println("Play " + cd.getCDName() + " using DVD");
+        System.out.println("一台可以看" + cd.getCDName() + "的DVD");
     }
 }

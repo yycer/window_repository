@@ -4,6 +4,8 @@ import com.frankie.demo.beanlifecycle.AwareBean;
 import com.frankie.demo.beanlifecycle.Person;
 import com.frankie.demo.soundsystem.DVDPlayer;
 import com.frankie.demo.soundsystem.VCDPlayer;
+import com.frankie.demo.soundsystemtraditianal.DVDPlayMissionImpossible;
+import com.frankie.demo.soundsystemtraditianal.VCDPlayFurious;
 import com.frankie.demo.vehicle.Car;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,9 +18,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DemoApplicationTests {
-
-//    @Autowired
-//    MissonImpossible missonImpossible;
 
     @Autowired
     DVDPlayer dvdPlayer;
@@ -42,27 +41,32 @@ public class DemoApplicationTests {
         context.registerShutdownHook();
     }
 
+    // region DVD & VCD Dependency Injection.
+
+
+    // Traditional Way.
     @Test
-    public void dvdPlayerTest(){
-        dvdPlayer.play();
+    public void dvdPlayerMissionImpossibleTest(){
+        DVDPlayMissionImpossible missionImpossible = new DVDPlayMissionImpossible();
+        missionImpossible.play();
     }
 
     @Test
-    public void vcdPlayerTest(){
+    public void vcdPlayerFuriousTest(){
+        VCDPlayFurious furious = new VCDPlayFurious();
+        furious.play();
+    }
+
+    // DI Way.
+    @Test
+    public void dvdAndVcdPlayerTest(){
+        dvdPlayer.play();
         vcdPlayer.play();
     }
 
 
-    @Test
-    public void traditionalWay(){
-//        MissionImpossible mi = new MissionImpossible();
-//        CDPlayer dvdPlayer = new CDPlayer();
-//        dvdPlayer.play();
-    }
 
-    @Test
-    public void buildCarTraditionalWay(){
-        Car car = new Car();
-    }
+    // endregion
+
 
 }

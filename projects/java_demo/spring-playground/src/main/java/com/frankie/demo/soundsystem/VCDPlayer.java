@@ -13,6 +13,6 @@ public class VCDPlayer implements MediaPlayer {
 
     @Override
     public void play() {
-        System.out.println("Play " + cd.getCDName() + " using VCD");
+        System.out.println("一台可以看" + cd.getCDName() + "的VCD");
     }
 }
