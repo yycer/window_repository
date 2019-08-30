@@ -4,8 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author Administrator
+ */
 @Component
-public class DVDPlayer implements MediaPlayer {
+public class DvdPlayer implements MediaPlayer {
 
     @Autowired
     @Qualifier("missionImpossible")

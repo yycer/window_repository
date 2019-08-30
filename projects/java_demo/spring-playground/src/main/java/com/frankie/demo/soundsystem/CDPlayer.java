@@ -11,9 +11,9 @@ public class CDPlayer implements MediaPlayer {
     @Qualifier("missionImpossible")
     private CompactDisk cd;
 
-
     @Override
     public void play() {
-        cd.play();
+
     }
+
 }

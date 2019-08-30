@@ -2,11 +2,11 @@ package com.frankie.demo;
 
 import com.frankie.demo.beanlifecycle.AwareBean;
 import com.frankie.demo.beanlifecycle.Person;
-import com.frankie.demo.soundsystem.DVDPlayer;
+import com.frankie.demo.soundsystem.DvdPlayer;
 import com.frankie.demo.soundsystem.VCDPlayer;
+import com.frankie.demo.soundsystemtraditianal.DVDPlayFurious;
 import com.frankie.demo.soundsystemtraditianal.DVDPlayMissionImpossible;
 import com.frankie.demo.soundsystemtraditianal.VCDPlayFurious;
-import com.frankie.demo.vehicle.Car;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +20,17 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class DemoApplicationTests {
 
     @Autowired
-    DVDPlayer dvdPlayer;
+    DvdPlayer dvdPlayer;
 
     @Autowired
     VCDPlayer vcdPlayer;
+
+    // DI Way.
+    @Test
+    public void dvdAndVcdPlayerTest(){
+        dvdPlayer.play(); // 一台可以看碟中谍的DVD
+        vcdPlayer.play(); // 一台可以看速度与激情的VCD
+    }
 
     @Test
     public void personBeanTest() {
@@ -47,8 +54,10 @@ public class DemoApplicationTests {
     // Traditional Way.
     @Test
     public void dvdPlayerMissionImpossibleTest(){
-        DVDPlayMissionImpossible missionImpossible = new DVDPlayMissionImpossible();
-        missionImpossible.play();
+        DVDPlayMissionImpossible dvdPlayMissionImpossible = new DVDPlayMissionImpossible();
+        DVDPlayFurious dvdPlayFurious = new DVDPlayFurious();
+        dvdPlayMissionImpossible.play();
+        dvdPlayFurious.play();
     }
 
     @Test
@@ -57,12 +66,7 @@ public class DemoApplicationTests {
         furious.play();
     }
 
-    // DI Way.
-    @Test
-    public void dvdAndVcdPlayerTest(){
-        dvdPlayer.play();
-        vcdPlayer.play();
-    }
+
 
 
 
