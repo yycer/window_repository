@@ -15,6 +15,6 @@ public class GlobalErrorHandler {
     public ResponseEntity<ErrorResponse> handleServiceException(ServiceException ex){
         return ResponseEntity
                 .status(ex.getStatus())
-                .body(ErrorResponse.failed(ex.getResultCode(), ex.getCustomMsg()));
+                .body(ErrorResponse.failed(ex.getResultCode(), ex.getErrorData()));
     }
 }

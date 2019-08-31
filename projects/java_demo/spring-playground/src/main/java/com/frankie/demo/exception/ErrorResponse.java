@@ -18,12 +18,12 @@ public class ErrorResponse<T> implements Serializable {
 
     private final int errorCode;
     private final String errorMsg;
-    private final T data;
+    private final T errorData;
 
-    private ErrorResponse(ResultCode resultCode, T data) {
+    private ErrorResponse(ResultCode resultCode, T errorData) {
         this.errorCode = resultCode.getErrorCode();
-        this.errorMsg = resultCode.getErrorData();
-        this.data = data;
+        this.errorMsg  = resultCode.getErrorData();
+        this.errorData = errorData;
     }
 
     public static <T> ErrorResponse<T> failed(ResultCode resultCode, T data){

@@ -12,16 +12,16 @@ public class ServiceException extends RuntimeException {
 
     private HttpStatus status;
     private ResultCode resultCode;
-    private Object     customMsg;
+    private Object     errorData;
 
-    private ServiceException(HttpStatus status, ResultCode resultCode, Object customMsg){
+    private ServiceException(HttpStatus status, ResultCode resultCode, Object errorData){
         this.status     = status;
         this.resultCode = resultCode;
-        this.customMsg = customMsg;
+        this.errorData  = errorData;
     }
 
-    public static ServiceException badRequest(ResultCode resultCode, Object data){
-        return new ServiceException(HttpStatus.BAD_REQUEST, resultCode, data);
+    public static ServiceException badRequest(ResultCode resultCode, Object errorData){
+        return new ServiceException(HttpStatus.BAD_REQUEST, resultCode, errorData);
     }
 
 }
