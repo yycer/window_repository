@@ -2,6 +2,7 @@ package com.frankie.demo;
 
 import com.frankie.demo.beanlifecycle.AwareBean;
 import com.frankie.demo.beanlifecycle.Person;
+import com.frankie.demo.exception.ExceptionTest;
 import com.frankie.demo.soundsystem.DvdPlayer;
 import com.frankie.demo.soundsystem.VCDPlayer;
 import com.frankie.demo.soundsystemtraditianal.DVDPlayFurious;
@@ -64,6 +65,11 @@ public class DemoApplicationTests {
     public void vcdPlayerFuriousTest(){
         VCDPlayFurious furious = new VCDPlayFurious();
         furious.play();
+    }
+
+    @Test
+    public void readFileTest(){
+        ExceptionTest.readFile();
     }
 
 

@@ -29,5 +29,4 @@ public class ErrorResponse<T> implements Serializable {
     public static <T> ErrorResponse<T> failed(ResultCode resultCode, T data){
         return new ErrorResponse(resultCode, data);
     }
-
 }

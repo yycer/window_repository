@@ -19,5 +19,4 @@ public enum ResultCode {
         this.errorCode = errorCode;
         this.errorData = errorData;
     }
-
 }

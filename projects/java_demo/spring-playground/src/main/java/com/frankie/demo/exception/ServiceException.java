@@ -23,5 +23,4 @@ public class ServiceException extends RuntimeException {
     public static ServiceException badRequest(ResultCode resultCode, Object errorData){
         return new ServiceException(HttpStatus.BAD_REQUEST, resultCode, errorData);
     }
-
 }
