@@ -15,6 +15,7 @@ public class DemoApplication {
 
         ClassLoader systemClassLoader = ClassLoader.getSystemClassLoader();
         System.out.println("系统类加载器: " + systemClassLoader);
+        System.out.println();
 
         Enumeration<URL> resources = systemClassLoader.getResources("");
         while (resources.hasMoreElements()){
