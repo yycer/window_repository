@@ -5,5 +5,4 @@ package com.frankie.demo.reflection;
  * @date: 2019/9/1 13:39
  */
 public class ReflectionTest {
-
 }

@@ -13,7 +13,7 @@ public class Person {
 
     public static String ancestor = "女娲";
 
-    public Person(){}
+    private Person(){}
 
     public Person(int id, String name){
         this.id   = id;
@@ -26,6 +26,14 @@ public class Person {
 
     public String getName(int id){
         return "Yao Frankie";
+    }
+
+    private void info(){
+        System.out.println("无参数方法");
+    }
+
+    class Inner{
+
     }
 
 }
