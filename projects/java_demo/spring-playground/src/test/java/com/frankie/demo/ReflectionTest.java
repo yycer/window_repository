@@ -1,13 +1,15 @@
 package com.frankie.demo;
 
+import com.frankie.demo.reflection.ObjectPoolFactory;
 import com.frankie.demo.reflection.Person;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Proxy;
+import java.lang.reflect.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author: Yao Frankie
@@ -47,5 +49,37 @@ public class ReflectionTest {
         // 方式3: 调用某个对象的getClass()方法。
         Person p = new Person(2, "1");
         Class<? extends Person> person3 = p.getClass();
+
+    }
+
+    /**
+     * 如何获得方法参数？
+     */
+    @Test
+    public void getMethodParametersTest() throws NoSuchMethodException {
+        Class<Person> personClass = Person.class;
+        Method info = personClass.getDeclaredMethod("info", String.class, List.class);
+        System.out.println("Person.info()方法中形参个数: " + info.getParameterCount());
+
+        Parameter[] parameters = info.getParameters();
+        int index = 1;
+        for (Parameter p: parameters){
+            System.out.println("---第" + index++ + "个参数信息---");
+            System.out.println("参数名:   " + p.getName());
+            System.out.println("参数类型: " + p.getType());
+            System.out.println("泛型类型: " + p.getParameterizedType());
+        }
+    }
+
+    @Test
+    public void initObjectPoolTest()
+            throws ClassNotFoundException, NoSuchMethodException,
+                   InstantiationException, IllegalAccessException, InvocationTargetException {
+        ObjectPoolFactory factory = new ObjectPoolFactory();
+        factory.initPool("D:/Playground/spring-playground/src/main/resources/a.txt");
+        factory.setNameUsingReflection("a", "frankie");
+        Person person = (Person) factory.getObject("a");
+//        person.setName("frankie");
+        System.out.println(person.getName());
     }
 }

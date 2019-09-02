@@ -1,1 +1,1 @@
-just for test.
+a=com.frankie.demo.reflection.Person
