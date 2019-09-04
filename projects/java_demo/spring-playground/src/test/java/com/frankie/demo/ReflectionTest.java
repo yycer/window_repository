@@ -82,4 +82,35 @@ public class ReflectionTest {
 //        person.setName("frankie");
         System.out.println(person.getName());
     }
+
+    @Test
+    public void playObjectUsingReflectionTest()
+            throws NoSuchMethodException, IllegalAccessException,
+            InvocationTargetException, InstantiationException {
+
+        Class<Person> personClass = Person.class;
+        Person person = personClass.getConstructor(int.class, String.class).newInstance(37, "frankie");
+        System.out.println("Id   = " + person.getId()   + " 调用对象的getId()方法");
+        System.out.println("Name = " + person.getName() + " 调用对象的getName()方法");
+
+        Method setIdMethod = personClass.getMethod("setId", int.class);
+        Method getIdMethod = personClass.getMethod("getId");
+        setIdMethod.invoke(person, 10);
+        System.out.println("Id   = 10 通过反射方式执行setId()方法");
+        int id = (int)getIdMethod.invoke(person);
+        System.out.println("Id   = " + id + " 通过反射方式执行getId()方法");
+
+        Method setNameMethod = personClass.getMethod("setName", String.class);
+        Method getNameMethod = personClass.getMethod("getName");
+        setNameMethod.invoke(person, "yyc");
+        System.out.println("Name = yyc 通过反射方式执行setName()方法");
+        String name = (String)getNameMethod.invoke(person);
+        System.out.println("Name = " + name + " 通过反射方式执行getName()方法");
+
+        Method changeNameMethod = personClass.getMethod("changeName", String.class);
+        changeNameMethod.invoke(person, "asan");
+        System.out.println("Name = asan" + " 通过反射方式执行Person类中的changeName()方法");
+        String changedName = (String)getNameMethod.invoke(person);
+        System.out.println("Name = " + changedName + " 通过反射方式执行getName()方法");
+    }
 }
