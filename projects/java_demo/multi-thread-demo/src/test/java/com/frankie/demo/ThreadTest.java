@@ -1,6 +1,7 @@
 package com.frankie.demo;
 
 import com.frankie.demo.play.*;
+import com.sun.org.apache.xpath.internal.WhitespaceStrippingElementMatcher;
 import javafx.concurrent.Task;
 import lombok.extern.slf4j.Slf4j;
 import net.bytebuddy.implementation.bytecode.StackSize;
@@ -189,4 +190,68 @@ public class ThreadTest {
         scheduledThreadPool.shutdown();
     }
 
+    @Test
+    public void ExecutorServiceSubmitTest() throws InterruptedException, ExecutionException, TimeoutException {
+
+        ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
+        Future<Integer> future = singleThreadExecutor.submit(() -> 1);
+        Integer result = future.get(5, TimeUnit.SECONDS);
+        log.warn("result = " + result);
+    }
+
+    /**
+     * 证明了什么？ 当使用shutdown()方法后，无法继续为该executorService添加新的task，否则就是抛RejectedExecutionException。
+     * 同时，之前提交的task，仍会继续完成。
+     * @throws InterruptedException
+     */
+    @Test
+    public void shutdownTest() throws InterruptedException {
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+
+        Runnable run = () -> {
+          try {
+              log.warn("isShutdown1 is " + executor.isShutdown());
+              Thread.sleep(3000);
+              log.warn("isShutdown2 is " + executor.isShutdown());
+              log.warn("thread finished");
+          } catch (InterruptedException e){
+              e.printStackTrace();
+          }
+        };
+
+        executor.execute(run);
+        executor.shutdown();
+        executor.awaitTermination(5, TimeUnit.SECONDS);
+//        executor.execute(run);
+    }
+
+    @Test
+    public void shutdownNowTest() throws InterruptedException {
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+
+//        Runnable run = () -> {
+//            try {
+//                Thread.sleep(3000);
+//                log.warn("thread finished");
+//            } catch (InterruptedException e){
+//                e.printStackTrace();
+//            }
+//        };
+
+        Runnable run = () -> {
+            long num = 0;
+            boolean flag = true;
+            while (flag){
+                num ++;
+                if (num == Long.MAX_VALUE){
+                    flag = false;
+                }
+            }
+            log.warn("thread finished");
+        };
+        executor.execute(run);
+        executor.shutdownNow();
+//        executor.awaitTermination(2, TimeUnit.SECONDS);
+//        executor.execute(run);
+    }
 }
