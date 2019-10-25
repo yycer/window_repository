@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 public class ThreadStateTest {
 
     @Test
-    public void newStateTest(){
+    public void testNewState(){
         Thread thread = new Thread(() -> System.out.println("Thread is running."));
         thread.setName("Thread10");
         System.out.println("Thread name is " + thread.getName() + " , state is " + thread.getState());
@@ -30,7 +30,7 @@ public class ThreadStateTest {
 
 
     @Test
-    public void terminatedStateTest() throws InterruptedException {
+    public void testTerminatedState() throws InterruptedException {
         Runnable run = () -> System.out.println("Thread is running.");
 
         Thread thread = new Thread(run);
@@ -47,7 +47,7 @@ public class ThreadStateTest {
      * 线程1先执行完，线程2处于Waited_Timing状态。
      */
     @Test
-    public void timedWaitingStateUsingSleepTest() throws InterruptedException {
+    public void testTimedWaitingStateUsingSleep() throws InterruptedException {
 
         Thread thread1 = new Thread(() -> {
             System.out.println(Thread.currentThread().getName() + " is running.");
@@ -88,7 +88,7 @@ public class ThreadStateTest {
      * 在线程2通知线程1之前，线程1处于Waited_Timing状态。
      */
     @Test
-    public void timedWaitingStateUsingWaitTest() throws InterruptedException {
+    public void testTimedWaitingStateUsingWait() throws InterruptedException {
         Object o = new Object();
 
         Thread thread1 = new Thread(() -> {
@@ -124,6 +124,82 @@ public class ThreadStateTest {
 //        Thread2 is end.
 //        Thread1 is doing something.
 //        Thread1 is end.
+    }
+
+
+    @Test
+    public void testWaitingStateUsingWait() throws InterruptedException {
+
+        Object o = new Object();
+
+        Thread thread1 = new Thread(() -> {
+            synchronized (o){
+                try {
+                    System.out.println(Thread.currentThread().getName() + " is running.");
+                    o.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        Thread thread2 = new Thread(() -> {
+            synchronized (o){
+                System.out.println(Thread.currentThread().getName() + " is running.");
+                o.notify();
+            }
+        });
+
+        thread1.setName("Thread1");
+        thread2.setName("Thread2");
+        thread1.start();
+        Thread.sleep(10); // The purpose is to let the thread1 start to run.
+        System.out.println("The state of " + thread1.getName() + " is " + thread1.getState());
+        thread2.start();
+        Thread.sleep(10); // The purpose is to let the thread2 start to run.
+        System.out.println("The state of " + thread1.getName() + " is " + thread1.getState());
+
+//        Thread1 is running.
+//        The state of Thread1 is WAITING
+//        Thread2 is running.
+//        The state of Thread1 is TERMINATED
+    }
+
+    /**
+     * Blocked状态出现在某个线程在等待锁资源的时候。
+     * @throws InterruptedException
+     */
+    @Test
+    public void testBlockedStateUsingSleep() throws InterruptedException {
+        Object o = new Object();
+
+        Thread thread1 = new Thread(() -> {
+            synchronized (o){
+                try {
+                    System.out.println(Thread.currentThread().getName() + " is running.");
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        Thread thread2 = new Thread(() -> {
+            synchronized (o){
+                System.out.println(Thread.currentThread().getName() + " is running.");
+            }
+        });
+
+        thread1.setName("Thread1");
+        thread2.setName("Thread2");
+        thread1.start();
+        Thread.sleep(10); // The purpose is to let the thread1 start to run.
+        thread2.start();
+        Thread.sleep(10); // The purpose is to let the thread2 start to run.
+        System.out.println("The state of " + thread2.getName() + " is " + thread2.getState());
+
+//        Thread1 is running.
+//        The state of Thread2 is BLOCKED
     }
 
 }
