@@ -5,6 +5,8 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.LocalDateTime;
+
 /**
  * @author: Yao Frankie
  * @date: 2019/10/22 09:06
@@ -41,26 +43,50 @@ public class ThreadStateTest {
 //        Thread name is Thread10 , state is TERMINATED
     }
 
+    /**
+     * 线程1先执行完，线程2处于Waited_Timing状态。
+     */
     @Test
     public void timedWaitingStateUsingSleepTest() throws InterruptedException {
 
-        Thread thread = new Thread(() -> {
-            System.out.println("Thread is running.");
+        Thread thread1 = new Thread(() -> {
+            System.out.println(Thread.currentThread().getName() + " is running.");
             try {
-                Thread.sleep(2000);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("Thread is end.");
+            System.out.println(Thread.currentThread().getName() + "Thread is end.");
         });
-        thread.start();
-        Thread.sleep(500);
-        System.out.println("Thread name is " + thread.getName() + " , state is " + thread.getState());
 
-//    Thread is running.
-//    Thread name is Thread-2 , state is TIMED_WAITING
+        Thread thread2 = new Thread(() -> {
+            System.out.println(Thread.currentThread().getName() + " is running.");
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(Thread.currentThread().getName() + "Thread is end.");
+        });
+
+        thread1.setName("Thread1");
+        thread2.setName("Thread2");
+        thread1.start();
+        thread2.start();
+        Thread.sleep(150);  // The purpose is to let the thread1 finish running.
+        System.out.println(thread2.getName() + " state is " + thread2.getState());
+        Thread.sleep(1000); // The purpose is to let the thread2 finish running.
+
+//        Thread2 is running.
+//        Thread1 is running.
+//        Thread1Thread is end.
+//        Thread2 state is TIMED_WAITING
+//        Thread2Thread is end.
     }
 
+    /**
+     * 在线程2通知线程1之前，线程1处于Waited_Timing状态。
+     */
     @Test
     public void timedWaitingStateUsingWaitTest() throws InterruptedException {
         Object o = new Object();
@@ -87,56 +113,17 @@ public class ThreadStateTest {
         });
         thread1.start();
         thread1.setName("Thread1");
+        thread2.setName("Thread2");
         Thread.sleep(200);
         System.out.println("The state of " + thread1.getName() + " is " + thread1.getState());
         thread2.start();
-        thread2.setName("Thread2");
 
 //        Thread1 is running.
 //        The state of Thread1 is TIMED_WAITING
 //        Thread2 is running.
+//        Thread2 is end.
 //        Thread1 is doing something.
 //        Thread1 is end.
-//        Thread2 is end.
-    }
-
-
-    @Test
-    public void timedWaitingStateUsingJoinTest() throws InterruptedException {
-
-        Thread thread2 = new Thread(() -> {
-            try {
-                Thread.sleep(2500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
-
-        Thread thread1 = new Thread(() -> {
-            for (int i = 0; i < 5; i++){
-                try {
-                    Thread.sleep(1000);
-                    System.out.println("Thread2 state is " + thread2.getState());
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                System.out.println(Thread.currentThread().getName() + " is running.");
-            }
-        });
-
-        thread1.setName("Thread1");
-        thread2.setName("Thread2");
-
-        thread1.start();
-        thread2.start();
-        thread1.join(3000);
-
-//        Thread2 state is TIMED_WAITING
-//        Thread1 is running.
-//        Thread2 state is TIMED_WAITING
-//        Thread1 is running.
-//        Thread2 state is TERMINATED
-//        Thread1 is running.
     }
 
 }
