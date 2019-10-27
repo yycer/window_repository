@@ -44,7 +44,7 @@ public class ThreadStateTest {
     }
 
     /**
-     * 线程1先执行完，线程2处于Waited_Timing状态。
+     * Thread1 is executed first, and thread2 is in the TIMED_WAITING state.
      */
     @Test
     public void testTimedWaitingStateUsingSleep() throws InterruptedException {
@@ -85,7 +85,7 @@ public class ThreadStateTest {
     }
 
     /**
-     * 在线程2通知线程1之前，线程1处于Waited_Timing状态。
+     * Before thread2 notifies thread1, thread1 is in the TIMED_WAITING state.
      */
     @Test
     public void testTimedWaitingStateUsingWait() throws InterruptedException {
