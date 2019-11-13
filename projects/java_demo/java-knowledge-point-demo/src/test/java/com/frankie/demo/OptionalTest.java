@@ -61,12 +61,27 @@ public class OptionalTest {
 
 
 //    --------------------------------------------------
+
+    @Test
+    public void optionalBasicTest(){
+        String def  = "default";
+        String name = "frankie";
+        Optional<String> optName = Optional.of(name);
+
+        String pet = null;
+        Optional<String> optPet = Optional.ofNullable(pet);
+
+        String name2 = optName.orElse(def);
+        String pet2  = optPet.orElse(def);
+    }
+
     @Test
     public void orElseAndOrElseThrowTest(){
         Order order       = new Order();
         UserInfo userInfo = new UserInfo();
         userInfo.setUserId("20004001234");
         order.setOrderId(UUID.randomUUID().toString());
+        order.setUserInfo(userInfo);
 
         Optional<Order> optOrder = Optional.ofNullable(order);
 
@@ -76,6 +91,7 @@ public class OptionalTest {
                 .map(UserInfo::getAvatar)
                 .orElse("");
 
+        // The avatar is  .
         System.out.println("The avatar is " + avatar + " .");
         
         // Get total
@@ -83,15 +99,17 @@ public class OptionalTest {
                 .map(Order::getTotal)
                 .orElseThrow(() -> new RuntimeException("Failed to get total!"));
 
+        // java.lang.RuntimeException: Failed to get total!
         System.out.println("The total is " + total + " .");
     }
 
     @Test
     public void testDifferenceBetweenMapAndFlatMap(){
         // Illustrate the data structure of class Computer, SoundCard and Usb.
-        Computer computer = new Computer();
+        Computer computer   = new Computer();
         SoundCard soundCard = new SoundCard();
-        Usb usb = new Usb();
+        Usb usb             = new Usb();
+
         usb.setVersion("10.18");
         soundCard.setUsb(Optional.ofNullable(usb));
         computer.setSoundCard(Optional.ofNullable(soundCard));
@@ -127,23 +145,23 @@ public class OptionalTest {
     @Test
     public void orElseAndOrElseGetTest(){
 
-        // Situation1: If the optional object is empty, the corresponding methods will be executed.
-//        System.out.println(Optional.empty().orElse(B()));
-//        B()...
-//        B
+//      Situation1: If the optional object is empty, the corresponding methods will be executed.
+        System.out.println(Optional.empty().orElse(B()));
+//      B()...
+//      B
 
-//        System.out.println(Optional.empty().orElseGet(() -> B()));
-//        B()...
-//        B
+        System.out.println(Optional.empty().orElseGet(() -> B()));
+//      B()...
+//      B
 
-        // Situation2: If the optional object has a value,
-        // orElse() will still execute the corresponding method, but orElse() will not.
-//        System.out.println(Optional.of("A").orElse(B()));
-//        B()...
-//        A
+//      Situation2: If the optional object has a value,
+//      orElse() will still execute the corresponding method, but orElse() will not.
+        System.out.println(Optional.of("A").orElse(B()));
+//      B()...
+//      A
 
-//        System.out.println(Optional.of("A").orElseGet(() -> B()));
-//        A
+        System.out.println(Optional.of("A").orElseGet(() -> B()));
+//      A
     }
 
     @Test
@@ -154,24 +172,24 @@ public class OptionalTest {
 
 // ---------------------------- Using traditional way ----------------------------
 //        java.lang.RuntimeException: Failed to get userId.
-//        System.out.println("Calling getUserId using traditional way: " + userUtils.getUserId(userId1));
+        System.out.println("Calling getUserId using traditional way: " + userUtils.getUserId(userId1));
 
 //        java.lang.RuntimeException: Failed to get userId.
-//        System.out.println("Calling getUserId using traditional way: " + userUtils.getUserId(userId2));
+        System.out.println("Calling getUserId using traditional way: " + userUtils.getUserId(userId2));
 
 //        Calling getUserId using traditional way: 20004001000
-//        System.out.println("Calling getUserId using traditional way: " + userUtils.getUserId(userId3));
+        System.out.println("Calling getUserId using traditional way: " + userUtils.getUserId(userId3));
 
 
 // ---------------------------- Using Optional way ----------------------------
 //        java.lang.RuntimeException: Failed to get userId.
-//        System.out.println("Calling getUserId using optional way: " + userUtils.getUserIdUsingOptional(userId1));
+        System.out.println("Calling getUserId using optional way: " + userUtils.getUserIdUsingOptional(userId1));
 
 //        java.lang.RuntimeException: Failed to get userId.
-//        System.out.println("Calling getUserId using optional way: " + userUtils.getUserIdUsingOptional(userId2));
+        System.out.println("Calling getUserId using optional way: " + userUtils.getUserIdUsingOptional(userId2));
 
 //        Calling getUserId using optional way: 20004001000
-//        System.out.println("Calling getUserId using optional way: " + userUtils.getUserIdUsingOptional(userId3));
+        System.out.println("Calling getUserId using optional way: " + userUtils.getUserIdUsingOptional(userId3));
     }
     
 }
