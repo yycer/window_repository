@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * @author: Yao Frankie
@@ -248,5 +249,98 @@ public class ThreadTest {
         executor.shutdownNow();
 //        executor.awaitTermination(2, TimeUnit.SECONDS);
 //        executor.execute(run);
+    }
+
+    @Test
+    public void daemonThreadTest(){
+        Thread daemonThread = new Thread(() -> {
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                System.out.println("Daemon thread test.");
+            }
+        });
+        daemonThread.setDaemon(true);
+        daemonThread.start();
+    }
+
+    /**
+     * 通知/等待机制
+     */
+    @Test
+    public void waitNotifyTest() throws InterruptedException {
+        Object  lock = new Object();
+        AtomicBoolean flag = new AtomicBoolean(true);
+
+        Thread waitThread = new Thread(() -> {
+            synchronized (lock){
+                while (flag.get()){
+                    try {
+                        System.out.println(Thread.currentThread() + " flag is true, wait() " + LocalDateTime.now());
+                        lock.wait(); // threadA enters waiting queue, and releases the lock.
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println(Thread.currentThread() + " flag is false, " + LocalDateTime.now());
+                }
+            }
+        }, "thread1");
+
+        Thread notifyThread = new Thread(() -> {
+            synchronized (lock){
+                System.out.println(Thread.currentThread() + " notifyAll() " + LocalDateTime.now());
+                lock.notifyAll();
+                flag.set(false);
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, "thread2");
+
+        waitThread.start();
+        Thread.sleep(1);
+        notifyThread.start();
+        Thread.sleep(6000);
+    }
+
+    @Test
+    public void printNumsUsingWaitNotifyMechanismTest() throws InterruptedException {
+        Object o = new Object();
+
+        Thread threadA = new Thread(() -> {
+            synchronized (o){
+                for (int i = 1; i < 10; i += 2){
+                    o.notify();
+                    try {
+                        System.out.println(Thread.currentThread().getName() + ": " + i);
+                        o.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }, "threadA");
+
+        Thread threadB = new Thread(() -> {
+            synchronized (o){
+                for (int i = 2; i <= 10; i += 2){
+                    o.notify();
+                    System.out.println(Thread.currentThread().getName() + ": " + i);
+                    try {
+                        o.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }, "threadB");
+
+        threadA.start();
+        Thread.sleep(5);
+        threadB.start();
     }
 }
