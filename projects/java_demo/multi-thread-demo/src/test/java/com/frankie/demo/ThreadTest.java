@@ -7,10 +7,12 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.io.PipedInputStream;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author: Yao Frankie
@@ -314,7 +316,9 @@ public class ThreadTest {
         Thread threadA = new Thread(() -> {
             synchronized (o){
                 for (int i = 1; i < 10; i += 2){
-                    o.notify();
+                    if (i != 1){
+                        o.notify();
+                    }
                     try {
                         System.out.println(Thread.currentThread().getName() + ": " + i);
                         o.wait();
@@ -342,5 +346,27 @@ public class ThreadTest {
         threadA.start();
         Thread.sleep(5);
         threadB.start();
+    }
+
+    public static volatile AtomicInteger count = new AtomicInteger(0);
+
+    public static void increase(){
+        count.incrementAndGet();
+    }
+
+    @Test
+    public void countTest() throws InterruptedException {
+        for (int i = 0; i < 10; i++){
+            new Thread(() -> {
+                for (int j = 0; j < 10000; j++){
+                    increase();
+                }
+            }).start();
+        }
+        while (Thread.activeCount() > 2){
+            Thread.yield();
+        }
+        System.out.println("count = " + count);
+
     }
 }
