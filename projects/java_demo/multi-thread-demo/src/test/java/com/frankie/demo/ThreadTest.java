@@ -4,9 +4,12 @@ import com.frankie.demo.play.*;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.annotation.Resource;
+import javax.inject.Inject;
 import java.io.PipedInputStream;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -354,6 +357,8 @@ public class ThreadTest {
         count.incrementAndGet();
     }
 
+
+    @Autowired
     @Test
     public void countTest() throws InterruptedException {
         for (int i = 0; i < 10; i++){
